@@ -1,0 +1,97 @@
+body {
+    background: url("img/bg.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.dialog {
+    margin-top: 1%;
+    background: #25292C;
+    color: #fff;
+}
+
+.name {
+    margin-top: 1%;
+    background: #25292C;
+    color: #fff;
+    padding-left: 1%;
+    padding-top: 1%;
+}
+
+#name-dialog {
+    margin-top: 0.5vh;
+    margin-left: 2vh;
+}
+
+#text-dialog {
+    margin-top: 1.3vh;
+    margin-left: 2vh;
+    padding: 1%;
+}
+
+#footer-buttons {
+    background: #25292C;
+    color: #fff;
+}
+
+#ration-modal .modal-dialog {
+    padding: 0;
+    margin: 0;
+}
+
+#ration-modal {
+    width: 210px;
+    height: 390px;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+#ration-content {
+    background: none;
+    border: none;
+}
+
+#ration-content .modal-body {
+    width: 2%;
+    height: 80px;
+    background: #2e3235;
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px; 
+}
+
+#ration-content .modal-footer {
+    width: 200px;
+    height: 300px;
+    border-top: none;
+    background: #2e3235;
+    border-top-right-radius: 10px; 
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#btn-menu, #btn-next {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#btn-next { margin-left: 1%; }
+
+#menu .modal-content { 
+    width: 30vh;
+    margin: auto;
+    background: none;
+    border: none;
+    margin-top: 30vh;
+}
+
+#btn-back-to-game, #btn-new-game,
+#btn-save-load, #btn-sign-out-game {
+    width: 25vh;
+    height: 7vh;
+}
+
+#game {
+    display: block;
+}

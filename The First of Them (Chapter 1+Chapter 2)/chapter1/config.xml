@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "com.biovirus.game"
+    versionCode = "3"
+    version     = "1.0.0" >
+
+  <name>Bio Virus: The Game</name>
+
+  <description>
+      Bio Virus: The Game
+  </description>
+
+  <author href="https://vk.com/public_lar">
+      LAR
+  </author>
+</widget>

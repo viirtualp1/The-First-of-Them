@@ -1,0 +1,26 @@
+body {
+    background: #000;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.container { margin-top: 40vh; }
+
+.title {
+    font-size: 4vh;
+    text-shadow: 3px 3px 3px black, 0 0 1em red; /* Параметры тени */
+}
+
+.chapter { 
+    font-size: 2vh; 
+    text-shadow: 3px 3px 3px black, 0 0 1em red; /* Параметры тени */
+}
+
+#title-game, #chapter-game { opacity: 0; }
+
+#title, #chapter {
+    opacity: 1;
+    transition: opacity 10s; 
+}
+
+#show-logo-div { margin-top: 33vh; }

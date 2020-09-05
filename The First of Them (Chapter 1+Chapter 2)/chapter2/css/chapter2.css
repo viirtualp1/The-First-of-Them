@@ -1,0 +1,149 @@
+/* Game Window */ 
+body {
+    background: url("../images/office.jpg"); /* ytンあｊｙｊｄ */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.dialog {
+    padding: 1%;
+    margin-top: 1vh;
+    margin-right: 1%;
+    margin-left: 1%;
+    background: #25292C;
+    color: #fff;
+}
+
+.name {  
+    margin-top: 1.3vh;
+    margin-right: 1%;
+    margin-left: 1%;
+    background: #25292C;
+    color: #fff;
+}
+
+#name-dialog {
+    margin-top: 1vh;
+    margin-left: 2vh;
+    /* font-size: 2.3vh; */
+}
+
+#text-dialog {
+    margin-top: 1.3vh;
+    margin-left: 2vh;
+    font-size: 2.3vh;
+}
+
+#footer-next { margin-bottom: 10vh; }
+
+.dropdown-menu {
+    background: none;
+    border: 0;
+    outline: 0;
+}
+
+#btn-todo1, #btn-todo2, 
+#btn-todo3, #btn-todo4 {
+    width: 20vh;
+    border-radius: 0px;
+}
+
+#btn-todo1, #btn-todo2, 
+#btn-todo3 { border-bottom: 1px solid silver; }
+
+#btn-1-left { margin-right: 2vh; }
+
+#btn-2-right { margin-left: 1vh; }
+
+#btn-1-left, #btn-2-right {
+    margin-top: 3vh;
+    padding-top: 0.6vh;
+    width: 14vh;
+    height: 6vh;
+    font-size: 2vh;
+}
+
+.progress { margin-top: 2vh; background: #343A40; }
+
+#menu .modal-content { 
+    width: 30vh;
+    margin: auto;
+    background: none;
+    border: none;
+    margin-top: 30vh;
+}
+
+#inventory .modal-content { background: rgb(42, 44, 46); }
+
+#password .modal-content { background: rgb(42, 44, 46); }
+
+#document-password .modal-content { background: rgb(42, 44, 46); }
+
+#computer .modal-content { background: rgb(42, 44, 46); }
+
+#quiz .modal-content { background: rgb(42, 44, 46); }
+
+.modal-title, .close { color: #fff; }
+
+.close:hover { color: #fff; }
+
+#inventory .modal-content {  background: none; }
+
+#use1, #use2, #use3 { background: rgb(42, 44, 46); }
+
+#btn-back-to-game, #btn-settings-game,
+#btn-sign-out-game, #btn-save-load,
+#btn-new-game {
+    width: 30vh;
+    height: 7vh;
+    background: rgb(42, 44, 46);
+    font-size: 2vh;
+}
+
+#btn-menu, #btn-map, #btn-tasks {
+    margin-bottom: 2vh;
+    width: 14vh;
+    height: 6vh;
+    font-size: 2vh;
+}
+
+#btn-next {
+    width: 14vh;
+    height: 6vh;
+    font-size: 2vh;
+}
+
+#document .modal-content { background: rgb(42, 44, 46); }
+
+#code-input {
+    background: #5C6166;
+    border: none;
+    color: #fff;
+}
+
+.modal-content {
+    background: #25292C;
+}
+
+#loud_escape, #right_reactive,
+#weak_reactive, #strong_reactive {
+    margin-left: 1%;
+}
+
+#main_room, #lab_after, 
+#frige, #cabinet,
+#loud_escape {
+    margin-left: 1%;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+#quiz2 {
+    margin: auto;
+}
+
+#vasiliy {
+    opacity: 0.1;
+}

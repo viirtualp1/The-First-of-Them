@@ -1,0 +1,28 @@
+{
+    "app_name": "The First of Them",
+    "author": "LAR",
+    "dependencies": {
+        "firebase": "^7.15.5"
+    },
+    "description": "tfot",
+    "keywords": [
+        "tfot"
+    ],
+    "license": "ISC",
+    "main": "logo.html",
+    "name": "tfot",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "version": "1.0.0",
+    "webkit": {},
+    "window": {
+        "height": 720,
+        "icon": "ic_TFot_LAR_game.png",
+        "id": "tfot",
+        "position": "center",
+        "resizable": true,
+        "title": "The First of Them",
+        "width": 1280
+    }
+}

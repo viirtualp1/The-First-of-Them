@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>The First of Them</title>
+    <style>
+        body {
+            background: #000;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .container { margin-top: 27vh; }
+
+        .title, .title-end, 
+        .title-date, .title-thanks {
+            font-size: 5vh;
+            text-shadow: 3px 3px 3px black, 0 0 1em red; /* Параметры тени */
+        }
+
+        #title-game, #title2, 
+        #back, #links { opacity: 0; }
+
+        #title, #title-end, 
+        #back-to-menu, #links-game {
+            opacity: 1;
+            transition: opacity 5s; 
+        }
+
+        #back-to-menu, #back {
+            width: 20vh;
+            height: 5vh;
+            background: rgb(42, 44, 46);
+            color: #fff;
+        }
+
+        #back-to-menu:hover {
+            background: rgb(52, 52, 53);
+            transition: 0.5s;
+        }
+
+        #vk-icon { color: #4A76A8; }
+
+        #youtube-icon { color: #FF0000; }
+
+        #btnGroupDrop1, #btn-thanks { background: rgb(42, 44, 46); border: none; }
+
+        .dropdown-menu a { color: #fff; }
+
+        .dropdown-menu { background: rgb(42, 44, 46); }
+
+        #quit { background: rgb(42, 44, 46); border: none; }
+
+        #thanks-div .modal-content { background: rgb(42, 44, 46); }
+
+    </style>
+</head>
+<body>
+    <audio src="sounds/demoend.mp3" autoplay="autoplay"></audio>
+
+    <div class="container">
+        <p class="lead text-center text-light mt-1 title-end" id="title2">End of Chapter Two</p>
+        <p class="lead text-center text-light mt-2 title" id="title-game">The First of Them</p>
+    
+        <div class="d-flex justify-content-center" id="links">
+            <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle mt-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Links
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="https://vk.com/public_lar"><i id="vk-icon" class="fab fa-vk"></i> Vk Group</a>
+                    <a class="dropdown-item" href="https://www.youtube.com/channel/UCeh4yaV7iYy0zrbN1-qy2IQ"><i id="youtube-icon" class="fab fa-youtube"></i> YouTube Channel</a>
+                </div>
+            </div>
+            <button id="quit" type="button" class="btn btn-secondary mt-2 ml-2" onclick="location.href = '../menu-eng.html'">
+                Exit
+            </button>
+            <button class="btn btn-dark mt-2 ml-2" id="btn-thanks" data-toggle="modal" data-target="#thanks-div">Thanks</button>
+        </div>
+
+        <div class="card-deck text-center mt-4">
+            <div class="card text-white bg-dark">
+              <div class="card-body">
+                <h5 class="card-title">Main Programmer</h5>
+                <p class="card-text">Anna Pastuhova</p>
+                <h5 class="card-title">Programmer</h4>
+                <p class="card-text">Nikita Zinin</p>
+              </div>
+            </div>
+            <div class="card text-white bg-dark">
+              <div class="card-body">
+                <h5 class="card-title">Script</h5>
+                <p class="card-text">Anna Pastuhova</p>
+              </div>
+            </div>
+            <div class="card text-white bg-dark">
+              <div class="card-body">
+                <h5 class="card-title">Painter</h5>
+                <p class="card-text">Danil Chernyshev</p>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="thanks-div" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-white">
+                    <h5 class="modal-title" id="thanks-title">Thanks</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center text-white">
+                    <p class="lead">Special thanks to all those
+                        who somehow participated in the development of the game. Appreciated, played and motivated us!</p>
+                    <p class="lead bg-success" id="you" style="visibility: hidden;">Special thanks to you for passing!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/373834e38f.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        let title = document.getElementById("title-game");
+        let title_end = document.getElementById("title2");
+        let links = document.getElementById("links");
+
+        let you_lc = localStorage.getItem("you"),
+            you = document.getElementById("you");
+
+        if (you_lc !== null) { you.style.visibility = "visible"; }
+
+        setTimeout(() => {
+            title.id = "title";
+            title_end.id = "title-end";
+            links.id = "links-game";
+        }, 0);
+    </script>
+</body>
+</html>

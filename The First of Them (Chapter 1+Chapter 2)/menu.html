@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The First of Them</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="chapter2/css/menu.css">
+</head>
+<body>
+    <audio src="chapter1/music/menu.mp3" id="music" autoplay="autoplay" loop></audio>
+    <audio src="" id="sound" autoplay="autoplay"></audio>
+    <audio src="" id="music" autoplay></audio>
+
+    <div class="container">
+        <p class="lead text-center text-light mt-2" id="title">The First of Them</p>
+
+        <div class="d-flex justify-content-center" id="buttons-menu">
+            <div class="btn-group-vertical">
+                <div class="btn-group">
+                    <button class="btn btn-dark" id="btn-music-mute" onclick="volume_mute()"><i class="fas fa-volume-mute" id="music-icon"></i></button>
+                    <button class="btn btn-dark" id="btn-music-up" onclick="volume_up_menu()"><i class="fas fa-volume-up" id="music-icon"></i></button>
+                </div>
+
+                <button class="btn btn-dark" id="btn-new-game" data-toggle="modal" data-target="#difficult">Новая игра</button>
+                <button class="btn btn-dark" id="btn-chapters" data-toggle="modal" data-target="#chapters">Выбрать главу</button>
+                <button class="btn btn-dark" id="btn-settings" data-toggle="modal" data-target="#settings">Настройки</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="fixed-bottom">
+        <div class="image-logo">
+            <img class="img-fluid" src="chapter1/images/lar.png" id="logo" alt="logo">
+        </div>
+    </footer>
+
+    <div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content m-auto">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <button type="button" class="close" id="close-settings" data-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <li class="nav-item" id="achievements-tab-li" role="presentation">
+                        <a class="nav-link active text-light" id="achievements-tab" data-toggle="tab" href="#achievements-div" role="tab" aria-controls="map" aria-selected="false">Достижения</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link text-light" id="musics-tab" data-toggle="tab" href="#musics-div" role="tab" aria-controls="musics" aria-selected="false">Музыка</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link text-light" id="posters-tab" data-toggle="tab" href="#posters-div" role="tab" aria-controls="tasks" aria-selected="false">Постеры</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link text-light" id="languages-tab" data-toggle="tab" href="#languages-div" role="tab" aria-controls="contact" aria-selected="false">Язык</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="achievements-div" role="tabpanel" aria-labelledby="map-tab">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card bg-dark text-white">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Глава 1
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="collapse text-center" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body d-flex justify-content-center">
+                                        <div class="d-block">
+                                            <div class="card music text-white bg-dark mb-3" id="achievement1" style="max-width: 18rem;">
+                                                <div class="card-header">И сразу в бой</div>
+                                                <div class="card-body">
+                                                    <p class="card-title" id="title-achievement1">Не открыто</p>
+                                                </div>
+                                            </div>
+                                            <div class="card music text-white bg-dark mb-3" id="achievement2" style="max-width: 18rem;">
+                                                <div class="card-header">В безопасности... Наверное</div>
+                                                <div class="card-body">
+                                                    <p class="card-title" id="title-achievement2">Не открыто</p>
+                                                </div>
+                                            </div>
+                                            <div class="card music text-white bg-dark mb-3" id="achievement3" style="max-width: 18rem;">
+                                                <div class="card-header">Только не он...</div>
+                                                <div class="card-body">
+                                                    <p class="card-title" id="title-achievement3">Не открыто</p>
+                                                </div>
+                                            </div>
+                                            <div class="card music text-white bg-dark mb-3" id="achievement4" style="max-width: 18rem;">
+                                                <div class="card-header">Не делай так больше...</div>
+                                                <div class="card-body">
+                                                    <p class="card-title" id="title-achievement4">Не открыто</p>
+                                                </div>
+                                            </div>
+                                            <div class="card music text-white bg-dark mb-3" id="achievement5" style="max-width: 18rem;">
+                                                <div class="card-header">Конец... Или начало?</div>
+                                                <div class="card-body">
+                                                    <p class="card-title" id="title-achievement5">Не открыто</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-dark text-white">
+                                <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed text-white" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Глава 2
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div class="card-body text-center d-flex justify-content-center">
+                                        <div class="d-block">
+                                            <div class="card music text-white bg-dark mb-3" id="achievement2-1" style="max-width: 18rem;">
+                                                <div class="card-header">Нахимичил...</div>
+                                                <div class="card-body">
+                                                    <p class="card-title" id="title-achievement2-1">Не открыто</p>
+                                                </div>
+                                            </div>
+                                            <div class="card music text-white bg-dark mb-3" id="achievement2-2" style="max-width: 18rem;">
+                                                <div class="card-header">Великий химик</div>
+                                                <div class="card-body">
+                                                    <p class="card-title" id="title-achievement2-2">Не открыто</p>
+                                                </div>
+                                            </div>
+                                            <div class="card music text-white bg-dark mb-3" id="achievement2-3" style="max-width: 18rem;">
+                                                <div class="card-header">Профессор</div>
+                                                <div class="card-body">
+                                                    <p class="card-title" id="title-achievement2-3">Не открыто</p>
+                                                </div>
+                                            </div>
+                                            <div class="card music text-white bg-dark mb-3" id="achievement2-4" style="max-width: 18rem;">
+                                                <div class="card-header" id="secret-h">Тайна нового человека...</div>
+                                                <div class="card-body">
+                                                    <p class="card-title" id="title-achievement2-4">Не открыто</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-dark text-white">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed text-white" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            Глава 3
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                    <div class="card-body">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-dark text-white">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed text-white" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            Глава 4
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                    <div class="card-body">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="musics-div" role="tabpanel" aria-labelledby="map-tab">
+                        <div class="mt-3">
+                            <div class="card music text-white bg-dark mb-3" style="max-width: 18rem;">
+                                <div class="card-header">Музыка из 1 главы</div>
+                                <div class="card-body">
+                                    <button class="btn btn-dark" id="switch-music" onclick="music_src('background_house.mp3')">Переключить</button>
+                                </div>
+                              </div>
+                            <div class="card music text-white bg-dark mb-3" style="max-width: 18rem;">
+                                <div class="card-header">Музыка из 2 главы</div>
+                                <div class="card-body">
+                                    <button class="btn btn-dark" id="switch-music" onclick="music_src('main_music.mp3')">Переключить</button>
+                                </div>
+                              </div>
+                            <div class="card music text-white bg-dark mb-3" style="max-width: 18rem;">
+                                <div class="card-header">Музыка из меню</div>
+                                <div class="card-body">
+                                    <button class="btn btn-dark" id="switch-music" onclick="music_src('menu.mp3')">Переключить</button>
+                                </div>
+                            </div>
+                            <div class="card music text-white bg-dark mb-3" style="max-width: 18rem;">
+                                <div class="card-header">Выключить музыку</div>
+                                <div class="card-body">
+                                    <button class="btn btn-dark" id="switch-music" onclick="volume_mute()">Выключить</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="posters-div" role="tabpanel" aria-labelledby="tasks-tab">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="chapter1/images/poster5.jpg" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="chapter1/images/poster4.jpg" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="chapter1/images/poster3.jpg" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="chapter1/images/poster2.jpg" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="chapter1/images/poster1.jpg" class="d-block w-100" alt="...">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Предыдущий</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Следующий</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="languages-div" role="tabpanel" aria-labelledby="documents-tab">
+                        <div class="d-flex justify-content-center">
+                            <div class="btn-group mt-3 mb-3">
+                                <button class="btn btn-dark" id="btn-english" onclick="english()">Английский язык</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="chapters" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body d-flex justify-content-center">
+                    <div class="btn-group-vertical">
+                        <button class="btn btn-dark" id="btn-close" data-dismiss="modal"><i class="fas fa-times"></i></button>
+                        <button class="btn btn-dark" id="btn-what-is-it" onclick="what_is_this()">???</button>
+                        <button class="btn btn-dark" id="btn-1-chapter" data-toggle="modal" data-target="#difficult">1 глава - Био Вирус: Фобос</button>
+                        <button class="btn btn-dark" id="btn-2-chapter" onclick="warning_chapter2()">2 глава - Новые знакомства</button>
+                        <button class="btn btn-dark" id="btn-3-chapter" onclick="soon()">3 глава - ???</button>
+                        <button class="btn btn-dark" id="btn-4-chapter" onclick="soon()">4 глава - ???</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="difficult" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <h4 class="text-center text-light mt-2">Выберите сложность: </h4>
+
+                <div class="modal-body d-flex justify-content-center">
+                    <div class="btn-group-vertical">
+                        <button class="btn btn-dark" id="btn-easy" onclick="localStorage.setItem('difficult', 'easy'); warning()">Низкая</button>
+                        <button class="btn btn-dark" id="btn-normal" onclick="localStorage.setItem('difficult', 'normal'); warning()">Средняя</button>
+                        <button class="btn btn-dark" id="btn-hardcore" onclick="localStorage.setItem('difficult', 'hard'); warning()">Хардкор</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = () => {
+            // Chapter 1 Achievements
+            let achievement_1 = localStorage.getItem("achievement_1"),
+                achievement_2 = localStorage.getItem("achievement_2"),
+                achievement_3 = localStorage.getItem("achievement_3"),
+                achievement_4 = localStorage.getItem("achievement_4"),
+                achievement_5 = localStorage.getItem("achievement_5");
+
+            let achievement_1_text = document.getElementById("title-achievement1"),
+                achievement_2_text = document.getElementById("title-achievement2"),
+                achievement_3_text = document.getElementById("title-achievement3"),
+                achievement_4_text = document.getElementById("title-achievement4"),
+                achievement_5_text = document.getElementById("title-achievement5"),
+                secret_h = document.getElementById("secret-h");
+            
+            let achievement_1_div = document.getElementById("achievement1"),
+                achievement_2_div = document.getElementById("achievement2"),
+                achievement_3_div = document.getElementById("achievement3"),
+                achievement_4_div = document.getElementById("achievement4"),
+                achievement_5_div = document.getElementById("achievement5");
+
+            // Inner Chapter 1 Achievements
+            if (achievement_1 === null) { } else {
+                achievement_1_text.innerHTML = "Убежать от собак";
+                achievement_1_div.className = "card text-white bg-success mb-3";
+                achievement_1_text.style.color = "#fff";
+            }
+
+            if (achievement_2 === null) { } else {
+                achievement_2_text.innerHTML = "Найти безопасное место";
+                achievement_2_div.className = "card text-white bg-success mb-3";
+                achievement_2_text.style.color = "#fff";
+            }
+
+            if (achievement_3 === null) { } else {
+                achievement_3_text.innerHTML = "Найти первый документ";
+                achievement_3_div.className = "card text-white bg-success mb-3";
+                achievement_3_text.style.color = "#fff";
+            }
+
+            if (achievement_4 === null) { } else {
+                achievement_4_text.innerHTML = "Умереть от укуса зомби";
+                achievement_4_div.className = "card text-white bg-success mb-3";
+                achievement_4_text.style.color = "#fff";
+            }
+
+            if (achievement_5 === null) { } else {
+                achievement_5_text.innerHTML = "Пройти первую главу";
+                achievement_5_div.className = "card text-white bg-success mb-3";
+                achievement_5_text.style.color = "#fff";
+            }
+
+            // Chapter 2 Achievements
+            let achievement_2_1 = localStorage.getItem("achievement_2_1"),
+                achievement_2_2 = localStorage.getItem("achievement_2_2"),
+                achievement_2_3 = localStorage.getItem("achievement_2_3"),
+                achievement_2_4 = localStorage.getItem("achievement_secret");
+
+            let achievement_2_1_text = document.getElementById("title-achievement2-1"),
+                achievement_2_2_text = document.getElementById("title-achievement2-2"),
+                achievement_2_3_text = document.getElementById("title-achievement2-3");
+                achievement_2_4_text = document.getElementById("title-achievement2-4");
+
+            let achievement_2_1_div = document.getElementById("achievement2-1"),
+                achievement_2_2_div = document.getElementById("achievement2-2"),
+                achievement_2_3_div = document.getElementById("achievement2-3"),
+                achievement_2_4_div = document.getElementById("achievement2-4");
+
+            // Inner Chapter 2 Achievements
+            if (achievement_2_1 === null) { } else {
+                achievement_2_1_text.innerHTML = "Использовать ион гидрида гелия";
+                achievement_2_1_div.className = "card text-white bg-success mb-3";
+                achievement_2_1_text.style.color = "#fff";
+            }
+
+            if (achievement_2_2 === null) { } else {
+                achievement_2_2_text.innerHTML = "Использовать бутылку с кислотой";
+                achievement_2_2_div.className = "card text-white bg-success mb-3";
+                achievement_2_2_text.style.color = "#fff";
+            }
+
+            if (achievement_2_3 === null) { } else {
+                achievement_2_3_text.innerHTML = "Пройти тест с первого раза";
+                achievement_2_3_div.className = "card text-white bg-success mb-3";
+                achievement_2_3_text.style.color = "#fff";
+            }
+
+            if (achievement_2_4 === null) { } else {
+                achievement_2_4_text.innerHTML = "Открыть секрет";
+                achievement_2_4_div.className = "card bg-warning mb-3";
+                achievement_2_4_text.style.color = "#000";
+                secret_h.style.color = "#000";
+            }
+        }
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="http://atuin.ru/js/art/bubbles.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/373834e38f.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="chapter2/js/main.js"></script>
+</body>
+</html>

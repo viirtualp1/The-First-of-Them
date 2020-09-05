@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #app {
+            width: 1280;
+            height: 720px;
+            background: grey;
+            animation: 0.7s ease-in-out 0s normal none running trambling-animation;            
+        }
+
+        @keyframes trambling-animation {
+            0%, 50%, 100% {
+                transform: rotate(0deg);
+            }
+
+            10%, 30% {
+                transform: rotate(-0.3deg);
+            }
+
+            20%, 40% {
+                transform: rotate(0.3deg);
+            }
+        }
+
+        #text {
+            color: #fff;
+            text-align: center;
+            font-size: 150px;
+            padding-top: 0;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p id="text">Ай!</p>
+    </div>
+</body>
+</html>

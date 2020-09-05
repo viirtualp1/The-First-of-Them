@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The First of Them</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6SNNFG9SX8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-6SNNFG9SX8');
+    </script>
+</head>
+<body>
+    <audio src="music/night_jungle.mp3" id="music" autoplay></audio>
+    <audio src="" id="sound" autoplay></audio>
+    <audio src="" id="sound2" autoplay></audio>
+
+    <div class="container" id="window">
+        <div class="d-flex justify-content-center" id="game">
+            <div class="d-block">
+                <div id="name">
+                    <div class="row name">
+                        <p class="lead" id="name-dialog">Game</p>
+                    </div>
+                </div>
+                <div id="dialogs">
+                    <div class="row dialog">
+                        <p class="lead" id="text-dialog">You will need agility and quick reaction. Have a nice game!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="fixed-bottom d-flex justify-content-center" id="footer-next">
+        <button id="btn-next" type="button" class="btn btn-dark" onclick="next_dialog()">
+            Continue
+        </button>
+    </footer>
+    <footer class="fixed-bottom d-flex justify-content-center mb-2">
+        <div class="btn-group" role="group">
+            <button id="btn-menu" type="button" class="btn btn-dark" data-toggle="modal" data-target="#menu">
+                Menu
+            </button>
+            <button id="btn-tasks" type="button" class="btn btn-dark" data-toggle="modal" data-target="#tasks2">
+                Inventory
+            </button>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="menu" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body d-flex justify-content-center">
+                    <div class="btn-group-vertical">
+                        <div class="btn-group">
+                            <button class="btn btn-dark" id="btn-music-mute" onclick="volume_mute()"><i class="fas fa-volume-mute" id="music-icon"></i></button>
+                            <button class="btn btn-dark" id="btn-music-up" onclick="volume_up()"><i class="fas fa-volume-up" id="music-icon"></i></button>
+                        </div>
+                        <button class="btn btn-dark" id="btn-back-to-game" data-dismiss="modal">Back to the game</button>
+                        <button class="btn btn-dark" id="btn-new-game" onclick="location.reload()">New Game</button>
+                        <button class="btn btn-dark" id="btn-save-load" onclick="continue_game()">Load Save</button>
+                        <button class="btn btn-dark" id="btn-sign-out-game" onclick="confirm_quit_eng()">Exit Game</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="tasks2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content m-auto">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link text-light" id="map-tab" data-toggle="tab" href="#map" role="tab" aria-controls="map" aria-selected="false">Map</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link text-light" id="tasks-tab" data-toggle="tab" href="#tasks" role="tab" aria-controls="tasks" aria-selected="false">Tasks</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link text-light" id="documents-tab" data-toggle="tab" href="#documents" role="tab" aria-controls="contact" aria-selected="false">Documents</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="map" role="tabpanel" aria-labelledby="map-tab">
+                        <div class="card bg-dark text-white" id="map-div"></div>
+                    </div>
+                    <div class="tab-pane fade text-light" id="tasks" role="tabpanel" aria-labelledby="tasks-tab">
+                        <h5 class="card-title text-center mt-1" id="task"></h5>
+                        <h6 class="card-title text-center" id="task-second"></h6>
+                        <h6 class="card-title text-center" id="task-third"></h6>
+                    </div>
+                    <div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="documents-tab">
+                        <div class="card bg-dark text-white" id="fobos-document">
+                            <img src="" id="fobos-document-img" class="card-img">
+                        </div>
+                        <div class="card bg-dark text-white" id="password-document">
+                            <img src="" id="password-document-img" class="card-img">
+                        </div>
+                        <div class="card bg-dark text-white" id="computer-document">
+                            <img src="" id="computer-document-img" class="card-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="document" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-light">
+                    <h4 class="text-center">Information about the object - N...SIS</h4>
+                    <h5>Object Name: Phobos</h5>
+                    <h5>Object Class: Super Mutant</h5>
+                    <h5>Description of the object: Created to perform tasks
+                        under our control. Possesses intelligence.
+                        He chooses the best solution within the framework of the set
+                        tasks. Weakness: Can only be killed with RCOO acid (Carboxylate)
+                    </h5>
+                    <h6 class="float-right">(RAIN-company)</h6>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="achievement_second();">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="password" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-light">
+                    <h4 class="text-center">Enter password: </h4>
+                    <input class="form-control mt-2" type="text" id="password-input" placeholder="Пароль" oninput="check_password()">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="document3_inner();" data-toggle="modal" data-target="#computer" id="btn-open" style="visibility: hidden;">Open</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="document-password" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-light">
+                    <h4 class="text-center">Computer password</h4>
+                    <h5>The year the “Baby” fell on Hiroshima and the “Fat Man” on Nagasaki</h5>
+                    <h6 class="float-right">(RAIN-company)</h6>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="right_room_2()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="computer" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-light">
+                    <img src="computer.PNG" class="img-fluid">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="truth()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="quiz" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-light">
+                    <div class="form-group">
+                        <h5 class="text-center">1. How can I kill Phobos?</h5>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="quiz-1" value="first-first">
+                                <label class="form-check-label" for="quiz-1">1. Acid</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="quiz-2" value="first-second">
+                                <label class="form-check-label" for="quiz-2">2. Fire</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h5 class="text-center">2. What is the name of the head of RAIN-company?</h5>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="quiz-2-1" value="second-first">
+                                <label class="form-check-label" for="quiz-2-1">1. Alexey Nikolaev</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="quiz-2-2" value="second-second">
+                                <label class="form-check-label" for="quiz-2-2">2. Alexey Petrovich</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h5 class="text-center">3. What is the main feature of Phobos?</h5>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="quiz-3-1" value="third-first">
+                                <label class="form-check-label" for="quiz-3-1">1. Power</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="quiz-3-2" value="third-second">
+                                <label class="form-check-label" for="quiz-3-2">2. Intelligence</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="answer_quiz()">Answer</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/373834e38f.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="js/chapter1-eng.js"></script>
+    <script>
+        let document1 = document.getElementById("fobos-document-img"),
+            document2 = document.getElementById("password-document-img"),
+            document3 = document.getElementById("computer-document-img");
+
+        function document1_inner() { document1.src = "images/document-eng.PNG"; }
+        function document2_inner() { document2.src = "images/password-eng.PNG"; }
+        function document3_inner() { document3.src = "images/computer-eng.PNG" }
+
+        function house_settings(src) {
+            music.src = "music/background_house.mp3";
+            document.body.style.background = `url('images/${src}')`;
+            document.body.style.backgroundPosition = "center center";
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundAttachment = "fixed";
+            document.body.style.backgroundSize = "cover";
+            document.body.style.opacity = "1";
+        }
+
+        let save = localStorage.getItem("save");
+
+        let btn_save_load = document.getElementById("btn-save-load");
+        if (save === null) { btn_save_load.disabled = true; }
+
+        function continue_game() {
+            let btn_next = document.getElementById("btn-next");
+            btn_next.disabled = true;
+
+            if (save === "hall") { house_settings('images/main-hall-map.jpg'); main_hall(); }
+            if (save === "map") { house_settings('images/main-hall-map.jpg'); take_map(); }
+            if (save === "search-next") { house_settings('images/main-hall-nomap.jpg'); search_next(); }
+            if (save === "right-room") { house_settings('images/rightroom-zombie.jpg'); right_room(); }
+            if (save === "document") { house_settings('images/rightroom-nozombie.jpg'); take_document(); }
+            if (save === "second-floor") { house_settings('images/main-hall-nomap.jpg'); second_floor(); }
+            if (save === "front-room") { house_settings('images/frontroom-zombie.jpg'); front_room(); }
+            if (save === "left-room-1") { house_settings('images/computer-room.jpg'); left_room_1(); }
+            if (save === "left-room-2") { house_settings('images/room-alexdeath.jpg'); shot_sound(); }
+            if (save === "right-room-2") { house_settings('images/computer-room.jpg'); right_room_2(); }
+            if (save === "left-room-3") { house_settings('images/computer-room.jpg'); left_room_3(); }
+            if (save === "truth") { house_settings('images/main-hall-map.jpg'); truth(); }
+            if (save === "goStone") { house_settings('images/main-hall-nomap.jpg'); goStone(); }
+            if (save === "down") { house_settings('images/down.jpg'); down(); }
+            if (save === "boss") {
+                alert("The game will start in 1 second!");
+
+                house_settings('images/fobos_fight.jpg');
+                music.src = "music/boss.mp3";
+                setTimeout(() => {
+                    boss();
+                }, 1000);
+            }
+        }
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

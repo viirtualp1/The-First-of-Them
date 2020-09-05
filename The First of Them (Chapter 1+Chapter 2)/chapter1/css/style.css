@@ -1,0 +1,180 @@
+/* Game Window */ 
+body {
+    background: url("../images/background.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.8;
+}
+
+.dialog {
+    width: 85vw;
+    height: 13vh;
+    margin-top: 1.3vh;
+    background: #25292C;
+    color: #fff;
+}
+
+.name {
+    width: 30vw;
+    height: 5vh;
+    margin-top: 1.3vh;
+    background: #25292C;
+    color: #fff;
+}
+
+#name-dialog {
+    margin-top: 0.5vh;
+    margin-left: 2vh;
+    font-size: 2.3vh;
+}
+
+#text-dialog {
+    margin-top: 1.3vh;
+    margin-left: 2vh;
+    font-size: 2.3vh;
+}
+
+#footer-next { margin-bottom: 10vh; }
+
+.dropdown-menu {
+    background: none;
+    border: 0;
+    outline: 0;
+}
+
+#btn-todo1, #btn-todo2, 
+#btn-todo3, #btn-todo4 {
+    width: 20vh;
+    border-radius: 0px;
+}
+
+#btn-todo1, #btn-todo2, 
+#btn-todo3 { border-bottom: 1px solid silver; }
+
+#btn-1-left { margin-right: 2vh; }
+
+#btn-2-right { margin-left: 1vh; }
+
+#btn-1-left, #btn-2-right {
+    margin-top: 3vh;
+    padding-top: 0.6vh;
+    width: 14vh;
+    height: 6vh;
+    font-size: 2vh;
+}
+
+#btn-run {
+    margin-top: 3vh;
+    height: 6vh;
+}
+
+.progress { margin-top: 2vh; background: #343A40; }
+
+#menu .modal-content { 
+    width: 30vh;
+    margin: auto;
+    background: none;
+    border: none;
+    margin-top: 30vh;
+}
+
+#inventory .modal-content { background: rgb(42, 44, 46); }
+
+#password .modal-content { background: rgb(42, 44, 46); }
+
+#document-password .modal-content { background: rgb(42, 44, 46); }
+
+#computer .modal-content { background: rgb(42, 44, 46); }
+
+#quiz .modal-content { background: rgb(42, 44, 46); }
+
+.modal-title, .close { color: #fff; }
+
+.close:hover { color: #fff; }
+
+#inventory .modal-content {  background: none; }
+
+#use1, #use2, #use3 { background: rgb(42, 44, 46); }
+
+#btn-back-to-game, #btn-settings-game,
+#btn-sign-out-game, #btn-save-load,
+#btn-new-game {
+    width: 30vh;
+    height: 7vh;
+    background: rgb(42, 44, 46);
+    font-size: 2vh;
+}
+
+#btn-menu, #btn-map, #btn-tasks {
+    margin-bottom: 2vh;
+    width: 14vh;
+    height: 6vh;
+    font-size: 2vh;
+}
+
+#btn-next {
+    margin-bottom: 1vh;
+    width: 14vh;
+    height: 6vh;
+    font-size: 2vh;
+}
+
+#main_hall, #right_room, #second_floor,
+#take_map, #search_next {
+    width: 16vh;
+    height: 6vh;
+    font-size: 1.4vh;
+    margin-top: 3vh;
+}
+
+#right_room, #second_floor, #second_right_room,
+#btn-left-room-1, #btn-left-room-2,
+#btn-right-room-2, #btn-left-room-3,
+#btn-document-password, #btn {  margin-left: 1vh; }
+
+#btn-shot, #btn-shot-2 {
+    width: 16vh;
+    height: 6vh;
+    margin-top: 3vh;
+}
+
+#btn-document, #second_floor_btn,
+#front_room, #second_right_room,
+#btn-dodge, #btn-left-room-1,
+#btn-left-room-2, #btn-shot-sound,
+#btn-run-fobos, #btn-left-room-3,
+#btn-right-room-2, #btn-document-password,
+#btn-password, #btn-stone, #btn-quiz,
+#btn-down, #btn-boss, #btn-shot-boss,
+#btn-attack-boss, #btn-dodge-attack-boss {
+    width: 16vh;
+    height: 6vh;
+    margin-top: 3vh;
+    font-size: 1.6vh;
+}
+
+#document .modal-content { background: rgb(42, 44, 46); }
+
+#tasks2 .close { 
+    height: 3vh; 
+    margin-top: 0.4vh;
+    margin-left: 1vh;
+}
+
+#tasks2 .modal-content { background: rgb(42, 44, 46); }
+
+.nav-tabs .nav-link.active { background: rgb(49, 50, 51); }
+
+.nav-item #map-tab { margin-left: 1vh; }
+
+#icon-hero {
+    width: 4vh;
+    height: 4vh;
+    margin-left: 2vh;
+    margin-top: 0.4vh;
+    padding-bottom: 0.1vh;
+}
+
+#btn-music-mute, #btn-music-up { background: rgb(42, 44, 46); }
