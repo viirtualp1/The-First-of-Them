@@ -1,19 +1,27 @@
+@import '~@sweetalert2/theme-dark/dark.scss';
+
 body {
     background: url("img/bg.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .dialog {
-    margin-top: 1%;
+    margin-top: 1.5%;
+    margin-left: 1%;
+    margin-right: 1%;
     background: #25292C;
     color: #fff;
 }
 
 .name {
-    margin-top: 1%;
+    margin-top: 1.5%;
+    margin-left: 1%;
+    margin-right: 1%;
     background: #25292C;
     color: #fff;
     padding-left: 1%;
@@ -39,23 +47,20 @@ body {
 #ration-modal .modal-dialog {
     padding: 0;
     margin: 0;
-}
-
-#ration-modal {
-    width: 210px;
-    height: 390px;
-    margin-left: 2%;
-    margin-top: 2%;
+    width: 100%;
+    height: 100%;
 }
 
 #ration-content {
+    margin-left: 7%;
+    margin-top: 4%;
     background: none;
     border: none;
 }
 
 #ration-content .modal-body {
     width: 2%;
-    height: 80px;
+    height: 70px;
     background: #2e3235;
     border-top-left-radius: 10px; 
     border-top-right-radius: 10px; 

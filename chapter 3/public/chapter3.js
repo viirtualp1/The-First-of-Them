@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2/src/sweetalert2.js'
+
 let music = document.getElementById("music");
 let sound = document.getElementById("sound");
 let dialogs_div = document.getElementById("dialogs");
@@ -38,5 +40,15 @@ function hello_team() {
 }
 
 function training() {
-    $('.toast').toast();
+    Swal.fire({
+        icon: "info",
+        title: "Обучение",
+        imageUrl: 'img/ration.PNG',
+        html: "Перед вами рация. <br /> Сверху имя ваших людей из отряда: Анна, Никита, Данил, Олег. <br /> Слева направление куда их отправить: налево, прямо, направо.",
+        confirmButtonText: "Понятно"
+    }).then((result) => {
+        if (result.value) {
+            $('#ration-modal').modal('hide');
+        }
+    })
 }
