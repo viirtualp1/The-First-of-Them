@@ -1,5 +1,3 @@
-@import '~@sweetalert2/theme-dark/dark.scss';
-
 body {
     background: url("img/bg.jpg");
     background-position: center center;
@@ -29,15 +27,11 @@ body {
 }
 
 #name-dialog {
-    margin-top: 0.5vh;
-    margin-left: 2vh;
+    padding: 0.2%;
+    padding-left: 1%;
 }
 
-#text-dialog {
-    margin-top: 1.3vh;
-    margin-left: 2vh;
-    padding: 1%;
-}
+#text-dialog { padding: 2%; }
 
 #footer-buttons {
     background: #25292C;
@@ -77,8 +71,7 @@ body {
 }
 
 #btn-menu, #btn-next {
-    margin-top: 1%;
-    margin-bottom: 1%;
+    margin: 1%;
 }
 
 #btn-next { margin-left: 1%; }
@@ -97,6 +90,4 @@ body {
     height: 7vh;
 }
 
-#game {
-    display: block;
-}
+#game { display: block; }

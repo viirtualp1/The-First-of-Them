@@ -1,5 +1,3 @@
-import Swal from 'sweetalert2/src/sweetalert2.js'
-
 let music = document.getElementById("music");
 let sound = document.getElementById("sound");
 let dialogs_div = document.getElementById("dialogs");
@@ -35,20 +33,40 @@ function hello_team() {
 
     btn_next.parentNode.removeChild(btn_next);
     document.getElementById("footer-buttons").innerHTML += `
-        <button id="btn-next" type="button" class="btn btn-dark" onclick="training()" data-toggle="modal" data-target="#ration-modal">Далее</button>
+        <button id="btn-next" type="button" class="btn btn-lg btn-block btn-dark" onclick="training()">Далее</button>
     `;
 }
 
 function training() {
-    Swal.fire({
-        icon: "info",
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-dark',
+        },
+
+        buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
         title: "Обучение",
         imageUrl: 'img/ration.PNG',
-        html: "Перед вами рация. <br /> Сверху имя ваших людей из отряда: Анна, Никита, Данил, Олег. <br /> Слева направление куда их отправить: налево, прямо, направо.",
-        confirmButtonText: "Понятно"
+        html: "Перед вами рация. <br /> Сверху имя ваших людей из отряда: Анна, Никита, Данил, Олег. <br /> Слева направление куда их можно отправить: налево, прямо, направо.",
+        confirmButtonText: "Понятно",
     }).then((result) => {
         if (result.value) {
-            $('#ration-modal').modal('hide');
+            go_to_mountains();
         }
     })
+
+    let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
+    swal2_modal.style.background = "rgb(58, 58, 58)";
+
+    let swal2_content = document.getElementsByClassName("swal2-content")[0];
+    swal2_content.style.color = "#fff";
+
+    let swal2_title = document.getElementsByClassName("swal2-title")[0];
+    swal2_title.style.color = "#fff";
+}
+
+function go_to_mountains() {
+    
 }
