@@ -198,8 +198,28 @@ function bloger_house() {
     `;
 }
 
-{/* <div id="dialogs">
-<div class="row dialog">
-    <p class="lead" id="text-dialog">Так, вот дверь, но нужно расчистить путь</p>
-</div>
-</div> */}
+function house() {
+    document.body.style.background = "url('img/house_main_hall.jpg')";
+    document.body.style.backgroundPosition = "center center";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundAttachment = "fixed";
+    document.body.style.backgroundSize = "cover";
+
+    dialogs_div.innerHTML = `
+         <div id="dialogs">
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Скорее всего это дверь в лабораторию, но нужно расчистить путь</p>
+            </div>
+        </div> 
+    `;
+
+    btn_next = document.getElementById("btn-next");
+    btn_next = btn_next.parentNode.removeChild(btn_next);
+    document.getElementById("footer-buttons").innerHTML += `
+        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="qte_clean_path_house()">Далее</button>
+    `;
+}
+
+function qte_clean_path_house() {
+    
+}
