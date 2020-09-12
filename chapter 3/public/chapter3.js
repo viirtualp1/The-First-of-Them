@@ -3,7 +3,6 @@ let sound = document.getElementById("sound");
 let dialogs_div = document.getElementById("dialogs");
 let name_dialog = document.getElementById("name-dialog");
 let title_hidden = document.getElementById("title-game-hidden");
-let btn_next = document.getElementById("btn-next");
 let i_items = document.getElementById("inventory-items");
 
 function hello_team() {
@@ -31,7 +30,8 @@ function hello_team() {
         </div>
     `;
 
-    btn_next.parentNode.removeChild(btn_next);
+    btn_next = document.getElementById("btn-next");
+    btn_next = btn_next.parentNode.removeChild(btn_next);
     document.getElementById("footer-buttons").innerHTML += `
         <button id="btn-next" type="button" class="btn btn-lg btn-block btn-dark" onclick="training()">Далее</button>
     `;
@@ -68,5 +68,36 @@ function training() {
 }
 
 function go_to_mountains() {
-    
+    name_dialog.innerHTML = "Полина";
+    dialogs_div.innerHTML = `
+        <div id="dialogs">
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Мой давний знакомый рассказал мне 
+                    где может примерно находится лаборатория с вирусом, 
+                    поэтому сегодня мы наконец отправляемся на ее поиски в горах. 
+                    Запасаемся оружием, патронами. Готовимся ко всему...
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-4" id="name">
+            <div class="row name">
+                <p class="lead" id="name-dialog">Отряд</p>
+            </div>
+        </div>
+
+        <div id="dialogs">
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Есть!</p>
+            </div>
+        </div>
+    `;
+
+    btn_next = document.getElementById("btn-next");
+    btn_next = btn_next.parentNode.removeChild(btn_next);
+    document.getElementById("footer-buttons").innerHTML += `
+        <button id="btn-next" type="button" class="btn btn-lg btn-block btn-dark" onclick="bloger_theme()">Далее</button>
+    `;
 }
+
+function bloger_theme() { location.href = "bloger-theme.html"; }
