@@ -361,6 +361,8 @@ function house_lab_bloger() {
     document.body.style.backgroundAttachment = "fixed";
     document.body.style.backgroundSize = "cover";
 
+    sound.src = "";
+
     dialogs_div.innerHTML = `
         <div class="row dialog">
             <p class="lead" id="text-dialog">Кто это был?</p> 
@@ -424,8 +426,11 @@ function counter_house_office_search() {
 function coordinate_lab() {
     dialogs_div.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Что-то нашел! 
-                Хм, координаты, так...
+            <p class="lead" id="text-dialog">Что-то нашел!</p> 
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Хм, координаты, так...
                 Походу есть еще одна лаборатория и туда отправили вирус.
                 Нужно попробовать найти и пробраться в нее. Может получится выяснить что-то</p> 
         </div>
