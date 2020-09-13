@@ -5,6 +5,15 @@ let name_dialog = document.getElementById("name-dialog");
 let title_hidden = document.getElementById("title-game-hidden");
 let i_items = document.getElementById("inventory-items");
 
+// team
+let hp_nikita = 100;
+let hp_danil = 100;
+let hp_anna = 100;
+let hp_oleg = 100;
+
+let hp_polina = 100;
+let hp_bloger = 100;
+
 // qte variables
 let width_plus_clean = 0;
 let click_clean = 0;
@@ -14,7 +23,6 @@ let width_dead_phobos_sec = 100;
 let width_dead_phobos_success = 0;
 let click_dead_phobos = 0;
 
-// let click_office_search = 0;
 let width_plus_office_search = 0;
 let qte_search = true;
 
@@ -415,25 +423,6 @@ function house_lab_office_bloger() {
     }, 1000)
 }
 
-// function counter_house_office_search() {
-//     let progressbar_office_search = document.getElementById("progressbar_house_office_search");
-//     let progress = document.getElementById("progress-div");
-//     let office_search_btn = document.getElementById("btn-office-search");
-
-//     click_office_search += 1;
-
-//     width_plus_office_search += 10;
-//     progressbar_office_search.style.width = `${width_plus_office_search}%`;
-//     progressbar_office_search.innerHTML = `${width_plus_office_search}%`;
-
-//     if (click_office_search === 10) {
-//         progress.parentNode.removeChild(progress);
-//         office_search_btn.parentNode.removeChild(office_search_btn);
-
-//         coordinate_lab();
-//     }
-// }
-
 function coordinate_lab() {
     dialogs_div.innerHTML = `
         <div class="row dialog">
@@ -512,6 +501,13 @@ function change_hero_polina_mountains(letter1, letter2, letter3,
 }
 
 function polina_mountains() {
+    let p1 = document.getElementById("title-show1");
+    let p2 = document.getElementById("title-show2");
+    let p3 = document.getElementById("title-show3");
+    let p4 = document.getElementById("title-show4");
+    let p5 = document.getElementById("title-show5");
+    let p6 = document.getElementById("title-show6");
+
     document.body.style.background = "url('img/mountains.jpg')";
     document.body.style.backgroundPosition = "center center";
     document.body.style.backgroundRepeat = "no-repeat";
@@ -521,13 +517,6 @@ function polina_mountains() {
     music.src = "sounds/veter_v_gorah.mp3";
     document.getElementById("name").style.visibility = "visible";
     document.getElementById("footer-buttons").style.visibility = "visible";
-
-    let p1 = document.getElementById("title-show1");
-    let p2 = document.getElementById("title-show2");
-    let p3 = document.getElementById("title-show3");
-    let p4 = document.getElementById("title-show4");
-    let p5 = document.getElementById("title-show5");
-    let p6 = document.getElementById("title-show6");
 
     p1.parentNode.removeChild(p1);
     p2.parentNode.removeChild(p2);
