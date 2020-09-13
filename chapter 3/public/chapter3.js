@@ -5,6 +5,10 @@ let name_dialog = document.getElementById("name-dialog");
 let title_hidden = document.getElementById("title-game-hidden");
 let i_items = document.getElementById("inventory-items");
 
+// game variables
+let width_plus_clean = 0;
+let click_clean = 0;
+
 function hello_team() {
     document.body.style.backgroundImage = "url('img/office.jpeg')";
     music.src = "sounds/office.wav";
@@ -199,6 +203,8 @@ function bloger_house() {
 }
 
 function house() {
+    music.src = "";
+
     document.body.style.background = "url('img/house_main_hall.jpg')";
     document.body.style.backgroundPosition = "center center";
     document.body.style.backgroundRepeat = "no-repeat";
@@ -221,5 +227,54 @@ function house() {
 }
 
 function qte_clean_path_house() {
-    
+    name_dialog.innerHTML = `Игра`;
+    dialogs_div.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Расчищайте путь в лабораторию...</p>
+        </div>
+        <div class="row dialog d-flex justify-content-center" id="run-div-btn">
+            <button id="btn-clean-path" type="button" class="btn btn-dark mt-2 mb-2" onclick="counter_clean()">
+                Чистить
+            </button>
+        </div>
+
+        <div class="progress mt-4" id="progress-div">
+            <div class="progress-bar progress-bar-striped bg-success" id="progressbar_clean" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+        </div>
+    `;
+}
+
+function counter_clean() {
+    let progressbar_clean = document.getElementById("progressbar_clean");
+    let progress = document.getElementById("progress-div");
+    let clean_btn = document.getElementById("btn-clean-path");
+
+    click_clean += 1;
+
+    width_plus_clean += 10;
+    progressbar_clean.style.width = `${width_plus_clean}%`;
+    progressbar_clean.innerHTML = `${width_plus_clean}%`;
+
+    if (click_clean === 10) {
+        progress.parentNode.removeChild(progress);
+        clean_btn.parentNode.removeChild(clean_btn);
+
+        btn_next = document.getElementById("btn-next");
+        btn_next.disabled = true;
+
+        sound.src = "sounds/00975.mp3";
+
+        name_dialog.innerHTML = `Блогер`;
+        dialogs_div.innerHTML = `
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Ааа, что это...!?</p>
+            </div>
+        `;
+
+        // document.body.style.background = "url('img/lab.jpg')";
+        // document.body.style.backgroundPosition = "center center";
+        // document.body.style.backgroundRepeat = "no-repeat";
+        // document.body.style.backgroundAttachment = "fixed";
+        // document.body.style.backgroundSize = "cover";
+    }
 }
