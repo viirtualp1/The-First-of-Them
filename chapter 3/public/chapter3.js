@@ -14,8 +14,9 @@ let width_dead_phobos_sec = 100;
 let width_dead_phobos_success = 0;
 let click_dead_phobos = 0;
 
-let click_office_search = 0;
+// let click_office_search = 0;
 let width_plus_office_search = 0;
+let qte_search = true;
 
 // Main functions
 function hello_team() {
@@ -272,13 +273,6 @@ function counter_clean() {
         btn_next.disabled = true;
 
         qte_dead_phobos();
-
-        // Это после Фобоса в след функцию
-        // document.body.style.background = "url('img/lab.jpg')";
-        // document.body.style.backgroundPosition = "center center";
-        // document.body.style.backgroundRepeat = "no-repeat";
-        // document.body.style.backgroundAttachment = "fixed";
-        // document.body.style.backgroundSize = "cover";
     }
 }
 
@@ -392,36 +386,53 @@ function house_lab_office_bloger() {
             <p class="lead" id="text-dialog">Так, надо что-то найти...</p> 
         </div>
 
-        <div class="row dialog d-flex justify-content-center" id="run-div-btn">
-            <button id="btn-office-search" type="button" class="btn btn-dark mt-2 mb-2" onclick="counter_house_office_search()">
-                Искать
-            </button>
-        </div>
-
         <div class="progress mt-4" id="progress-div">
             <div class="progress-bar progress-bar-striped bg-success" id="progressbar_house_office_search" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
         </div>
     `;
-}
 
-function counter_house_office_search() {
     let progressbar_office_search = document.getElementById("progressbar_house_office_search");
     let progress = document.getElementById("progress-div");
     let office_search_btn = document.getElementById("btn-office-search");
+    
+    setInterval(() => {
+        try {
+            if (width_plus_office_search == 100) {
+                qte_search = false;
 
-    click_office_search += 1;
+                coordinate_lab();
+                
+                progress.parentNode.removeChild(progress);
+                office_search_btn.parentNode.removeChild(office_search_btn);
+            }
+        } catch { width_plus_office_search = false; }
 
-    width_plus_office_search += 10;
-    progressbar_office_search.style.width = `${width_plus_office_search}%`;
-    progressbar_office_search.innerHTML = `${width_plus_office_search}%`;
-
-    if (click_office_search === 10) {
-        progress.parentNode.removeChild(progress);
-        office_search_btn.parentNode.removeChild(office_search_btn);
-
-        coordinate_lab();
-    }
+        if (qte_search == true) {
+            width_plus_office_search += 25;
+            progressbar_office_search.style.width = `${width_plus_office_search}%`;
+            progressbar_office_search.innerHTML = `${width_plus_office_search}%`;
+        } else { }
+    }, 1000)
 }
+
+// function counter_house_office_search() {
+//     let progressbar_office_search = document.getElementById("progressbar_house_office_search");
+//     let progress = document.getElementById("progress-div");
+//     let office_search_btn = document.getElementById("btn-office-search");
+
+//     click_office_search += 1;
+
+//     width_plus_office_search += 10;
+//     progressbar_office_search.style.width = `${width_plus_office_search}%`;
+//     progressbar_office_search.innerHTML = `${width_plus_office_search}%`;
+
+//     if (click_office_search === 10) {
+//         progress.parentNode.removeChild(progress);
+//         office_search_btn.parentNode.removeChild(office_search_btn);
+
+//         coordinate_lab();
+//     }
+// }
 
 function coordinate_lab() {
     dialogs_div.innerHTML = `
@@ -476,7 +487,6 @@ function change_hero_polina_mountains(letter1, letter2, letter3,
         let p6 = document.getElementById("letter-6");
 
         // Анимация появления имени
-
         p1.style.textShadow = `1px 1px 10px ${shadowColor}`
         p1.id = "title-show1";
 
@@ -502,5 +512,42 @@ function change_hero_polina_mountains(letter1, letter2, letter3,
 }
 
 function polina_mountains() {
+    document.body.style.background = "url('img/mountains.jpg')";
+    document.body.style.backgroundPosition = "center center";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundAttachment = "fixed";
+    document.body.style.backgroundSize = "cover";
 
+    music.src = "sounds/veter_v_gorah.mp3";
+    document.getElementById("name").style.visibility = "visible";
+    document.getElementById("footer-buttons").style.visibility = "visible";
+
+    let p1 = document.getElementById("title-show1");
+    let p2 = document.getElementById("title-show2");
+    let p3 = document.getElementById("title-show3");
+    let p4 = document.getElementById("title-show4");
+    let p5 = document.getElementById("title-show5");
+    let p6 = document.getElementById("title-show6");
+
+    p1.parentNode.removeChild(p1);
+    p2.parentNode.removeChild(p2);
+    p3.parentNode.removeChild(p3);
+    p4.parentNode.removeChild(p4);
+    p5.parentNode.removeChild(p5);
+    p6.parentNode.removeChild(p6);
+
+    name_dialog.innerHTML = "Полина";
+    dialogs_div.innerHTML = `
+        <div id="dialogs">
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Мы на месте, сейчас, значит...</p>
+            </div>
+        </div>
+    `;
+
+    btn_next = document.getElementById("btn-next");
+    btn_next = btn_next.parentNode.removeChild(btn_next);
+    document.getElementById("footer-buttons").innerHTML += `
+        <button id="btn-next" type="button" class="btn btn-lg btn-dark" data-toggle="modal" data-target="#ration-modal">Далее</button>
+    `;
 }
