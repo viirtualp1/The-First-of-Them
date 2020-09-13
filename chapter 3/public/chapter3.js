@@ -5,10 +5,14 @@ let name_dialog = document.getElementById("name-dialog");
 let title_hidden = document.getElementById("title-game-hidden");
 let i_items = document.getElementById("inventory-items");
 
-// game variables
+// qte variables
 let width_plus_clean = 0;
 let click_clean = 0;
 
+let dead_phobos_sec = 5;
+let width_dead_phobos = 0;
+
+// Main functions
 function hello_team() {
     document.body.style.backgroundImage = "url('img/office.jpeg')";
     music.src = "sounds/office.wav";
@@ -262,19 +266,42 @@ function counter_clean() {
         btn_next = document.getElementById("btn-next");
         btn_next.disabled = true;
 
-        sound.src = "sounds/00975.mp3";
+        qte_dead_phobos();
 
-        name_dialog.innerHTML = `Блогер`;
-        dialogs_div.innerHTML = `
-            <div class="row dialog">
-                <p class="lead" id="text-dialog">Ааа, что это...!?</p>
-            </div>
-        `;
-
+        // Это после Фобоса в след функцию
         // document.body.style.background = "url('img/lab.jpg')";
         // document.body.style.backgroundPosition = "center center";
         // document.body.style.backgroundRepeat = "no-repeat";
         // document.body.style.backgroundAttachment = "fixed";
         // document.body.style.backgroundSize = "cover";
     }
+}
+
+function qte_dead_phobos() {
+    sound.src = "sounds/00975.mp3";
+
+    name_dialog.innerHTML = `Блогер`;
+    dialogs_div.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Ааа, что это...!?</p>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="run-div-btn">
+            <button id="btn-clean-path" type="button" class="btn btn-dark mt-2 mb-2" onclick="counter_dead_phobos()">
+                Вырываться
+            </button>
+        </div>
+
+        <div class="progress mt-4" id="progress-div">
+            <div class="progress-bar progress-bar-striped bg-danger" id="progressbar_dead_phobos_sec" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">5 сек</div>
+        </div>
+
+        <div class="progress mt-2" id="progress-div">
+            <div class="progress-bar progress-bar-striped bg-success" id="progressbar_dead_phobos_success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+        </div>
+    `;
+}
+
+function counter_dead_phobos() {
+
 }
