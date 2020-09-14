@@ -1,30 +1,60 @@
-let music = document.getElementById("music");
-let sound = document.getElementById("sound");
-let dialogs_div = document.getElementById("dialogs");
-let name_dialog = document.getElementById("name-dialog");
-let title_hidden = document.getElementById("title-game-hidden");
-let i_items = document.getElementById("inventory-items");
+// main variables
+let music = document.getElementById("music"); // musics (for src musics)
+let sound = document.getElementById("sound"); // sounds (for src sounds)
+let dialogs_div = document.getElementById("dialogs"); // dialogs (for inner dialogs)
+let name_dialog = document.getElementById("name-dialog"); // names (for inner names)
+let ration_footer = document.getElementById("ration-footer"); // ration (for inner 'button send team')
 
-// team
-let hp_nikita = 100;
-let hp_danil = 100;
-let hp_anna = 100;
-let hp_oleg = 100;
+// team (objects)
+let team = [
+    nikita = {
+        name: "Никита", 
+        hp: 100, 
+        alive: true, 
+    },
 
-let hp_polina = 100;
-let hp_bloger = 100;
+    anna = {
+        name: "Анна", 
+        hp: 100, 
+        alive: true
+    },
+
+    danil = {
+        name: "Данил", 
+        hp: 100, 
+        alive: true
+    },
+
+    oleg = {
+        name: "Олег", 
+        hp: 100, 
+        alive: true
+    },
+
+    polina = {
+        name: "Полина",
+        hp: 100,
+        alive: true
+    },
+
+    bloger = {
+        name: "Блогер",
+        hp: 100,
+        alive: true
+    },
+]
 
 // qte variables
 let width_plus_clean = 0;
 let click_clean = 0;
 
-let dead_phobos_sec = 5;
 let width_dead_phobos_sec = 100;
 let width_dead_phobos_success = 0;
+let dead_phobos_sec = 5;
 let click_dead_phobos = 0;
 
-let width_plus_office_search = 0;
 let qte_search = true;
+let width_plus_office_search = 0;
 
 // Main functions
 function hello_team() {
@@ -389,6 +419,9 @@ function house_lab_office_bloger() {
     document.body.style.backgroundAttachment = "fixed";
     document.body.style.backgroundSize = "cover";
 
+    btn_next = document.getElementById("btn-next");
+    btn_next.disabled = true;
+
     dialogs_div.innerHTML = `
         <div class="row dialog">
             <p class="lead" id="text-dialog">Так, надо что-то найти...</p> 
@@ -539,4 +572,116 @@ function polina_mountains() {
     document.getElementById("footer-buttons").innerHTML += `
         <button id="btn-next" type="button" class="btn btn-lg btn-dark" data-toggle="modal" data-target="#ration-modal">Далее</button>
     `;
+
+    ration_footer.innerHTML += `
+        <button class="btn btn-dark" onclick="send_team_mountains()">Послать</button>
+    `
+}
+
+function send_team_mountains() {
+    let team_elements = [
+        document.getElementById("nikita1"),
+        document.getElementById("nikita2"),
+        document.getElementById("nikita3"),
+
+        document.getElementById("anna1"),
+        document.getElementById("anna2"),
+        document.getElementById("anna3"),
+
+        document.getElementById("danil1"),
+        document.getElementById("danil2"),
+        document.getElementById("danil3"),
+
+        document.getElementById("oleg1"),
+        document.getElementById("oleg2"),
+        document.getElementById("oleg3")
+    ]
+
+    let choose_mas = [];
+
+    for (let i = 0; i < team_elements.length; i++) {
+        if (team_elements[i].checked) {
+            choose_mas.push(team_elements[i].value);
+        }
+    }
+
+    let nikita1 = document.getElementById("nikita1"),
+        nikita2 = document.getElementById("nikita2"),
+        nikita3 = document.getElementById("nikita3");
+
+    let anna1 = document.getElementById("anna1"),
+        anna2 = document.getElementById("anna2"),
+        anna3 = document.getElementById("anna3");
+
+        danil1 = document.getElementById("danil1"),
+        danil2 = document.getElementById("danil2"),
+        danil3 = document.getElementById("danil3");
+
+        oleg1 = document.getElementById("oleg1"),
+        oleg2 = document.getElementById("oleg2"),
+        oleg3 = document.getElementById("oleg3");
+
+    // Проверка чтобы пользователь не мог отправить одного челоека в 2-3 стороны
+    if (anna1.checked && anna3.checked) {
+        alert("No")
+    } if (nikita1.checked && nikita3.checked) {
+        alert("No")
+    } if (danil1.checked && danil3.checked) {
+        alert("No")
+    } if (oleg1.checked && oleg3.checked) {
+        alert("No")
+    }
+
+    // Проверка выбора людей (хуй сосня (переделать нормально))
+    if (anna1.checked 
+        && nikita2.checked 
+        && danil3.checked) {
+            alert(`Ваш выбор: ${choose_mas.replace(/,/g, ', ')}`)
+    } else if (anna2.checked 
+        && nikita3.checked 
+        && danil1.checked) {
+            console.log("test");
+    } else if (anna3.checked 
+        && danil1.checked 
+        && nikita2.checked) {
+            console.log("test");
+    } else if (anna1.checked 
+        && danil2.checked 
+        && nikita3.checked) {
+            console.log("test");
+
+    } else if (anna1.checked 
+        && oleg3.checked 
+        && nikita2.checked) {
+            console.log("test");
+    } else if (anna2.checked 
+        && oleg3.checked 
+        && nikita1.checked ) {
+            console.log("test");
+    } else if (nikita2.checked
+        && anna3.checked
+        && oleg1.checked) {
+            console.log("test");
+    } else if (nikita3.checked 
+        && oleg2.checked 
+        && anna1.checked) {
+            console.log("test");
+
+    } else if (danil2.checked 
+        && oleg3.checked 
+        && anna1.checked) {
+            console.log("test");
+    } else if (danil1.checked 
+        && oleg3.checked
+        && anna2.checked) {
+            console.log("test");
+    } else if (oleg1.checked 
+        && danil2.checked 
+        && anna3.checked) {
+            console.log("test");
+    } else if (anna1.checked 
+        && oleg2.checked 
+        && danil3.checked) {
+            console.log("test");
+    }
 }
