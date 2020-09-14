@@ -579,6 +579,9 @@ function polina_mountains() {
 }
 
 function send_team_mountains() {
+    let choose_array = [];
+
+    // для вывода выбранных членов отряда
     let team_elements = [
         document.getElementById("nikita1"),
         document.getElementById("nikita2"),
@@ -597,14 +600,13 @@ function send_team_mountains() {
         document.getElementById("oleg3")
     ]
 
-    let choose_mas = [];
-
     for (let i = 0; i < team_elements.length; i++) {
         if (team_elements[i].checked) {
-            choose_mas.push(team_elements[i].value);
+            choose_array.push(team_elements[i].value);
         }
     }
 
+    // Для проверки
     let nikita1 = document.getElementById("nikita1"),
         nikita2 = document.getElementById("nikita2"),
         nikita3 = document.getElementById("nikita3");
@@ -632,56 +634,320 @@ function send_team_mountains() {
         alert("No")
     }
 
+    let choose_mas = choose_array.toString().replace(/,/g, ', ');
+
     // Проверка выбора людей (хуй сосня (переделать нормально))
     if (anna1.checked 
         && nikita2.checked 
         && danil3.checked) {
-            alert(`Ваш выбор: ${choose_mas.replace(/,/g, ', ')}`)
+            Swal.fire({
+                title: `Ваш выбор: ${choose_mas}`,
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[2].alive = "false";
+                    
+                    $('#ration-modal').modal('hide');
+                    qte_find_lab();
+                }
+            })
+
+            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
+            swal2_modal.style.background = "rgb(58, 58, 58)";
+
+            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
+            swal2_cancel_btn.style.background = "#dc3545";
+        
+            let swal2_content = document.getElementsByClassName("swal2-content")[0];
+            swal2_content.style.color = "#fff";
+        
+            let swal2_title = document.getElementsByClassName("swal2-title")[0];
+            swal2_title.style.color = "#fff";
     } else if (anna2.checked 
         && nikita3.checked 
         && danil1.checked) {
-            console.log("test");
+            Swal.fire({
+                title: `Ваш выбор: ${choose_mas}`,
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[0].alive = "false";
+                    
+                    $('#ration-modal').modal('hide');
+                    qte_find_lab();
+                }
+            })
+
+            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
+            swal2_modal.style.background = "rgb(58, 58, 58)";
+
+            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
+            swal2_cancel_btn.style.background = "#dc3545";
+        
+            let swal2_content = document.getElementsByClassName("swal2-content")[0];
+            swal2_content.style.color = "#fff";
+        
+            let swal2_title = document.getElementsByClassName("swal2-title")[0];
+            swal2_title.style.color = "#fff";
     } else if (anna3.checked 
         && danil1.checked 
         && nikita2.checked) {
-            console.log("test");
+            Swal.fire({
+                title: `Ваш выбор: ${choose_mas}`,
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[1].alive = "false";
+                    
+                    $('#ration-modal').modal('hide');
+                    qte_find_lab();
+                }
+            })
+
+            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
+            swal2_modal.style.background = "rgb(58, 58, 58)";
+
+            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
+            swal2_cancel_btn.style.background = "#dc3545";
+        
+            let swal2_content = document.getElementsByClassName("swal2-content")[0];
+            swal2_content.style.color = "#fff";
+        
+            let swal2_title = document.getElementsByClassName("swal2-title")[0];
+            swal2_title.style.color = "#fff";
     } else if (anna1.checked 
         && danil2.checked 
         && nikita3.checked) {
-            console.log("test");
+            // Никто не умирает
 
+            Swal.fire({
+                title: `Ваш выбор: ${choose_mas}`,
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#ration-modal').modal('hide');
+                    qte_find_lab();
+                }
+            })
+
+            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
+            swal2_modal.style.background = "rgb(58, 58, 58)";
+
+            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
+            swal2_cancel_btn.style.background = "#dc3545";
+        
+            let swal2_content = document.getElementsByClassName("swal2-content")[0];
+            swal2_content.style.color = "#fff";
+        
+            let swal2_title = document.getElementsByClassName("swal2-title")[0];
+            swal2_title.style.color = "#fff";
     } else if (anna1.checked 
         && oleg3.checked 
         && nikita2.checked) {
-            console.log("test");
+            // Никто не умирает
     } else if (anna2.checked 
         && oleg3.checked 
         && nikita1.checked ) {
-            console.log("test");
+            Swal.fire({
+                title: `Ваш выбор: ${choose_mas}`,
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[3].alive = "false";
+                    
+                    $('#ration-modal').modal('hide');
+                    qte_find_lab();
+                }
+            })
+
+            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
+            swal2_modal.style.background = "rgb(58, 58, 58)";
+
+            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
+            swal2_cancel_btn.style.background = "#dc3545";
+        
+            let swal2_content = document.getElementsByClassName("swal2-content")[0];
+            swal2_content.style.color = "#fff";
+        
+            let swal2_title = document.getElementsByClassName("swal2-title")[0];
+            swal2_title.style.color = "#fff";
     } else if (nikita2.checked
         && anna3.checked
         && oleg1.checked) {
-            console.log("test");
+            // Никто не умирает
+
+            Swal.fire({
+                title: `Ваш выбор: ${choose_mas}`,
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {                    
+                    $('#ration-modal').modal('hide');
+                    qte_find_lab();
+                }
+            })
+
+            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
+            swal2_modal.style.background = "rgb(58, 58, 58)";
+
+            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
+            swal2_cancel_btn.style.background = "#dc3545";
+        
+            let swal2_content = document.getElementsByClassName("swal2-content")[0];
+            swal2_content.style.color = "#fff";
+        
+            let swal2_title = document.getElementsByClassName("swal2-title")[0];
+            swal2_title.style.color = "#fff";
     } else if (nikita3.checked 
         && oleg2.checked 
         && anna1.checked) {
-            console.log("test");
+            // Никто не умирает
 
+            Swal.fire({
+                title: `Ваш выбор: ${choose_mas}`,
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {                    
+                    $('#ration-modal').modal('hide');
+                    qte_find_lab();
+                }
+            })
+
+            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
+            swal2_modal.style.background = "rgb(58, 58, 58)";
+
+            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
+            swal2_cancel_btn.style.background = "#dc3545";
+        
+            let swal2_content = document.getElementsByClassName("swal2-content")[0];
+            swal2_content.style.color = "#fff";
+        
+            let swal2_title = document.getElementsByClassName("swal2-title")[0];
+            swal2_title.style.color = "#fff";
     } else if (danil2.checked 
         && oleg3.checked 
         && anna1.checked) {
-            console.log("test");
+            Swal.fire({
+                title: `Ваш выбор: ${choose_mas}`,
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[1].alive = "false";
+                    
+                    $('#ration-modal').modal('hide');
+                    qte_find_lab();
+                }
+            })
+
+            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
+            swal2_modal.style.background = "rgb(58, 58, 58)";
+
+            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
+            swal2_cancel_btn.style.background = "#dc3545";
+        
+            let swal2_content = document.getElementsByClassName("swal2-content")[0];
+            swal2_content.style.color = "#fff";
+        
+            let swal2_title = document.getElementsByClassName("swal2-title")[0];
+            swal2_title.style.color = "#fff";
     } else if (danil1.checked 
         && oleg3.checked
         && anna2.checked) {
-            console.log("test");
+            Swal.fire({
+                title: `Ваш выбор: ${choose_mas}`,
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[0].alive = "false";
+                    
+                    $('#ration-modal').modal('hide');
+                    qte_find_lab();
+                }
+            })
+
+            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
+            swal2_modal.style.background = "rgb(58, 58, 58)";
+
+            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
+            swal2_cancel_btn.style.background = "#dc3545";
+        
+            let swal2_content = document.getElementsByClassName("swal2-content")[0];
+            swal2_content.style.color = "#fff";
+        
+            let swal2_title = document.getElementsByClassName("swal2-title")[0];
+            swal2_title.style.color = "#fff";
     } else if (oleg1.checked 
         && danil2.checked 
         && anna3.checked) {
-            console.log("test");
+            Swal.fire({
+                title: `Ваш выбор: ${choose_mas}`,
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[2].alive = "false";
+                    
+                    $('#ration-modal').modal('hide');
+                    qte_find_lab();
+                }
+            })
+
+            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
+            swal2_modal.style.background = "rgb(58, 58, 58)";
+
+            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
+            swal2_cancel_btn.style.background = "#dc3545";
+        
+            let swal2_content = document.getElementsByClassName("swal2-content")[0];
+            swal2_content.style.color = "#fff";
+        
+            let swal2_title = document.getElementsByClassName("swal2-title")[0];
+            swal2_title.style.color = "#fff";
     } else if (anna1.checked 
         && oleg2.checked 
         && danil3.checked) {
-            console.log("test");
+            Swal.fire({
+                title: `Ваш выбор: ${choose_mas}`,
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[3].alive = "false";
+                    
+                    $('#ration-modal').modal('hide');
+                    qte_find_lab();
+                }
+            })
+
+            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
+            swal2_modal.style.background = "rgb(58, 58, 58)";
+
+            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
+            swal2_cancel_btn.style.background = "#dc3545";
+        
+            let swal2_content = document.getElementsByClassName("swal2-content")[0];
+            swal2_content.style.color = "#fff";
+        
+            let swal2_title = document.getElementsByClassName("swal2-title")[0];
+            swal2_title.style.color = "#fff";
     }
 }
