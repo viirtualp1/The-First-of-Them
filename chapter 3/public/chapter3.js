@@ -29,8 +29,10 @@ let team = [
         name: "Олег", 
         hp: 100, 
         alive: true
-    },
+    }
+];
 
+let main_heroes = [
     polina = {
         name: "Полина",
         hp: 100,
@@ -41,8 +43,8 @@ let team = [
         name: "Блогер",
         hp: 100,
         alive: true
-    },
-]
+    }
+];
 
 // qte variables
 let width_plus_clean = 0;
@@ -55,6 +57,9 @@ let click_dead_phobos = 0;
 
 let qte_search = true;
 let width_plus_office_search = 0;
+
+let qte_search_lab = true;
+let width_search_lab = 0;
 
 // Main functions
 function hello_team() {
@@ -275,6 +280,9 @@ function house() {
 }
 
 function qte_clean_path_house() {
+    btn_next = document.getElementById("btn-next");
+    btn_next.disabled = true;
+
     name_dialog.innerHTML = `Игра`;
     dialogs_div.innerHTML = `
         <div class="row dialog">
@@ -950,4 +958,89 @@ function send_team_mountains() {
             let swal2_title = document.getElementsByClassName("swal2-title")[0];
             swal2_title.style.color = "#fff";
     }
+}
+
+function qte_find_lab() {
+    btn_next = document.getElementById("btn-next");
+    btn_next.disabled = true;
+
+    dialogs_div.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Поиск лаборатории...</p> 
+        </div>
+
+        <div class="progress mt-4" id="progress-div">
+            <div class="progress-bar progress-bar-striped bg-primary" id="progressbar_search_lab" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+        </div>
+    `;
+
+    let progressbar_search_lab = document.getElementById("progressbar_search_lab");
+    let progress = document.getElementById("progress-div");
+
+    setInterval(() => {
+        try {
+            if (width_search_lab == 100) {
+                qte_search_lab = false;
+
+                progress.parentNode.removeChild(progress);
+
+                find_lab_lives();
+            }
+        } catch { width_search_lab = false; }
+
+        if (qte_search_lab == true) {
+            width_search_lab += 25;
+            progressbar_search_lab.style.width = `${width_search_lab}%`;
+            progressbar_search_lab.innerHTML = `${width_search_lab}%`;
+        } else { }
+    }, 1000)
+}
+
+// Найдена лаборатория + показ, кто выжил
+function find_lab_lives() {
+    // Массив для сохранения выживших
+    let team_alive_mas = [];
+
+    // Мертвый из отряда
+    let dead = "";
+    
+    for (let i = 0; i < team.length; i++) {
+        if (team[i].alive == true) {
+            team_alive_mas.push(team[i].name);
+        } else if (team[i].alive == "false") {
+            if (team[i].name == "Анна" || team[i].name == "Никита") {
+                dead = `${team[i].name.substring(0, team[i].name.length - 1) + "у"}`;
+            } else if (team[i].name == "Данил" || team[i].name == "Олег") {
+                dead = `${team[i].name.substring(0, team[i].name.length + 1) + "а"}`;
+            }
+        }
+    }
+    
+    let team_alive = team_alive_mas.toString().replace(/,/g, ', ');
+    
+    if (dead != "") {
+        Swal.fire({
+            title: `Из отряда выжили только: ${team_alive}`,
+            text: `Вы потеряли: ${dead}`,
+            confirmButtonText: `Понятно`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                entry_lab();
+            }
+        })
+    } else {
+        Swal.fire({
+            title: `Никто не умер!`,
+            icon: 'success',
+            confirmButtonText: `Отлично`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                entry_lab();
+            }
+        })
+    }
+}
+
+function entry_lab() {
+
 }
