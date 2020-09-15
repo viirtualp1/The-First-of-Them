@@ -1028,6 +1028,18 @@ function find_lab_lives() {
                 entry_lab();
             }
         })
+
+        let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
+        swal2_modal.style.background = "rgb(58, 58, 58)";
+    
+        let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
+        swal2_cancel_btn.style.background = "#dc3545";
+    
+        let swal2_content = document.getElementsByClassName("swal2-content")[0];
+        swal2_content.style.color = "#fff";
+    
+        let swal2_title = document.getElementsByClassName("swal2-title")[0];
+        swal2_title.style.color = "#fff";
     } else {
         Swal.fire({
             title: `Никто не умер!`,
@@ -1038,6 +1050,18 @@ function find_lab_lives() {
                 entry_lab();
             }
         })
+
+        let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
+        swal2_modal.style.background = "rgb(58, 58, 58)";
+    
+        let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
+        swal2_cancel_btn.style.background = "#dc3545";
+    
+        let swal2_content = document.getElementsByClassName("swal2-content")[0];
+        swal2_content.style.color = "#fff";
+    
+        let swal2_title = document.getElementsByClassName("swal2-title")[0];
+        swal2_title.style.color = "#fff";
     }
 }
 
