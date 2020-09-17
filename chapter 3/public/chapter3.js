@@ -1,73 +1,79 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable indent */
+/* eslint-disable require-jsdoc */
+/* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
+/* eslint-disable linebreak-style */
+
 // main variables
-let music = document.getElementById("music"); // musics (for src musics)
-let sound = document.getElementById("sound"); // sounds (for src sounds)
-let dialogs_div = document.getElementById("dialogs"); // dialogs (for inner dialogs)
-let name_dialog = document.getElementById("name-dialog"); // names (for inner names)
-let ration_footer = document.getElementById("ration-footer"); // ration (for inner 'button send team')
+const music = document.getElementById('music');
+const sound = document.getElementById('sound');
+const dialogs = document.getElementById('dialogs');
+const name = document.getElementById('name-dialog');
+const rationFooter = document.getElementById('ration-footer');
 
 // team (objects)
-let team = [
+const team = [
     nikita = {
-        name: "Никита", 
-        hp: 100, 
-        alive: true, 
+        name: 'Никита',
+        hp: 100,
+        alive: true,
     },
 
     anna = {
-        name: "Анна", 
-        hp: 100, 
-        alive: true
+        name: 'Анна',
+        hp: 100,
+        alive: true,
     },
 
     danil = {
-        name: "Данил", 
-        hp: 100, 
-        alive: true
+        name: 'Данил',
+        hp: 100,
+        alive: true,
     },
 
     oleg = {
-        name: "Олег", 
-        hp: 100, 
-        alive: true
-    }
+        name: 'Олег',
+        hp: 100,
+        alive: true,
+    },
 ];
 
-let main_heroes = [
+const mainHeroes = [
     polina = {
-        name: "Полина",
+        name: 'Полина',
         hp: 100,
-        alive: true
+        alive: true,
     },
 
     bloger = {
-        name: "Блогер",
+        name: 'Блогер',
         hp: 100,
-        alive: true
-    }
+        alive: true,
+    },
 ];
 
 // qte variables
-let width_plus_clean = 0;
-let click_clean = 0;
+let widthPlusClean = 0;
+let clickClean = 0;
 
-let width_dead_phobos_sec = 100;
-let width_dead_phobos_success = 0;
-let dead_phobos_sec = 5;
-let click_dead_phobos = 0;
+let widthDeadPhobosSec = 100;
+let widthDeadPhobosSuccess = 0;
+let deadPhobosSec = 5;
+let clickDeadPhobos = 0;
 
-let qte_search = true;
-let width_plus_office_search = 0;
+let qteSearch = true;
+let widthPlusOfficeSearch = 0;
 
-let qte_search_lab = true;
-let width_search_lab = 0;
+let qteSearchLab = true;
+let widthSearchLab = 0;
 
-// Main functions
-function hello_team() {
-    document.body.style.backgroundImage = "url('img/office.jpeg')";
-    music.src = "sounds/office.wav";
+function helloTeam() {
+    document.body.style.backgroundImage = 'url(\'img/office.jpeg\')';
+    music.src = 'sounds/office.wav';
 
-    name_dialog.innerHTML = "Полина";
-    dialogs_div.innerHTML = `
+    name.innerHTML = 'Полина';
+    dialogs.innerHTML = `
         <div id="dialogs">
             <div class="row dialog">
                 <p class="lead" id="text-dialog">Всем здравствуйте, солдаты!</p>
@@ -87,9 +93,9 @@ function hello_team() {
         </div>
     `;
 
-    btn_next = document.getElementById("btn-next");
-    btn_next = btn_next.parentNode.removeChild(btn_next);
-    document.getElementById("footer-buttons").innerHTML += `
+    btnNext = document.getElementById('btn-next');
+    btnNext = btnNext.parentNode.removeChild(btnNext);
+    document.getElementById('footer-buttons').innerHTML += `
         <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="training()">Далее</button>
     `;
 }
@@ -97,36 +103,36 @@ function hello_team() {
 function training() {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
-          confirmButton: 'btn btn-dark',
+            confirmButton: 'btn btn-dark',
         },
 
-        buttonsStyling: false
-    })
+        buttonsStyling: false,
+    });
 
     swalWithBootstrapButtons.fire({
-        title: "Обучение",
+        title: 'Обучение',
         imageUrl: 'img/ration.PNG',
-        html: "Перед вами рация. <br /> Сверху имя ваших людей из отряда: Анна, Никита, Данил, Олег. <br /> Слева направление куда их можно отправить: налево, прямо, направо.",
-        confirmButtonText: "Понятно",
+        html: 'Перед вами рация. <br /> Сверху имя ваших людей из отряда: Анна, Никита, Данил, Олег. <br /> Слева направление куда их можно отправить: налево, прямо, направо.',
+        confirmButtonText: 'Понятно',
     }).then((result) => {
         if (result.value) {
-            go_to_mountains();
+            goToMountains();
         }
-    })
+    });
 
-    let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
-    swal2_modal.style.background = "rgb(58, 58, 58)";
+    const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
+    swal2Modal.style.background = 'rgb(58, 58, 58)';
 
-    let swal2_content = document.getElementsByClassName("swal2-content")[0];
-    swal2_content.style.color = "#fff";
+    const swal2Content = document.getElementsByClassName('swal2-content')[0];
+    swal2Content.style.color = '#fff';
 
-    let swal2_title = document.getElementsByClassName("swal2-title")[0];
-    swal2_title.style.color = "#fff";
+    const swal2Title = document.getElementsByClassName('swal2-title')[0];
+    swal2Title.style.color = '#fff';
 }
 
-function go_to_mountains() {
-    name_dialog.innerHTML = "Полина";
-    dialogs_div.innerHTML = `
+function goToMountains() {
+    name.innerHTML = 'Полина';
+    dialogs.innerHTML = `
         <div id="dialogs">
             <div class="row dialog">
                 <p class="lead" id="text-dialog">Мой давний знакомый рассказал мне 
@@ -150,24 +156,26 @@ function go_to_mountains() {
         </div>
     `;
 
-    btn_next = document.getElementById("btn-next");
-    btn_next = btn_next.parentNode.removeChild(btn_next);
-    document.getElementById("footer-buttons").innerHTML += `
-        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="change_hero_bloger_house('Б', 'Л', 'О', 'Г', 'Е', 'Р', '#f33b3b')">Далее</button>
+    btnNext = document.getElementById('btn-next');
+    btnNext = btnNext.parentNode.removeChild(btnNext);
+    document.getElementById('footer-buttons').innerHTML += `
+        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="changeHeroBlogerHouse('Б', 'Л', 'О', 'Г', 'Е', 'Р', '#f33b3b')">Далее</button>
     `;
 }
 
-function change_hero_bloger_house(letter1, letter2, letter3,
-                        letter4, letter5, letter6, 
-                            shadowColor) {
-    document.body.style.background = "#000";
-    music.src = "";
-    sound.src = "sounds/bloger_change.mp3";
+// eslint-disable-next-line require-jsdoc
+// eslint-disable-next-line no-unused-vars
+function changeHeroBlogerHouse(letter1, letter2, letter3,
+    letter4, letter5, letter6,
+    shadowColor) {
+    document.body.style.background = '#000';
+    music.src = '';
+    sound.src = 'sounds/bloger_change.mp3';
 
-    document.getElementById("name").style.visibility = "hidden";
-    document.getElementById("footer-buttons").style.visibility = "hidden";
-    
-    dialogs_div.innerHTML = `
+    document.getElementById('name').style.visibility = 'hidden';
+    document.getElementById('footer-buttons').style.visibility = 'hidden';
+
+    dialogs.innerHTML = `
         <div class="container d-flex justify-content-center" id="name-text-div">
             <div>
                 <h1 style="float: left;" class="title-show1" id="letter-1">${letter1}</h1>
@@ -182,52 +190,52 @@ function change_hero_bloger_house(letter1, letter2, letter3,
 
     // Анимация появления имени
     setTimeout(() => {
-        let p1 = document.getElementById("letter-1");
-        let p2 = document.getElementById("letter-2");
-        let p3 = document.getElementById("letter-3");
-        let p4 = document.getElementById("letter-4");
-        let p5 = document.getElementById("letter-5");
-        let p6 = document.getElementById("letter-6");
+        const p1 = document.getElementById('letter-1');
+        const p2 = document.getElementById('letter-2');
+        const p3 = document.getElementById('letter-3');
+        const p4 = document.getElementById('letter-4');
+        const p5 = document.getElementById('letter-5');
+        const p6 = document.getElementById('letter-6');
 
         // Анимация появления имени
 
-        p1.style.textShadow = `1px 1px 10px ${shadowColor}`
-        p1.id = "title-show1";
+        p1.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p1.id = 'title-show1';
 
-        p2.style.textShadow = `1px 1px 10px ${shadowColor}`
-        p2.id = "title-show2";
+        p2.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p2.id = 'title-show2';
 
-        p3.style.textShadow = `1px 1px 10px ${shadowColor}`
-        p3.id = "title-show3";
+        p3.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p3.id = 'title-show3';
 
-        p4.style.textShadow = `1px 1px 10px ${shadowColor}`
-        p4.id = "title-show4";
+        p4.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p4.id = 'title-show4';
 
-        p5.style.textShadow = `1px 1px 10px ${shadowColor}`
-        p5.id = "title-show5";
+        p5.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p5.id = 'title-show5';
 
-        p6.style.textShadow = `1px 1px 10px ${shadowColor}`
-        p6.id = "title-show6";
-    }, 200)
+        p6.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p6.id = 'title-show6';
+    }, 200);
 
     setTimeout(() => {
-        bloger_house();
+        blogerHouse();
     }, 5000);
 }
 
-function bloger_house() {
-    music.src = "../../The First of Them (Chapter 1+Chapter 2)/chapter1/music/night_jungle.mp3";
-    document.getElementById("name").style.visibility = "visible";
-    document.getElementById("footer-buttons").style.visibility = "visible";
+function blogerHouse() {
+    music.src = '../../The First of Them (Chapter 1+Chapter 2)/chapter1/music/night_jungle.mp3';
+    document.getElementById('name').style.visibility = 'visible';
+    document.getElementById('footer-buttons').style.visibility = 'visible';
 
-    document.body.style.background = "url('img/house.jpg')"
+    document.body.style.background = 'url(\'img/house.jpg\')';
 
-    let p1 = document.getElementById("title-show1");
-    let p2 = document.getElementById("title-show2");
-    let p3 = document.getElementById("title-show3");
-    let p4 = document.getElementById("title-show4");
-    let p5 = document.getElementById("title-show5");
-    let p6 = document.getElementById("title-show6");
+    const p1 = document.getElementById('title-show1');
+    const p2 = document.getElementById('title-show2');
+    const p3 = document.getElementById('title-show3');
+    const p4 = document.getElementById('title-show4');
+    const p5 = document.getElementById('title-show5');
+    const p6 = document.getElementById('title-show6');
 
     p1.parentNode.removeChild(p1);
     p2.parentNode.removeChild(p2);
@@ -236,8 +244,8 @@ function bloger_house() {
     p5.parentNode.removeChild(p5);
     p6.parentNode.removeChild(p6);
 
-    name_dialog.innerHTML = "Блогер";
-    dialogs_div.innerHTML = `
+    name.innerHTML = 'Блогер';
+    dialogs.innerHTML = `
         <div id="dialogs">
             <div class="row dialog">
                 <p class="lead" id="text-dialog">Так, вот разрушенный особняк, 
@@ -248,23 +256,23 @@ function bloger_house() {
         </div>
     `;
 
-    btn_next = document.getElementById("btn-next");
-    btn_next = btn_next.parentNode.removeChild(btn_next);
-    document.getElementById("footer-buttons").innerHTML += `
+    btnNext = document.getElementById('btn-next');
+    btnNext = btnNext.parentNode.removeChild(btnNext);
+    document.getElementById('footer-buttons').innerHTML += `
         <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="house()">Далее</button>
     `;
 }
 
 function house() {
-    music.src = "";
+    music.src = '';
 
-    document.body.style.background = "url('img/house_main_hall.jpg')";
-    document.body.style.backgroundPosition = "center center";
-    document.body.style.backgroundRepeat = "no-repeat";
-    document.body.style.backgroundAttachment = "fixed";
-    document.body.style.backgroundSize = "cover";
+    document.body.style.background = 'url(\'img/house_main_hall.jpg\')';
+    document.body.style.backgroundPosition = 'center center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
 
-    dialogs_div.innerHTML = `
+    dialogs.innerHTML = `
          <div id="dialogs">
             <div class="row dialog">
                 <p class="lead" id="text-dialog">Скорее всего это дверь в лабораторию, но нужно расчистить путь</p>
@@ -272,24 +280,24 @@ function house() {
         </div> 
     `;
 
-    btn_next = document.getElementById("btn-next");
-    btn_next = btn_next.parentNode.removeChild(btn_next);
-    document.getElementById("footer-buttons").innerHTML += `
-        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="qte_clean_path_house()">Далее</button>
+    btnNext = document.getElementById('btn-next');
+    btnNext = btnNext.parentNode.removeChild(btnNext);
+    document.getElementById('footer-buttons').innerHTML += `
+        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="qteCleanPathHouse()">Далее</button>
     `;
 }
 
-function qte_clean_path_house() {
-    btn_next = document.getElementById("btn-next");
-    btn_next.disabled = true;
+function qteCleanPathHouse() {
+    btnNext = document.getElementById('btn-next');
+    btnNext.disabled = true;
 
-    name_dialog.innerHTML = `Игра`;
-    dialogs_div.innerHTML = `
+    name.innerHTML = `Игра`;
+    dialogs.innerHTML = `
         <div class="row dialog">
             <p class="lead" id="text-dialog">Расчищайте путь в лабораторию...</p>
         </div>
         <div class="row dialog d-flex justify-content-center" id="run-div-btn">
-            <button id="btn-clean-path" type="button" class="btn btn-dark mt-2 mb-2" onclick="counter_clean()">
+            <button id="btn-clean-path" type="button" class="btn btn-dark mt-2 mb-2" onclick="counterClean()">
                 Чистить
             </button>
         </div>
@@ -300,33 +308,33 @@ function qte_clean_path_house() {
     `;
 }
 
-function counter_clean() {
-    let progressbar_clean = document.getElementById("progressbar_clean");
-    let progress = document.getElementById("progress-div");
-    let clean_btn = document.getElementById("btn-clean-path");
+function counterClean() {
+    const progressbarClean = document.getElementById('progressbar_clean');
+    const progress = document.getElementById('progress-div');
+    const cleanBtn = document.getElementById('btn-clean-path');
 
-    click_clean += 1;
+    clickClean += 1;
 
-    width_plus_clean += 10;
-    progressbar_clean.style.width = `${width_plus_clean}%`;
-    progressbar_clean.innerHTML = `${width_plus_clean}%`;
+    widthPlusClean += 10;
+    progressbarClean.style.width = `${widthPlusClean}%`;
+    progressbarClean.innerHTML = `${widthPlusClean}%`;
 
-    if (click_clean === 10) {
+    if (clickClean === 10) {
         progress.parentNode.removeChild(progress);
-        clean_btn.parentNode.removeChild(clean_btn);
+        cleanBtn.parentNode.removeChild(cleanBtn);
 
-        btn_next = document.getElementById("btn-next");
-        btn_next.disabled = true;
+        btnNext = document.getElementById('btn-next');
+        btnNext.disabled = true;
 
-        qte_dead_phobos();
+        qteDeadPhobos();
     }
 }
 
-function qte_dead_phobos() {
-    sound.src = "sounds/00975.mp3";
+function qteDeadPhobos() {
+    sound.src = 'sounds/00975.mp3';
 
-    name_dialog.innerHTML = `Блогер`;
-    dialogs_div.innerHTML = `
+    name.innerHTML = `Блогер`;
+    dialogs.innerHTML = `
         <div class="row dialog">
             <p class="lead" id="text-dialog">Ааа, что это...!?</p>
         </div>
@@ -347,22 +355,24 @@ function qte_dead_phobos() {
     `;
 
     setInterval(() => {
-        let progressbar_dead_phobos_sec = document.getElementById("progressbar_dead_phobos_sec");
+        const progressbarDeadPhobosSec = document.getElementById('progressbar_dead_phobos_sec');
 
-        width_dead_phobos_sec -= 20;
-        dead_phobos_sec -= 1;
+        widthDeadPhobosSec -= 20;
+        deadPhobosSec -= 1;
 
         try {
-            progressbar_dead_phobos_sec.style.width = `${width_dead_phobos_sec}%`;
-            progressbar_dead_phobos_sec.innerHTML = `${dead_phobos_sec}сек`;
-        } catch { dead_phobos_sec = false; }
-    
-        if (dead_phobos_sec === 0) {
+            progressbarDeadPhobosSec.style.width = `${widthDeadPhobosSec}%`;
+            progressbarDeadPhobosSec.innerHTML = `${deadPhobosSec}сек`;
+        } catch {
+            deadPhobosSec = false;
+        }
+
+        if (deadPhobosSec === 0) {
             Swal.fire({
                 icon: 'error',
                 title: 'Вы проиграли!',
             });
-    
+
             setInterval(() => {
                 location.reload();
             }, 1000);
@@ -370,40 +380,40 @@ function qte_dead_phobos() {
     }, 1000);
 }
 
-function counter_dead_phobos() {
-    let progressbar_dead_phobos_success = document.getElementById("progressbar_dead_phobos_success");
-    let progress_phobos_sec = document.getElementById("progress-div-phobos-sec");
-    let progress_phobos_success = document.getElementById("progress-div-phobos-success");
-    let btn_go_phobos = document.getElementById("btn-go-phobos");
+function counterDeadPhobos() {
+    const progressbarDeadPhobosSuccess = document.getElementById('progressbar_dead_phobos_success');
+    const progressPhobosSec = document.getElementById('progress-div-phobos-sec');
+    const progressPhobosSuccess = document.getElementById('progress-div-phobos-success');
+    const btnGoPhobos = document.getElementById('btn-go-phobos');
 
-    click_dead_phobos += 1;
+    clickDeadPhobos += 1;
 
-    width_dead_phobos_success += 10;
-    progressbar_dead_phobos_success.style.width = `${width_dead_phobos_success}%`;
-    progressbar_dead_phobos_success.innerHTML = `${width_dead_phobos_success}%`;
+    widthDeadPhobosSuccess += 10;
+    progressbarDeadPhobosSuccess.style.width = `${widthDeadPhobosSuccess}%`;
+    progressbarDeadPhobosSuccess.innerHTML = `${widthDeadPhobosSuccess}%`;
 
-    if (click_dead_phobos === 10) {
-        progress_phobos_sec.parentNode.removeChild(progress_phobos_sec);
-        progress_phobos_success.parentNode.removeChild(progress_phobos_success);
-        btn_go_phobos.parentNode.removeChild(btn_go_phobos);
+    if (clickDeadPhobos === 10) {
+        progressPhobosSec.parentNode.removeChild(progressPhobosSec);
+        progressPhobosSuccess.parentNode.removeChild(progressPhobosSuccess);
+        btnGoPhobos.parentNode.removeChild(btnGoPhobos);
 
-        btn_next = document.getElementById("btn-next");
-        btn_next.disabled = true;
+        btnNext = document.getElementById('btn-next');
+        btnNext.disabled = true;
 
-        house_lab_bloger();
+        houseLabBloger();
     }
 }
 
-function house_lab_bloger() {
-    document.body.style.background = "url('img/lab.jpg')";
-    document.body.style.backgroundPosition = "center center";
-    document.body.style.backgroundRepeat = "no-repeat";
-    document.body.style.backgroundAttachment = "fixed";
-    document.body.style.backgroundSize = "cover";
+function houseLabBloger() {
+    document.body.style.background = 'url(\'img/lab.jpg\')';
+    document.body.style.backgroundPosition = 'center center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
 
-    sound.src = "";
+    sound.src = '';
 
-    dialogs_div.innerHTML = `
+    dialogs.innerHTML = `
         <div class="row dialog">
             <p class="lead" id="text-dialog">Кто это был?</p> 
         </div>
@@ -413,24 +423,24 @@ function house_lab_bloger() {
         </div>
     `;
 
-    btn_next = document.getElementById("btn-next");
-    btn_next = btn_next.parentNode.removeChild(btn_next);
-    document.getElementById("footer-buttons").innerHTML += `
-        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="house_lab_office_bloger()">Далее</button>
+    btnNext = document.getElementById('btn-next');
+    btnNext = btnNext.parentNode.removeChild(btnNext);
+    document.getElementById('footer-buttons').innerHTML += `
+        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="houseLabOfficeBloger()">Далее</button>
     `;
 }
 
-function house_lab_office_bloger() {
-    document.body.style.background = "url('img/lab_office.jpg')";
-    document.body.style.backgroundPosition = "center center";
-    document.body.style.backgroundRepeat = "no-repeat";
-    document.body.style.backgroundAttachment = "fixed";
-    document.body.style.backgroundSize = "cover";
+function houseLabOfficeBloger() {
+    document.body.style.background = 'url(\'img/lab_office.jpg\')';
+    document.body.style.backgroundPosition = 'center center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
 
-    btn_next = document.getElementById("btn-next");
-    btn_next.disabled = true;
+    btnNext = document.getElementById('btn-next');
+    btnNext.disabled = true;
 
-    dialogs_div.innerHTML = `
+    dialogs.innerHTML = `
         <div class="row dialog">
             <p class="lead" id="text-dialog">Так, надо что-то найти...</p> 
         </div>
@@ -440,61 +450,63 @@ function house_lab_office_bloger() {
         </div>
     `;
 
-    let progressbar_office_search = document.getElementById("progressbar_house_office_search");
-    let progress = document.getElementById("progress-div");
-    let office_search_btn = document.getElementById("btn-office-search");
-    
+    const progressbarOfficeSearch = document.getElementById('progressbar_house_office_search');
+    const progress = document.getElementById('progress-div');
+    const officeSearchBtn = document.getElementById('btn-office-search');
+
     setInterval(() => {
         try {
-            if (width_plus_office_search == 100) {
-                qte_search = false;
+            if (widthPlusOfficeSearch == 100) {
+                qteSearch = false;
 
-                coordinate_lab();
-                
+                coordinateLab();
+
                 progress.parentNode.removeChild(progress);
-                office_search_btn.parentNode.removeChild(office_search_btn);
+                officeSearchBtn.parentNode.removeChild(officeSearchBtn);
             }
-        } catch { width_plus_office_search = false; }
+        } catch {
+            widthPlusOfficeSearch = false;
+        }
 
-        if (qte_search == true) {
-            width_plus_office_search += 25;
-            progressbar_office_search.style.width = `${width_plus_office_search}%`;
-            progressbar_office_search.innerHTML = `${width_plus_office_search}%`;
-        } else { }
-    }, 1000)
+        if (qteSearch == true) {
+            widthPlusOfficeSearch += 25;
+            progressbar_office_search.style.width = `${widthPlusOfficeSearch}%`;
+            progressbar_office_search.innerHTML = `${widthPlusOfficeSearch}%`;
+        } else {}
+    }, 1000);
 }
 
-function coordinate_lab() {
-    dialogs_div.innerHTML = `
-        <div class="row dialog">
-            <p class="lead" id="text-dialog">Что-то нашел!</p> 
-        </div>
+function coordinateLab() {
+    dialogs.innerHTML = `
+    <div class="row dialog">
+        <p class="lead" id="text-dialog">Что-то нашел!</p> 
+    </div>
 
-        <div class="row dialog">
-            <p class="lead" id="text-dialog">Хм, координаты, так...
-                Походу есть еще одна лаборатория и туда отправили вирус.
-                Нужно попробовать найти и пробраться в нее. Может получится выяснить что-то</p> 
-        </div>
-    `;
+    <div class="row dialog">
+        <p class="lead" id="text-dialog">Хм, координаты, так...
+            Походу есть еще одна лаборатория и туда отправили вирус.
+            Нужно попробовать найти и пробраться в нее. Может получится выяснить что-то</p> 
+    </div>
+  `;
 
-    btn_next = document.getElementById("btn-next");
-    btn_next = btn_next.parentNode.removeChild(btn_next);
-    document.getElementById("footer-buttons").innerHTML += `
-        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="change_hero_polina_mountains('П', 'О', 'Л', 'И', 'Н', 'А', '#f33be4')">Далее</button>
+    btnNext = document.getElementById('btn-next');
+    btnNext = btnNext.parentNode.removeChild(btnNext);
+    document.getElementById('footer-buttons').innerHTML += `
+        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="changeHeroPolinaMountains('П', 'О', 'Л', 'И', 'Н', 'А', '#f33be4')">Далее</button>
     `;
 }
 
-function change_hero_polina_mountains(letter1, letter2, letter3,
-    letter4, letter5, letter6, 
-        shadowColor) {
-    document.body.style.background = "#000";
-    music.src = "";
-    sound.src = "sounds/polina_change.mp3";
+function changeHeroPolinaMountains(letter1, letter2, letter3,
+    letter4, letter5, letter6,
+    shadowColor) {
+    document.body.style.background = '#000';
+    music.src = '';
+    sound.src = 'sounds/polina_change.mp3';
 
-    document.getElementById("name").style.visibility = "hidden";
-    document.getElementById("footer-buttons").style.visibility = "hidden";
+    document.getElementById('name').style.visibility = 'hidden';
+    document.getElementById('footer-buttons').style.visibility = 'hidden';
 
-    dialogs_div.innerHTML = `
+    dialogs.innerHTML = `
         <div class="container d-flex justify-content-center" id="name-text-div">
             <div>
                 <h1 style="float: left;" class="title-show1" id="letter-1">${letter1}</h1>
@@ -509,55 +521,55 @@ function change_hero_polina_mountains(letter1, letter2, letter3,
 
     // Анимация появления имени
     setTimeout(() => {
-        let p1 = document.getElementById("letter-1");
-        let p2 = document.getElementById("letter-2");
-        let p3 = document.getElementById("letter-3");
-        let p4 = document.getElementById("letter-4");
-        let p5 = document.getElementById("letter-5");
-        let p6 = document.getElementById("letter-6");
+        const p1 = document.getElementById('letter-1');
+        const p2 = document.getElementById('letter-2');
+        const p3 = document.getElementById('letter-3');
+        const p4 = document.getElementById('letter-4');
+        const p5 = document.getElementById('letter-5');
+        const p6 = document.getElementById('letter-6');
 
         // Анимация появления имени
-        p1.style.textShadow = `1px 1px 10px ${shadowColor}`
-        p1.id = "title-show1";
+        p1.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p1.id = 'title-show1';
 
-        p2.style.textShadow = `1px 1px 10px ${shadowColor}`
-        p2.id = "title-show2";
+        p2.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p2.id = 'title-show2';
 
-        p3.style.textShadow = `1px 1px 10px ${shadowColor}`
-        p3.id = "title-show3";
+        p3.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p3.id = 'title-show3';
 
-        p4.style.textShadow = `1px 1px 10px ${shadowColor}`
-        p4.id = "title-show4";
+        p4.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p4.id = 'title-show4';
 
-        p5.style.textShadow = `1px 1px 10px ${shadowColor}`
-        p5.id = "title-show5";
+        p5.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p5.id = 'title-show5';
 
-        p6.style.textShadow = `1px 1px 10px ${shadowColor}`
-        p6.id = "title-show6";
-    }, 200)
+        p6.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p6.id = 'title-show6';
+    }, 200);
 
     setTimeout(() => {
-        polina_mountains();
+        polinaMountains();
     }, 5000);
 }
 
-function polina_mountains() {
-    let p1 = document.getElementById("title-show1");
-    let p2 = document.getElementById("title-show2");
-    let p3 = document.getElementById("title-show3");
-    let p4 = document.getElementById("title-show4");
-    let p5 = document.getElementById("title-show5");
-    let p6 = document.getElementById("title-show6");
+function polinaMountains() {
+    const p1 = document.getElementById('title-show1');
+    const p2 = document.getElementById('title-show2');
+    const p3 = document.getElementById('title-show3');
+    const p4 = document.getElementById('title-show4');
+    const p5 = document.getElementById('title-show5');
+    const p6 = document.getElementById('title-show6');
 
-    document.body.style.background = "url('img/mountains.jpg')";
-    document.body.style.backgroundPosition = "center center";
-    document.body.style.backgroundRepeat = "no-repeat";
-    document.body.style.backgroundAttachment = "fixed";
-    document.body.style.backgroundSize = "cover";
+    document.body.style.background = 'url(\'img/mountains.jpg\')';
+    document.body.style.backgroundPosition = 'center center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
 
-    music.src = "sounds/veter_v_gorah.mp3";
-    document.getElementById("name").style.visibility = "visible";
-    document.getElementById("footer-buttons").style.visibility = "visible";
+    music.src = 'sounds/veter_v_gorah.mp3';
+    document.getElementById('name').style.visibility = 'visible';
+    document.getElementById('footer-buttons').style.visibility = 'visible';
 
     p1.parentNode.removeChild(p1);
     p2.parentNode.removeChild(p2);
@@ -566,8 +578,8 @@ function polina_mountains() {
     p5.parentNode.removeChild(p5);
     p6.parentNode.removeChild(p6);
 
-    name_dialog.innerHTML = "Полина";
-    dialogs_div.innerHTML = `
+    name.innerHTML = 'Полина';
+    dialogs.innerHTML = `
         <div id="dialogs">
             <div class="row dialog">
                 <p class="lead" id="text-dialog">Мы на месте, сейчас, значит...</p>
@@ -575,396 +587,399 @@ function polina_mountains() {
         </div>
     `;
 
-    btn_next = document.getElementById("btn-next");
-    btn_next = btn_next.parentNode.removeChild(btn_next);
-    document.getElementById("footer-buttons").innerHTML += `
+    btnNext = document.getElementById('btn-next');
+    btnNext = btnNext.parentNode.removeChild(btnNext);
+    document.getElementById('footer-buttons').innerHTML += `
         <button id="btn-next" type="button" class="btn btn-lg btn-dark" data-toggle="modal" data-target="#ration-modal">Далее</button>
     `;
 
-    ration_footer.innerHTML += `
-        <button class="btn btn-dark" onclick="send_team_mountains()">Послать</button>
-    `
+    rationFooter.innerHTML += `
+    <button class="btn btn-dark" onclick="sendTeamMountains()">Послать</button>
+  `;
 }
 
-function send_team_mountains() {
-    let choose_array = [];
+function sendTeamMountains() {
+    const chooseArray = [];
 
     // для вывода выбранных членов отряда
-    let team_elements = [
-        document.getElementById("nikita1"),
-        document.getElementById("nikita2"),
-        document.getElementById("nikita3"),
+    const teamElements = [
+        document.getElementById('nikita1'),
+        document.getElementById('nikita2'),
+        document.getElementById('nikita3'),
 
-        document.getElementById("anna1"),
-        document.getElementById("anna2"),
-        document.getElementById("anna3"),
+        document.getElementById('anna1'),
+        document.getElementById('anna2'),
+        document.getElementById('anna3'),
 
-        document.getElementById("danil1"),
-        document.getElementById("danil2"),
-        document.getElementById("danil3"),
+        document.getElementById('danil1'),
+        document.getElementById('danil2'),
+        document.getElementById('danil3'),
 
-        document.getElementById("oleg1"),
-        document.getElementById("oleg2"),
-        document.getElementById("oleg3")
-    ]
+        document.getElementById('oleg1'),
+        document.getElementById('oleg2'),
+        document.getElementById('oleg3'),
+    ];
 
-    for (let i = 0; i < team_elements.length; i++) {
-        if (team_elements[i].checked) {
-            choose_array.push(team_elements[i].value);
+    for (let i = 0; i < teamElements.length; i++) {
+        if (teamElements[i].checked) {
+            chooseArray.push(teamElements[i].value);
         }
     }
 
     // Для проверки
-    let nikita1 = document.getElementById("nikita1"),
-        nikita2 = document.getElementById("nikita2"),
-        nikita3 = document.getElementById("nikita3");
+    const nikita1 = document.getElementById('nikita1');
+    const nikita2 = document.getElementById('nikita2');
+    const nikita3 = document.getElementById('nikita3');
 
-    let anna1 = document.getElementById("anna1"),
-        anna2 = document.getElementById("anna2"),
-        anna3 = document.getElementById("anna3");
+    const anna1 = document.getElementById('anna1');
+    const anna2 = document.getElementById('anna2');
+    const anna3 = document.getElementById('anna3');
 
-        danil1 = document.getElementById("danil1"),
-        danil2 = document.getElementById("danil2"),
-        danil3 = document.getElementById("danil3");
+    danil1 = document.getElementById('danil1'),
+        danil2 = document.getElementById('danil2'),
+        danil3 = document.getElementById('danil3');
 
-        oleg1 = document.getElementById("oleg1"),
-        oleg2 = document.getElementById("oleg2"),
-        oleg3 = document.getElementById("oleg3");
+    oleg1 = document.getElementById('oleg1'),
+        oleg2 = document.getElementById('oleg2'),
+        oleg3 = document.getElementById('oleg3');
 
     // Проверка чтобы пользователь не мог отправить одного челоека в 2-3 стороны
     if (anna1.checked && anna3.checked) {
-        alert("No")
-    } if (nikita1.checked && nikita3.checked) {
-        alert("No")
-    } if (danil1.checked && danil3.checked) {
-        alert("No")
-    } if (oleg1.checked && oleg3.checked) {
-        alert("No")
+        alert('No');
+    }
+    if (nikita1.checked && nikita3.checked) {
+        alert('No');
+    }
+    if (danil1.checked && danil3.checked) {
+        alert('No');
+    }
+    if (oleg1.checked && oleg3.checked) {
+        alert('No');
     }
 
-    let choose_mas = choose_array.toString().replace(/,/g, ', ');
+    const chooseMas = chooseArray.toString().replace(/,/g, ', ');
 
     // Проверка выбора людей (хуй сосня (переделать нормально))
-    if (anna1.checked 
-        && nikita2.checked 
-        && danil3.checked) {
-            Swal.fire({
-                title: `Ваш выбор: ${choose_mas}`,
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Отправить`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    team[2].alive = "false";
-                    
-                    $('#ration-modal').modal('hide');
-                    qte_find_lab();
-                }
-            })
+    if (anna1.checked &&
+        nikita2.checked &&
+        danil3.checked) {
+        Swal.fire({
+            title: `Ваш выбор: ${chooseMas}`,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Отправить`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                team[2].alive = 'false';
 
-            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
-            swal2_modal.style.background = "rgb(58, 58, 58)";
+                $('#ration-modal').modal('hide');
+                qteFindLab();
+            }
+        });
 
-            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
-            swal2_cancel_btn.style.background = "#dc3545";
-        
-            let swal2_content = document.getElementsByClassName("swal2-content")[0];
-            swal2_content.style.color = "#fff";
-        
-            let swal2_title = document.getElementsByClassName("swal2-title")[0];
-            swal2_title.style.color = "#fff";
-    } else if (anna2.checked 
-        && nikita3.checked 
-        && danil1.checked) {
-            Swal.fire({
-                title: `Ваш выбор: ${choose_mas}`,
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Отправить`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    team[0].alive = "false";
-                    
-                    $('#ration-modal').modal('hide');
-                    qte_find_lab();
-                }
-            })
+        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
+        swal2Modal.style.background = 'rgb(58, 58, 58)';
 
-            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
-            swal2_modal.style.background = "rgb(58, 58, 58)";
+        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
+        swal2CancelBtn.style.background = '#dc3545';
 
-            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
-            swal2_cancel_btn.style.background = "#dc3545";
-        
-            let swal2_content = document.getElementsByClassName("swal2-content")[0];
-            swal2_content.style.color = "#fff";
-        
-            let swal2_title = document.getElementsByClassName("swal2-title")[0];
-            swal2_title.style.color = "#fff";
-    } else if (anna3.checked 
-        && danil1.checked 
-        && nikita2.checked) {
-            Swal.fire({
-                title: `Ваш выбор: ${choose_mas}`,
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Отправить`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    team[1].alive = "false";
-                    
-                    $('#ration-modal').modal('hide');
-                    qte_find_lab();
-                }
-            })
+        const swal2Content = document.getElementsByClassName('swal2-content')[0];
+        swal2Content.style.color = '#fff';
 
-            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
-            swal2_modal.style.background = "rgb(58, 58, 58)";
+        const swal2Title = document.getElementsByClassName('swal2-title')[0];
+        swal2Title.style.color = '#fff';
+    } else if (anna2.checked &&
+        nikita3.checked &&
+        danil1.checked) {
+        Swal.fire({
+            title: `Ваш выбор: ${chooseMas}`,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Отправить`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                team[0].alive = 'false';
 
-            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
-            swal2_cancel_btn.style.background = "#dc3545";
-        
-            let swal2_content = document.getElementsByClassName("swal2-content")[0];
-            swal2_content.style.color = "#fff";
-        
-            let swal2_title = document.getElementsByClassName("swal2-title")[0];
-            swal2_title.style.color = "#fff";
-    } else if (anna1.checked 
-        && danil2.checked 
-        && nikita3.checked) {
-            // Никто не умирает
+                $('#ration-modal').modal('hide');
+                qteFindLab();
+            }
+        });
 
-            Swal.fire({
-                title: `Ваш выбор: ${choose_mas}`,
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Отправить`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $('#ration-modal').modal('hide');
-                    qte_find_lab();
-                }
-            })
+        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
+        swal2Modal.style.background = 'rgb(58, 58, 58)';
 
-            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
-            swal2_modal.style.background = "rgb(58, 58, 58)";
+        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
+        swal2CancelBtn.style.background = '#dc3545';
 
-            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
-            swal2_cancel_btn.style.background = "#dc3545";
-        
-            let swal2_content = document.getElementsByClassName("swal2-content")[0];
-            swal2_content.style.color = "#fff";
-        
-            let swal2_title = document.getElementsByClassName("swal2-title")[0];
-            swal2_title.style.color = "#fff";
-    } else if (anna1.checked 
-        && oleg3.checked 
-        && nikita2.checked) {
-            // Никто не умирает
-    } else if (anna2.checked 
-        && oleg3.checked 
-        && nikita1.checked ) {
-            Swal.fire({
-                title: `Ваш выбор: ${choose_mas}`,
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Отправить`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    team[3].alive = "false";
-                    
-                    $('#ration-modal').modal('hide');
-                    qte_find_lab();
-                }
-            })
+        const swal2Content = document.getElementsByClassName('swal2-content')[0];
+        swal2Content.style.color = '#fff';
 
-            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
-            swal2_modal.style.background = "rgb(58, 58, 58)";
+        const swal2Title = document.getElementsByClassName('swal2-title')[0];
+        swal2Title.style.color = '#fff';
+    } else if (anna3.checked &&
+        danil1.checked &&
+        nikita2.checked) {
+        Swal.fire({
+            title: `Ваш выбор: ${chooseMas}`,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Отправить`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                team[1].alive = 'false';
 
-            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
-            swal2_cancel_btn.style.background = "#dc3545";
-        
-            let swal2_content = document.getElementsByClassName("swal2-content")[0];
-            swal2_content.style.color = "#fff";
-        
-            let swal2_title = document.getElementsByClassName("swal2-title")[0];
-            swal2_title.style.color = "#fff";
-    } else if (nikita2.checked
-        && anna3.checked
-        && oleg1.checked) {
-            // Никто не умирает
+                $('#ration-modal').modal('hide');
+                qteFindLab();
+            }
+        });
 
-            Swal.fire({
-                title: `Ваш выбор: ${choose_mas}`,
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Отправить`,
-            }).then((result) => {
-                if (result.isConfirmed) {                    
-                    $('#ration-modal').modal('hide');
-                    qte_find_lab();
-                }
-            })
+        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
+        swal2Modal.style.background = 'rgb(58, 58, 58)';
 
-            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
-            swal2_modal.style.background = "rgb(58, 58, 58)";
+        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
+        swal2CancelBtn.style.background = '#dc3545';
 
-            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
-            swal2_cancel_btn.style.background = "#dc3545";
-        
-            let swal2_content = document.getElementsByClassName("swal2-content")[0];
-            swal2_content.style.color = "#fff";
-        
-            let swal2_title = document.getElementsByClassName("swal2-title")[0];
-            swal2_title.style.color = "#fff";
-    } else if (nikita3.checked 
-        && oleg2.checked 
-        && anna1.checked) {
-            // Никто не умирает
+        const swal2Content = document.getElementsByClassName('swal2-content')[0];
+        swal2Content.style.color = '#fff';
 
-            Swal.fire({
-                title: `Ваш выбор: ${choose_mas}`,
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Отправить`,
-            }).then((result) => {
-                if (result.isConfirmed) {                    
-                    $('#ration-modal').modal('hide');
-                    qte_find_lab();
-                }
-            })
+        const swal2Title = document.getElementsByClassName('swal2-title')[0];
+        swal2Title.style.color = '#fff';
+    } else if (anna1.checked &&
+        danil2.checked &&
+        nikita3.checked) {
+        // Никто не умирает
 
-            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
-            swal2_modal.style.background = "rgb(58, 58, 58)";
+        Swal.fire({
+            title: `Ваш выбор: ${chooseMas}`,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Отправить`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('#ration-modal').modal('hide');
+                qteFindLab();
+            }
+        });
 
-            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
-            swal2_cancel_btn.style.background = "#dc3545";
-        
-            let swal2_content = document.getElementsByClassName("swal2-content")[0];
-            swal2_content.style.color = "#fff";
-        
-            let swal2_title = document.getElementsByClassName("swal2-title")[0];
-            swal2_title.style.color = "#fff";
-    } else if (danil2.checked 
-        && oleg3.checked 
-        && anna1.checked) {
-            Swal.fire({
-                title: `Ваш выбор: ${choose_mas}`,
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Отправить`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    team[1].alive = "false";
-                    
-                    $('#ration-modal').modal('hide');
-                    qte_find_lab();
-                }
-            })
+        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
+        swal2Modal.style.background = 'rgb(58, 58, 58)';
 
-            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
-            swal2_modal.style.background = "rgb(58, 58, 58)";
+        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
+        swal2CancelBtn.style.background = '#dc3545';
 
-            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
-            swal2_cancel_btn.style.background = "#dc3545";
-        
-            let swal2_content = document.getElementsByClassName("swal2-content")[0];
-            swal2_content.style.color = "#fff";
-        
-            let swal2_title = document.getElementsByClassName("swal2-title")[0];
-            swal2_title.style.color = "#fff";
-    } else if (danil1.checked 
-        && oleg3.checked
-        && anna2.checked) {
-            Swal.fire({
-                title: `Ваш выбор: ${choose_mas}`,
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Отправить`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    team[0].alive = "false";
-                    
-                    $('#ration-modal').modal('hide');
-                    qte_find_lab();
-                }
-            })
+        const swal2Content = document.getElementsByClassName('swal2-content')[0];
+        swal2Content.style.color = '#fff';
 
-            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
-            swal2_modal.style.background = "rgb(58, 58, 58)";
+        const swal2Title = document.getElementsByClassName('swal2-title')[0];
+        swal2Title.style.color = '#fff';
+    } else if (anna1.checked &&
+        oleg3.checked &&
+        nikita2.checked) {
+        // Никто не умирает
+    } else if (anna2.checked &&
+        oleg3.checked &&
+        nikita1.checked) {
+        Swal.fire({
+            title: `Ваш выбор: ${chooseMas}`,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Отправить`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                team[3].alive = 'false';
 
-            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
-            swal2_cancel_btn.style.background = "#dc3545";
-        
-            let swal2_content = document.getElementsByClassName("swal2-content")[0];
-            swal2_content.style.color = "#fff";
-        
-            let swal2_title = document.getElementsByClassName("swal2-title")[0];
-            swal2_title.style.color = "#fff";
-    } else if (oleg1.checked 
-        && danil2.checked 
-        && anna3.checked) {
-            Swal.fire({
-                title: `Ваш выбор: ${choose_mas}`,
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Отправить`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    team[2].alive = "false";
-                    
-                    $('#ration-modal').modal('hide');
-                    qte_find_lab();
-                }
-            })
+                $('#ration-modal').modal('hide');
+                qteFindLab();
+            }
+        });
 
-            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
-            swal2_modal.style.background = "rgb(58, 58, 58)";
+        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
+        swal2Modal.style.background = 'rgb(58, 58, 58)';
 
-            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
-            swal2_cancel_btn.style.background = "#dc3545";
-        
-            let swal2_content = document.getElementsByClassName("swal2-content")[0];
-            swal2_content.style.color = "#fff";
-        
-            let swal2_title = document.getElementsByClassName("swal2-title")[0];
-            swal2_title.style.color = "#fff";
-    } else if (anna1.checked 
-        && oleg2.checked 
-        && danil3.checked) {
-            Swal.fire({
-                title: `Ваш выбор: ${choose_mas}`,
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `Отправить`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    team[3].alive = "false";
-                    
-                    $('#ration-modal').modal('hide');
-                    qte_find_lab();
-                }
-            })
+        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
+        swal2CancelBtn.style.background = '#dc3545';
 
-            let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
-            swal2_modal.style.background = "rgb(58, 58, 58)";
+        const swal2Content = document.getElementsByClassName('swal2-content')[0];
+        swal2Content.style.color = '#fff';
 
-            let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
-            swal2_cancel_btn.style.background = "#dc3545";
-        
-            let swal2_content = document.getElementsByClassName("swal2-content")[0];
-            swal2_content.style.color = "#fff";
-        
-            let swal2_title = document.getElementsByClassName("swal2-title")[0];
-            swal2_title.style.color = "#fff";
+        const swal2Title = document.getElementsByClassName('swal2-title')[0];
+        swal2Title.style.color = '#fff';
+    } else if (nikita2.checked &&
+        anna3.checked &&
+        oleg1.checked) {
+        // Никто не умирает
+
+        Swal.fire({
+            title: `Ваш выбор: ${chooseMas}`,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Отправить`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('#ration-modal').modal('hide');
+                qteFindLab();
+            }
+        });
+
+        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
+        swal2Modal.style.background = 'rgb(58, 58, 58)';
+
+        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
+        swal2CancelBtn.style.background = '#dc3545';
+
+        const swal2Content = document.getElementsByClassName('swal2-content')[0];
+        swal2Content.style.color = '#fff';
+
+        const swal2Title = document.getElementsByClassName('swal2-title')[0];
+        swal2Title.style.color = '#fff';
+    } else if (nikita3.checked &&
+        oleg2.checked &&
+        anna1.checked) {
+        // Никто не умирает
+
+        Swal.fire({
+            title: `Ваш выбор: ${chooseMas}`,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Отправить`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('#ration-modal').modal('hide');
+                qteFindLab();
+            }
+        });
+
+        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
+        swal2Modal.style.background = 'rgb(58, 58, 58)';
+
+        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
+        swal2CancelBtn.style.background = '#dc3545';
+
+        const swal2Content = document.getElementsByClassName('swal2-content')[0];
+        swal2Content.style.color = '#fff';
+
+        const swal2Title = document.getElementsByClassName('swal2-title')[0];
+        swal2Title.style.color = '#fff';
+    } else if (danil2.checked &&
+        oleg3.checked &&
+        anna1.checked) {
+        Swal.fire({
+            title: `Ваш выбор: ${chooseMas}`,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Отправить`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                team[1].alive = 'false';
+
+                $('#ration-modal').modal('hide');
+                qteFindLab();
+            }
+        });
+
+        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
+        swal2Modal.style.background = 'rgb(58, 58, 58)';
+
+        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
+        swal2CancelBtn.style.background = '#dc3545';
+
+        const swal2Content = document.getElementsByClassName('swal2-content')[0];
+        swal2Content.style.color = '#fff';
+
+        const swal2Title = document.getElementsByClassName('swal2-title')[0];
+        swal2Title.style.color = '#fff';
+    } else if (danil1.checked &&
+        oleg3.checked &&
+        anna2.checked) {
+        Swal.fire({
+            title: `Ваш выбор: ${chooseMas}`,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Отправить`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                team[0].alive = 'false';
+
+                $('#ration-modal').modal('hide');
+                qteFindLab();
+            }
+        });
+
+        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
+        swal2Modal.style.background = 'rgb(58, 58, 58)';
+
+        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
+        swal2CancelBtn.style.background = '#dc3545';
+
+        const swal2Content = document.getElementsByClassName('swal2-content')[0];
+        swal2Content.style.color = '#fff';
+
+        const swal2Title = document.getElementsByClassName('swal2-title')[0];
+        swal2Title.style.color = '#fff';
+    } else if (oleg1.checked &&
+        danil2.checked &&
+        anna3.checked) {
+        Swal.fire({
+            title: `Ваш выбор: ${chooseMas}`,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Отправить`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                team[2].alive = 'false';
+
+                $('#ration-modal').modal('hide');
+                qteFindLab();
+            }
+        });
+
+        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
+        swal2Modal.style.background = 'rgb(58, 58, 58)';
+
+        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
+        swal2CancelBtn.style.background = '#dc3545';
+
+        const swal2Content = document.getElementsByClassName('swal2-content')[0];
+        swal2Content.style.color = '#fff';
+
+        const swal2Title = document.getElementsByClassName('swal2-title')[0];
+        swal2Title.style.color = '#fff';
+    } else if (anna1.checked &&
+        oleg2.checked &&
+        danil3.checked) {
+        Swal.fire({
+            title: `Ваш выбор: ${chooseMas}`,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Отправить`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                team[3].alive = 'false';
+
+                $('#ration-modal').modal('hide');
+                qteFindLab();
+            }
+        });
+
+        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
+        swal2Modal.style.background = 'rgb(58, 58, 58)';
+
+        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
+        swal2CancelBtn.style.background = '#dc3545';
+
+        const swal2Content = document.getElementsByClassName('swal2-content')[0];
+        swal2Content.style.color = '#fff';
+
+        const swal2Title = document.getElementsByClassName('swal2-title')[0];
+        swal2Title.style.color = '#fff';
     }
 }
 
-function qte_find_lab() {
-    btn_next = document.getElementById("btn-next");
-    btn_next.disabled = true;
+function qteFindLab() {
+    btnNext = document.getElementById('btn-next');
+    btnNext.disabled = true;
 
-    dialogs_div.innerHTML = `
+    dialogs.innerHTML = `
         <div class="row dialog">
             <p class="lead" id="text-dialog">Поиск лаборатории...</p> 
         </div>
@@ -974,72 +989,74 @@ function qte_find_lab() {
         </div>
     `;
 
-    let progressbar_search_lab = document.getElementById("progressbar_search_lab");
-    let progress = document.getElementById("progress-div");
+    const progressbarSearchLab = document.getElementById('progressbar_search_lab');
+    const progress = document.getElementById('progress-div');
 
     setInterval(() => {
         try {
-            if (width_search_lab == 100) {
-                qte_search_lab = false;
+            if (widthSearchLab == 100) {
+                qteSearchLab = false;
 
                 progress.parentNode.removeChild(progress);
 
-                find_lab_lives();
+                findLabLives();
             }
-        } catch { width_search_lab = false; }
+        } catch {
+            widthSearchLab = false;
+        }
 
-        if (qte_search_lab == true) {
-            width_search_lab += 25;
-            progressbar_search_lab.style.width = `${width_search_lab}%`;
-            progressbar_search_lab.innerHTML = `${width_search_lab}%`;
-        } else { }
-    }, 1000)
+        if (qteSearchLab == true) {
+            widthSearchLab += 25;
+            progressbarSearchLab.style.width = `${widthSearchLab}%`;
+            progressbarSearchLab.innerHTML = `${widthSearchLab}%`;
+        } else {}
+    }, 1000);
 }
 
 // Найдена лаборатория + показ, кто выжил
-function find_lab_lives() {
+function findLabLives() {
     // Массив для сохранения выживших
-    let team_alive_mas = [];
+    const teamAliveMas = [];
 
     // Мертвый из отряда
-    let dead = "";
-    
+    let dead = '';
+
     for (let i = 0; i < team.length; i++) {
         if (team[i].alive == true) {
-            team_alive_mas.push(team[i].name);
-        } else if (team[i].alive == "false") {
-            if (team[i].name == "Анна" || team[i].name == "Никита") {
-                dead = `${team[i].name.substring(0, team[i].name.length - 1) + "у"}`;
-            } else if (team[i].name == "Данил" || team[i].name == "Олег") {
-                dead = `${team[i].name.substring(0, team[i].name.length + 1) + "а"}`;
+            teamAliveMas.push(team[i].name);
+        } else if (team[i].alive == 'false') {
+            if (team[i].name == 'Анна' || team[i].name == 'Никита') {
+                dead = `${team[i].name.substring(0, team[i].name.length - 1) + 'у'}`;
+            } else if (team[i].name == 'Данил' || team[i].name == 'Олег') {
+                dead = `${team[i].name.substring(0, team[i].name.length + 1) + 'а'}`;
             }
         }
     }
-    
-    let team_alive = team_alive_mas.toString().replace(/,/g, ', ');
-    
-    if (dead != "") {
+
+    const teamAlive = teamAliveMas.toString().replace(/,/g, ', ');
+
+    if (dead != '') {
         Swal.fire({
-            title: `Из отряда выжили только: ${team_alive}`,
+            title: `Из отряда выжили только: ${teamAlive}`,
             text: `Вы потеряли: ${dead}`,
             confirmButtonText: `Понятно`,
         }).then((result) => {
             if (result.isConfirmed) {
-                entry_lab();
+                entryLab();
             }
-        })
+        });
 
-        let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
-        swal2_modal.style.background = "rgb(58, 58, 58)";
-    
-        let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
-        swal2_cancel_btn.style.background = "#dc3545";
-    
-        let swal2_content = document.getElementsByClassName("swal2-content")[0];
-        swal2_content.style.color = "#fff";
-    
-        let swal2_title = document.getElementsByClassName("swal2-title")[0];
-        swal2_title.style.color = "#fff";
+        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
+        swal2Modal.style.background = 'rgb(58, 58, 58)';
+
+        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
+        swal2CancelBtn.style.background = '#dc3545';
+
+        const swal2Content = document.getElementsByClassName('swal2-content')[0];
+        swal2Content.style.color = '#fff';
+
+        const swal2Title = document.getElementsByClassName('swal2-title')[0];
+        swal2Title.style.color = '#fff';
     } else {
         Swal.fire({
             title: `Никто не умер!`,
@@ -1047,24 +1064,24 @@ function find_lab_lives() {
             confirmButtonText: `Отлично`,
         }).then((result) => {
             if (result.isConfirmed) {
-                entry_lab();
+                entryLab();
             }
-        })
+        });
 
-        let swal2_modal = document.getElementsByClassName("swal2-modal")[0];
-        swal2_modal.style.background = "rgb(58, 58, 58)";
-    
-        let swal2_cancel_btn = document.getElementsByClassName("swal2-cancel")[0];
-        swal2_cancel_btn.style.background = "#dc3545";
-    
-        let swal2_content = document.getElementsByClassName("swal2-content")[0];
-        swal2_content.style.color = "#fff";
-    
-        let swal2_title = document.getElementsByClassName("swal2-title")[0];
-        swal2_title.style.color = "#fff";
+        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
+        swal2Modal.style.background = 'rgb(58, 58, 58)';
+
+        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
+        swal2CancelBtn.style.background = '#dc3545';
+
+        const swal2Content = document.getElementsByClassName('swal2-content')[0];
+        swal2Content.style.color = '#fff';
+
+        const swal2Title = document.getElementsByClassName('swal2-title')[0];
+        swal2Title.style.color = '#fff';
     }
 }
 
-function entry_lab() {
+function entryLab() {
 
 }
