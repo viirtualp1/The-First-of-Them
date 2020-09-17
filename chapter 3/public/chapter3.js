@@ -340,7 +340,7 @@ function qteDeadPhobos() {
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="run-div-btn">
-            <button id="btn-go-phobos" type="button" class="btn btn-dark mt-2 mb-2" onclick="counter_dead_phobos()">
+            <button id="btn-go-phobos" type="button" class="btn btn-dark mt-2 mb-2" onclick="counterDeadPhobos()">
                 Вырываться
             </button>
         </div>
