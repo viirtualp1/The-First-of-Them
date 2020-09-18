@@ -109,6 +109,12 @@ body {
 #btn-back-to-game, #btn-new-game,
 #btn-save-load, #btn-sign-out-game { color: rgba(255,255,255,.75); }
 
+#btn-back-to-game:hover, #btn-new-game:hover,
+#btn-save-load:hover, #btn-sign-out-game:hover {
+    transition: 0.5s ease;
+    border: 1px solid rgb(136, 136, 136); 
+}
+
 /* Скрытое имя */
 
 .title-show1 { 

@@ -976,5 +976,5 @@ function findLabLives() {
 }
 
 function entryLab() {
-
+    
 }
