@@ -68,6 +68,32 @@ let widthPlusOfficeSearch = 0;
 let qteSearchLab = true;
 let widthSearchLab = 0;
 
+// Main functions (Settings)
+function swalStyles() {
+    const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
+    swal2Modal.style.background = 'rgb(58, 58, 58)';
+
+    const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
+    swal2CancelBtn.style.background = '#dc3545';
+
+    const swal2Content = document.getElementsByClassName('swal2-content')[0];
+    swal2Content.style.color = '#fff';
+
+    const swal2Title = document.getElementsByClassName('swal2-title')[0];
+    swal2Title.style.color = '#fff';
+
+    try {
+        const swal2IconLeft = document.getElementsByClassName('swal2-success-circular-line-left')[0];
+        swal2IconLeft.style.background = 'rgb(58, 58, 58)';
+
+        const swal2IconRight = document.getElementsByClassName('swal2-success-circular-line-right')[0];
+        swal2IconRight.style.background = 'rgb(58, 58, 58)';
+
+        const swal2IconLine = document.getElementsByClassName('swal2-success-fix')[0];
+        swal2IconLine.style.background = 'rgb(58, 58, 58)';
+    } catch { }
+}
+
 function helloTeam() {
     document.body.style.backgroundImage = 'url(\'img/office.jpeg\')';
     music.src = 'sounds/office.wav';
@@ -120,14 +146,7 @@ function training() {
         }
     });
 
-    const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
-    swal2Modal.style.background = 'rgb(58, 58, 58)';
-
-    const swal2Content = document.getElementsByClassName('swal2-content')[0];
-    swal2Content.style.color = '#fff';
-
-    const swal2Title = document.getElementsByClassName('swal2-title')[0];
-    swal2Title.style.color = '#fff';
+    swalStyles();
 }
 
 function goToMountains() {
@@ -417,10 +436,6 @@ function houseLabBloger() {
         <div class="row dialog">
             <p class="lead" id="text-dialog">Кто это был?</p> 
         </div>
-
-        <div class="row dialog">
-            <p class="lead" id="text-dialog">Ладно, пойду дальше</p> 
-        </div>
     `;
 
     btnNext = document.getElementById('btn-next');
@@ -470,8 +485,8 @@ function houseLabOfficeBloger() {
 
         if (qteSearch == true) {
             widthPlusOfficeSearch += 25;
-            progressbar_office_search.style.width = `${widthPlusOfficeSearch}%`;
-            progressbar_office_search.innerHTML = `${widthPlusOfficeSearch}%`;
+            progressbarOfficeSearch.style.width = `${widthPlusOfficeSearch}%`;
+            progressbarOfficeSearch.innerHTML = `${widthPlusOfficeSearch}%`;
         } else {}
     }, 1000);
 }
@@ -484,8 +499,8 @@ function coordinateLab() {
 
     <div class="row dialog">
         <p class="lead" id="text-dialog">Хм, координаты, так...
-            Походу есть еще одна лаборатория и туда отправили вирус.
-            Нужно попробовать найти и пробраться в нее. Может получится выяснить что-то</p> 
+            Походу есть еще одна лаборатория.
+            Нужно попробовать найти ее. Может получится выяснить что-то</p> 
     </div>
   `;
 
@@ -643,20 +658,6 @@ function sendTeamMountains() {
         oleg2 = document.getElementById('oleg2'),
         oleg3 = document.getElementById('oleg3');
 
-    // Проверка чтобы пользователь не мог отправить одного челоека в 2-3 стороны
-    if (anna1.checked && anna3.checked) {
-        alert('No');
-    }
-    if (nikita1.checked && nikita3.checked) {
-        alert('No');
-    }
-    if (danil1.checked && danil3.checked) {
-        alert('No');
-    }
-    if (oleg1.checked && oleg3.checked) {
-        alert('No');
-    }
-
     const chooseMas = chooseArray.toString().replace(/,/g, ', ');
 
     // Проверка выбора людей (хуй сосня (переделать нормально))
@@ -677,17 +678,7 @@ function sendTeamMountains() {
             }
         });
 
-        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
-        swal2Modal.style.background = 'rgb(58, 58, 58)';
-
-        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
-        swal2CancelBtn.style.background = '#dc3545';
-
-        const swal2Content = document.getElementsByClassName('swal2-content')[0];
-        swal2Content.style.color = '#fff';
-
-        const swal2Title = document.getElementsByClassName('swal2-title')[0];
-        swal2Title.style.color = '#fff';
+        swalStyles();
     } else if (anna2.checked &&
         nikita3.checked &&
         danil1.checked) {
@@ -705,17 +696,7 @@ function sendTeamMountains() {
             }
         });
 
-        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
-        swal2Modal.style.background = 'rgb(58, 58, 58)';
-
-        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
-        swal2CancelBtn.style.background = '#dc3545';
-
-        const swal2Content = document.getElementsByClassName('swal2-content')[0];
-        swal2Content.style.color = '#fff';
-
-        const swal2Title = document.getElementsByClassName('swal2-title')[0];
-        swal2Title.style.color = '#fff';
+        swalStyles();
     } else if (anna3.checked &&
         danil1.checked &&
         nikita2.checked) {
@@ -733,17 +714,7 @@ function sendTeamMountains() {
             }
         });
 
-        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
-        swal2Modal.style.background = 'rgb(58, 58, 58)';
-
-        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
-        swal2CancelBtn.style.background = '#dc3545';
-
-        const swal2Content = document.getElementsByClassName('swal2-content')[0];
-        swal2Content.style.color = '#fff';
-
-        const swal2Title = document.getElementsByClassName('swal2-title')[0];
-        swal2Title.style.color = '#fff';
+        swalStyles();
     } else if (anna1.checked &&
         danil2.checked &&
         nikita3.checked) {
@@ -761,17 +732,7 @@ function sendTeamMountains() {
             }
         });
 
-        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
-        swal2Modal.style.background = 'rgb(58, 58, 58)';
-
-        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
-        swal2CancelBtn.style.background = '#dc3545';
-
-        const swal2Content = document.getElementsByClassName('swal2-content')[0];
-        swal2Content.style.color = '#fff';
-
-        const swal2Title = document.getElementsByClassName('swal2-title')[0];
-        swal2Title.style.color = '#fff';
+        swalStyles();
     } else if (anna1.checked &&
         oleg3.checked &&
         nikita2.checked) {
@@ -793,17 +754,7 @@ function sendTeamMountains() {
             }
         });
 
-        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
-        swal2Modal.style.background = 'rgb(58, 58, 58)';
-
-        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
-        swal2CancelBtn.style.background = '#dc3545';
-
-        const swal2Content = document.getElementsByClassName('swal2-content')[0];
-        swal2Content.style.color = '#fff';
-
-        const swal2Title = document.getElementsByClassName('swal2-title')[0];
-        swal2Title.style.color = '#fff';
+        swalStyles();
     } else if (nikita2.checked &&
         anna3.checked &&
         oleg1.checked) {
@@ -821,17 +772,7 @@ function sendTeamMountains() {
             }
         });
 
-        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
-        swal2Modal.style.background = 'rgb(58, 58, 58)';
-
-        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
-        swal2CancelBtn.style.background = '#dc3545';
-
-        const swal2Content = document.getElementsByClassName('swal2-content')[0];
-        swal2Content.style.color = '#fff';
-
-        const swal2Title = document.getElementsByClassName('swal2-title')[0];
-        swal2Title.style.color = '#fff';
+        swalStyles();
     } else if (nikita3.checked &&
         oleg2.checked &&
         anna1.checked) {
@@ -849,17 +790,7 @@ function sendTeamMountains() {
             }
         });
 
-        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
-        swal2Modal.style.background = 'rgb(58, 58, 58)';
-
-        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
-        swal2CancelBtn.style.background = '#dc3545';
-
-        const swal2Content = document.getElementsByClassName('swal2-content')[0];
-        swal2Content.style.color = '#fff';
-
-        const swal2Title = document.getElementsByClassName('swal2-title')[0];
-        swal2Title.style.color = '#fff';
+        swalStyles();
     } else if (danil2.checked &&
         oleg3.checked &&
         anna1.checked) {
@@ -877,17 +808,7 @@ function sendTeamMountains() {
             }
         });
 
-        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
-        swal2Modal.style.background = 'rgb(58, 58, 58)';
-
-        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
-        swal2CancelBtn.style.background = '#dc3545';
-
-        const swal2Content = document.getElementsByClassName('swal2-content')[0];
-        swal2Content.style.color = '#fff';
-
-        const swal2Title = document.getElementsByClassName('swal2-title')[0];
-        swal2Title.style.color = '#fff';
+        swalStyles();
     } else if (danil1.checked &&
         oleg3.checked &&
         anna2.checked) {
@@ -905,17 +826,7 @@ function sendTeamMountains() {
             }
         });
 
-        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
-        swal2Modal.style.background = 'rgb(58, 58, 58)';
-
-        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
-        swal2CancelBtn.style.background = '#dc3545';
-
-        const swal2Content = document.getElementsByClassName('swal2-content')[0];
-        swal2Content.style.color = '#fff';
-
-        const swal2Title = document.getElementsByClassName('swal2-title')[0];
-        swal2Title.style.color = '#fff';
+        swalStyles();
     } else if (oleg1.checked &&
         danil2.checked &&
         anna3.checked) {
@@ -933,17 +844,25 @@ function sendTeamMountains() {
             }
         });
 
-        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
-        swal2Modal.style.background = 'rgb(58, 58, 58)';
+        swalStyles();
+    } else if (oleg1.checked &&
+        nikita2.checked &&
+        anna3.checked) {
+        Swal.fire({
+            title: `Ваш выбор: ${chooseMas}`,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Отправить`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                    team[2].alive = 'false';
 
-        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
-        swal2CancelBtn.style.background = '#dc3545';
+                $('#ration-modal').modal('hide');
+                qteFindLab();
+            }
+        });
 
-        const swal2Content = document.getElementsByClassName('swal2-content')[0];
-        swal2Content.style.color = '#fff';
-
-        const swal2Title = document.getElementsByClassName('swal2-title')[0];
-        swal2Title.style.color = '#fff';
+        swalStyles();
     } else if (anna1.checked &&
         oleg2.checked &&
         danil3.checked) {
@@ -960,18 +879,12 @@ function sendTeamMountains() {
                 qteFindLab();
             }
         });
-
-        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
-        swal2Modal.style.background = 'rgb(58, 58, 58)';
-
-        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
-        swal2CancelBtn.style.background = '#dc3545';
-
-        const swal2Content = document.getElementsByClassName('swal2-content')[0];
-        swal2Content.style.color = '#fff';
-
-        const swal2Title = document.getElementsByClassName('swal2-title')[0];
-        swal2Title.style.color = '#fff';
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Ошибка',
+            text: 'Нельзя отправить одного человека!',
+        });
     }
 }
 
@@ -1046,17 +959,7 @@ function findLabLives() {
             }
         });
 
-        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
-        swal2Modal.style.background = 'rgb(58, 58, 58)';
-
-        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
-        swal2CancelBtn.style.background = '#dc3545';
-
-        const swal2Content = document.getElementsByClassName('swal2-content')[0];
-        swal2Content.style.color = '#fff';
-
-        const swal2Title = document.getElementsByClassName('swal2-title')[0];
-        swal2Title.style.color = '#fff';
+        swalStyles();
     } else {
         Swal.fire({
             title: `Никто не умер!`,
@@ -1068,17 +971,7 @@ function findLabLives() {
             }
         });
 
-        const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
-        swal2Modal.style.background = 'rgb(58, 58, 58)';
-
-        const swal2CancelBtn = document.getElementsByClassName('swal2-cancel')[0];
-        swal2CancelBtn.style.background = '#dc3545';
-
-        const swal2Content = document.getElementsByClassName('swal2-content')[0];
-        swal2Content.style.color = '#fff';
-
-        const swal2Title = document.getElementsByClassName('swal2-title')[0];
-        swal2Title.style.color = '#fff';
+        swalStyles();
     }
 }
 
