@@ -68,7 +68,7 @@ let widthPlusOfficeSearch = 0;
 let qteSearchLab = true;
 let widthSearchLab = 0;
 
-// Main functions (Settings)
+// Main functions - Settings
 function swalStyles() {
     const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
     swal2Modal.style.background = 'rgb(58, 58, 58)';
@@ -93,6 +93,16 @@ function swalStyles() {
         swal2IconLine.style.background = 'rgb(58, 58, 58)';
     } catch { }
 }
+
+function btnNext(func) {
+    btnNextElement = document.getElementById('btn-next');
+    btnNextElement = btnNextElement.parentNode.removeChild(btnNextElement);
+    document.getElementById('footer-buttons').innerHTML += `
+        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="${func}">Далее</button>
+    `;
+}
+
+// Main functions - Script
 
 function helloTeam() {
     document.body.style.backgroundImage = 'url(\'img/office.jpeg\')';
@@ -119,11 +129,7 @@ function helloTeam() {
         </div>
     `;
 
-    btnNext = document.getElementById('btn-next');
-    btnNext = btnNext.parentNode.removeChild(btnNext);
-    document.getElementById('footer-buttons').innerHTML += `
-        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="training()">Далее</button>
-    `;
+    btnNext('training()');
 }
 
 function training() {
@@ -175,11 +181,7 @@ function goToMountains() {
         </div>
     `;
 
-    btnNext = document.getElementById('btn-next');
-    btnNext = btnNext.parentNode.removeChild(btnNext);
-    document.getElementById('footer-buttons').innerHTML += `
-        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="changeHeroBlogerHouse('Б', 'Л', 'О', 'Г', 'Е', 'Р', '#f33b3b')">Далее</button>
-    `;
+    btnNext(`changeHeroBlogerHouse('Б', 'Л', 'О', 'Г', 'Е', 'Р', '#f33b3b')`);
 }
 
 // eslint-disable-next-line require-jsdoc
@@ -275,11 +277,7 @@ function blogerHouse() {
         </div>
     `;
 
-    btnNext = document.getElementById('btn-next');
-    btnNext = btnNext.parentNode.removeChild(btnNext);
-    document.getElementById('footer-buttons').innerHTML += `
-        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="house()">Далее</button>
-    `;
+    btnNext('house()');
 }
 
 function house() {
@@ -299,16 +297,12 @@ function house() {
         </div> 
     `;
 
-    btnNext = document.getElementById('btn-next');
-    btnNext = btnNext.parentNode.removeChild(btnNext);
-    document.getElementById('footer-buttons').innerHTML += `
-        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="qteCleanPathHouse()">Далее</button>
-    `;
+    btnNext('qteCleanPathHouse()');
 }
 
 function qteCleanPathHouse() {
-    btnNext = document.getElementById('btn-next');
-    btnNext.disabled = true;
+    btnNextElement = document.getElementById('btn-next');
+    btnNextElement.disabled = true;
 
     name.innerHTML = `Игра`;
     dialogs.innerHTML = `
@@ -342,8 +336,8 @@ function counterClean() {
         progress.parentNode.removeChild(progress);
         cleanBtn.parentNode.removeChild(cleanBtn);
 
-        btnNext = document.getElementById('btn-next');
-        btnNext.disabled = true;
+        btnNextElement = document.getElementById('btn-next');
+        btnNextElement.disabled = true;
 
         qteDeadPhobos();
     }
@@ -416,8 +410,8 @@ function counterDeadPhobos() {
         progressPhobosSuccess.parentNode.removeChild(progressPhobosSuccess);
         btnGoPhobos.parentNode.removeChild(btnGoPhobos);
 
-        btnNext = document.getElementById('btn-next');
-        btnNext.disabled = true;
+        btnNextElement = document.getElementById('btn-next');
+        btnNextElement.disabled = true;
 
         houseLabBloger();
     }
@@ -438,11 +432,7 @@ function houseLabBloger() {
         </div>
     `;
 
-    btnNext = document.getElementById('btn-next');
-    btnNext = btnNext.parentNode.removeChild(btnNext);
-    document.getElementById('footer-buttons').innerHTML += `
-        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="houseLabOfficeBloger()">Далее</button>
-    `;
+    btnNext('houseLabOfficeBloger()');
 }
 
 function houseLabOfficeBloger() {
@@ -452,8 +442,8 @@ function houseLabOfficeBloger() {
     document.body.style.backgroundAttachment = 'fixed';
     document.body.style.backgroundSize = 'cover';
 
-    btnNext = document.getElementById('btn-next');
-    btnNext.disabled = true;
+    btnNextElement = document.getElementById('btn-next');
+    btnNextElement.disabled = true;
 
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -493,22 +483,18 @@ function houseLabOfficeBloger() {
 
 function coordinateLab() {
     dialogs.innerHTML = `
-    <div class="row dialog">
-        <p class="lead" id="text-dialog">Что-то нашел!</p> 
-    </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Что-то нашел!</p> 
+        </div>
 
-    <div class="row dialog">
-        <p class="lead" id="text-dialog">Хм, координаты, так...
-            Походу есть еще одна лаборатория.
-            Нужно попробовать найти ее. Может получится выяснить что-то</p> 
-    </div>
-  `;
-
-    btnNext = document.getElementById('btn-next');
-    btnNext = btnNext.parentNode.removeChild(btnNext);
-    document.getElementById('footer-buttons').innerHTML += `
-        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="changeHeroPolinaMountains('П', 'О', 'Л', 'И', 'Н', 'А', '#f33be4')">Далее</button>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Хм, координаты, так...
+                Походу есть еще одна лаборатория.
+                Нужно попробовать найти ее. Может получится выяснить что-то</p> 
+        </div>
     `;
+
+    btnNext(`changeHeroPolinaMountains('П', 'О', 'Л', 'И', 'Н', 'А', '#f33be4')`);
 }
 
 function changeHeroPolinaMountains(letter1, letter2, letter3,
@@ -602,14 +588,14 @@ function polinaMountains() {
         </div>
     `;
 
-    btnNext = document.getElementById('btn-next');
-    btnNext = btnNext.parentNode.removeChild(btnNext);
+    btnNextElement = document.getElementById('btn-next');
+    btnNextElement = btnNextElement.parentNode.removeChild(btnNextElement);
     document.getElementById('footer-buttons').innerHTML += `
         <button id="btn-next" type="button" class="btn btn-lg btn-dark" data-toggle="modal" data-target="#ration-modal">Далее</button>
     `;
 
     rationFooter.innerHTML += `
-    <button class="btn btn-dark" onclick="sendTeamMountains()">Послать</button>
+        <button class="btn btn-dark" onclick="sendTeamMountains()">Послать</button>
   `;
 }
 
@@ -666,7 +652,6 @@ function sendTeamMountains() {
         danil3.checked) {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
-            showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Отправить`,
         }).then((result) => {
@@ -684,7 +669,6 @@ function sendTeamMountains() {
         danil1.checked) {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
-            showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Отправить`,
         }).then((result) => {
@@ -702,7 +686,6 @@ function sendTeamMountains() {
         nikita2.checked) {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
-            showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Отправить`,
         }).then((result) => {
@@ -722,7 +705,6 @@ function sendTeamMountains() {
 
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
-            showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Отправить`,
         }).then((result) => {
@@ -742,7 +724,6 @@ function sendTeamMountains() {
         nikita1.checked) {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
-            showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Отправить`,
         }).then((result) => {
@@ -762,7 +743,6 @@ function sendTeamMountains() {
 
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
-            showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Отправить`,
         }).then((result) => {
@@ -780,7 +760,6 @@ function sendTeamMountains() {
 
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
-            showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Отправить`,
         }).then((result) => {
@@ -796,7 +775,6 @@ function sendTeamMountains() {
         anna1.checked) {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
-            showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Отправить`,
         }).then((result) => {
@@ -814,7 +792,6 @@ function sendTeamMountains() {
         anna2.checked) {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
-            showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Отправить`,
         }).then((result) => {
@@ -832,7 +809,6 @@ function sendTeamMountains() {
         anna3.checked) {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
-            showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Отправить`,
         }).then((result) => {
@@ -850,7 +826,6 @@ function sendTeamMountains() {
         anna3.checked) {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
-            showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Отправить`,
         }).then((result) => {
@@ -868,7 +843,6 @@ function sendTeamMountains() {
         danil3.checked) {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
-            showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Отправить`,
         }).then((result) => {
@@ -879,18 +853,22 @@ function sendTeamMountains() {
                 qteFindLab();
             }
         });
+
+        swalStyles();
     } else {
         Swal.fire({
             icon: 'error',
             title: 'Ошибка',
             text: 'Нельзя отправить одного человека!',
         });
+
+        swalStyles();
     }
 }
 
 function qteFindLab() {
-    btnNext = document.getElementById('btn-next');
-    btnNext.disabled = true;
+    btnNextElement = document.getElementById('btn-next');
+    btnNextElement.disabled = true;
 
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -976,5 +954,42 @@ function findLabLives() {
 }
 
 function entryLab() {
-    
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Так, заходим</p>
+        </div>
+    `;
+
+    setTimeout(() => {
+        sound.src = 'sounds/stones.mp3';
+        setTimeout(() => {
+             rockfall();
+        }, 2500);
+    }, 1500);
+}
+
+function rockfall() {
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Вот блин, вход завалило...</p> 
+        </div>
+    `;
+
+    btnNext('labFindSplitUp()');
+}
+
+function labFindSplitUp() {
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Но лабораторию нашли, 
+                значит он не соврал, ну, разделимся опять</p>
+        </div>
+    `;
+
+    btnNext('whySplitUpAgain()');
+}
+
+function whySplitUpAgain() {
+
 }
