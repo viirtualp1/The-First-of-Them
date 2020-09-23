@@ -53,6 +53,9 @@ const mainHeroes = [
     },
 ];
 
+// Мертвый из отряда
+let dead = '';
+
 // qte variables
 let widthPlusClean = 0;
 let clickClean = 0;
@@ -349,7 +352,7 @@ function qteDeadPhobos() {
     name.innerHTML = `Блогер`;
     dialogs.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Ааа, что это...!?</p>
+            <p class="lead" id="text-dialog">Ааа, что это..!?</p>
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="run-div-btn">
@@ -909,9 +912,6 @@ function findLabLives() {
     // Массив для сохранения выживших
     const teamAliveMas = [];
 
-    // Мертвый из отряда
-    let dead = '';
-
     for (let i = 0; i < team.length; i++) {
         if (team[i].alive == true) {
             teamAliveMas.push(team[i].name);
@@ -954,6 +954,8 @@ function findLabLives() {
 }
 
 function entryLab() {
+    document.body.style.background = 'img/labMountains.jpg';
+
     name.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -991,5 +993,19 @@ function labFindSplitUp() {
 }
 
 function whySplitUpAgain() {
+    if (dead != team[0].name) {
+        name.innerHTML = `Никита`;
+        dialogs.innerHTML = `
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Мы уже потеряли ${dead},
+                    зачем опять разделятся, чтобы еще потерять кого-то?</p>
+            </div>
+        `;
+    }
+
+    btnNext('chooseSplitUpAgainOrNo()');
+}
+
+function chooseSplitUpAgainOrNo() {
 
 }
