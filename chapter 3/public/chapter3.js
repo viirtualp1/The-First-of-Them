@@ -105,6 +105,10 @@ function btnNext(func) {
     `;
 }
 
+function getRandNumbTeam(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+}
+
 // Main functions - Script
 
 function helloTeam() {
@@ -934,6 +938,8 @@ function findLabLives() {
         }).then((result) => {
             if (result.isConfirmed) {
                 entryLab();
+            } else {
+                entryLab();
             }
         });
 
@@ -967,8 +973,8 @@ function entryLab() {
         sound.src = 'sounds/stones.mp3';
         setTimeout(() => {
              rockfall();
-        }, 2500);
-    }, 1500);
+        }, 2000);
+    }, 1400);
 }
 
 function rockfall() {
@@ -993,19 +999,194 @@ function labFindSplitUp() {
 }
 
 function whySplitUpAgain() {
-    if (dead != team[0].name) {
-        name.innerHTML = `Никита`;
+    if (dead != '') {
+        function checkIsDead() {
+            const randNumb1 = getRandNumbTeam(0, 3);
+
+            if (team[randNumb1].dead != 'false') {
+                name.innerHTML = team[randNumb1].name;
+            } else {
+                checkIsDead();
+            }
+        }
+
+        checkIsDead();
+
         dialogs.innerHTML = `
             <div class="row dialog">
                 <p class="lead" id="text-dialog">Мы уже потеряли ${dead},
                     зачем опять разделятся, чтобы еще потерять кого-то?</p>
             </div>
         `;
-    }
 
-    btnNext('chooseSplitUpAgainOrNo()');
+        btnNext('chooseDialogSplitUpAgainOrNo()');
+    } else {
+        chooseSplitUpOrNo();
+    }
 }
 
-function chooseSplitUpAgainOrNo() {
+function chooseDialogSplitUpAgainOrNo() {
+    name.innerHTML = `Выбор`;
+    dialogs.innerHTML = `
+        <div class="row dialog d-flex justify-content-center" id="chooseDialogSplitUp-div-btn">
+            <button id="btn-dialog-1-1" type="button" class="btn btn-dark mt-2 mb-2" onclick="dialogBad();">
+                - Я здесь командир, что скажу - то и выполнять
+            </button>
+            <button id="btn-dialog-1-2" type="button" class="btn btn-dark mt-2 mb-2" onclick="dialogHope();">
+                - В этот раз никого не потеряем
+            </button>
+            <button id="btn-dialog-1-3" type="button" class="btn btn-dark mt-2 mb-2" onclick="dialogNoOne();">
+                Никого не отправлять
+            </button>
+        </div>
+    `;
+}
+
+function chooseSplitUpOrNo() {
+    name.innerHTML = `Выбор разделиться или нет`;
+    dialogs.innerHTML = `
+        <div class="row dialog d-flex justify-content-center" id="chooseSplitUp-div-btn">
+            <button id="btn-splitUp" type="button" class="btn btn-dark mt-2 mb-2" onclick="splitUp()">
+                Разделиться
+            </button>
+            <button id="btn-noSplitUp" type="button" class="btn btn-dark mt-2 mb-2" onclick="noSplitUp()">
+                Никого не отправлять
+            </button>
+        </div>
+    `;
+}
+
+function dialogBad() {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+    });
+
+    Toast.fire({
+        icon: 'error',
+        title: 'Отряд: отношения понижены',
+    });
+
+    function checkIsDead() {
+        const randNumb1 = getRandNumbTeam(0, 3);
+
+        if (team[randNumb1].dead != 'false') {
+            name.innerHTML = team[randNumb1].name;
+        } else {
+            checkIsDead();
+        }
+    }
+
+    checkIsDead();
+
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Ладно</p>
+        </div>
+    `;
+
+    btnNext('splitUp()');
+}
+
+function dialogHope() {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+    });
+
+    Toast.fire({
+        icon: 'error',
+        title: 'Отряд: отношения понижены',
+    });
+
+    function checkIsDead() {
+        const randNumb1 = getRandNumbTeam(0, 3);
+
+        if (team[randNumb1].dead != 'false') {
+            name.innerHTML = team[randNumb1].name;
+        } else {
+            checkIsDead();
+        }
+    }
+
+    checkIsDead();
+
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Ладно, хорошо</p>
+        </div>
+    `;
+
+    btnNext('splitUp()');
+}
+
+function dialogNoOne() {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+    });
+
+    Toast.fire({
+        icon: 'success',
+        title: 'Отряд: отношения повышены',
+    });
+
+    function checkIsDead() {
+        const randNumb1 = getRandNumbTeam(0, 3);
+
+        if (team[randNumb1].dead != 'false') {
+            name.innerHTML = team[randNumb1].name;
+        } else {
+            checkIsDead();
+        }
+    }
+
+    checkIsDead();
+
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Отлично!</p>
+        </div>
+    `;
+
+    btnNext('noSplitUp()');
+}
+
+// Сценарий - разделяемся
+function splitUp() {
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Ладно, идем вместе</p>
+        </div>
+    `;
+}
+
+// Сценарий - не разделяемся
+function noSplitUp() {
 
 }
