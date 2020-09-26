@@ -24,7 +24,7 @@ body {
 }
 
 #title { 
-    font-size: 5vh;
+    font-size: 45px;
     text-shadow: 3px 3px 3px black, 0 0 1em red; /* Параметры тени */
 }
 
@@ -37,8 +37,8 @@ body {
 #btn-normal, #btn-hardcore,
 #btn-settings {
     background: #25292C;
-    width: 28vh;
-    height: 8vh;
+    width: 15rem;
+    height: 4.5rem;
     margin-top: 1vh;
     border: 0;
 }

@@ -188,12 +188,12 @@ function goToMountains() {
         </div>
     `;
 
-    btnNext(`changeHeroBlogerHouse('Б', 'Л', 'О', 'Г', 'Е', 'Р', '#f33b3b')`);
+    btnNext(`blogerChangeHeroBloger('Б', 'Л', 'О', 'Г', 'Е', 'Р', '#f33b3b')`);
 }
 
 // eslint-disable-next-line require-jsdoc
 // eslint-disable-next-line no-unused-vars
-function changeHeroBlogerHouse(letter1, letter2, letter3,
+function blogerChangeHeroBloger(letter1, letter2, letter3,
     letter4, letter5, letter6,
     shadowColor) {
     document.body.style.background = '#000';
@@ -314,7 +314,7 @@ function qteCleanPathHouse() {
     name.innerHTML = `Игра`;
     dialogs.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Расчищайте путь в лабораторию...</p>
+            <p class="lead" id="text-dialog">Расчищайте путь в лабораторию</p>
         </div>
         <div class="row dialog d-flex justify-content-center" id="run-div-btn">
             <button id="btn-clean-path" type="button" class="btn btn-dark mt-2 mb-2" onclick="counterClean()">
@@ -390,7 +390,7 @@ function qteDeadPhobos() {
         if (deadPhobosSec === 0) {
             Swal.fire({
                 icon: 'error',
-                title: 'Вы проиграли!',
+                title: 'Вы умерли!',
             });
 
             setInterval(() => {
@@ -602,7 +602,7 @@ function polinaMountains() {
     `;
 
     rationFooter.innerHTML += `
-        <button class="btn btn-dark" onclick="sendTeamMountains()">Послать</button>
+        <button class="btn btn-dark" onclick="sendTeamMountains()">Отправить</button>
   `;
 }
 
@@ -660,6 +660,7 @@ function sendTeamMountains() {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
             showCancelButton: true,
+            cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -677,6 +678,7 @@ function sendTeamMountains() {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
             showCancelButton: true,
+            cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -694,6 +696,7 @@ function sendTeamMountains() {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
             showCancelButton: true,
+            cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -713,6 +716,7 @@ function sendTeamMountains() {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
             showCancelButton: true,
+            cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -726,12 +730,27 @@ function sendTeamMountains() {
         oleg3.checked &&
         nikita2.checked) {
         // Никто не умирает
+
+        Swal.fire({
+            title: `Ваш выбор: ${chooseMas}`,
+            showCancelButton: true,
+            cancelButtonText: 'Отмена',
+            confirmButtonText: `Отправить`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('#ration-modal').modal('hide');
+                qteFindLab();
+            }
+        });
+
+        swalStyles();
     } else if (anna2.checked &&
         oleg3.checked &&
         nikita1.checked) {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
             showCancelButton: true,
+            cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -751,6 +770,7 @@ function sendTeamMountains() {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
             showCancelButton: true,
+            cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -768,6 +788,7 @@ function sendTeamMountains() {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
             showCancelButton: true,
+            cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -783,6 +804,7 @@ function sendTeamMountains() {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
             showCancelButton: true,
+            cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -800,6 +822,7 @@ function sendTeamMountains() {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
             showCancelButton: true,
+            cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -817,6 +840,7 @@ function sendTeamMountains() {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
             showCancelButton: true,
+            cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -834,6 +858,7 @@ function sendTeamMountains() {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
             showCancelButton: true,
+            cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -851,6 +876,7 @@ function sendTeamMountains() {
         Swal.fire({
             title: `Ваш выбор: ${chooseMas}`,
             showCancelButton: true,
+            cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -978,6 +1004,12 @@ function entryLab() {
 }
 
 function rockfall() {
+    document.body.style.backgroundImage = `url('img/labMountains.jpg')`;
+    document.body.style.backgroundPosition = `center center`;
+    document.body.style.backgroundSize = `no-repeat`;
+    document.body.style.backgroundAttachment = `fixed`;
+    document.body.style.backgroundRepeat = `cover`;
+
     dialogs.innerHTML = `
         <div class="row dialog">
             <p class="lead" id="text-dialog">Вот блин, вход завалило...</p> 
@@ -1003,7 +1035,7 @@ function whySplitUpAgain() {
         function checkIsDead() {
             const randNumb1 = getRandNumbTeam(0, 3);
 
-            if (team[randNumb1].dead != 'false') {
+            if (team[randNumb1].alive != 'false') {
                 name.innerHTML = team[randNumb1].name;
             } else {
                 checkIsDead();
@@ -1043,7 +1075,7 @@ function chooseDialogSplitUpAgainOrNo() {
 }
 
 function chooseSplitUpOrNo() {
-    name.innerHTML = `Выбор разделиться или нет`;
+    name.innerHTML = `Выбор: Разделиться или нет?`;
     dialogs.innerHTML = `
         <div class="row dialog d-flex justify-content-center" id="chooseSplitUp-div-btn">
             <button id="btn-splitUp" type="button" class="btn btn-dark mt-2 mb-2" onclick="splitUp()">
@@ -1078,7 +1110,7 @@ function dialogBad() {
     function checkIsDead() {
         const randNumb1 = getRandNumbTeam(0, 3);
 
-        if (team[randNumb1].dead != 'false') {
+        if (team[randNumb1].alive != 'false') {
             name.innerHTML = team[randNumb1].name;
         } else {
             checkIsDead();
@@ -1118,7 +1150,7 @@ function dialogHope() {
     function checkIsDead() {
         const randNumb1 = getRandNumbTeam(0, 3);
 
-        if (team[randNumb1].dead != 'false') {
+        if (team[randNumb1].alive != 'false') {
             name.innerHTML = team[randNumb1].name;
         } else {
             checkIsDead();
@@ -1158,7 +1190,7 @@ function dialogNoOne() {
     function checkIsDead() {
         const randNumb1 = getRandNumbTeam(0, 3);
 
-        if (team[randNumb1].dead != 'false') {
+        if (team[randNumb1].alive != 'false') {
             name.innerHTML = team[randNumb1].name;
         } else {
             checkIsDead();
@@ -1181,12 +1213,421 @@ function splitUp() {
     name.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Ладно, идем вместе</p>
+            <p class="lead" id="text-dialog">Я пойду в ту комнату</p>
         </div>
     `;
+
+    btnNext('room32SplitUp()');
 }
 
 // Сценарий - не разделяемся
 function noSplitUp() {
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Идем в ту комнату</p>
+        </div>
+    `;
 
+    btnNext('room32NoSplitUp()');
 }
+
+function room32NoSplitUp() {
+    sound.src = 'sounds/doorOpen.mp3';
+    setTimeout(() => {
+        dialogs.innerHTML = `
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Разбитые контейнеры,
+                    пролитая жидкость, хм... Здесь какие-то новые зараженные?
+                </p>
+                <p class="lead" id="text-dialog">Нужно быть предельно осторожными</p>
+            </div>
+        `;
+    }, 1300);
+
+    btnNext('room32NoSplitUpMonster()');
+}
+
+let nameKillerMonster = '';
+function room32NoSplitUpMonster() {
+    sound.src = 'sounds/shot.mp3';
+    setTimeout(() => {
+        sound.src = 'sound/show.mp3';
+    }, 500);
+
+    const randNumb1 = getRandNumbTeam(0, 3);
+
+    function checkIsDead() {
+        const randNumb1 = getRandNumbTeam(0, 3);
+
+        if (team[randNumb1].alive != 'false') {
+            nameKillerMonster = team[randNumb1].name;
+            name.innerHTML = team[randNumb1].name;
+        } else {
+            checkIsDead();
+        }
+    }
+
+    checkIsDead();
+
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Берегись!</p>
+        </div>
+    `;
+
+    btnNext('room32NoSplitUpThanks()');
+}
+
+function room32NoSplitUpThanks() {
+    // Если разделились, спаситель Полины говорит "...мы же одна команда..."
+    // Если нет - не говорит
+    btnNextElement = document.getElementById('btn-next');
+    btnNextElement.disabled = true;
+
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Cпасибо, ${nameKillerMonster}</p>
+        </div>
+
+        <div id="name">
+            <div class="row mt-3 name">
+                <p class="lead" id="name-dialog">${nameKillerMonster}</p>
+            </div>
+        </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Да не за что, мы же одна команда!</p>
+        </div>
+    `;
+
+    setTimeout(() => {
+        let name = '';
+
+        function checkIsDead() {
+            const randNumb1 = getRandNumbTeam(0, 3);
+            console.log(randNumb1);
+
+            if (team[randNumb1].alive != 'false' &&
+                    team[randNumb1].name != nameKillerMonster) {
+                console.log(team[randNumb1].alive, team[randNumb1].name);
+                name = team[randNumb1].name;
+            } else {
+                checkIsDead();
+            }
+        }
+
+        checkIsDead();
+
+        dialogs.innerHTML += `
+            <div id="name">
+                <div class="row mt-3 name">
+                    <p class="lead" id="name-dialog">${name}</p>
+                </div>
+            </div>
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Извините, что отвлекаю, 
+                    но здесь какой-то человек</p>
+            </div>
+        `;
+
+        btnNext(`room32ChangeHeroBloger('Б', 'Л', 'О', 'Г', 'Е', 'Р', '#f33b3b')`);
+    }, 3000);
+}
+
+function room32ChangeHeroBloger(letter1, letter2, letter3,
+    letter4, letter5, letter6,
+    shadowColor) {
+    document.body.style.background = '#000';
+    music.src = '';
+    sound.src = 'sounds/bloger_change.mp3';
+
+    document.getElementById('name').style.visibility = 'hidden';
+    document.getElementById('footer-buttons').style.visibility = 'hidden';
+
+    dialogs.innerHTML = `
+        <div class="container d-flex justify-content-center" id="name-text-div">
+            <div>
+                <h1 style="float: left;" class="title-show1" id="letter-1">${letter1}</h1>
+                <h1 style="float: left;" class="title-show2" id="letter-2">${letter2}</h1>
+                <h1 style="float: left;" class="title-show3" id="letter-3">${letter3}</h1>
+                <h1 style="float: left;" class="title-show4" id="letter-4">${letter4}</h1>
+                <h1 style="float: left;" class="title-show5" id="letter-5">${letter5}</h1>
+                <h1 style="float: left;" class="title-show6" id="letter-6">${letter6}</h1>
+            </div>
+        </div>
+    `;
+
+    // Анимация появления имени
+    setTimeout(() => {
+        const p1 = document.getElementById('letter-1');
+        const p2 = document.getElementById('letter-2');
+        const p3 = document.getElementById('letter-3');
+        const p4 = document.getElementById('letter-4');
+        const p5 = document.getElementById('letter-5');
+        const p6 = document.getElementById('letter-6');
+
+        // Анимация появления имени
+
+        p1.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p1.id = 'title-show1';
+
+        p2.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p2.id = 'title-show2';
+
+        p3.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p3.id = 'title-show3';
+
+        p4.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p4.id = 'title-show4';
+
+        p5.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p5.id = 'title-show5';
+
+        p6.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p6.id = 'title-show6';
+    }, 200);
+
+    setTimeout(() => {
+        room32WhoAreYou();
+    }, 5000);
+}
+
+function room32WhoAreYou() {
+    document.body.style.backgroundImage = `url('img/labMountains.jpg')`;
+    document.body.style.backgroundPosition = `center center`;
+    document.body.style.backgroundSize = `no-repeat`;
+    document.body.style.backgroundAttachment = `fixed`;
+    document.body.style.backgroundRepeat = `cover`;
+
+    document.getElementById('name').style.visibility = 'visible';
+    document.getElementById('footer-buttons').style.visibility = 'visible';
+
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Кто ты?</p>
+        </div>
+    `;
+
+    btnNext('room32ChooseWhatReply()');
+}
+
+function room32ChooseWhatReply() {
+    name.innerHTML = `Выбор`;
+    dialogs.innerHTML = `
+        <div class="row dialog d-flex justify-content-center" id="chooseDialogWhatReply-div-btn">
+            <button id="btn-dialog-1-1" type="button" class="btn btn-dark mt-2 mb-2" onclick="room32ReplyLie()">
+                Соврать
+            </button>
+            <button id="btn-dialog-1-2" type="button" class="btn btn-dark mt-2 mb-2" onclick="replyGood(); room32ReplyTruth()">
+                Сказать правду
+            </button>
+        </div>
+    `;
+}
+
+function room32ReplyLie() {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+    });
+
+    Toast.fire({
+        icon: 'error',
+        title: 'Полина: отношения понижены',
+    });
+
+    name.innerHTML = `Блогер`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Работал здесь раньше, 
+                хотели меня убрать во избежании информации,
+                но я убил охранников и спрятался здесь, только хотел убежать вы</p>
+        </div>
+
+        <div id="name">
+            <div class="row mt-3 name">
+                <p class="lead" id="name-dialog">Полина</p>
+            </div>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Ты не можешь быть кем-то из них. 
+                Не ври. Так кто ты?</p>
+        </div>
+    `;
+
+    btnNext('room32ReplyTruth()');
+}
+
+function room32ReplyGood() {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+    });
+
+    Toast.fire({
+        icon: 'error',
+        title: 'Полина: отношения повышены',
+    });
+}
+
+function room32ReplyTruth() {
+    name.innerHTML = `Блогер`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Я - Блогер. 
+                Ищу все, что связано с Вирусом, а ты?</p>
+        </div>
+        <div id="name">
+            <div class="row mt-3 name">
+                <p class="lead" id="name-dialog">Полина</p>
+            </div>
+        </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Я Полина. Капитан отряда по борьбе с вирусом. 
+                Ищу здесь этот самый вирус и собираюсь его уничтожить</p>
+        </div>
+    `;
+
+    btnNext('room32PolinaSays()');
+}
+
+function room32PolinaSays() {
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Если хочешь, 
+                чтобы тебя не убили - то идем с нами</p>
+        </div>
+
+        <div id="name">
+            <div class="row mt-3 name">
+                <p class="lead" id="name-dialog">Блогер</p>
+            </div>
+        </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Ну, пойдем</p>
+        </div>
+    `;
+
+    btnNext(`changeHeroPolinaReadyPhobosFight('П', 'О', 'Л', 'И', 'Н', 'А', '#f33be4')`);
+}
+
+function changeHeroPolinaReadyPhobosFight(letter1, letter2, letter3,
+    letter4, letter5, letter6,
+    shadowColor) {
+    document.body.style.background = '#000';
+    music.src = '';
+    sound.src = 'sounds/polina_change.mp3';
+
+    document.getElementById('name').style.visibility = 'hidden';
+    document.getElementById('footer-buttons').style.visibility = 'hidden';
+
+    dialogs.innerHTML = `
+        <div class="container d-flex justify-content-center" id="name-text-div">
+            <div>
+                <h1 style="float: left;" class="title-show1" id="letter-1">${letter1}</h1>
+                <h1 style="float: left;" class="title-show2" id="letter-2">${letter2}</h1>
+                <h1 style="float: left;" class="title-show3" id="letter-3">${letter3}</h1>
+                <h1 style="float: left;" class="title-show4" id="letter-4">${letter4}</h1>
+                <h1 style="float: left;" class="title-show5" id="letter-5">${letter5}</h1>
+                <h1 style="float: left;" class="title-show6" id="letter-6">${letter6}</h1>
+            </div>
+        </div>
+    `;
+
+    // Анимация появления имени
+    setTimeout(() => {
+        const p1 = document.getElementById('letter-1');
+        const p2 = document.getElementById('letter-2');
+        const p3 = document.getElementById('letter-3');
+        const p4 = document.getElementById('letter-4');
+        const p5 = document.getElementById('letter-5');
+        const p6 = document.getElementById('letter-6');
+
+        // Анимация появления имени
+        p1.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p1.id = 'title-show1';
+
+        p2.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p2.id = 'title-show2';
+
+        p3.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p3.id = 'title-show3';
+
+        p4.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p4.id = 'title-show4';
+
+        p5.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p5.id = 'title-show5';
+
+        p6.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p6.id = 'title-show6';
+    }, 200);
+
+    setTimeout(() => {
+        polinaReadyPhobosFight();
+    }, 5000);
+}
+
+function polinaReadyPhobosFight() {
+    const p1 = document.getElementById('title-show1');
+    const p2 = document.getElementById('title-show2');
+    const p3 = document.getElementById('title-show3');
+    const p4 = document.getElementById('title-show4');
+    const p5 = document.getElementById('title-show5');
+    const p6 = document.getElementById('title-show6');
+
+    document.body.style.background = 'url(\'img/labMountains.jpg\')';
+    document.body.style.backgroundPosition = 'center center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
+
+    document.getElementById('name').style.visibility = 'visible';
+    document.getElementById('footer-buttons').style.visibility = 'visible';
+
+    p1.parentNode.removeChild(p1);
+    p2.parentNode.removeChild(p2);
+    p3.parentNode.removeChild(p3);
+    p4.parentNode.removeChild(p4);
+    p5.parentNode.removeChild(p5);
+    p6.parentNode.removeChild(p6);
+
+    name.innerHTML = 'Полина';
+    dialogs.innerHTML = `
+        <div id="dialogs">
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Все готовы? Идем</p>
+            </div>
+        </div>
+    `;
+
+    btnNext('phobosFight()');
+}
+
+function phobosFight() {
+    sound.src = 'doorOpen.mp3';
+    setTimeout(() => {
+        music.src = 'sounds/phobosFight.mp3';
+    }, 1200);
+}
+
