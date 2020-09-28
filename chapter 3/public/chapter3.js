@@ -1635,7 +1635,7 @@ function startPhobosFight() {
 let phobosHp = 100;
 let polinaHp = mainHeroes[0].hp;
 
-let clickPhobosToKill = Math.round(Math.random() * (60 - 40) + 40);
+const clickPhobosToKill = Math.round(Math.random() * (60 - 40) + 40);
 let clickUserToPhobos = 1;
 
 function shot() {
