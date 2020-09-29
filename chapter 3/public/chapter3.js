@@ -1482,7 +1482,7 @@ function room32ReplyGood() {
     });
 
     Toast.fire({
-        icon: 'error',
+        icon: 'success',
         title: 'Полина: отношения повышены',
     });
 }
@@ -1682,7 +1682,6 @@ function mechanicPhobosFight() {
 
         const checkInterval = setInterval(() => {
             if (clickUserToPhobos == clickPhobosToKill) {
-                dialogs.innerHTML = ``;
                 clearInterval(checkInterval);
                 clearInterval(phobosStatReload);
                 try {
@@ -1690,6 +1689,7 @@ function mechanicPhobosFight() {
                 } catch {
                     clearInterval(pressButtonInterval);
                 }
+                endLiftDialog();
             }
 
             if (polinaHp == 0) {
@@ -1733,13 +1733,10 @@ function mechanicPhobosFight() {
                 const progressbarPolina = document.getElementById('progressbar-hero-hp');
                 console.log(polinaHp);
                 if (polinaHp <= 80) {
-                    console.log('work');
                     progressbarPolina.style.className = 'progress-bar progress-bar-striped bg-primary';
                 } else if (polinaHp <= 50) {
-                    console.log('work');
                     progressbarPolina.style.className = 'progress-bar progress-bar-striped bg-warning';
                 } else if (polinaHp <= 20) {
-                    console.log('work');
                     progressbarPolina.style.className = 'progress-bar progress-bar-striped bg-danger';
                 }
 
@@ -1751,7 +1748,6 @@ function mechanicPhobosFight() {
 
                 const btnDodgeShot = document.getElementById('btn-dodge-shot');
                 btnDodgeShot.onclick = (e) => {
-                    console.log('asd');
                     pressButtonDiv.innerHTML = ``;
 
                     phobosHp -= 10;
@@ -1845,4 +1841,38 @@ function mechanicPhobosFight() {
             }, 1000);
         }, pressNbuttonIntervalNumber);
     }
+}
+
+function endLiftDialog() {
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Готов</p>
+        </div>
+        <div class="mt-4" id="name">
+            <div class="row name">
+                <p class="lead" id="name-dialog">Блогер</p>
+            </div>
+        </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">А вы неплохие ребята</p>
+        </div>
+        <div class="mt-4" id="name">
+            <div class="row name">
+                <p class="lead" id="name-dialog">Блогер</p>
+            </div>
+        </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Тут, кстати, ключ. По-моему от лифта.</p>
+        </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Отлично! Идем к лифту.</p>
+        </div>
+    `;
+
+    btnNext('endLift();');
+}
+
+function endLift() {
+    
 }
