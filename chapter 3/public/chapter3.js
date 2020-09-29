@@ -1659,7 +1659,7 @@ function mechanicPhobosFight() {
                 Фобос - ${clickPhobosToKill} кликов осталось
             </div>
             <div class="progress mt-4" id="progressHeroHpDiv">
-                <div class="progress-bar progress-bar-striped bg-primary" id="progressbar-hero-hp" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar progress-bar-striped bg-success" id="progressbar-hero-hp" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                     Полина - ${polinaHp}hp
                 </div>
             </div>
@@ -1685,7 +1685,11 @@ function mechanicPhobosFight() {
                 dialogs.innerHTML = ``;
                 clearInterval(checkInterval);
                 clearInterval(phobosStatReload);
-                clearInterval(pressNbuttonInterval);
+                try {
+                    clearInterval(pressNbuttonInterval);
+                } catch {
+                    clearInterval(pressButtonInterval);
+                }
             }
 
             if (polinaHp == 0) {
@@ -1694,66 +1698,151 @@ function mechanicPhobosFight() {
         }, 100);
     }, 3500);
 
-    /* Press on N button */
-    const pressNbuttonIntervalNumberRandom = Math.round(Math.random() * (10 - 5) + 5);
-    const pressNbuttonIntervalNumber = parseInt(pressNbuttonIntervalNumberRandom + '000');
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+        const pressButtonIntervalNumberRandom = Math.round(Math.random() * (10 - 5) + 5);
+        const pressButtonIntervalNumber = parseInt(pressButtonIntervalNumberRandom + '000');
 
-    let NbuttonText = '';
-
-    const pressNbuttonInterval = setInterval(() => {
-        const pressButtonDiv = document.getElementById('pressButtonDiv');
-
-        let secRemaining = 5;
-        let widthProgressbar = 100;
-
-        let Nbutton = Math.round(Math.random() * (4 - 1) + 1);
-        switch (Nbutton) {
-            case 1: Nbutton = 87; NbuttonText = 'W'; break;
-            case 2: Nbutton = 65; NbuttonText = 'A'; break;
-            case 3: Nbutton = 83; NbuttonText = 'S'; break;
-            case 4: Nbutton = 68; NbuttonText = 'D'; break;
-        };
-
-        pressButtonDiv.innerHTML = `
-            <div class="row dialog">
-                <p class="lead" id="text-dialog">Нажмите на клавиатуре кнопку '${NbuttonText}'</p>
-            </div>
-
-            <div class="progress mt-4" id="progress-div">
-                <div class="progress-bar progress-bar-striped bg-success" id="progressbar" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                    Осталось - ${secRemaining}сек
-                </div>
-            </div>
-        `;
-
-        const progressbar = document.getElementById('progressbar');
-
-        const intervalRemaining = setInterval(() => {
+        pressButtonInterval = setInterval(() => {
             const pressButtonDiv = document.getElementById('pressButtonDiv');
 
-            secRemaining -= 1;
-            widthProgressbar -= 20;
+            let secRemaining = 5;
+            let widthProgressbar = 100;
 
-            progressbar.style.width = `${widthProgressbar}%`;
-            progressbar.innerHTML = `Осталось - ${secRemaining}сек`;
+            pressButtonDiv.innerHTML = `
+                <div class="row dialog">
+                    <p class="lead" id="text-dialog">Нажмите на кнопку!</p>
+                </div>
 
-            document.addEventListener('keydown', (e) => {
-                if (e.which == Nbutton) {
+                <div class="row dialog d-flex justify-content-center" id="run-div-btn">
+                    <button id="btn-dodge-shot" type="button" class="btn btn-dark mt-2 mb-2">
+                        Увернуться + Стрельнуть
+                    </button>
+                </div>
+    
+                <div class="progress mt-4" id="progress-div">
+                    <div class="progress-bar progress-bar-striped bg-success" id="progressbar" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        Осталось - ${secRemaining}сек
+                    </div>
+                </div>
+            `;
+
+            const progressbar = document.getElementById('progressbar');
+
+            const intervalRemaining = setInterval(() => {
+                const pressButtonDiv = document.getElementById('pressButtonDiv');
+                const progressbarPolina = document.getElementById('progressbar-hero-hp');
+                console.log(polinaHp);
+                if (polinaHp <= 80) {
+                    console.log('work');
+                    progressbarPolina.style.className = 'progress-bar progress-bar-striped bg-primary';
+                } else if (polinaHp <= 50) {
+                    console.log('work');
+                    progressbarPolina.style.className = 'progress-bar progress-bar-striped bg-warning';
+                } else if (polinaHp <= 20) {
+                    console.log('work');
+                    progressbarPolina.style.className = 'progress-bar progress-bar-striped bg-danger';
+                }
+
+                secRemaining -= 1;
+                widthProgressbar -= 20;
+
+                progressbar.style.width = `${widthProgressbar}%`;
+                progressbar.innerHTML = `Осталось - ${secRemaining}сек`;
+
+                const btnDodgeShot = document.getElementById('btn-dodge-shot');
+                btnDodgeShot.onclick = (e) => {
+                    console.log('asd');
                     pressButtonDiv.innerHTML = ``;
 
                     phobosHp -= 10;
                     clickUserToPhobos += 1;
                     clearInterval(intervalRemaining);
+                };
+
+                if (secRemaining == 0) {
+                    pressButtonDiv.innerHTML = ``;
+
+                    polinaHp -= 10;
+                    clearInterval(intervalRemaining);
                 }
-            });
+            }, 1000);
+        }, pressButtonIntervalNumber);
+    } else {
+        const pressNbuttonIntervalNumberRandom = Math.round(Math.random() * (10 - 5) + 5);
+        const pressNbuttonIntervalNumber = parseInt(pressNbuttonIntervalNumberRandom + '000');
 
-            if (secRemaining == 0) {
-                pressButtonDiv.innerHTML = ``;
+        let NbuttonText = '';
 
-                polinaHp -= 10;
-                clearInterval(intervalRemaining);
+        pressNbuttonInterval = setInterval(() => {
+            const pressButtonDiv = document.getElementById('pressButtonDiv');
+            const progressbarPolina = document.getElementById('progressbar-hero-hp');
+
+            if (polinaHp <= 80) {
+                progressbarPolina.className = 'progress-bar progress-bar-striped bg-primary';
             }
-        }, 1000);
-    }, pressNbuttonIntervalNumber);
-    /* End Press on N button */
+
+            if (polinaHp <= 50) {
+                progressbarPolina.className = 'progress-bar progress-bar-striped bg-warning';
+                progressbarPolina.style.color = '#000';
+            }
+
+            if (polinaHp <= 20) {
+                console.log('test');
+                progressbarPolina.className = 'progress-bar progress-bar-striped bg-danger';
+                progressbarPolina.style.color = '#fff';
+            }
+
+            let secRemaining = 5;
+            let widthProgressbar = 100;
+
+            let Nbutton = Math.round(Math.random() * (4 - 1) + 1);
+            switch (Nbutton) {
+                case 1: Nbutton = 87; NbuttonText = 'W'; break;
+                case 2: Nbutton = 65; NbuttonText = 'A'; break;
+                case 3: Nbutton = 83; NbuttonText = 'S'; break;
+                case 4: Nbutton = 68; NbuttonText = 'D'; break;
+            };
+
+            pressButtonDiv.innerHTML = `
+                <div class="row dialog">
+                    <p class="lead" id="text-dialog">Нажмите на клавиатуре кнопку '${NbuttonText}'</p>
+                </div>
+    
+                <div class="progress mt-4" id="progress-div">
+                    <div class="progress-bar progress-bar-striped bg-success" id="progressbar" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        Осталось - ${secRemaining}сек
+                    </div>
+                </div>
+            `;
+
+            const progressbar = document.getElementById('progressbar');
+
+            const intervalRemaining = setInterval(() => {
+                const pressButtonDiv = document.getElementById('pressButtonDiv');
+
+                secRemaining -= 1;
+                widthProgressbar -= 20;
+
+                progressbar.style.width = `${widthProgressbar}%`;
+                progressbar.innerHTML = `Осталось - ${secRemaining}сек`;
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.which == Nbutton) {
+                        pressButtonDiv.innerHTML = ``;
+
+                        phobosHp -= 10;
+                        clickUserToPhobos += 1;
+                        clearInterval(intervalRemaining);
+                    }
+                });
+
+                if (secRemaining == 0) {
+                    pressButtonDiv.innerHTML = ``;
+
+                    polinaHp -= 10;
+                    clearInterval(intervalRemaining);
+                }
+            }, 1000);
+        }, pressNbuttonIntervalNumber);
+    }
 }
