@@ -1874,5 +1874,5 @@ function endLiftDialog() {
 }
 
 function endLift() {
-    
+
 }
