@@ -608,6 +608,8 @@ function polinaMountains() {
 
 function sendTeamMountains() {
     const chooseArray = [];
+    const chooseArrayDirectionValue = [];
+    const chooseArrayDirection = [];
 
     // для вывода выбранных членов отряда
     const teamElements = [
@@ -628,6 +630,31 @@ function sendTeamMountains() {
         document.getElementById('oleg3'),
     ];
 
+    const teamElementsDirection = [
+        [document.getElementById('nikita1'),
+        document.getElementById('anna1'),
+        document.getElementById('oleg1'),
+        document.getElementById('danil1')],
+
+        [document.getElementById('nikita2'),
+        document.getElementById('anna2'),
+        document.getElementById('oleg2'),
+        document.getElementById('danil2')],
+
+        [document.getElementById('nikita3'),
+        document.getElementById('anna3'),
+        document.getElementById('oleg3'),
+        document.getElementById('danil3')],
+    ];
+
+    for (let i = 0; i < teamElementsDirection.length; i++) {
+        for (let j = 0; j < teamElementsDirection[i].length; j++) {
+            if (teamElementsDirection[i][j].checked) {
+                chooseArrayDirectionValue.push(teamElementsDirection[i][j].value);
+            }
+        }
+    }
+
     for (let i = 0; i < teamElements.length; i++) {
         if (teamElements[i].checked) {
             chooseArray.push(teamElements[i].value);
@@ -643,22 +670,39 @@ function sendTeamMountains() {
     const anna2 = document.getElementById('anna2');
     const anna3 = document.getElementById('anna3');
 
-    danil1 = document.getElementById('danil1'),
-        danil2 = document.getElementById('danil2'),
-        danil3 = document.getElementById('danil3');
+    const danil1 = document.getElementById('danil1');
+    const danil2 = document.getElementById('danil2');
+    const danil3 = document.getElementById('danil3');
 
-    oleg1 = document.getElementById('oleg1'),
-        oleg2 = document.getElementById('oleg2'),
-        oleg3 = document.getElementById('oleg3');
+    const oleg1 = document.getElementById('oleg1');
+    const oleg2 = document.getElementById('oleg2');
+    const oleg3 = document.getElementById('oleg3');
 
     const chooseMas = chooseArray.toString().replace(/,/g, ', ');
+
+    for (let i = 0; i < teamElementsDirection.length; i++) {
+        for (let j = 0; j < teamElementsDirection[i].length; j++) {
+            if (teamElementsDirection[i][j].checked) {
+                const last = teamElementsDirection[i][j].id.toString().slice(-1);
+                if (last == '1') {
+                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Налево <br />`);
+                } else if (last == '2') {
+                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Прямо <br />`);
+                } else if (last == '3') {
+                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Направо`);
+                }
+            }
+        }
+    }
 
     // Проверка выбора людей (хуй сосня (переделать нормально))
     if (anna1.checked &&
         nikita2.checked &&
         danil3.checked) {
         Swal.fire({
-            title: `Ваш выбор: ${chooseMas}`,
+            html: `
+                 <p>${chooseArrayDirection}</p>
+            `,
             showCancelButton: true,
             cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
@@ -1625,8 +1669,9 @@ function polinaReadyPhobosFight() {
 
 /* Boss */
 function startPhobosFight() {
-    sound.src = 'doorOpen.mp3';
+    sound.src = 'sounds/doorOpen.mp3';
     setTimeout(() => {
+        music.src = 'sounds/phobosFight.mp3';
         mechanicPhobosFight();
     }, 1200);
 }
@@ -1639,6 +1684,8 @@ const clickPhobosToKill = Math.round(Math.random() * (100 - 50) + 50);
 let clickUserToPhobos = 1;
 
 function shot() {
+    sound.src = 'sounds/shot.mp3';
+
     const result = clickPhobosToKill - clickUserToPhobos;
     clickUserToPhobos += 1;
     phobosHp -= 10;
