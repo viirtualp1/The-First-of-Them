@@ -151,7 +151,11 @@ function training() {
     swalWithBootstrapButtons.fire({
         title: 'Обучение',
         imageUrl: 'img/ration.PNG',
-        html: 'Перед вами рация. <br /> Сверху имя ваших людей из отряда: Анна, Никита, Данил, Олег. <br /> Слева направление куда их можно отправить: налево, прямо, направо.',
+        html: `
+            Перед вами рация. <br /> 
+            Сверху имя ваших людей из отряда: Анна, Никита, Данил, Олег. <br /> 
+            Слева направление куда их можно отправить: налево, прямо, направо.
+        `,
         confirmButtonText: 'Понятно',
     }).then((result) => {
         if (result.value) {
@@ -226,7 +230,6 @@ function blogerChangeHeroBloger(letter1, letter2, letter3,
         const p6 = document.getElementById('letter-6');
 
         // Анимация появления имени
-
         p1.style.textShadow = `1px 1px 10px ${shadowColor}`;
         p1.id = 'title-show1';
 
@@ -695,14 +698,18 @@ function sendTeamMountains() {
         }
     }
 
+    let namesString = '';
+    for (const names of chooseArrayDirection) {
+        namesString = namesString + names;
+    }
+
     // Проверка выбора людей (хуй сосня (переделать нормально))
     if (anna1.checked &&
         nikita2.checked &&
         danil3.checked) {
         Swal.fire({
-            html: `
-                 <p>${chooseArrayDirection}</p>
-            `,
+            title: 'Ваш выбор:',
+            html: `<p>${namesString}</p>`,
             showCancelButton: true,
             cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
@@ -720,7 +727,8 @@ function sendTeamMountains() {
         nikita3.checked &&
         danil1.checked) {
         Swal.fire({
-            title: `Ваш выбор: ${chooseMas}`,
+            title: 'Ваш выбор:',
+            html: `<p>${namesString}</p>`,
             showCancelButton: true,
             cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
@@ -738,7 +746,8 @@ function sendTeamMountains() {
         danil1.checked &&
         nikita2.checked) {
         Swal.fire({
-            title: `Ваш выбор: ${chooseMas}`,
+            title: 'Ваш выбор:',
+            html: `<p>${namesString}</p>`,
             showCancelButton: true,
             cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
@@ -758,7 +767,8 @@ function sendTeamMountains() {
         // Никто не умирает
 
         Swal.fire({
-            title: `Ваш выбор: ${chooseMas}`,
+            title: 'Ваш выбор:',
+            html: `<p>${namesString}</p>`,
             showCancelButton: true,
             cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
@@ -776,7 +786,8 @@ function sendTeamMountains() {
         // Никто не умирает
 
         Swal.fire({
-            title: `Ваш выбор: ${chooseMas}`,
+            title: 'Ваш выбор:',
+            html: `<p>${namesString}</p>`,
             showCancelButton: true,
             cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
@@ -792,7 +803,8 @@ function sendTeamMountains() {
         oleg3.checked &&
         nikita1.checked) {
         Swal.fire({
-            title: `Ваш выбор: ${chooseMas}`,
+            title: 'Ваш выбор:',
+            html: `<p>${namesString}</p>`,
             showCancelButton: true,
             cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
@@ -812,7 +824,8 @@ function sendTeamMountains() {
         // Никто не умирает
 
         Swal.fire({
-            title: `Ваш выбор: ${chooseMas}`,
+            title: 'Ваш выбор:',
+            html: `<p>${namesString}</p>`,
             showCancelButton: true,
             cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
@@ -830,7 +843,8 @@ function sendTeamMountains() {
         // Никто не умирает
 
         Swal.fire({
-            title: `Ваш выбор: ${chooseMas}`,
+            title: 'Ваш выбор:',
+            html: `<p>${namesString}</p>`,
             showCancelButton: true,
             cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
@@ -846,7 +860,8 @@ function sendTeamMountains() {
         oleg3.checked &&
         anna1.checked) {
         Swal.fire({
-            title: `Ваш выбор: ${chooseMas}`,
+            title: 'Ваш выбор:',
+            html: `<p>${namesString}</p>`,
             showCancelButton: true,
             cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
@@ -864,7 +879,8 @@ function sendTeamMountains() {
         oleg3.checked &&
         anna2.checked) {
         Swal.fire({
-            title: `Ваш выбор: ${chooseMas}`,
+            title: 'Ваш выбор:',
+            html: `<p>${namesString}</p>`,
             showCancelButton: true,
             cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
@@ -882,7 +898,8 @@ function sendTeamMountains() {
         danil2.checked &&
         anna3.checked) {
         Swal.fire({
-            title: `Ваш выбор: ${chooseMas}`,
+            title: 'Ваш выбор:',
+            html: `<p>${namesString}</p>`,
             showCancelButton: true,
             cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
@@ -900,7 +917,8 @@ function sendTeamMountains() {
         nikita2.checked &&
         anna3.checked) {
         Swal.fire({
-            title: `Ваш выбор: ${chooseMas}`,
+            title: 'Ваш выбор:',
+            html: `<p>${namesString}</p>`,
             showCancelButton: true,
             cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
@@ -918,7 +936,8 @@ function sendTeamMountains() {
         oleg2.checked &&
         danil3.checked) {
         Swal.fire({
-            title: `Ваш выбор: ${chooseMas}`,
+            title: 'Ваш выбор:',
+            html: `<p>${namesString}</p>`,
             showCancelButton: true,
             cancelButtonText: 'Отмена',
             confirmButtonText: `Отправить`,
@@ -1904,13 +1923,13 @@ function endLiftDialog() {
         <div class="row dialog">
             <p class="lead" id="text-dialog">А вы неплохие ребята</p>
         </div>
-        <div class="mt-4" id="name">
-            <div class="row name">
-                <p class="lead" id="name-dialog">Блогер</p>
-            </div>
-        </div>
         <div class="row dialog">
             <p class="lead" id="text-dialog">Тут, кстати, ключ. По-моему от лифта.</p>
+        </div>
+        <div class="mt-4" id="name">
+            <div class="row name">
+                <p class="lead" id="name-dialog">Полина</p>
+            </div>
         </div>
         <div class="row dialog">
             <p class="lead" id="text-dialog">Отлично! Идем к лифту.</p>
@@ -1921,5 +1940,5 @@ function endLiftDialog() {
 }
 
 function endLift() {
-
+    sound.src = 'sounds/openDoorLift.mp3';
 }

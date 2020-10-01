@@ -23,9 +23,9 @@ function check () {
           if (teamElementsDirection[i][j].checked) {
               const last = teamElementsDirection[i][j].id.toString().slice(-1);
               if (last == '1') {
-                  chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Налево`);
+                  chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Налево <br />`);
               } else if (last == '2') {
-                  chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Прямо`);
+                  chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Прямо <br />`);
               } else if (last == '3') {
                   chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Направо`);
               }
@@ -33,7 +33,13 @@ function check () {
       }
   }
 
-  console.log(chooseDirectionMas);
+  let teamElementsDirectionZ = chooseArrayDirection.toString().split(', ');
+  let string = '';
+  for (let names of chooseArrayDirection) {
+      string = string + names;
+  }
+  console.log(string);
+
   console.log(chooseArrayDirection);
   console.log(teamElementsDirection);
 }
