@@ -12,6 +12,11 @@ const dialogs = document.getElementById('dialogs');
 const name = document.getElementById('name-dialog');
 const rationFooter = document.getElementById('ration-footer');
 
+// Div - name and dialog
+const nameDiv = document.getElementById('name');
+const dialogsDiv = document.getElementById('dialogs');
+
+// Получить из LocalStorage и заменить его на существующее
 // team (objects)
 const team = [
     nikita = {
@@ -1909,7 +1914,7 @@ function mechanicPhobosFight() {
     }
 }
 
-function endLiftDialog() {
+function liftTeamDialog() {
     name.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -1936,9 +1941,30 @@ function endLiftDialog() {
         </div>
     `;
 
-    btnNext('endLift();');
+    btnNext('liftAnonimSpeak();');
 }
 
-function endLift() {
+function liftAnonimSpeak() {
     sound.src = 'sounds/openDoorLift.mp3';
+    setTimeout(() => {
+        name.innerHTML = `???`;
+        dialogs.innerHTML = `
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Всего лишь моя забава...</p>
+            </div>
+        `;
+
+        btnNext('soundFallLift()');
+    }, 3000);
+}
+
+function soundFallLift() {
+    sound.src = 'sounds/fallLift.mp3';
+    setTimeout(() => {
+        document.body.style.backgroundColor = '#000';
+
+        nameDiv.parentNode.removeChild(nameDiv);
+        dialogsDiv.parentNode.removeChild(dialogsDiv);
+        // Titles and Statistics
+    }, 7000);
 }
