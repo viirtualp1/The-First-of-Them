@@ -11,6 +11,8 @@ const sound = document.getElementById('sound');
 const dialogs = document.getElementById('dialogs');
 const name = document.getElementById('name-dialog');
 const rationFooter = document.getElementById('ration-footer');
+const footerButtons = document.getElementById('footer-buttons');
+const windowDiv = document.getElementById('window');
 
 // Div - name and dialog
 const nameDiv = document.getElementById('name');
@@ -1961,10 +1963,99 @@ function liftAnonimSpeak() {
 function soundFallLift() {
     sound.src = 'sounds/fallLift.mp3';
     setTimeout(() => {
-        document.body.style.backgroundColor = '#000';
+        music.src = 'sounds/endGame.mp3';
+        document.body.style.background = '#000';
 
-        nameDiv.parentNode.removeChild(nameDiv);
-        dialogsDiv.parentNode.removeChild(dialogsDiv);
+        end();
         // Titles and Statistics
-    }, 7000);
+    }, 8000);
+}
+
+function end() {
+    nameDiv.parentNode.removeChild(nameDiv);
+    dialogsDiv.parentNode.removeChild(dialogsDiv);
+    footerButtons.parentNode.removeChild(footerButtons);
+
+    windowDiv.innerHTML = `
+        <div class="thanksEnd mt-2">
+            <p class="lead text-center text-light mt-2 display-4 title" id="title-game">The First of Them</p>
+            <p class="lead text-center text-light mt-1 mt-4 display-3 title-end" id="title2">Конец третьей главы</p>
+            
+            <div class="d-flex justify-content-center" id="links">
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle mt-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ссылки
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <a class="dropdown-item" href="https://vk.com/public_lar"><i id="vk-icon" class="fab fa-vk"></i> Группа Vk</a>
+                        <a class="dropdown-item" href="https://www.youtube.com/channel/UCeh4yaV7iYy0zrbN1-qy2IQ"><i id="youtube-icon" class="fab fa-youtube"></i> Канал YouTube</a>
+                    </div>
+                </div>
+                <button id="quit" type="button" class="btn btn-dark mt-2 ml-2" onclick="location.href = '../menu.html'">
+                    Выход
+                </button>
+                <button class="btn btn-dark mt-2 ml-2" id="btn-thanks" data-toggle="modal" data-target="#thanks-div">Благодарность</button>
+            </div>
+
+            <div class="card-deck text-center mt-4">
+                <div class="card text-white bg-dark">
+                    <div class="card-body">
+                        <h5 class="card-title">Программисты</h5>
+                        <p class="card-text">Никита Зинин</p>
+                        <p class="card-text">Анна Пастухова</p>
+                        <p class="card-text">Данил Чернышев</p>
+                    </div>
+                </div>
+                <div class="card text-white bg-dark">
+                    <div class="card-body">
+                        <h5 class="card-title">Сценарий</h5>
+                        <p class="card-text">Никита Зинин</p>
+                        <p class="card-text">Анна Пастухова</p>
+                        <p class="card-text">Данил Чернышев</p>
+                    </div>
+                </div>
+                <div class="card text-white bg-dark">
+                    <div class="card-body">
+                        <h5 class="card-title">Художник</h5>
+                        <p class="card-text">Данил Чернышев</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="thanks-div" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-white">
+                        <h5 class="modal-title" id="thanks-title">Благодарность</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center text-white">
+                        <p class="lead">Отдельная благодарность всем тем, 
+                            кто так или иначе принял участие в разработке игры. Оценил, поиграл и замотивировал нас!</p>
+                        <p class="lead bg-success" id="you">Особая благодарность тебе за прохождение!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="statistics">
+            
+        </div>
+    `;
+
+    const title = document.getElementById('title-game');
+    const titleEnd = document.getElementById('title2');
+    const links = document.getElementById('links');
+
+    setTimeout(() => {
+        title.id = 'title';
+        titleEnd.id = 'title-end';
+        links.id = 'links-game';
+    }, 0);
 }

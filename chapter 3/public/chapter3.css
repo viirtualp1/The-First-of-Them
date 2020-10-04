@@ -221,6 +221,47 @@ body {
     margin-left: 1%;
 }
 
+.title, .title-end, 
+.title-date, .title-thanks {
+    font-size: 5vh;
+    text-shadow: 3px 3px 3px black, 0 0 1em red; /* Параметры тени */
+}
+
+#title-game, #title2, 
+#back, #links { opacity: 0; }
+
+#title, #title-end, 
+#back-to-menu, #links-game {
+    opacity: 1;
+    transition: opacity 5s; 
+}
+
+#back-to-menu, #back {
+    width: 20vh;
+    height: 5vh;
+    background: rgb(42, 44, 46);
+    color: #fff;
+}
+
+#back-to-menu:hover {
+    background: rgb(52, 52, 53);
+    transition: 0.5s;
+}
+
+#vk-icon { color: #4A76A8; }
+
+#youtube-icon { color: #FF0000; }
+
+#btnGroupDrop1, #btn-thanks { background: rgb(42, 44, 46); border: none; }
+
+.dropdown-menu a { color: #fff; }
+
+.dropdown-menu { background: rgb(42, 44, 46); }
+
+#quit { background: rgb(42, 44, 46); border: none; }
+
+#thanks-div .modal-content { background: rgb(42, 44, 46); }
+
 /* Text Animation Opacity - Task for Danil or Anna (because ya ebal eto v rot delat') */
 
 /* .title {
