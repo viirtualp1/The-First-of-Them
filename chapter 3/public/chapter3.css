@@ -12,7 +12,7 @@ body {
     margin-top: 1.5%;
     margin-right: 1%;
     margin-left: 1%;
-    background: #25292C;
+    background: #2b3033;
     color: #fff;
 }
 
@@ -261,6 +261,41 @@ body {
 #quit { background: rgb(42, 44, 46); border: none; }
 
 #thanks-div .modal-content { background: rgb(42, 44, 46); }
+
+.statistics {
+    margin-top: 2em;
+    padding-top: 1em;
+    width: 25em;
+    height: 25rem;
+    border-radius: 15px;
+}
+
+.statistics .body {
+    height: 100%;
+}
+
+#statDeaths, #statKillEnemy, #statDeadPeopleTeam, 
+#statRelationshipPolina, #statRelationshipBloger, 
+#statRelationshipTeam {
+    margin-left: 1em;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.dropdown-item:hover {
+    background: rgb(221, 221, 221);
+    color: #000;
+}
+
+#achievemntDeathsTeamPeoples, #achievemntDeath {
+    font-weight: normal;
+    color: #000;
+}
+
+#btnAchievement {
+    background: rgb(42, 44, 46);
+    color: #fff;
+}
 
 /* Text Animation Opacity - Task for Danil or Anna (because ya ebal eto v rot delat') */
 

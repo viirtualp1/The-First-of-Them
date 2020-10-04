@@ -60,6 +60,15 @@ const mainHeroes = [
     },
 ];
 
+// Статистика
+let relationshipBloger = 'Хорошие';
+let relationshipPolina = 'Хорошие';
+let relationshipTeam = 'Хорошие';
+const statDeadPeoplesTeam = [];
+let statKillEnemies = 0;
+
+let deaths = 0;
+
 // Мертвый из отряда
 let dead = '';
 
@@ -115,6 +124,40 @@ function btnNext(func) {
 function getRandNumbTeam(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
+
+function deleteDeathsLc() {
+    localStorage.removeItem('deaths');
+}
+
+function soon() {
+    Swal.fire({
+        icon: 'info',
+        title: 'Скоро!',
+    });
+}
+
+/* Пока достижений связанных со статистикой */
+// function checkStatistic() {
+//     let deathAchievemnt = 'Не получено';
+//     let deathsTeamPeopleAchievemnt = 'Не получено';
+
+//     const deathsLc = localStorage.getItem('deaths');
+//     if (deathsLc != null) {
+//         deathAchievemnt = 'Получено';
+//     }
+
+//     if (statDeadPeoplesTeam.length != 0) {
+//         deathsTeamPeopleAchievemnt = 'Получено';
+//     }
+
+//     Swal.fire({
+//         icon: 'question',
+//         html: `
+//             <p class="lead" id="achievemntDeath">Достижение: Умереть 0 раз - ${deathAchievemnt}</p>
+//             <p class="lead" id="achievemntDeathsTeamPeoples">Достижение: Не потерять ни одного человека из отряда - ${deathsTeamPeopleAchievemnt}</p>
+//         `,
+//     });
+// }
 
 // Main functions - Script
 
@@ -398,6 +441,9 @@ function qteDeadPhobos() {
         }
 
         if (deadPhobosSec === 0) {
+            deaths += 1;
+            localStorage.setItem('deaths', deaths);
+
             Swal.fire({
                 icon: 'error',
                 title: 'Вы умерли!',
@@ -1177,6 +1223,8 @@ function dialogBad() {
         title: 'Отряд: отношения понижены',
     });
 
+    relationshipTeam = 'Плохие';
+
     function checkIsDead() {
         const randNumb1 = getRandNumbTeam(0, 3);
 
@@ -1217,6 +1265,8 @@ function dialogHope() {
         title: 'Отряд: отношения понижены',
     });
 
+    relationshipTeam = 'Плохие';
+
     function checkIsDead() {
         const randNumb1 = getRandNumbTeam(0, 3);
 
@@ -1256,6 +1306,8 @@ function dialogNoOne() {
         icon: 'success',
         title: 'Отряд: отношения повышены',
     });
+
+    relationshipTeam = 'Отличные';
 
     function checkIsDead() {
         const randNumb1 = getRandNumbTeam(0, 3);
@@ -1514,6 +1566,8 @@ function room32ReplyLie() {
         title: 'Полина: отношения понижены',
     });
 
+    relationshipPolina = 'Плохие';
+
     name.innerHTML = `Блогер`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -1555,6 +1609,8 @@ function room32ReplyGood() {
         icon: 'success',
         title: 'Полина: отношения повышены',
     });
+
+    relationshipPolina = 'Отличные';
 }
 
 function room32ReplyTruth() {
@@ -1755,6 +1811,8 @@ function mechanicPhobosFight() {
 
         const checkInterval = setInterval(() => {
             if (clickUserToPhobos == clickPhobosToKill) {
+                statKillEnemies += 1;
+
                 clearInterval(checkInterval);
                 clearInterval(phobosStatReload);
                 try {
@@ -1762,11 +1820,22 @@ function mechanicPhobosFight() {
                 } catch {
                     clearInterval(pressButtonInterval);
                 }
-                endLiftDialog();
+
+                liftTeamDialog();
             }
 
             if (polinaHp == 0) {
-                location.reload();
+                deaths += 1;
+                localStorage.setItem('deaths', deaths);
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Вы умерли!',
+                });
+
+                setInterval(() => {
+                    location.reload();
+                }, 1000);
             }
         }, 100);
     }, 3500);
@@ -1804,7 +1873,7 @@ function mechanicPhobosFight() {
             const intervalRemaining = setInterval(() => {
                 const pressButtonDiv = document.getElementById('pressButtonDiv');
                 const progressbarPolina = document.getElementById('progressbar-hero-hp');
-                console.log(polinaHp);
+
                 if (polinaHp <= 80) {
                     progressbarPolina.style.className = 'progress-bar progress-bar-striped bg-primary';
                 } else if (polinaHp <= 50) {
@@ -1856,7 +1925,6 @@ function mechanicPhobosFight() {
             }
 
             if (polinaHp <= 20) {
-                console.log('test');
                 progressbarPolina.className = 'progress-bar progress-bar-striped bg-danger';
                 progressbarPolina.style.color = '#fff';
             }
@@ -1917,6 +1985,27 @@ function mechanicPhobosFight() {
 }
 
 function liftTeamDialog() {
+    music.src = '';
+    relationshipBloger = 'Отличные';
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+    });
+
+    Toast.fire({
+        icon: 'error',
+        title: 'Блогер: отношения повышены',
+    });
+
     name.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -1956,25 +2045,41 @@ function liftAnonimSpeak() {
             </div>
         `;
 
-        btnNext('soundFallLift()');
-    }, 3000);
+        setTimeout(() => {
+            soundFallLift();
+        }, 3000);
+    }, 2500);
 }
 
 function soundFallLift() {
     sound.src = 'sounds/fallLift.mp3';
     setTimeout(() => {
         music.src = 'sounds/endGame.mp3';
-        document.body.style.background = '#000';
+        document.body.style.background = `url('img/bg.jpg')`;
 
         end();
-        // Titles and Statistics
     }, 8000);
 }
 
+/* Разделяемся */
+
+
+/* Конец */
 function end() {
     nameDiv.parentNode.removeChild(nameDiv);
     dialogsDiv.parentNode.removeChild(dialogsDiv);
     footerButtons.parentNode.removeChild(footerButtons);
+
+    let deathsLc = localStorage.getItem('deaths');
+    if (deathsLc == null) {
+        deathsLc = 0;
+    }
+
+    for (let i = 0; i < team.length; i++) {
+        if (team[i].alive == 'false') {
+            statDeadPeoplesTeam.push = team[i].name;
+        }
+    }
 
     windowDiv.innerHTML = `
         <div class="thanksEnd mt-2">
@@ -1991,9 +2096,22 @@ function end() {
                         <a class="dropdown-item" href="https://www.youtube.com/channel/UCeh4yaV7iYy0zrbN1-qy2IQ"><i id="youtube-icon" class="fab fa-youtube"></i> Канал YouTube</a>
                     </div>
                 </div>
-                <button id="quit" type="button" class="btn btn-dark mt-2 ml-2" onclick="location.href = '../menu.html'">
+                <div class="btn-group ml-2" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle mt-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Выбрать главу
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <a class="dropdown-item" href="location.href='../../The First of Them (Chapter 1+Chapter 2)/chapter1/show.html'">Глава 1</a>
+                        <a class="dropdown-item" href="location.href='../../The First of Them (Chapter 1+Chapter 2)/chapter2/show-chapter2.html">Глава 2</a>
+                        <a class="dropdown-item" onclick="location.reload()">Глава 3</a>
+                        <a class="dropdown-item" href="soon()">Глава 4</a>
+                    </div>
+                </div>
+                <button id="quit" type="button" class="btn btn-dark mt-2 ml-2" onclick="deleteDeathsLc(); location.href = '../../The First of Them (Chapter 1+Chapter 2)/menu.html'">
                     Выход
                 </button>
+            </div>
+            <div class="d-flex justify-content-center" id="links2">
                 <button class="btn btn-dark mt-2 ml-2" id="btn-thanks" data-toggle="modal" data-target="#thanks-div">Благодарность</button>
             </div>
 
@@ -2044,14 +2162,27 @@ function end() {
             </div>
         </div>
 
-        <div class="statistics">
-            
+        <div class="d-flex justify-content-center">
+            <div class="bg-dark statistics">
+                <div class="header">
+                    <h3 class="text-center text-white">Статистика:</h3>
+                </div>
+                <div class="body">
+                    <p class="lead" id="statDeaths">Смертей: ${deathsLc}</p>
+                    <p class="lead" id="statKillEnemy">Врагов убито: ${statKillEnemies}</p>
+                    <p class="lead" id="statDeadPeopleTeam">Погибло людей из отряда: ${statDeadPeoplesTeam.length == 0 ? statDeadPeoplesTeam.length : statDeadPeoplesTeam.toString().replace(/,/g, ', ')}</p>
+                    <p class="lead" id="statRelationshipPolina">Отношения с Полиной(Блогер): ${relationshipPolina}</p>
+                    <p class="lead" id="statRelationshipBloger">Отношения с Блогером(Полина): ${relationshipBloger}</p>
+                    <p class="lead" id="statRelationshipTeam">Отношения с Отрядом: ${relationshipTeam}</p>
+                </div>
+            </div>
         </div>
     `;
 
     const title = document.getElementById('title-game');
     const titleEnd = document.getElementById('title2');
     const links = document.getElementById('links');
+    const links2 = document.getElementById('links2');
 
     setTimeout(() => {
         title.id = 'title';

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/show.css">
+    <title>The First of Them</title>
+    <style>
+        body {
+            background: #000;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .container { margin-top: 40vh; }
+
+        .title {
+            font-size: 3em;
+            text-shadow: 3px 3px 3px black, 0 0 1em red; /* Параметры тени */
+        }
+
+        .chapter { 
+            font-size: 2em; 
+            text-shadow: 3px 3px 3px black, 0 0 1em red; /* Параметры тени */
+        }
+
+        #title-game, #chapter-game { opacity: 0; }
+
+        #title, #chapter {
+            opacity: 1;
+            transition: opacity 10s; 
+        }
+
+        #show-logo-div { margin-top: 33vh; }
+    </style>
+</head>
+<body>
+    <audio src="sounds/start.mp3" autoplay="autoplay"></audio>
+
+    <div class="container">
+        <p class="lead text-center text-light mt-2 title" id="title-game">The First of Them</p>
+        <p class="lead text-center text-light mt-2 chapter" id="chapter-game">Глава 3: Лаборатория</p>
+    </div>
+
+    <script src="https://kit.fontawesome.com/373834e38f.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <script>
+        let title = document.getElementById("title-game");
+        let chapter = document.getElementById("chapter-game");
+
+        setTimeout(() => {
+            title.id = "title";
+            chapter.id = "chapter";
+        }, 0);
+
+        setTimeout(() => {
+            location.href = "chapter3.html";
+        }, 5000);
+    </script>
+</body>
+</html>
