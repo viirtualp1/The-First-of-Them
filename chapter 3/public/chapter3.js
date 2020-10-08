@@ -1344,6 +1344,14 @@ function splitUp() {
         </div>
     `;
 
+    const arrowLeft = document.getElementById('arrowLeft'); // arrow left for change value
+    const arrowUp = document.getElementById('arrowUp'); // arrow up for change value
+    const arrowRight = document.getElementById('arrowRight'); // arrow right for change value
+
+    arrowLeft.innerHTML = `3.14`;
+    arrowUp.innerHTML = `3.15(1)`;
+    arrowRight.innerHTML = `3.15(2)`;
+
     btnNext('room32SplitUp()');
 }
 
@@ -1424,11 +1432,11 @@ function sendTeamLaboratories() {
             if (teamElementsDirection[i][j].checked) {
                 const last = teamElementsDirection[i][j].id.toString().slice(-1);
                 if (last == '1') {
-                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Налево <br />`);
+                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - 3.14 <br />`);
                 } else if (last == '2') {
-                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Прямо <br />`);
+                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - 3.15(1) <br />`);
                 } else if (last == '3') {
-                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Направо`);
+                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - 3.15(2)`);
                 }
             }
         }
@@ -1440,9 +1448,9 @@ function sendTeamLaboratories() {
     }
 
     // Проверка выбора людей (хуй сосня (переделать нормально))
-    if (anna1.checked &&
-        nikita2.checked &&
-        danil3.checked) {
+    if (danil1.checked &&
+        anna2.checked &&
+        nikita3.checked) {
         Swal.fire({
             title: 'Ваш выбор:',
             html: `<p>${namesString}</p>`,
@@ -2357,7 +2365,7 @@ function liftTeamDialog() {
     });
 
     Toast.fire({
-        icon: 'error',
+        icon: 'success',
         title: 'Блогер: отношения повышены',
     });
 
