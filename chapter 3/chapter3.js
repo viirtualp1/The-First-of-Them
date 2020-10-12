@@ -1,45 +1,63 @@
-let chooseArrayDirection = [];
+const team = [
+    nikita = {
+        name: 'Никита',
+        hp: 100,
+        alive: 'false',
+    },
 
-function check () {
-  let teamElementsDirection = [
-    [document.getElementById('nikita1'),
-    document.getElementById('anna1'),
-    document.getElementById('oleg1'),
-    document.getElementById('danil1')],
+    anna = {
+        name: 'Анна',
+        hp: 100,
+        alive: true,
+    },
 
-    [document.getElementById('nikita2'),
-    document.getElementById('anna2'),
-    document.getElementById('oleg2'),
-    document.getElementById('danil2')],
+    danil = {
+        name: 'Данил',
+        hp: 100,
+        alive: true,
+    },
 
-    [document.getElementById('nikita3'),
-    document.getElementById('anna3'),
-    document.getElementById('oleg3'),
-    document.getElementById('danil3')],
-  ];
-  
-  for (let i = 0; i < teamElementsDirection.length; i++) {
-      for (let j = 0; j < teamElementsDirection[i].length; j++) {
-          if (teamElementsDirection[i][j].checked) {
-              const last = teamElementsDirection[i][j].id.toString().slice(-1);
-              if (last == '1') {
-                  chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Налево <br />`);
-              } else if (last == '2') {
-                  chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Прямо <br />`);
-              } else if (last == '3') {
-                  chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Направо`);
-              }
-          }
-      }
-  }
+    oleg = {
+        name: 'Олег',
+        hp: 100,
+        alive: true,
+    },
+];
 
-  let teamElementsDirectionZ = chooseArrayDirection.toString().split(', ');
-  let string = '';
-  for (let names of chooseArrayDirection) {
-      string = string + names;
-  }
-  console.log(string);
-
-  console.log(chooseArrayDirection);
-  console.log(teamElementsDirection);
+function btn() {
+    const nikita1 = document.getElementById('nikita1');
+    const nikita2 = document.getElementById('nikita2');
+    const nikita3 = document.getElementById('nikita3');
+    
+    const anna1 = document.getElementById('anna1');
+    const anna2 = document.getElementById('anna2');
+    const anna3 = document.getElementById('anna3');
+    
+    const danil1 = document.getElementById('danil1');
+    const danil2 = document.getElementById('danil2');
+    const danil3 = document.getElementById('danil3');
+    
+    const oleg1 = document.getElementById('oleg1');
+    const oleg2 = document.getElementById('oleg2');
+    const oleg3 = document.getElementById('oleg3');
+    
+    if (team[0].alive == 'false') {
+        nikita1.parentNode.removeChild(nikita1);
+        nikita2.parentNode.removeChild(nikita2);
+        nikita3.parentNode.removeChild(nikita3);
+    } else if (team[1].alive == 'false') {
+        anna1.parentNode.removeChild(anna1);
+        anna2.parentNode.removeChild(anna2);
+        anna3.parentNode.removeChild(anna3);
+    } else if (team[2].alive == 'false') {
+        danil1.parentNode.removeChild(danil1);
+        danil2.parentNode.removeChild(danil2);
+        danil3.parentNode.removeChild(danil3);
+    } else if (team[3].alive == 'false') {
+        oleg1.parentNode.removeChild(oleg1);
+        oleg2.parentNode.removeChild(oleg2);
+        oleg3.parentNode.removeChild(oleg3);
+    } else {
+        console.log('хуйня');
+    }
 }

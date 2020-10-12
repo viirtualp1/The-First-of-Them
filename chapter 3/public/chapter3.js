@@ -618,29 +618,31 @@ function changeHeroPolinaMountains(letter1, letter2, letter3,
 }
 
 function polinaMountains() {
-    const p1 = document.getElementById('title-show1');
-    const p2 = document.getElementById('title-show2');
-    const p3 = document.getElementById('title-show3');
-    const p4 = document.getElementById('title-show4');
-    const p5 = document.getElementById('title-show5');
-    const p6 = document.getElementById('title-show6');
+    try {
+        const p1 = document.getElementById('title-show1');
+        const p2 = document.getElementById('title-show2');
+        const p3 = document.getElementById('title-show3');
+        const p4 = document.getElementById('title-show4');
+        const p5 = document.getElementById('title-show5');
+        const p6 = document.getElementById('title-show6');
 
-    document.body.style.background = 'url(\'img/mountains.jpg\')';
-    document.body.style.backgroundPosition = 'center center';
-    document.body.style.backgroundRepeat = 'no-repeat';
-    document.body.style.backgroundAttachment = 'fixed';
-    document.body.style.backgroundSize = 'cover';
+        document.body.style.background = 'url(\'img/mountains.jpg\')';
+        document.body.style.backgroundPosition = 'center center';
+        document.body.style.backgroundRepeat = 'no-repeat';
+        document.body.style.backgroundAttachment = 'fixed';
+        document.body.style.backgroundSize = 'cover';
+
+        p1.parentNode.removeChild(p1);
+        p2.parentNode.removeChild(p2);
+        p3.parentNode.removeChild(p3);
+        p4.parentNode.removeChild(p4);
+        p5.parentNode.removeChild(p5);
+        p6.parentNode.removeChild(p6);
+    } catch { }
 
     music.src = 'sounds/veter_v_gorah.mp3';
     document.getElementById('name').style.visibility = 'visible';
     document.getElementById('footer-buttons').style.visibility = 'visible';
-
-    p1.parentNode.removeChild(p1);
-    p2.parentNode.removeChild(p2);
-    p3.parentNode.removeChild(p3);
-    p4.parentNode.removeChild(p4);
-    p5.parentNode.removeChild(p5);
-    p6.parentNode.removeChild(p6);
 
     name.innerHTML = 'Полина';
     dialogs.innerHTML = `
@@ -658,7 +660,7 @@ function polinaMountains() {
     `;
 
     rationFooter.innerHTML += `
-        <button class="btn btn-dark" onclick="sendTeamMountains()">Отправить</button>
+        <button class="btn btn-dark" onclick="sendTeamMountains()" id="sendTeamMountains">Отправить</button>
     `;
 }
 
@@ -1332,7 +1334,56 @@ function dialogNoOne() {
 
 // Сценарий - разделяемся
 function splitUp() {
+    const sendTeamMountainsBtn = document.getElementById('sendTeamMountains');
+    sendTeamMountainsBtn.parentNode.removeChild(sendTeamMountainsBtn);
+
+    const aSymbol = document.getElementById('a-symbol');
+    const nSymbol = document.getElementById('n-symbol');
+    const dSymbol = document.getElementById('d-symbol');
+    const oSymbol = document.getElementById('o-symbol');
+
+    const nikita1Td = document.getElementById('nikitaTd1');
+    const nikita2Td = document.getElementById('nikitaTd2');
+    const nikita3Td = document.getElementById('nikitaTd3');
+
+    const anna1Td = document.getElementById('annaTd1');
+    const anna2Td = document.getElementById('annaTd2');
+    const anna3Td = document.getElementById('annaTd3');
+
+    const danil1Td = document.getElementById('danilTd1');
+    const danil2Td = document.getElementById('danilTd2');
+    const danil3Td = document.getElementById('danilTd3');
+
+    const oleg1Td = document.getElementById('olegTd1');
+    const oleg2Td = document.getElementById('olegTd2');
+    const oleg3Td = document.getElementById('olegTd3');
+
+    if (team[0].alive == 'false') {
+        nSymbol.parentNode.removeChild(nSymbol);
+        nikita1Td.parentNode.removeChild(nikita1Td);
+        nikita2Td.parentNode.removeChild(nikita2Td);
+        nikita3Td.parentNode.removeChild(nikita3Td);
+    } else if (team[1].alive == 'false') {
+        aSymbol.parentNode.removeChild(aSymbol);
+        anna1Td.parentNode.removeChild(anna1Td);
+        anna2Td.parentNode.removeChild(anna2Td);
+        anna3Td.parentNode.removeChild(anna3Td);
+    } else if (team[2].alive == 'false') {
+        dSymbol.parentNode.removeChild(dSymbol);
+        danil1Td.parentNode.removeChild(danil1Td);
+        danil2Td.parentNode.removeChild(danil2Td);
+        danil3Td.parentNode.removeChild(danil3Td);
+    } else if (team[3].alive == 'false') {
+        oSymbol.parentNode.removeChild(oSymbol);
+        oleg1Td.parentNode.removeChild(oleg1Td);
+        oleg2Td.parentNode.removeChild(oleg2Td);
+        oleg3Td.parentNode.removeChild(oleg3Td);
+    } else {
+        console.log('хуйня');
+    }
+
     $('#ration-modal').modal('show');
+
     rationFooter.innerHTML += `
         <button class="btn btn-dark" onclick="sendTeamLaboratories()">Отправить</button>
     `;
@@ -1398,14 +1449,16 @@ function sendTeamLaboratories() {
 
     for (let i = 0; i < teamElementsDirection.length; i++) {
         for (let j = 0; j < teamElementsDirection[i].length; j++) {
-            if (teamElementsDirection[i][j].checked) {
-                chooseArrayDirectionValue.push(teamElementsDirection[i][j].value);
+            if (teamElementsDirection[i][j] == undefined) { } else {
+                if (teamElementsDirection[i][j].checked) {
+                    chooseArrayDirectionValue.push(teamElementsDirection[i][j].value);
+                }
             }
         }
     }
 
     for (let i = 0; i < teamElements.length; i++) {
-        if (teamElements[i].checked) {
+        if (teamElements[i] == null) { } else if (teamElements[i].checked) {
             chooseArray.push(teamElements[i].value);
         }
     }
@@ -1429,7 +1482,7 @@ function sendTeamLaboratories() {
 
     for (let i = 0; i < teamElementsDirection.length; i++) {
         for (let j = 0; j < teamElementsDirection[i].length; j++) {
-            if (teamElementsDirection[i][j].checked) {
+            if (teamElementsDirection[i][j] == null) { } else if (teamElementsDirection[i][j].checked) {
                 const last = teamElementsDirection[i][j].id.toString().slice(-1);
                 if (last == '1') {
                     chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - 3.14 <br />`);
@@ -1448,257 +1501,467 @@ function sendTeamLaboratories() {
     }
 
     // Проверка выбора людей (хуй сосня (переделать нормально))
-    if (danil1.checked &&
-        anna2.checked &&
-        nikita3.checked) {
-        Swal.fire({
-            title: 'Ваш выбор:',
-            html: `<p>${namesString}</p>`,
-            showCancelButton: true,
-            cancelButtonText: 'Отмена',
-            confirmButtonText: `Отправить`,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                team[2].alive = 'false';
+    if (team[0].alive == 'false') {
+        if (anna1.checked &&
+            danil2.checked &&
+            oleg3.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[3].alive = 'false';
 
-                $('#ration-modal').modal('hide');
-                qteFindLab();
-            }
-        });
+                    $('#ration-modal').modal('hide');
+                }
+            });
 
-        swalStyles();
-    } else if (oleg1.checked &&
-        anna2.checked &&
-        nikita3.checked) {
-        Swal.fire({
-            title: 'Ваш выбор:',
-            html: `<p>${namesString}</p>`,
-            showCancelButton: true,
-            cancelButtonText: 'Отмена',
-            confirmButtonText: `Отправить`,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $('#ration-modal').modal('hide');
-                qteFindLab();
-            }
-        });
+            swalStyles();
+        } else if (danil1.checked &&
+            anna2.checked &&
+            oleg3.checked) {
+                // Никто не умирает
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#ration-modal').modal('hide');
+                }
+            });
 
-        swalStyles();
-    } else if (nikita1.checked &&
-        anna2.checked &&
-        danil3.checked) {
-        Swal.fire({
-            title: 'Ваш выбор:',
-            html: `<p>${namesString}</p>`,
-            showCancelButton: true,
-            cancelButtonText: 'Отмена',
-            confirmButtonText: `Отправить`,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $('#ration-modal').modal('hide');
-                qteFindLab();
-            }
-        });
-
-        swalStyles();
-    } else if (oleg1.checked &&
-        anna2.checked &&
-        danil3.checked) {
-        team[]
-
-        Swal.fire({
-            title: 'Ваш выбор:',
-            html: `<p>${namesString}</p>`,
-            showCancelButton: true,
-            cancelButtonText: 'Отмена',
-            confirmButtonText: `Отправить`,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $('#ration-modal').modal('hide');
-                qteFindLab();
-            }
-        });
-
-        swalStyles();
-    } else if (anna1.checked &&
-        oleg3.checked &&
-        nikita2.checked) {
-        // Никто не умирает
-
-        Swal.fire({
-            title: 'Ваш выбор:',
-            html: `<p>${namesString}</p>`,
-            showCancelButton: true,
-            cancelButtonText: 'Отмена',
-            confirmButtonText: `Отправить`,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $('#ration-modal').modal('hide');
-                qteFindLab();
-            }
-        });
-
-        swalStyles();
-    } else if (anna2.checked &&
-        oleg3.checked &&
-        nikita1.checked) {
-        Swal.fire({
-            title: 'Ваш выбор:',
-            html: `<p>${namesString}</p>`,
-            showCancelButton: true,
-            cancelButtonText: 'Отмена',
-            confirmButtonText: `Отправить`,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                team[3].alive = 'false';
-
-                $('#ration-modal').modal('hide');
-                qteFindLab();
-            }
-        });
-
-        swalStyles();
-    } else if (nikita2.checked &&
-        anna3.checked &&
-        oleg1.checked) {
-        // Никто не умирает
-
-        Swal.fire({
-            title: 'Ваш выбор:',
-            html: `<p>${namesString}</p>`,
-            showCancelButton: true,
-            cancelButtonText: 'Отмена',
-            confirmButtonText: `Отправить`,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $('#ration-modal').modal('hide');
-                qteFindLab();
-            }
-        });
-
-        swalStyles();
-    } else if (nikita3.checked &&
-        oleg2.checked &&
-        anna1.checked) {
-        // Никто не умирает
-
-        Swal.fire({
-            title: 'Ваш выбор:',
-            html: `<p>${namesString}</p>`,
-            showCancelButton: true,
-            cancelButtonText: 'Отмена',
-            confirmButtonText: `Отправить`,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $('#ration-modal').modal('hide');
-                qteFindLab();
-            }
-        });
-
-        swalStyles();
-    } else if (danil2.checked &&
-        oleg3.checked &&
-        anna1.checked) {
-        Swal.fire({
-            title: 'Ваш выбор:',
-            html: `<p>${namesString}</p>`,
-            showCancelButton: true,
-            cancelButtonText: 'Отмена',
-            confirmButtonText: `Отправить`,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                team[1].alive = 'false';
-
-                $('#ration-modal').modal('hide');
-                qteFindLab();
-            }
-        });
-
-        swalStyles();
-    } else if (danil1.checked &&
-        oleg3.checked &&
-        anna2.checked) {
-        Swal.fire({
-            title: 'Ваш выбор:',
-            html: `<p>${namesString}</p>`,
-            showCancelButton: true,
-            cancelButtonText: 'Отмена',
-            confirmButtonText: `Отправить`,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                team[0].alive = 'false';
-
-                $('#ration-modal').modal('hide');
-                qteFindLab();
-            }
-        });
-
-        swalStyles();
-    } else if (oleg1.checked &&
-        danil2.checked &&
-        anna3.checked) {
-        Swal.fire({
-            title: 'Ваш выбор:',
-            html: `<p>${namesString}</p>`,
-            showCancelButton: true,
-            cancelButtonText: 'Отмена',
-            confirmButtonText: `Отправить`,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                team[2].alive = 'false';
-
-                $('#ration-modal').modal('hide');
-                qteFindLab();
-            }
-        });
-
-        swalStyles();
-    } else if (oleg1.checked &&
-        nikita2.checked &&
-        anna3.checked) {
-        Swal.fire({
-            title: 'Ваш выбор:',
-            html: `<p>${namesString}</p>`,
-            showCancelButton: true,
-            cancelButtonText: 'Отмена',
-            confirmButtonText: `Отправить`,
-        }).then((result) => {
-            if (result.isConfirmed) {
+            swalStyles();
+        } else if (anna1.checked &&
+            oleg2.checked &&
+            danil3.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
                     team[2].alive = 'false';
 
-                $('#ration-modal').modal('hide');
-                qteFindLab();
-            }
-        });
+                    $('#ration-modal').modal('hide');
+                }
+            });
 
-        swalStyles();
-    } else if (anna1.checked &&
-        oleg2.checked &&
-        danil3.checked) {
-        Swal.fire({
-            title: 'Ваш выбор:',
-            html: `<p>${namesString}</p>`,
-            showCancelButton: true,
-            cancelButtonText: 'Отмена',
-            confirmButtonText: `Отправить`,
-        }).then((result) => {
-            if (result.isConfirmed) {
-                team[3].alive = 'false';
+            swalStyles();
+        } else if (oleg1.checked &&
+            danil2.checked &&
+            anna3.checked) {
+                // Никто не умирает
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#ration-modal').modal('hide');
+                }
+            });
 
-                $('#ration-modal').modal('hide');
-                qteFindLab();
-            }
-        });
+            swalStyles();
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Ошибка!5',
+            });
 
-        swalStyles();
-    } else {
-        Swal.fire({
-            icon: 'error',
-            title: 'Ошибка',
-            text: 'Нельзя отправить одного человека!',
-        });
+            swalStyles();
+        }
+    } else if (team[1].alive == 'false') {
+        if (nikita1.checked &&
+            danil2.checked &&
+            oleg3.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[0].alive = 'false';
 
-        swalStyles();
+                    $('#ration-modal').modal('hide');
+                }
+            });
+
+            swalStyles();
+        } else if (danil1.checked &&
+            nikita2.checked &&
+            oleg3.checked) {
+                // Никто не умирает
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#ration-modal').modal('hide');
+                }
+            });
+
+            swalStyles();
+        } else if (nikita1.checked &&
+            oleg2.checked &&
+            danil3.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[3].alive = 'false';
+
+                    $('#ration-modal').modal('hide');
+                }
+            });
+
+            swalStyles();
+        } else if (oleg1.checked &&
+            danil2.checked &&
+            nikita3.checked) {
+                // Никто не умирает
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#ration-modal').modal('hide');
+                }
+            });
+
+            swalStyles();
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Ошибка!1',
+            });
+
+            swalStyles();
+        }
+    } else if (team[2].alive == 'false') {
+        if (nikita1.checked &&
+            anna2.checked &&
+            oleg3.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[1].alive = 'false';
+
+                    $('#ration-modal').modal('hide');
+                }
+            });
+
+            swalStyles();
+        } else if (anna1.checked &&
+            nikita2.checked &&
+            oleg3.checked) {
+                console.log('test');
+                // Никто не умирает
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#ration-modal').modal('hide');
+                }
+            });
+
+            swalStyles();
+        } else if (nikita1.checked &&
+            oleg2.checked &&
+            anna3.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[0].alive = 'false';
+
+                    $('#ration-modal').modal('hide');
+                }
+            });
+
+            swalStyles();
+        } else if (oleg1.checked &&
+            anna2.checked &&
+            nikita3.checked) {
+                // Никто не умирает
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#ration-modal').modal('hide');
+                }
+            });
+
+            swalStyles();
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Ошибка!2',
+            });
+
+            swalStyles();
+        }
+    } else if (team[3].alive == 'false') {
+        if (nikita1.checked &&
+            anna2.checked &&
+            danil3.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[2].alive = 'false';
+
+                    $('#ration-modal').modal('hide');
+                }
+            });
+
+            swalStyles();
+        } else if (anna1.checked &&
+            nikita2.checked &&
+            danil3.checked) {
+                // Никто не умирает
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#ration-modal').modal('hide');
+                }
+            });
+
+            swalStyles();
+        } else if (nikita1.checked &&
+            danil2.checked &&
+            anna3.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[1].alive = 'false';
+
+                    $('#ration-modal').modal('hide');
+                }
+            });
+
+            swalStyles();
+        } else if (danil1.checked &&
+            anna2.checked &&
+            nikita3.checked) {
+                // Никто не умирает
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#ration-modal').modal('hide');
+                }
+            });
+
+            swalStyles();
+        } else if (team[0].alive == true &&
+            team[1].alive == true &&
+            team[2].alive == true &&
+            team[3].alive == true) {
+                if (danil1.checked &&
+                    anna2.checked &&
+                    nikita3.checked) {
+                    Swal.fire({
+                        title: 'Ваш выбор:',
+                        html: `<p>${namesString}</p>`,
+                        showCancelButton: true,
+                        cancelButtonText: 'Отмена',
+                        confirmButtonText: `Отправить`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            team[1].alive = 'false';
+
+                            $('#ration-modal').modal('hide');
+                        }
+                    });
+
+                    swalStyles();
+                } else if (oleg1.checked &&
+                    anna2.checked &&
+                    nikita3.checked) {
+                    Swal.fire({
+                        title: 'Ваш выбор:',
+                        html: `<p>${namesString}</p>`,
+                        showCancelButton: true,
+                        cancelButtonText: 'Отмена',
+                        confirmButtonText: `Отправить`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $('#ration-modal').modal('hide');
+                        }
+                    });
+
+                    swalStyles();
+                } else if (nikita1.checked &&
+                    anna2.checked &&
+                    danil3.checked) {
+                    Swal.fire({
+                        title: 'Ваш выбор:',
+                        html: `<p>${namesString}</p>`,
+                        showCancelButton: true,
+                        cancelButtonText: 'Отмена',
+                        confirmButtonText: `Отправить`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            team[1].alive = 'false';
+
+                            $('#ration-modal').modal('hide');
+                        }
+                    });
+
+                    swalStyles();
+                } else if (oleg1.checked &&
+                    anna2.checked &&
+                    danil3.checked) {
+                    Swal.fire({
+                        title: 'Ваш выбор:',
+                        html: `<p>${namesString}</p>`,
+                        showCancelButton: true,
+                        cancelButtonText: 'Отмена',
+                        confirmButtonText: `Отправить`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            team[3].alive = 'false';
+
+                            $('#ration-modal').modal('hide');
+                        }
+                    });
+
+                    swalStyles();
+                } else if (nikita1.checked &&
+                    anna2.checked &&
+                    oleg3.checked) {
+                    // Никто не умирает
+
+                    Swal.fire({
+                        title: 'Ваш выбор:',
+                        html: `<p>${namesString}</p>`,
+                        showCancelButton: true,
+                        cancelButtonText: 'Отмена',
+                        confirmButtonText: `Отправить`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $('#ration-modal').modal('hide');
+                        }
+                    });
+
+                    swalStyles();
+                } else if (danil1.checked &&
+                    anna2.checked &&
+                    oleg3.checked) {
+                    Swal.fire({
+                        title: 'Ваш выбор:',
+                        html: `<p>${namesString}</p>`,
+                        showCancelButton: true,
+                        cancelButtonText: 'Отмена',
+                        confirmButtonText: `Отправить`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $('#ration-modal').modal('hide');
+                        }
+                    });
+
+                    swalStyles();
+                } else if (anna1.checked &&
+                    danil2.checked &&
+                    nikita3.checked) {
+                    Swal.fire({
+                        title: 'Ваш выбор:',
+                        html: `<p>${namesString}</p>`,
+                        showCancelButton: true,
+                        cancelButtonText: 'Отмена',
+                        confirmButtonText: `Отправить`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            team[0].alive = 'false';
+                            $('#ration-modal').modal('hide');
+                        }
+                    });
+
+                    swalStyles();
+                } else if (danil1.checked &&
+                    oleg2.checked &&
+                    nikita3.checked) {
+                    Swal.fire({
+                        title: 'Ваш выбор:',
+                        html: `<p>${namesString}</p>`,
+                        showCancelButton: true,
+                        cancelButtonText: 'Отмена',
+                        confirmButtonText: `Отправить`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            team[2].alive = 'false';
+
+                            $('#ration-modal').modal('hide');
+                        }
+                    });
+
+                    swalStyles();
+                }
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Ошибка!',
+            });
+
+            swalStyles();
+        }
     }
 }
 
