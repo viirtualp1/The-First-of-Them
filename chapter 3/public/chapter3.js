@@ -13,6 +13,7 @@ const name = document.getElementById('name-dialog');
 const rationFooter = document.getElementById('ration-footer');
 const footerButtons = document.getElementById('footer-buttons');
 const windowDiv = document.getElementById('window');
+const btnNextElem = document.getElementById('btn-next');
 
 // Div - name and dialog
 const nameDiv = document.getElementById('name');
@@ -86,6 +87,12 @@ let widthPlusOfficeSearch = 0;
 
 let qteSearchLab = true;
 let widthSearchLab = 0;
+
+let monsterRoom32Width = 100;
+let monsterRoom32Sec = 5;
+let clickMonster32 = 0;
+
+let splitUpChoose;
 
 // Main functions - Settings
 function swalStyles() {
@@ -1179,13 +1186,13 @@ function chooseDialogSplitUpAgainOrNo() {
     name.innerHTML = `Выбор`;
     dialogs.innerHTML = `
         <div class="row dialog d-flex justify-content-center" id="chooseDialogSplitUp-div-btn">
-            <button id="btn-dialog-1-1" type="button" class="btn btn-dark mt-2 mb-2" onclick="dialogBad();">
+            <button id="btn-dialog-1-1" type="button" class="btn btn-dark mt-2 mb-2" onclick="dialogBad(); splitUpChoose = true;">
                 - Я здесь командир, что скажу - то и выполнять
             </button>
-            <button id="btn-dialog-1-2" type="button" class="btn btn-dark mt-2 mb-2" onclick="dialogHope();">
+            <button id="btn-dialog-1-2" type="button" class="btn btn-dark mt-2 mb-2" onclick="dialogHope(); splitUpChoose = true;">
                 - В этот раз никого не потеряем
             </button>
-            <button id="btn-dialog-1-3" type="button" class="btn btn-dark mt-2 mb-2" onclick="dialogNoOne();">
+            <button id="btn-dialog-1-3" type="button" class="btn btn-dark mt-2 mb-2" onclick="dialogNoOne(); splitUpChoose = false;">
                 Никого не отправлять
             </button>
         </div>
@@ -1516,6 +1523,7 @@ function sendTeamLaboratories() {
                     team[3].alive = 'false';
 
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1533,6 +1541,7 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1551,6 +1560,7 @@ function sendTeamLaboratories() {
                     team[2].alive = 'false';
 
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1568,6 +1578,7 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1575,7 +1586,7 @@ function sendTeamLaboratories() {
         } else {
             Swal.fire({
                 icon: 'error',
-                title: 'Ошибка!5',
+                title: 'Ошибка!',
             });
 
             swalStyles();
@@ -1595,6 +1606,7 @@ function sendTeamLaboratories() {
                     team[0].alive = 'false';
 
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1612,6 +1624,7 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1630,6 +1643,7 @@ function sendTeamLaboratories() {
                     team[3].alive = 'false';
 
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1647,6 +1661,7 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1654,7 +1669,7 @@ function sendTeamLaboratories() {
         } else {
             Swal.fire({
                 icon: 'error',
-                title: 'Ошибка!1',
+                title: 'Ошибка!',
             });
 
             swalStyles();
@@ -1674,6 +1689,7 @@ function sendTeamLaboratories() {
                     team[1].alive = 'false';
 
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1692,6 +1708,7 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1710,6 +1727,7 @@ function sendTeamLaboratories() {
                     team[0].alive = 'false';
 
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1727,6 +1745,7 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1734,7 +1753,7 @@ function sendTeamLaboratories() {
         } else {
             Swal.fire({
                 icon: 'error',
-                title: 'Ошибка!2',
+                title: 'Ошибка!',
             });
 
             swalStyles();
@@ -1754,6 +1773,7 @@ function sendTeamLaboratories() {
                     team[2].alive = 'false';
 
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1771,6 +1791,7 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1789,6 +1810,7 @@ function sendTeamLaboratories() {
                     team[1].alive = 'false';
 
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1806,6 +1828,7 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     $('#ration-modal').modal('hide');
+                    room32SplitUp();
                 }
             });
 
@@ -1828,6 +1851,7 @@ function sendTeamLaboratories() {
                             team[1].alive = 'false';
 
                             $('#ration-modal').modal('hide');
+                            room32SplitUp();
                         }
                     });
 
@@ -1844,6 +1868,7 @@ function sendTeamLaboratories() {
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $('#ration-modal').modal('hide');
+                            room32SplitUp();
                         }
                     });
 
@@ -1862,6 +1887,7 @@ function sendTeamLaboratories() {
                             team[1].alive = 'false';
 
                             $('#ration-modal').modal('hide');
+                            room32SplitUp();
                         }
                     });
 
@@ -1880,6 +1906,7 @@ function sendTeamLaboratories() {
                             team[3].alive = 'false';
 
                             $('#ration-modal').modal('hide');
+                            room32SplitUp();
                         }
                     });
 
@@ -1898,6 +1925,7 @@ function sendTeamLaboratories() {
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $('#ration-modal').modal('hide');
+                            room32SplitUp();
                         }
                     });
 
@@ -1914,6 +1942,7 @@ function sendTeamLaboratories() {
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $('#ration-modal').modal('hide');
+                            room32SplitUp();
                         }
                     });
 
@@ -1931,6 +1960,7 @@ function sendTeamLaboratories() {
                         if (result.isConfirmed) {
                             team[0].alive = 'false';
                             $('#ration-modal').modal('hide');
+                            room32SplitUp();
                         }
                     });
 
@@ -1949,6 +1979,7 @@ function sendTeamLaboratories() {
                             team[2].alive = 'false';
 
                             $('#ration-modal').modal('hide');
+                            room32SplitUp();
                         }
                     });
 
@@ -1963,6 +1994,294 @@ function sendTeamLaboratories() {
             swalStyles();
         }
     }
+}
+
+function room32SplitUp() {
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Будьте все на связи</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Отряд</p>
+        </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Есть!</p>
+        </div>
+    `;
+
+    btnNext('smthWrongRoom32()');
+}
+
+function smthWrongRoom32() {
+    btnNextElem.disabled = true;
+
+    sound.src = 'sounds/doorOpen.mp3';
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Разбитые контейнеры... Хм... Здесь какие-то зараженные?</p>
+        </div>
+    `;
+
+    setTimeout(() => {
+        dialogs.innerHTML += `
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Аa!</p>
+            </div>
+        `;
+
+        setTimeout(() => {
+            monsterBg();
+        });
+    }, 2000);
+}
+
+function monsterBg() {
+    sound.src = 'sounds/virusMonster.mp3';
+    document.style.background = `url('img/virusMonster.jpg')`;
+    footerButtons.style.visibility = 'hidden';
+    nameDiv.style.visibility = 'hidden';
+    dialogsDiv.style.visibility = 'hidden';
+
+    setTimeout(() => {
+        blogerBiteBg();
+    }, 2000);
+}
+
+function blogerBiteBg() {
+    document.style.background = `url('img/blogerBite.jpg')`;
+
+    setTimeout(() => {
+        qteMonsterRoom32();
+    }, 2000);
+}
+
+function qteMonsterRoom32() {
+    name.innerHTML = `Игра`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Стреляйте!</p>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="run-div-btn">
+            <button id="btn-shot-monster32" type="button" class="btn btn-dark mt-2 mb-2" onclick="qteMonsterRoom32Counter()">
+                Стрелять
+            </button>
+        </div>
+
+        <div class="progress mt-4" id="progress-div-monster-32">
+            <div class="progress-bar progress-bar-striped bg-danger" id="progressbar_monster_32_sec" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">5 сек</div>
+        </div>
+    `;
+
+    setInterval(() => {
+        const progressbarMonster32Sec = document.getElementById('progressbar_monster_32_sec');
+
+        monsterRoom32Width -= 20;
+        monsterRoom32Sec -= 1;
+
+        try {
+            progressbarMonster32Sec.style.width = `${monsterRoom32Width}%`;
+            progressbarMonster32Sec.innerHTML = `${monsterRoom32Sec}сек`;
+        } catch {
+            monsterRoom32Sec = false;
+        }
+
+        if (monsterRoom32Sec === 0) {
+            deaths += 1;
+            localStorage.setItem('deaths', deaths);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Вы умерли!',
+            });
+
+            setInterval(() => {
+                location.reload();
+            }, 1000);
+        }
+    }, 1000);
+}
+
+function qteMonsterRoom32Counter() {
+    const progressMonster32 = document.getElementById('progress-div-monster-32');
+    const btnKillMonster32 = document.getElementById('btn-shot-monster32');
+
+    clickMonster32 += 1;
+
+    if (clickMonster32 == 5) {
+        progressMonster32.parentNode.removeChild(progressMonster32);
+        btnKillMonster32.parentNode.removeChild(btnKillMonster32);
+
+        helpBlogerBg();
+    }
+}
+
+function helpBlogerBg() {
+    document.body.style.background = `url('img/helpBloger.jpg')`;
+    footerButtons.style.visibility = 'hidden';
+    nameDiv.style.visibility = 'hidden';
+    dialogsDiv.style.visibility = 'hidden';
+
+    setTimeout(() => {
+        dialogHelpPolina();
+    }, 2000);
+}
+
+function dialogHelpPolina() {
+    btnNextElem.disabled = false;
+
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Вот так тебе будет полегче</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Блогер</p>
+        </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Да, спасибo...</p>
+        </div>
+    `;
+
+    btnNext(`room32ChangeHeroBloger('Б', 'Л', 'О', 'Г', 'Е', 'Р', '#f33b3b')`);
+}
+
+function room32DialogExplorePolina() {
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">
+                Я посмотрю, что это за оборудование,
+                    оно мне кое что напоминает... Никуда не уходи пока
+            </p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Блогер</p>
+        </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Ха-ха, очень смешно...</p>
+        </div>
+    `;
+
+    btnNext(`room32ChangeHeroPolinaExplore('П', 'О', 'Л', 'И', 'Н', 'А', '#f33be4')`);
+}
+
+function room32ChangeHeroPolinaExplore(letter1, letter2, letter3,
+    letter4, letter5, letter6,
+    shadowColor) {
+    document.body.style.background = '#000';
+    music.src = '';
+    sound.src = 'sounds/polina_change.mp3';
+
+    document.getElementById('name').style.visibility = 'hidden';
+    document.getElementById('footer-buttons').style.visibility = 'hidden';
+
+    dialogs.innerHTML = `
+        <div class="container d-flex justify-content-center" id="name-text-div">
+            <div>
+                <h1 style="float: left;" class="title-show1" id="letter-1">${letter1}</h1>
+                <h1 style="float: left;" class="title-show2" id="letter-2">${letter2}</h1>
+                <h1 style="float: left;" class="title-show3" id="letter-3">${letter3}</h1>
+                <h1 style="float: left;" class="title-show4" id="letter-4">${letter4}</h1>
+                <h1 style="float: left;" class="title-show5" id="letter-5">${letter5}</h1>
+                <h1 style="float: left;" class="title-show6" id="letter-6">${letter6}</h1>
+            </div>
+        </div>
+    `;
+
+    // Анимация появления имени
+    setTimeout(() => {
+        const p1 = document.getElementById('letter-1');
+        const p2 = document.getElementById('letter-2');
+        const p3 = document.getElementById('letter-3');
+        const p4 = document.getElementById('letter-4');
+        const p5 = document.getElementById('letter-5');
+        const p6 = document.getElementById('letter-6');
+
+        // Анимация появления имени
+        p1.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p1.id = 'title-show1';
+
+        p2.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p2.id = 'title-show2';
+
+        p3.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p3.id = 'title-show3';
+
+        p4.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p4.id = 'title-show4';
+
+        p5.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p5.id = 'title-show5';
+
+        p6.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p6.id = 'title-show6';
+    }, 200);
+
+    setTimeout(() => {
+        polinaSayAntidot();
+    }, 5000);
+}
+
+function polinaSayAntidot() {
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">
+                Так, хм, ага, точно! 
+                    Здесь можно создать антидот, то, что тебе нужно! 
+                    Только вот инструкции нет... Придется делать наугад.
+            </p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Блогер</p>
+        </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Шансы невелики...</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Полина</p>
+        </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Лучше, чем ничего</p>
+        </div>
+    `;
+
+    btnNext('whereComponentsAntiDot()');
+}
+
+function whereComponentsAntiDot() {
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">
+                Блин, здесь еще и компонентов нет для создания антидота.
+                Но есть записка - “Он комнате напротив”
+            </p>
+        </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Ну, значит пойду туда...</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Блогер</p>
+        </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Ладно, иди...</p>
+        </div>
+    `;
+
+    btnNext('needKey31()');
+}
+
+function needKey31() {
+
 }
 
 // Сценарий - не разделяемся
@@ -2254,7 +2573,11 @@ function room32ReplyTruth() {
         </div>
     `;
 
-    btnNext('room32PolinaSays()');
+    if (splitUpChoose == true) {
+        btnNext('room32PolinaSays()');
+    } else if (splitUpChoose == false) {
+        btnNext('room32DialogExplorePolina()');
+    }
 }
 
 function room32PolinaSays() {
