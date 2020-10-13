@@ -88,11 +88,17 @@ let widthPlusOfficeSearch = 0;
 let qteSearchLab = true;
 let widthSearchLab = 0;
 
+let qteCookAntidotVar = true;
+let widthCookAntidot = 0;
+
 let monsterRoom32Width = 100;
 let monsterRoom32Sec = 5;
 let clickMonster32 = 0;
 
+// какую функцию запускать
 let splitUpChoose;
+let bossFinal = false;
+let antidot;
 
 // Main functions - Settings
 function swalStyles() {
@@ -2228,6 +2234,9 @@ function room32ChangeHeroPolinaExplore(letter1, letter2, letter3,
 }
 
 function polinaSayAntidot() {
+    document.getElementById('name').style.visibility = 'visible';
+    document.getElementById('footer-buttons').style.visibility = 'visible';
+
     name.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -2262,7 +2271,7 @@ function whereComponentsAntiDot() {
         <div class="row dialog">
             <p class="lead" id="text-dialog">
                 Блин, здесь еще и компонентов нет для создания антидота.
-                Но есть записка - “Он комнате напротив”
+                Но есть записка - “Он в комнате напротив”
             </p>
         </div>
         <div class="row dialog">
@@ -2281,6 +2290,256 @@ function whereComponentsAntiDot() {
 }
 
 function needKey31() {
+    sound.src = 'sounds/accessDenied.mp3';
+
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Черт, нужен ключ</p>
+        </div>
+    `;
+
+    btnNext('rationOn()');
+}
+
+function rationOn() {
+    sound.src = 'sounds/rationOn.mp3';
+
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Кто-то нашел что-нибудь, мне тут нужен ключ к комнате. Собираемся у входа.</p>
+        </div>
+    `;
+
+    setTimeout(() => {
+        sound.src = 'sounds/rationOff.mp3';
+    }, 2000);
+
+    setTimeout(() => {
+        const deadsPeople = [];
+        const alivePeople = [];
+        const randNumbHuman = getRandNumbTeam(1, 2);
+
+        for (let i = 0; i < team.length; i++) {
+            if (team[i].alive == 'false') {
+                deadsPeople.push(team[i]);
+            } else {
+                alivePeople.push(team[i]);
+            }
+        }
+
+        if (deadsPeople.length == 0) {
+            dialogs.innerHTML = `
+                <div class="row dialog">
+                    <p class="lead" id="text-dialog">Отлично, мы все здесь, где ключ?</p>
+                </div>
+
+                <div class="row mt-3 name">
+                    <p class="lead" id="name-dialog">${alivePeople[randNumbHuman].name}</p>
+                </div>
+                <div class="row dialog">
+                    <p class="lead" id="text-dialog">Вот ключ</p>
+                </div>
+            `;
+        } else {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+
+                onOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer);
+                  toast.addEventListener('mouseleave', Swal.resumeTimer);
+                },
+            });
+
+            Toast.fire({
+                icon: 'error',
+                title: 'Отряд: отношения понижены',
+            });
+
+            dialogs.innerHTML = `
+                <div class="row dialog">
+                    <p class="lead" id="text-dialog">Отлично, мы все здесь, где ключ?</p>
+                </div>
+
+                <div class="row dialog">
+                    <p class="lead" id="text-dialog">С нами нет уже ${deadsPeople.length} человек...</p>
+                </div>
+
+                <div class="row mt-3 name">
+                    <p class="lead" id="name-dialog">${alivePeople[randNumbHuman].name}</p>
+                </div>
+                <div class="row dialog">
+                    <p class="lead" id="text-dialog">Вот ключ</p>
+                </div>
+                <div class="row dialog">
+                    <p class="lead" id="text-dialog">Хорошо... Идем в комнату...</p>
+                </div>
+            `;
+        }
+    }, 2500);
+
+    bossFinal = true;
+    btnNext('startPhobosFight()');
+}
+
+function antiDotFind() {
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Ага, вот и компоненты!</p>
+        </div>
+    `;
+
+    btnNext('blogerCookAntidot()');
+}
+
+function blogerCookAntidot() {
+    setTimeout(() => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            },
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Блогер: отношения повышены',
+        });
+    }, 1000);
+
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Вот компоненты к твоему антидоту</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Блогер</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Спасибо, что помогаешь!</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Полина</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Поблагодаришь - если выживешь</p>
+        </div>
+    `;
+
+    btnNextElement = document.getElementById('btn-next');
+    btnNextElement = btnNextElement.parentNode.removeChild(btnNextElement);
+    document.getElementById('footer-buttons').innerHTML += `
+        <button id="btn-next" type="button" class="btn btn-lg btn-dark" data-toggle='modal' data-target='#antidot'>Далее</button>
+    `;
+}
+
+function checkComponents() {
+    const acid1 = document.getElementById('acid-1');
+    const acid2 = document.getElementById('acid-1-2');
+    const acid3 = document.getElementById('acid-1-3');
+
+    if (acid1.checked) {
+        antidot = true;
+        qteCookAntidot();
+    } else if (acid2.checked) {
+        antidot = false;
+        qteCookAntidot();
+    } else if (acid3.checked) {
+        antidot = false;
+        qteCookAntidot();
+    }
+}
+
+function qteCookAntidot() {
+    btnNextElement = document.getElementById('btn-next');
+    btnNextElement.disabled = true;
+
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Приготовлие антидота...</p> 
+        </div>
+
+        <div class="progress mt-4" id="progress-div">
+            <div class="progress-bar progress-bar-striped bg-primary" id="progressbar_cook_antidot" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+        </div>
+    `;
+
+    const progressbarSearchLab = document.getElementById('progressbar_cook_antidot');
+    const progress = document.getElementById('progress-div');
+
+    setInterval(() => {
+        try {
+            if (widthCookAntidot == 100) {
+                qteCookAntidotVar = false;
+
+                progress.parentNode.removeChild(progress);
+
+                goAntidot();
+            }
+        } catch {
+            widthCookAntidot = false;
+        }
+
+        if (qteCookAntidotVar == true) {
+            widthCookAntidot += 25;
+            progressbarSearchLab.style.width = `${widthCookAntidot}%`;
+            progressbarSearchLab.innerHTML = `${widthCookAntidot}%`;
+        } else {}
+    }, 1000);
+}
+
+function goAntidot() {
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Так, готово, но что именно...?</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Блогер</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Давай, вводи...</p>
+        </div>
+    `;
+
+    btnNext('useAntidot()');
+}
+
+function useAntidot() {
+    document.getElementById('name').style.visibility = 'hidden';
+    document.getElementById('footer-buttons').style.visibility = 'hidden';
+
+    setTimeout(() => {
+        if (antidot == true) {
+            blogerAlive();
+        } else if (antidot == false) {
+            blogerDead();
+        }
+    }, 2000);
+}
+
+function blogerAlive() {
+
+}
+
+function blogerDead() {
 
 }
 
@@ -2766,7 +3025,11 @@ function mechanicPhobosFight() {
                     clearInterval(pressButtonInterval);
                 }
 
-                liftTeamDialog();
+                if (bossFinal == false) {
+                    liftTeamDialog();
+                } else {
+                    antiDotFind();
+                }
             }
 
             if (polinaHp == 0) {
@@ -3124,7 +3387,6 @@ function end() {
     const title = document.getElementById('title-game');
     const titleEnd = document.getElementById('title2');
     const links = document.getElementById('links');
-    const links2 = document.getElementById('links2');
 
     setTimeout(() => {
         title.id = 'title';
