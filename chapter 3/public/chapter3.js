@@ -95,6 +95,10 @@ let monsterRoom32Width = 100;
 let monsterRoom32Sec = 5;
 let clickMonster32 = 0;
 
+let monsterRoom34Width = 100;
+let monsterRoom34Sec = 5;
+let clickMonster34 = 0;
+
 // какую функцию запускать
 let splitUpChoose;
 let bossFinal = false;
@@ -1209,10 +1213,10 @@ function chooseSplitUpOrNo() {
     name.innerHTML = `Выбор: Разделиться или нет?`;
     dialogs.innerHTML = `
         <div class="row dialog d-flex justify-content-center" id="chooseSplitUp-div-btn">
-            <button id="btn-splitUp" type="button" class="btn btn-dark mt-2 mb-2" onclick="splitUp()">
+            <button id="btn-splitUp" type="button" class="btn btn-dark mt-2 mb-2" onclick="splitUp(); splitUpChoose = true;">
                 Разделиться
             </button>
-            <button id="btn-noSplitUp" type="button" class="btn btn-dark mt-2 mb-2" onclick="noSplitUp()">
+            <button id="btn-noSplitUp" type="button" class="btn btn-dark mt-2 mb-2" onclick="noSplitUp(); splitUpChoose = false;">
                 Никого не отправлять
             </button>
         </div>
@@ -1347,8 +1351,10 @@ function dialogNoOne() {
 
 // Сценарий - разделяемся
 function splitUp() {
-    const sendTeamMountainsBtn = document.getElementById('sendTeamMountains');
-    sendTeamMountainsBtn.parentNode.removeChild(sendTeamMountainsBtn);
+    try {
+        const sendTeamMountainsBtn = document.getElementById('sendTeamMountains');
+        sendTeamMountainsBtn.parentNode.removeChild(sendTeamMountainsBtn);
+    } catch {}
 
     const aSymbol = document.getElementById('a-symbol');
     const nSymbol = document.getElementById('n-symbol');
@@ -1371,29 +1377,31 @@ function splitUp() {
     const oleg2Td = document.getElementById('olegTd2');
     const oleg3Td = document.getElementById('olegTd3');
 
-    if (team[0].alive == 'false') {
-        nSymbol.parentNode.removeChild(nSymbol);
-        nikita1Td.parentNode.removeChild(nikita1Td);
-        nikita2Td.parentNode.removeChild(nikita2Td);
-        nikita3Td.parentNode.removeChild(nikita3Td);
-    } else if (team[1].alive == 'false') {
-        aSymbol.parentNode.removeChild(aSymbol);
-        anna1Td.parentNode.removeChild(anna1Td);
-        anna2Td.parentNode.removeChild(anna2Td);
-        anna3Td.parentNode.removeChild(anna3Td);
-    } else if (team[2].alive == 'false') {
-        dSymbol.parentNode.removeChild(dSymbol);
-        danil1Td.parentNode.removeChild(danil1Td);
-        danil2Td.parentNode.removeChild(danil2Td);
-        danil3Td.parentNode.removeChild(danil3Td);
-    } else if (team[3].alive == 'false') {
-        oSymbol.parentNode.removeChild(oSymbol);
-        oleg1Td.parentNode.removeChild(oleg1Td);
-        oleg2Td.parentNode.removeChild(oleg2Td);
-        oleg3Td.parentNode.removeChild(oleg3Td);
-    } else {
-        console.log('хуйня');
-    }
+    try {
+        if (team[0].alive == 'false') {
+            nSymbol.parentNode.removeChild(nSymbol);
+            nikita1Td.parentNode.removeChild(nikita1Td);
+            nikita2Td.parentNode.removeChild(nikita2Td);
+            nikita3Td.parentNode.removeChild(nikita3Td);
+        } else if (team[1].alive == 'false') {
+            aSymbol.parentNode.removeChild(aSymbol);
+            anna1Td.parentNode.removeChild(anna1Td);
+            anna2Td.parentNode.removeChild(anna2Td);
+            anna3Td.parentNode.removeChild(anna3Td);
+        } else if (team[2].alive == 'false') {
+            dSymbol.parentNode.removeChild(dSymbol);
+            danil1Td.parentNode.removeChild(danil1Td);
+            danil2Td.parentNode.removeChild(danil2Td);
+            danil3Td.parentNode.removeChild(danil3Td);
+        } else if (team[3].alive == 'false') {
+            oSymbol.parentNode.removeChild(oSymbol);
+            oleg1Td.parentNode.removeChild(oleg1Td);
+            oleg2Td.parentNode.removeChild(oleg2Td);
+            oleg3Td.parentNode.removeChild(oleg3Td);
+        } else {
+            console.log('хуйня либо все выжили');
+        }
+    } catch {}
 
     $('#ration-modal').modal('show');
 
@@ -1513,8 +1521,8 @@ function sendTeamLaboratories() {
         namesString = namesString + names;
     }
 
-    // Проверка выбора людей (хуй сосня (переделать нормально))
     if (team[0].alive == 'false') {
+        console.log('0 - false');
         if (anna1.checked &&
             danil2.checked &&
             oleg3.checked) {
@@ -1598,6 +1606,8 @@ function sendTeamLaboratories() {
             swalStyles();
         }
     } else if (team[1].alive == 'false') {
+        console.log('1 - false');
+
         if (nikita1.checked &&
             danil2.checked &&
             oleg3.checked) {
@@ -1681,6 +1691,8 @@ function sendTeamLaboratories() {
             swalStyles();
         }
     } else if (team[2].alive == 'false') {
+        console.log('2 - false');
+
         if (nikita1.checked &&
             anna2.checked &&
             oleg3.checked) {
@@ -1765,6 +1777,8 @@ function sendTeamLaboratories() {
             swalStyles();
         }
     } else if (team[3].alive == 'false') {
+        console.log('3 - false');
+
         if (nikita1.checked &&
             anna2.checked &&
             danil3.checked) {
@@ -1839,158 +1853,6 @@ function sendTeamLaboratories() {
             });
 
             swalStyles();
-        } else if (team[0].alive == true &&
-            team[1].alive == true &&
-            team[2].alive == true &&
-            team[3].alive == true) {
-                if (danil1.checked &&
-                    anna2.checked &&
-                    nikita3.checked) {
-                    Swal.fire({
-                        title: 'Ваш выбор:',
-                        html: `<p>${namesString}</p>`,
-                        showCancelButton: true,
-                        cancelButtonText: 'Отмена',
-                        confirmButtonText: `Отправить`,
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            team[1].alive = 'false';
-
-                            $('#ration-modal').modal('hide');
-                            room32SplitUp();
-                        }
-                    });
-
-                    swalStyles();
-                } else if (oleg1.checked &&
-                    anna2.checked &&
-                    nikita3.checked) {
-                    Swal.fire({
-                        title: 'Ваш выбор:',
-                        html: `<p>${namesString}</p>`,
-                        showCancelButton: true,
-                        cancelButtonText: 'Отмена',
-                        confirmButtonText: `Отправить`,
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            $('#ration-modal').modal('hide');
-                            room32SplitUp();
-                        }
-                    });
-
-                    swalStyles();
-                } else if (nikita1.checked &&
-                    anna2.checked &&
-                    danil3.checked) {
-                    Swal.fire({
-                        title: 'Ваш выбор:',
-                        html: `<p>${namesString}</p>`,
-                        showCancelButton: true,
-                        cancelButtonText: 'Отмена',
-                        confirmButtonText: `Отправить`,
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            team[1].alive = 'false';
-
-                            $('#ration-modal').modal('hide');
-                            room32SplitUp();
-                        }
-                    });
-
-                    swalStyles();
-                } else if (oleg1.checked &&
-                    anna2.checked &&
-                    danil3.checked) {
-                    Swal.fire({
-                        title: 'Ваш выбор:',
-                        html: `<p>${namesString}</p>`,
-                        showCancelButton: true,
-                        cancelButtonText: 'Отмена',
-                        confirmButtonText: `Отправить`,
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            team[3].alive = 'false';
-
-                            $('#ration-modal').modal('hide');
-                            room32SplitUp();
-                        }
-                    });
-
-                    swalStyles();
-                } else if (nikita1.checked &&
-                    anna2.checked &&
-                    oleg3.checked) {
-                    // Никто не умирает
-
-                    Swal.fire({
-                        title: 'Ваш выбор:',
-                        html: `<p>${namesString}</p>`,
-                        showCancelButton: true,
-                        cancelButtonText: 'Отмена',
-                        confirmButtonText: `Отправить`,
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            $('#ration-modal').modal('hide');
-                            room32SplitUp();
-                        }
-                    });
-
-                    swalStyles();
-                } else if (danil1.checked &&
-                    anna2.checked &&
-                    oleg3.checked) {
-                    Swal.fire({
-                        title: 'Ваш выбор:',
-                        html: `<p>${namesString}</p>`,
-                        showCancelButton: true,
-                        cancelButtonText: 'Отмена',
-                        confirmButtonText: `Отправить`,
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            $('#ration-modal').modal('hide');
-                            room32SplitUp();
-                        }
-                    });
-
-                    swalStyles();
-                } else if (anna1.checked &&
-                    danil2.checked &&
-                    nikita3.checked) {
-                    Swal.fire({
-                        title: 'Ваш выбор:',
-                        html: `<p>${namesString}</p>`,
-                        showCancelButton: true,
-                        cancelButtonText: 'Отмена',
-                        confirmButtonText: `Отправить`,
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            team[0].alive = 'false';
-                            $('#ration-modal').modal('hide');
-                            room32SplitUp();
-                        }
-                    });
-
-                    swalStyles();
-                } else if (danil1.checked &&
-                    oleg2.checked &&
-                    nikita3.checked) {
-                    Swal.fire({
-                        title: 'Ваш выбор:',
-                        html: `<p>${namesString}</p>`,
-                        showCancelButton: true,
-                        cancelButtonText: 'Отмена',
-                        confirmButtonText: `Отправить`,
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            team[2].alive = 'false';
-
-                            $('#ration-modal').modal('hide');
-                            room32SplitUp();
-                        }
-                    });
-
-                    swalStyles();
-                }
         } else {
             Swal.fire({
                 icon: 'error',
@@ -1999,7 +1861,180 @@ function sendTeamLaboratories() {
 
             swalStyles();
         }
-    }
+    } else if (team[0].alive &&
+        team[1].alive &&
+        team[2].alive &&
+        team[3].alive) {
+            console.log('0, 1, 2, 3 - true');
+
+            if (danil1.checked &&
+                anna2.checked &&
+                nikita3.checked) {
+                Swal.fire({
+                    title: 'Ваш выбор:',
+                    html: `<p>${namesString}</p>`,
+                    showCancelButton: true,
+                    cancelButtonText: 'Отмена',
+                    confirmButtonText: `Отправить`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        team[1].alive = 'false';
+
+                        $('#ration-modal').modal('hide');
+                        room32SplitUp();
+                    }
+                });
+
+                swalStyles();
+            } else if (oleg1.checked &&
+                anna2.checked &&
+                nikita3.checked) {
+                Swal.fire({
+                    title: 'Ваш выбор:',
+                    html: `<p>${namesString}</p>`,
+                    showCancelButton: true,
+                    cancelButtonText: 'Отмена',
+                    confirmButtonText: `Отправить`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#ration-modal').modal('hide');
+                        room32SplitUp();
+                    }
+                });
+
+                swalStyles();
+            } else if (nikita1.checked &&
+                anna2.checked &&
+                danil3.checked) {
+                Swal.fire({
+                    title: 'Ваш выбор:',
+                    html: `<p>${namesString}</p>`,
+                    showCancelButton: true,
+                    cancelButtonText: 'Отмена',
+                    confirmButtonText: `Отправить`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        team[1].alive = 'false';
+
+                        $('#ration-modal').modal('hide');
+                        room32SplitUp();
+                    }
+                });
+
+                swalStyles();
+            } else if (oleg1.checked &&
+                anna2.checked &&
+                danil3.checked) {
+                Swal.fire({
+                    title: 'Ваш выбор:',
+                    html: `<p>${namesString}</p>`,
+                    showCancelButton: true,
+                    cancelButtonText: 'Отмена',
+                    confirmButtonText: `Отправить`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        team[3].alive = 'false';
+
+                        $('#ration-modal').modal('hide');
+                        room32SplitUp();
+                    }
+                });
+
+                swalStyles();
+            } else if (nikita1.checked &&
+                anna2.checked &&
+                oleg3.checked) {
+                // Никто не умирает
+
+                Swal.fire({
+                    title: 'Ваш выбор:',
+                    html: `<p>${namesString}</p>`,
+                    showCancelButton: true,
+                    cancelButtonText: 'Отмена',
+                    confirmButtonText: `Отправить`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#ration-modal').modal('hide');
+                        room32SplitUp();
+                    }
+                });
+
+                swalStyles();
+            } else if (danil1.checked &&
+                anna2.checked &&
+                oleg3.checked) {
+                Swal.fire({
+                    title: 'Ваш выбор:',
+                    html: `<p>${namesString}</p>`,
+                    showCancelButton: true,
+                    cancelButtonText: 'Отмена',
+                    confirmButtonText: `Отправить`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#ration-modal').modal('hide');
+                        room32SplitUp();
+                    }
+                });
+
+                swalStyles();
+            } else if (anna1.checked &&
+                danil2.checked &&
+                nikita3.checked) {
+                Swal.fire({
+                    title: 'Ваш выбор:',
+                    html: `<p>${namesString}</p>`,
+                    showCancelButton: true,
+                    cancelButtonText: 'Отмена',
+                    confirmButtonText: `Отправить`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        team[0].alive = 'false';
+                        $('#ration-modal').modal('hide');
+                        room32SplitUp();
+                    }
+                });
+
+                swalStyles();
+            } else if (danil1.checked &&
+                oleg2.checked &&
+                nikita3.checked) {
+                Swal.fire({
+                    title: 'Ваш выбор:',
+                    html: `<p>${namesString}</p>`,
+                    showCancelButton: true,
+                    cancelButtonText: 'Отмена',
+                    confirmButtonText: `Отправить`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        team[2].alive = 'false';
+
+                        $('#ration-modal').modal('hide');
+                        room32SplitUp();
+                    }
+                });
+
+                swalStyles();
+            } else if (anna1.checked &&
+                nikita2.checked &&
+                oleg3.checked) {
+                Swal.fire({
+                    title: 'Ваш выбор:',
+                    html: `<p>${namesString}</p>`,
+                    showCancelButton: true,
+                    cancelButtonText: 'Отмена',
+                    confirmButtonText: `Отправить`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        team[0].alive = 'false';
+
+                        $('#ration-modal').modal('hide');
+                        room32SplitUp();
+                    }
+                });
+
+                swalStyles();
+            }
+        }
 }
 
 function room32SplitUp() {
@@ -2045,7 +2080,7 @@ function smthWrongRoom32() {
 
 function monsterBg() {
     sound.src = 'sounds/virusMonster.mp3';
-    document.style.background = `url('img/virusMonster.jpg')`;
+    // document.style.background = `url('img/virusMonster.jpg')`;
     footerButtons.style.visibility = 'hidden';
     nameDiv.style.visibility = 'hidden';
     dialogsDiv.style.visibility = 'hidden';
@@ -2056,14 +2091,18 @@ function monsterBg() {
 }
 
 function blogerBiteBg() {
-    document.style.background = `url('img/blogerBite.jpg')`;
+    // document.style.background = `url('img/blogerBite.jpg')`;
 
     setTimeout(() => {
         qteMonsterRoom32();
-    }, 2000);
+    }, 1500);
 }
 
 function qteMonsterRoom32() {
+    nameDiv.style.visibility = 'visible';
+    dialogsDiv.style.visibility = 'visible';
+    footerButtons.style.visibility = 'visible';
+
     name.innerHTML = `Игра`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -2117,6 +2156,8 @@ function qteMonsterRoom32Counter() {
     clickMonster32 += 1;
 
     if (clickMonster32 == 5) {
+        statKillEnemies += 1;
+
         progressMonster32.parentNode.removeChild(progressMonster32);
         btnKillMonster32.parentNode.removeChild(btnKillMonster32);
 
@@ -2125,7 +2166,7 @@ function qteMonsterRoom32Counter() {
 }
 
 function helpBlogerBg() {
-    document.body.style.background = `url('img/helpBloger.jpg')`;
+    // document.body.style.background = `url('img/helpBloger.jpg')`;
     footerButtons.style.visibility = 'hidden';
     nameDiv.style.visibility = 'hidden';
     dialogsDiv.style.visibility = 'hidden';
@@ -2137,6 +2178,9 @@ function helpBlogerBg() {
 
 function dialogHelpPolina() {
     btnNextElem.disabled = false;
+    footerButtons.style.visibility = 'visible';
+    nameDiv.style.visibility = 'visible';
+    dialogsDiv.style.visibility = 'visible';
 
     name.innerHTML = `Полина`;
     dialogs.innerHTML = `
@@ -2523,8 +2567,8 @@ function goAntidot() {
 }
 
 function useAntidot() {
-    document.getElementById('name').style.visibility = 'hidden';
-    document.getElementById('footer-buttons').style.visibility = 'hidden';
+    nameDiv.style.visibility = 'hidden';
+    footerButtons.style.visibility = 'hidden';
 
     setTimeout(() => {
         if (antidot == true) {
@@ -2535,12 +2579,251 @@ function useAntidot() {
     }, 2000);
 }
 
+// Блогер выжил
 function blogerAlive() {
+    nameDiv.style.visibility = 'visibility';
+    footerButtons.style.visibility = 'visibility';
 
+    name.innerHTML = 'Блогер';
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">О, я жив</p>
+        </div>
+    `;
+
+    dialogs.innerHTML += `
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Полина</p>
+        </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Реакция бесценна...</p>
+        </div>
+    `;
+
+    btnNext('blogerChangeRoom34()');
 }
 
-function blogerDead() {
+function blogerChangeRoom34(letter1, letter2, letter3,
+    letter4, letter5, letter6,
+    shadowColor) {
+    document.body.style.background = '#000';
+    music.src = '';
+    sound.src = 'sounds/bloger_change.mp3';
 
+    document.getElementById('name').style.visibility = 'hidden';
+    document.getElementById('footer-buttons').style.visibility = 'hidden';
+
+    dialogs.innerHTML = `
+        <div class="container d-flex justify-content-center" id="name-text-div">
+            <div>
+                <h1 style="float: left;" class="title-show1" id="letter-1">${letter1}</h1>
+                <h1 style="float: left;" class="title-show2" id="letter-2">${letter2}</h1>
+                <h1 style="float: left;" class="title-show3" id="letter-3">${letter3}</h1>
+                <h1 style="float: left;" class="title-show4" id="letter-4">${letter4}</h1>
+                <h1 style="float: left;" class="title-show5" id="letter-5">${letter5}</h1>
+                <h1 style="float: left;" class="title-show6" id="letter-6">${letter6}</h1>
+            </div>
+        </div>
+    `;
+
+    // Анимация появления имени
+    setTimeout(() => {
+        const p1 = document.getElementById('letter-1');
+        const p2 = document.getElementById('letter-2');
+        const p3 = document.getElementById('letter-3');
+        const p4 = document.getElementById('letter-4');
+        const p5 = document.getElementById('letter-5');
+        const p6 = document.getElementById('letter-6');
+
+        // Анимация появления имени
+        p1.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p1.id = 'title-show1';
+
+        p2.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p2.id = 'title-show2';
+
+        p3.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p3.id = 'title-show3';
+
+        p4.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p4.id = 'title-show4';
+
+        p5.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p5.id = 'title-show5';
+
+        p6.style.textShadow = `1px 1px 10px ${shadowColor}`;
+        p6.id = 'title-show6';
+    }, 200);
+
+    setTimeout(() => {
+        dialogWhereKeyLift();
+    }, 5000);
+}
+
+function dialogWhereKeyLift() {
+    name.innerHTML = 'Полина';
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Так, нам нужно в лифт, а ключа от лифта нет, что делать?</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Блогер</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Где ты там еще не была? Там? Пойдемте</p>
+        </div>
+    `;
+
+    btnNext('room34Bloger()');
+}
+
+function room34Bloger() {
+    name.innerHTML = `Блогер`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Ключ! Его-то вы и пропустили</p>
+        </div>
+    `;
+
+    btnNext('liftAnonimSpeak()');
+}
+
+// Блогер умер
+function blogerDead() {
+    nameDiv.style.visibility = 'visibility';
+    footerButtons.style.visibility = 'visibility';
+
+    name.innerHTML = 'Полина';
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Еще одна смерть... Сколько еще людей будут умирать из-за меня?</p>
+        </div>
+    `;
+
+    if (relationshipTeam == 'Хорошие' || relationshipTeam == 'Отличные') {
+        dialogs.innerHTML += `
+            <div class="row mt-3 name">
+                <p class="lead" id="name-dialog">Отряд</p>
+            </div>
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Вы не виноваты.</p>
+            </div>
+        `;
+    } else {
+        dialogs.innerHTML += `
+            <div class="row mt-3 name">
+                <p class="lead" id="name-dialog">Отряд</p>
+            </div>
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">...</p>
+            </div>
+        `;
+    }
+
+    dialogs.innerHTML += `
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Полина</p>
+        </div>
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Ладно, нужно идти дальше, но там вход закрыт. 
+                Нужен ключ. Опять. Осталось одна комната в которой я не была, сходим туда еще раз.
+            </p>
+        </div>
+    `;
+
+    btnNext('room34Polina()');
+}
+
+function room34Polina() {
+    btnNextElem.disabled = true;
+
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Так... И что же здесь?</p>
+        </div>
+    `;
+
+    setTimeout(() => {
+        name.innerHTML = `Игра`;
+        dialogs.innerHTML = `
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Стреляйте!</p>
+            </div>
+    
+            <div class="row dialog d-flex justify-content-center" id="run-div-btn">
+                <button id="btn-shot-monster32" type="button" class="btn btn-dark mt-2 mb-2" onclick="qteMonsterRoom34Counter()">
+                    Стрелять
+                </button>
+            </div>
+    
+            <div class="progress mt-4" id="progress-div-monster-32">
+                <div class="progress-bar progress-bar-striped bg-danger" id="progressbar_monster_34_sec" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">5 сек</div>
+            </div>
+        `;
+
+        setInterval(() => {
+            const progressbarMonster34Sec = document.getElementById('progressbar_monster_34_sec');
+
+            monsterRoom34Width -= 20;
+            monsterRoom34Sec -= 1;
+
+            try {
+                progressbarMonster34Sec.style.width = `${monsterRoom34Width}%`;
+                progressbarMonster34Sec.innerHTML = `${monsterRoom34Sec}сек`;
+            } catch {
+                monsterRoom34Sec = false;
+            }
+
+            if (monsterRoom32Sec === 0) {
+                deaths += 1;
+                localStorage.setItem('deaths', deaths);
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Вы умерли!',
+                });
+
+                setInterval(() => {
+                    location.reload();
+                }, 1000);
+            }
+        }, 1000);
+    }, 1000);
+}
+
+function qteMonsterRoom34Counter() {
+    const progressMonster34 = document.getElementById('progress-div-monster-34');
+    const btnKillMonster34 = document.getElementById('btn-shot-monster34');
+
+    clickMonster34 += 1;
+
+    if (clickMonster34 == 5) {
+        statKillEnemies += 1;
+
+        progressMonster34.parentNode.removeChild(progressMonster34);
+        btnKillMonster34.parentNode.removeChild(btnKillMonster34);
+
+        polinaFindKeyLift();
+    }
+}
+
+function polinaFindKeyLift() {
+    name.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">С ним покончено</p>
+        </div>
+        
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">А вот и ключ</p>
+        </div>
+    `;
+
+    btnNextElem.disabled = false;
+    btnNext('liftAnonimSpeak()');
 }
 
 // Сценарий - не разделяемся
@@ -3264,6 +3547,10 @@ function soundFallLift() {
     setTimeout(() => {
         music.src = 'sounds/endGame.mp3';
         document.body.style.background = `url('img/bg.jpg')`;
+        document.body.style.backgroundPosition = 'center center';
+        document.body.style.backgroundRepeat = 'no-repeat';
+        document.body.style.backgroundAttachment = 'fixed';
+        document.body.style.backgroundSize = 'cover';
 
         end();
     }, 8000);
