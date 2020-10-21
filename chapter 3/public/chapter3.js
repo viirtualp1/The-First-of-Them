@@ -104,6 +104,9 @@ let splitUpChoose;
 let bossFinal = false;
 let antidot;
 
+// hope
+let chooseDialogHope = false;
+
 // Main functions - Settings
 function swalStyles() {
     const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
@@ -177,7 +180,6 @@ function soon() {
 // }
 
 // Main functions - Script
-
 function helloTeam() {
     document.body.style.backgroundImage = 'url(\'img/office.jpeg\')';
     music.src = 'sounds/office.wav';
@@ -1280,11 +1282,12 @@ function dialogHope() {
     });
 
     Toast.fire({
-        icon: 'error',
-        title: 'Отряд: отношения понижены',
+        icon: 'success',
+        title: 'Отряд: отношения повышены',
     });
 
-    relationshipTeam = 'Плохие';
+    relationshipTeam = 'Хорошие';
+    chooseDialogHope = true;
 
     function checkIsDead() {
         const randNumb1 = getRandNumbTeam(0, 3);
@@ -2404,6 +2407,8 @@ function rationOn() {
                 icon: 'error',
                 title: 'Отряд: отношения понижены',
             });
+
+            relationshipTeam = 'Ужасные';
 
             dialogs.innerHTML = `
                 <div class="row dialog">
@@ -3643,7 +3648,7 @@ function end() {
                         </button>
                     </div>
                     <div class="modal-body text-center text-white">
-                        <p class="lead">Отдельная благодарность всем тем, 
+                        <p class="lead">Отдельная благодарность всем тем,
                             кто так или иначе принял участие в разработке игры. Оценил, поиграл и замотивировал нас!</p>
                         <p class="lead bg-success" id="you">Особая благодарность тебе за прохождение!</p>
                     </div>
