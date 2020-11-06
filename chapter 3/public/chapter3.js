@@ -395,7 +395,7 @@ function qteCleanPathHouse() {
         </div>
 
         <div class="progress mt-4" id="progress-div">
-            <div class="progress-bar progress-bar-striped bg-success" id="progressbar_clean" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+            <div class="progress-bar progress-bar-striped bg-success" id="progressbar_clean" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
         </div>
     `;
 }
@@ -442,7 +442,7 @@ function qteDeadPhobos() {
         </div>
 
         <div class="progress mt-2" id="progress-div-phobos-success">
-            <div class="progress-bar progress-bar-striped bg-success" id="progressbar_dead_phobos_success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+            <div class="progress-bar progress-bar-striped bg-success" id="progressbar_dead_phobos_success" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
         </div>
     `;
 
@@ -533,7 +533,7 @@ function houseLabOfficeBloger() {
         </div>
 
         <div class="progress mt-4" id="progress-div">
-            <div class="progress-bar progress-bar-striped bg-success" id="progressbar_house_office_search" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+            <div class="progress-bar progress-bar-striped bg-success" id="progressbar_house_office_search" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
         </div>
     `;
 
@@ -2019,7 +2019,7 @@ function sendTeamLaboratories() {
                 swalStyles();
             } else if (anna1.checked &&
                 nikita2.checked &&
-                oleg3.checked) {
+                danil3.checked) {
                 Swal.fire({
                     title: 'Ваш выбор:',
                     html: `<p>${namesString}</p>`,
@@ -2036,6 +2036,8 @@ function sendTeamLaboratories() {
                 });
 
                 swalStyles();
+            } else {
+                console.log('хуйня какая-то получается');
             }
         }
 }
@@ -3686,3 +3688,4 @@ function end() {
         links.id = 'links-game';
     }, 0);
 }
+
