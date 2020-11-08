@@ -687,6 +687,8 @@ function polinaMountains() {
     document.getElementById('name').style.visibility = 'visible';
     document.getElementById('footer-buttons').style.visibility = 'visible';
 
+    nextTask('Найти лабораторию');
+
     name.innerHTML = 'Полина';
     dialogs.innerHTML = `
         <div id="dialogs">
