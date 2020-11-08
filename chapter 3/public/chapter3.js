@@ -160,7 +160,7 @@ function nextTask(text) {
         title: `Задание: ${text}`,
     });
 
-    document.getElementById('task').innerHTML += text;
+    document.getElementById('task').innerHTML = `Задание: ${text}`;
 }
 
 function getRandNumbTeam(min, max) {
@@ -1438,6 +1438,8 @@ function splitUp() {
         <button class="btn btn-dark" onclick="sendTeamLaboratories()">Отправить</button>
     `;
 
+    nextTask('Обыскать лабораторию');
+
     name.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -2119,6 +2121,8 @@ function room32SplitUp() {
         </div>
     `;
 
+    nextTask('Обыскать лабораторию');
+
     btnNext('smthWrongRoom32()');
 }
 
@@ -2284,6 +2288,8 @@ function room32DialogExplorePolina() {
         </div>
     `;
 
+    nextTask('Осмотреть комнату');
+
     btnNext(`room32ChangeHeroPolinaExplore('П', 'О', 'Л', 'И', 'Н', 'А', '#f33be4')`);
 }
 
@@ -2397,6 +2403,8 @@ function whereComponentsAntiDot() {
         </div>
     `;
 
+    nextTask('Найти компонент');
+
     btnNext('needKey31()');
 }
 
@@ -2409,6 +2417,8 @@ function needKey31() {
             <p class="lead" id="text-dialog">Черт, нужен ключ</p>
         </div>
     `;
+
+    nextTask('Найти ключ');
 
     btnNext('rationOn()');
 }
@@ -2496,6 +2506,8 @@ function rationOn() {
         }
     }, 2500);
 
+    nextTask('Найти компоненты');
+
     bossFinal = true;
     btnNext('startPhobosFight()');
 }
@@ -2581,6 +2593,8 @@ function checkComponents() {
 function qteCookAntidot() {
     btnNextElement = document.getElementById('btn-next');
     btnNextElement.disabled = true;
+
+    nextTask('Приготовить антидот');
 
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -2745,6 +2759,8 @@ function dialogWhereKeyLift() {
         </div>
     `;
 
+    nextTask('Найти ключ от лифта');
+
     btnNext('room34Bloger()');
 }
 
@@ -2755,6 +2771,8 @@ function room34Bloger() {
             <p class="lead" id="text-dialog">Ключ! Его-то вы и пропустили</p>
         </div>
     `;
+
+    nextTask('Зайти в лифт');
 
     btnNext('liftAnonimSpeak()');
 }
@@ -2801,6 +2819,8 @@ function blogerDead() {
             </p>
         </div>
     `;
+
+    nextTask('Найти ключ от лифта');
 
     btnNext('room34Polina()');
 }
@@ -2891,6 +2911,8 @@ function polinaFindKeyLift() {
         </div>
     `;
 
+    nextTask('Зайти в лифт');
+
     btnNextElem.disabled = false;
     btnNext('liftAnonimSpeak()');
 }
@@ -2903,6 +2925,8 @@ function noSplitUp() {
             <p class="lead" id="text-dialog">Идем в ту комнату</p>
         </div>
     `;
+
+    nextTask('Осмотреть комнату');
 
     btnNext('room32NoSplitUp()');
 }
@@ -3307,6 +3331,8 @@ function polinaReadyPhobosFight() {
 
 /* Boss */
 function startPhobosFight() {
+    nextTask('Убить Фобоса');
+
     sound.src = 'sounds/doorOpen.mp3';
     setTimeout(() => {
         music.src = 'sounds/phobosFight.mp3';
@@ -3591,6 +3617,8 @@ function liftTeamDialog() {
             <p class="lead" id="text-dialog">Отлично! Идем к лифту.</p>
         </div>
     `;
+
+    nextTask('Зайти в лифт');
 
     btnNext('liftAnonimSpeak();');
 }
