@@ -100,8 +100,8 @@ body {
 
 #name-text-div { margin-top: 35vh; }
 
-@media screen and (max-width: 400px) {
-    #name-text-div { margin-top: 20vh; }
+@media screen and (max-width: 450px) {
+    #name-text-div { margin-top: 27vh; }
 }
 
 #title { 
