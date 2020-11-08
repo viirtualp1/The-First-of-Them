@@ -24,12 +24,12 @@ body {
 }
 
 #title { 
-    font-size: 45px;
+    font-size: 2.5em;
     text-shadow: 3px 3px 3px black, 0 0 1em red; /* Параметры тени */
 }
 
 #buttons-menu { 
-    margin-top: 25vh; 
+    margin-top: 25vh;
 }
 
 #btn-new-game, #btn-achievements,
@@ -155,3 +155,20 @@ body {
 #switch-music {
     background: rgb(39, 42, 44);
 }
+
+@media screen and (max-height: 600px) {
+    #buttons-menu { 
+        margin-top: 20vh;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #title {
+        font-size: 2.3em;
+    }
+
+    #buttons-menu {
+        margin-top: 17vh;
+    }
+}
+  
