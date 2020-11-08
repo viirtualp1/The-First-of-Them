@@ -99,8 +99,6 @@ function next_dialog() {
     names.splice(0, 1);
     clicks_next_dialog += 1;
 
-    console.log(clicks_next_dialog);
-
     let dialog_last = document.getElementsByClassName("dialog")[0];
     dialog_last.parentNode.removeChild(dialog_last);
 

@@ -141,6 +141,28 @@ function btnNext(func) {
     `;
 }
 
+function nextTask(text) {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+    });
+
+    Toast.fire({
+        icon: 'info',
+        title: `Задание: ${text}`,
+    });
+
+    document.getElementById('task').innerHTML += text;
+}
+
 function getRandNumbTeam(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
@@ -356,6 +378,8 @@ function blogerHouse() {
         </div>
     `;
 
+    nextTask('Обыскать дом');
+
     btnNext('house()');
 }
 
@@ -395,7 +419,7 @@ function qteCleanPathHouse() {
         </div>
 
         <div class="progress mt-4" id="progress-div">
-            <div class="progress-bar progress-bar-striped bg-success" id="progressbar_clean" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+            <div class="progress-bar progress-bar bg-success" id="progressbar_clean" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
         </div>
     `;
 }
@@ -442,7 +466,7 @@ function qteDeadPhobos() {
         </div>
 
         <div class="progress mt-2" id="progress-div-phobos-success">
-            <div class="progress-bar progress-bar-striped bg-success" id="progressbar_dead_phobos_success" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+            <div class="progress-bar progress-bar bg-success" id="progressbar_dead_phobos_success" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
         </div>
     `;
 
@@ -667,7 +691,7 @@ function polinaMountains() {
     dialogs.innerHTML = `
         <div id="dialogs">
             <div class="row dialog">
-                <p class="lead" id="text-dialog">Мы на месте, сейчас, значит...</p>
+                <p class="lead" id="text-dialog">Мы на месте, сейчас, значит, разделимся...</p>
             </div>
         </div>
     `;
@@ -1402,7 +1426,7 @@ function splitUp() {
             oleg2Td.parentNode.removeChild(oleg2Td);
             oleg3Td.parentNode.removeChild(oleg3Td);
         } else {
-            console.log('хуйня либо все выжили');
+            console.log('Не работает, либо все выжили');
         }
     } catch {}
 
@@ -1423,9 +1447,9 @@ function splitUp() {
     const arrowUp = document.getElementById('arrowUp'); // arrow up for change value
     const arrowRight = document.getElementById('arrowRight'); // arrow right for change value
 
-    arrowLeft.innerHTML = `3.14`;
-    arrowUp.innerHTML = `3.15(1)`;
-    arrowRight.innerHTML = `3.15(2)`;
+    arrowLeft.innerHTML = `<i class="fas fa-arrow-right"></i>`;
+    arrowUp.innerHTML = `<i class="fas fa-arrow-left"></i>(1)`;
+    arrowRight.innerHTML = `<i class="fas fa-arrow-left"></i>(2)`;
 
     btnNext('room32SplitUp()');
 }
@@ -1509,11 +1533,11 @@ function sendTeamLaboratories() {
             if (teamElementsDirection[i][j] == null) { } else if (teamElementsDirection[i][j].checked) {
                 const last = teamElementsDirection[i][j].id.toString().slice(-1);
                 if (last == '1') {
-                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - 3.14 <br />`);
+                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Комната 3.4 <br />`);
                 } else if (last == '2') {
-                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - 3.15(1) <br />`);
+                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Комната 3.5(1) <br />`);
                 } else if (last == '3') {
-                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - 3.15(2)`);
+                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Комната 3.5(2)`);
                 }
             }
         }
@@ -1718,8 +1742,8 @@ function sendTeamLaboratories() {
         } else if (anna1.checked &&
             nikita2.checked &&
             oleg3.checked) {
-                console.log('test');
-                // Никто не умирает
+            // Никто не умирает
+
             Swal.fire({
                 title: 'Ваш выбор:',
                 html: `<p>${namesString}</p>`,
@@ -1771,6 +1795,23 @@ function sendTeamLaboratories() {
             });
 
             swalStyles();
+        } else if (anna1.checked &&
+            oleg2.checked &&
+            nikita3.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[3].alive = 'false';
+
+                    $('#ration-modal').modal('hide');
+                    room32SplitUp();
+                }
+            });
         } else {
             Swal.fire({
                 icon: 'error',
@@ -2036,8 +2077,27 @@ function sendTeamLaboratories() {
                 });
 
                 swalStyles();
+            } else if (anna1.checked &&
+                nikita2.checked &&
+                oleg3.checked) {
+                Swal.fire({
+                    title: 'Ваш выбор:',
+                    html: `<p>${namesString}</p>`,
+                    showCancelButton: true,
+                    cancelButtonText: 'Отмена',
+                    confirmButtonText: `Отправить`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        team[1].alive = 'false';
+
+                        $('#ration-modal').modal('hide');
+                        room32SplitUp();
+                    }
+                });
+
+                swalStyles();
             } else {
-                console.log('хуйня какая-то получается');
+                console.log('Не работает');
             }
         }
 }
