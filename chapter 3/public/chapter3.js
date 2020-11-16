@@ -14,6 +14,7 @@ const rationFooter = document.getElementById('ration-footer');
 const footerButtons = document.getElementById('footer-buttons');
 const windowDiv = document.getElementById('window');
 const btnNextElem = document.getElementById('btn-next');
+const btnSaveLoad = document.getElementById('btn-save-load');
 
 // Div - name and dialog
 const nameDiv = document.getElementById('name');
@@ -21,7 +22,7 @@ const dialogsDiv = document.getElementById('dialogs');
 
 // Получить из LocalStorage и заменить его на существующее
 // team (objects)
-const team = [
+let team = [
     nikita = {
         name: 'Никита',
         hp: 100,
@@ -65,7 +66,7 @@ const mainHeroes = [
 let relationshipBloger = 'Хорошие';
 let relationshipPolina = 'Хорошие';
 let relationshipTeam = 'Хорошие';
-const statDeadPeoplesTeam = [];
+let statDeadPeoplesTeam = [];
 let statKillEnemies = 0;
 
 let deaths = 0;
@@ -108,6 +109,128 @@ let antidot;
 let chooseDialogHope = false;
 
 // Main functions - Settings
+window.onload = () => {
+    const saveFunc = localStorage.getItem('saveFunc');
+
+    if (saveFunc == undefined) {} else {
+        btnSaveLoad.disabled = false;
+    }
+};
+
+function saveLoad() {
+    const saveFunc = localStorage.getItem('saveFunc');
+    const nikitaLc = localStorage.getItem('nikita');
+    const annaLc = localStorage.getItem('anna');
+    const danilLc = localStorage.getItem('danil');
+    const olegLc = localStorage.getItem('oleg');
+    const relationshipPolinaLc = localStorage.getItem('relationshipPolina');
+    const relationshipBlogerLc = localStorage.getItem('relationshipBloger');
+    const relationshipTeamLc = localStorage.getItem('relationshipTeam');
+
+    const taskLc = localStorage.getItem('task');
+
+    const deathsLc = localStorage.getItem('deaths');
+    const statKillEnemiesLc = localStorage.getItem('statKillEnemies');
+    const statDeadPeoplesTeamLc = localStorage.getItem('statDeadPeoplesTeam');
+
+    if (saveFunc == undefined) {} else {
+        switch (saveFunc) {
+            case 'blogerChangeHeroBloger':
+                team[0].alive = nikitaLc;
+                team[1].alive = annaLc;
+                team[2].alive = danilLc;
+                team[3].alive = olegLc;
+
+                relationshipPolina = relationshipPolinaLc;
+                relationshipBloger = relationshipBlogerLc;
+                relationshipTeam = relationshipTeamLc;
+
+                nextTask(taskLc);
+
+                deaths = parseInt(deathsLc);
+                statKillEnemies = statKillEnemiesLc;
+                statDeadPeoplesTeam = statDeadPeoplesTeamLc;
+
+                blogerChangeHeroBloger('Б', 'Л', 'О', 'Г', 'Е', 'Р', '#f33b3b'); break;
+            case 'changeHeroPolinaMountains':
+                team = teamLc;
+                changeHeroPolinaMountains('П', 'О', 'Л', 'И', 'Н', 'А', '#f33be4'); break;
+            case 'room32ChangeHeroPolinaExplore':
+                team[0].alive = nikitaLc;
+                team[1].alive = annaLc;
+                team[2].alive = danilLc;
+                team[3].alive = olegLc;
+
+                relationshipPolina = relationshipPolinaLc;
+                relationshipBloger = relationshipBlogerLc;
+                relationshipTeam = relationshipTeamLc;
+
+                nextTask(taskLc);
+
+                deaths = parseInt(deathsLc);
+                statKillEnemies = statKillEnemiesLc;
+                statDeadPeoplesTeam = statDeadPeoplesTeamLc;
+                room32ChangeHeroPolinaExplore('П', 'О', 'Л', 'И', 'Н', 'А', '#f33be4'); break;
+            case 'blogerChangeRoom34':
+                team[0].alive = nikitaLc;
+                team[1].alive = annaLc;
+                team[2].alive = danilLc;
+                team[3].alive = olegLc;
+
+                relationshipPolina = relationshipPolinaLc;
+                relationshipBloger = relationshipBlogerLc;
+                relationshipTeam = relationshipTeamLc;
+
+                nextTask(taskLc);
+
+                deaths = parseInt(deathsLc);
+                statKillEnemies = statKillEnemiesLc;
+                statDeadPeoplesTeam = statDeadPeoplesTeamLc;
+                blogerChangeRoom34('Б', 'Л', 'О', 'Г', 'Е', 'Р', '#f33b3b'); break;
+            case 'room32ChangeHeroBloger':
+                team[0].alive = nikitaLc;
+                team[1].alive = annaLc;
+                team[2].alive = danilLc;
+                team[3].alive = olegLc;
+
+                relationshipPolina = relationshipPolinaLc;
+                relationshipBloger = relationshipBlogerLc;
+                relationshipTeam = relationshipTeamLc;
+
+                nextTask(taskLc);
+
+                deaths = parseInt(deathsLc);
+                statKillEnemies = statKillEnemiesLc;
+                statDeadPeoplesTeam = statDeadPeoplesTeamLc;
+                room32ChangeHeroBloger('Б', 'Л', 'О', 'Г', 'Е', 'Р', '#f33b3b'); break;
+            case 'changeHeroPolinaReadyPhobosFight':
+                team[0].alive = nikitaLc;
+                team[1].alive = annaLc;
+                team[2].alive = danilLc;
+                team[3].alive = olegLc;
+
+                relationshipPolina = relationshipPolinaLc;
+                relationshipBloger = relationshipBlogerLc;
+                relationshipTeam = relationshipTeamLc;
+
+                nextTask(taskLc);
+
+                deaths = parseInt(deathsLc);
+                statKillEnemies = statKillEnemiesLc;
+                statDeadPeoplesTeam = statDeadPeoplesTeamLc;
+                changeHeroPolinaReadyPhobosFight('П', 'О', 'Л', 'И', 'Н', 'А', '#f33be4'); break;
+        }
+    }
+
+    console.log(deaths);
+    console.log(statKillEnemies);
+    console.log(statDeadPeoplesTeam);
+    console.log(relationshipTeam);
+    console.log(relationshipBloger);
+    console.log(relationshipPolina);
+    console.log(team);
+};
+
 function swalStyles() {
     const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
     swal2Modal.style.background = 'rgb(58, 58, 58)';
@@ -176,6 +299,14 @@ function soon() {
         icon: 'info',
         title: 'Скоро!',
     });
+}
+
+function changeBg(bgName) {
+    document.body.style.backgroundImage = `url("img/${bgName}")`;
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
 }
 
 /* Пока достижений связанных со статистикой */
@@ -291,6 +422,7 @@ function goToMountains() {
 function blogerChangeHeroBloger(letter1, letter2, letter3,
     letter4, letter5, letter6,
     shadowColor) {
+    localStorage.setItem('saveFunc', 'blogerChangeHeroBloger');
     document.body.style.background = '#000';
     music.src = '';
     sound.src = 'sounds/bloger_change.mp3';
@@ -379,6 +511,7 @@ function blogerHouse() {
     `;
 
     nextTask('Обыскать дом');
+    localStorage.setItem('task', 'Обыскать дом');
 
     btnNext('house()');
 }
@@ -606,6 +739,7 @@ function coordinateLab() {
 function changeHeroPolinaMountains(letter1, letter2, letter3,
     letter4, letter5, letter6,
     shadowColor) {
+    localStorage.setItem('saveFunc', 'changeHeroPolinaMountains');
     document.body.style.background = '#000';
     music.src = '';
     sound.src = 'sounds/polina_change.mp3';
@@ -688,6 +822,7 @@ function polinaMountains() {
     document.getElementById('footer-buttons').style.visibility = 'visible';
 
     nextTask('Найти лабораторию');
+    localStorage.setItem('task', 'Найти лабораторию');
 
     name.innerHTML = 'Полина';
     dialogs.innerHTML = `
@@ -1120,6 +1255,11 @@ function findLabLives() {
     const teamAlive = teamAliveMas.toString().replace(/,/g, ', ');
 
     if (dead != '') {
+        localStorage.setItem('nikita', team[0].alive);
+        localStorage.setItem('anna', team[1].alive);
+        localStorage.setItem('danil', team[2].alive);
+        localStorage.setItem('oleg', team[3].alive);
+
         Swal.fire({
             title: `Из отряда выжили только: ${teamAlive}`,
             text: `Вы потеряли: ${dead}`,
@@ -1271,6 +1411,7 @@ function dialogBad() {
     });
 
     relationshipTeam = 'Плохие';
+    localStorage.setItem('relationshipTeam', relationshipTeam);
 
     function checkIsDead() {
         const randNumb1 = getRandNumbTeam(0, 3);
@@ -1313,6 +1454,8 @@ function dialogHope() {
     });
 
     relationshipTeam = 'Хорошие';
+    localStorage.setItem('relationshipTeam', relationshipTeam);
+
     chooseDialogHope = true;
 
     function checkIsDead() {
@@ -1356,6 +1499,7 @@ function dialogNoOne() {
     });
 
     relationshipTeam = 'Отличные';
+    localStorage.setItem('relationshipTeam', relationshipTeam);
 
     function checkIsDead() {
         const randNumb1 = getRandNumbTeam(0, 3);
@@ -1439,6 +1583,7 @@ function splitUp() {
     `;
 
     nextTask('Обыскать лабораторию');
+    localStorage.setItem('task', 'Обыскать лабораторию');
 
     name.innerHTML = `Полина`;
     dialogs.innerHTML = `
@@ -1566,6 +1711,10 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     team[3].alive = 'false';
+                    localStorage.setItem('nikita', team[0].alive);
+                    localStorage.setItem('anna', team[1].alive);
+                    localStorage.setItem('danil', team[2].alive);
+                    localStorage.setItem('oleg', team[3].alive);
 
                     $('#ration-modal').modal('hide');
                     room32SplitUp();
@@ -1603,6 +1752,10 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     team[2].alive = 'false';
+                    localStorage.setItem('nikita', team[0].alive);
+                    localStorage.setItem('anna', team[1].alive);
+                    localStorage.setItem('danil', team[2].alive);
+                    localStorage.setItem('oleg', team[3].alive);
 
                     $('#ration-modal').modal('hide');
                     room32SplitUp();
@@ -1651,6 +1804,10 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     team[0].alive = 'false';
+                    localStorage.setItem('nikita', team[0].alive);
+                    localStorage.setItem('anna', team[1].alive);
+                    localStorage.setItem('danil', team[2].alive);
+                    localStorage.setItem('oleg', team[3].alive);
 
                     $('#ration-modal').modal('hide');
                     room32SplitUp();
@@ -1688,6 +1845,10 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     team[3].alive = 'false';
+                    localStorage.setItem('nikita', team[0].alive);
+                    localStorage.setItem('anna', team[1].alive);
+                    localStorage.setItem('danil', team[2].alive);
+                    localStorage.setItem('oleg', team[3].alive);
 
                     $('#ration-modal').modal('hide');
                     room32SplitUp();
@@ -1736,6 +1897,10 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     team[1].alive = 'false';
+                    localStorage.setItem('nikita', team[0].alive);
+                    localStorage.setItem('anna', team[1].alive);
+                    localStorage.setItem('danil', team[2].alive);
+                    localStorage.setItem('oleg', team[3].alive);
 
                     $('#ration-modal').modal('hide');
                     room32SplitUp();
@@ -1774,6 +1939,10 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     team[0].alive = 'false';
+                    localStorage.setItem('nikita', team[0].alive);
+                    localStorage.setItem('anna', team[1].alive);
+                    localStorage.setItem('danil', team[2].alive);
+                    localStorage.setItem('oleg', team[3].alive);
 
                     $('#ration-modal').modal('hide');
                     room32SplitUp();
@@ -1811,6 +1980,10 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     team[3].alive = 'false';
+                    localStorage.setItem('nikita', team[0].alive);
+                    localStorage.setItem('anna', team[1].alive);
+                    localStorage.setItem('danil', team[2].alive);
+                    localStorage.setItem('oleg', team[3].alive);
 
                     $('#ration-modal').modal('hide');
                     room32SplitUp();
@@ -1839,6 +2012,10 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     team[2].alive = 'false';
+                    localStorage.setItem('nikita', team[0].alive);
+                    localStorage.setItem('anna', team[1].alive);
+                    localStorage.setItem('danil', team[2].alive);
+                    localStorage.setItem('oleg', team[3].alive);
 
                     $('#ration-modal').modal('hide');
                     room32SplitUp();
@@ -1876,6 +2053,10 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     team[1].alive = 'false';
+                    localStorage.setItem('nikita', team[0].alive);
+                    localStorage.setItem('anna', team[1].alive);
+                    localStorage.setItem('danil', team[2].alive);
+                    localStorage.setItem('oleg', team[3].alive);
 
                     $('#ration-modal').modal('hide');
                     room32SplitUp();
@@ -1927,6 +2108,10 @@ function sendTeamLaboratories() {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         team[1].alive = 'false';
+                        localStorage.setItem('nikita', team[0].alive);
+                        localStorage.setItem('anna', team[1].alive);
+                        localStorage.setItem('danil', team[2].alive);
+                        localStorage.setItem('oleg', team[3].alive);
 
                         $('#ration-modal').modal('hide');
                         room32SplitUp();
@@ -1963,6 +2148,10 @@ function sendTeamLaboratories() {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         team[1].alive = 'false';
+                        localStorage.setItem('nikita', team[0].alive);
+                        localStorage.setItem('anna', team[1].alive);
+                        localStorage.setItem('danil', team[2].alive);
+                        localStorage.setItem('oleg', team[3].alive);
 
                         $('#ration-modal').modal('hide');
                         room32SplitUp();
@@ -1982,6 +2171,10 @@ function sendTeamLaboratories() {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         team[3].alive = 'false';
+                        localStorage.setItem('nikita', team[0].alive);
+                        localStorage.setItem('anna', team[1].alive);
+                        localStorage.setItem('danil', team[2].alive);
+                        localStorage.setItem('oleg', team[3].alive);
 
                         $('#ration-modal').modal('hide');
                         room32SplitUp();
@@ -2055,6 +2248,10 @@ function sendTeamLaboratories() {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         team[2].alive = 'false';
+                        localStorage.setItem('nikita', team[0].alive);
+                        localStorage.setItem('anna', team[1].alive);
+                        localStorage.setItem('danil', team[2].alive);
+                        localStorage.setItem('oleg', team[3].alive);
 
                         $('#ration-modal').modal('hide');
                         room32SplitUp();
@@ -2074,6 +2271,10 @@ function sendTeamLaboratories() {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         team[0].alive = 'false';
+                        localStorage.setItem('nikita', team[0].alive);
+                        localStorage.setItem('anna', team[1].alive);
+                        localStorage.setItem('danil', team[2].alive);
+                        localStorage.setItem('oleg', team[3].alive);
 
                         $('#ration-modal').modal('hide');
                         room32SplitUp();
@@ -2093,6 +2294,10 @@ function sendTeamLaboratories() {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         team[1].alive = 'false';
+                        localStorage.setItem('nikita', team[0].alive);
+                        localStorage.setItem('anna', team[1].alive);
+                        localStorage.setItem('danil', team[2].alive);
+                        localStorage.setItem('oleg', team[3].alive);
 
                         $('#ration-modal').modal('hide');
                         room32SplitUp();
@@ -2122,6 +2327,7 @@ function room32SplitUp() {
     `;
 
     nextTask('Обыскать лабораторию');
+    localStorage.setItem('task', 'Обыскать лабораторию');
 
     btnNext('smthWrongRoom32()');
 }
@@ -2228,6 +2434,7 @@ function qteMonsterRoom32Counter() {
 
     if (clickMonster32 == 5) {
         statKillEnemies += 1;
+        localStorage.setItem('statKillEnemies', statKillEnemies);
 
         progressMonster32.parentNode.removeChild(progressMonster32);
         btnKillMonster32.parentNode.removeChild(btnKillMonster32);
@@ -2289,6 +2496,7 @@ function room32DialogExplorePolina() {
     `;
 
     nextTask('Осмотреть комнату');
+    localStorage.setItem('task', 'Осмотреть комнату');
 
     btnNext(`room32ChangeHeroPolinaExplore('П', 'О', 'Л', 'И', 'Н', 'А', '#f33be4')`);
 }
@@ -2404,6 +2612,7 @@ function whereComponentsAntiDot() {
     `;
 
     nextTask('Найти компонент');
+    localStorage.setItem('task', 'Найти компонент');
 
     btnNext('needKey31()');
 }
@@ -2419,6 +2628,7 @@ function needKey31() {
     `;
 
     nextTask('Найти ключ');
+    localStorage.setItem('task', 'Найти ключ');
 
     btnNext('rationOn()');
 }
@@ -2483,6 +2693,7 @@ function rationOn() {
             });
 
             relationshipTeam = 'Ужасные';
+            localStorage.setItem('relationshipTeam', relationshipTeam);
 
             dialogs.innerHTML = `
                 <div class="row dialog">
@@ -2507,6 +2718,7 @@ function rationOn() {
     }, 2500);
 
     nextTask('Найти компоненты');
+    localStorage.setItem('task', 'Найти компоненты');
 
     bossFinal = true;
     btnNext('startPhobosFight()');
@@ -2542,6 +2754,9 @@ function blogerCookAntidot() {
             icon: 'success',
             title: 'Блогер: отношения повышены',
         });
+
+        relationshipBloger = 'Отличные';
+        localStorage.setItem('relationshipBloger', relationshipBloger);
     }, 1000);
 
     dialogs.innerHTML = `
@@ -2595,6 +2810,7 @@ function qteCookAntidot() {
     btnNextElement.disabled = true;
 
     nextTask('Приготовить антидот');
+    localStorage.setItem('task', 'Приготовить антидот');
 
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -2683,7 +2899,7 @@ function blogerAlive() {
         </div>
     `;
 
-    btnNext('blogerChangeRoom34()');
+    btnNext(`blogerChangeRoom34('Б', 'Л', 'О', 'Г', 'Е', 'Р', '#f33b3b')`);
 }
 
 function blogerChangeRoom34(letter1, letter2, letter3,
@@ -2760,6 +2976,7 @@ function dialogWhereKeyLift() {
     `;
 
     nextTask('Найти ключ от лифта');
+    localStorage.setItem('task', 'Найти ключ от лифта');
 
     btnNext('room34Bloger()');
 }
@@ -2773,6 +2990,7 @@ function room34Bloger() {
     `;
 
     nextTask('Зайти в лифт');
+    localStorage.setItem('task', 'Зайти в лифт');
 
     btnNext('liftAnonimSpeak()');
 }
@@ -2821,6 +3039,7 @@ function blogerDead() {
     `;
 
     nextTask('Найти ключ от лифта');
+    localStorage.setItem('task', 'Найти ключ от лифта');
 
     btnNext('room34Polina()');
 }
@@ -2891,6 +3110,7 @@ function qteMonsterRoom34Counter() {
 
     if (clickMonster34 == 5) {
         statKillEnemies += 1;
+        localStorage.setItem('statKillEnemies', statKillEnemies);
 
         progressMonster34.parentNode.removeChild(progressMonster34);
         btnKillMonster34.parentNode.removeChild(btnKillMonster34);
@@ -2912,6 +3132,7 @@ function polinaFindKeyLift() {
     `;
 
     nextTask('Зайти в лифт');
+    localStorage.setItem('task', 'Зайти в лифт');
 
     btnNextElem.disabled = false;
     btnNext('liftAnonimSpeak()');
@@ -2927,6 +3148,7 @@ function noSplitUp() {
     `;
 
     nextTask('Осмотреть комнату');
+    localStorage.setItem('task', 'Осмотреть комнату');
 
     btnNext('room32NoSplitUp()');
 }
@@ -3144,6 +3366,7 @@ function room32ReplyLie() {
     });
 
     relationshipPolina = 'Плохие';
+    localStorage.setItem('relationshipPolina', relationshipPolina);
 
     name.innerHTML = `Блогер`;
     dialogs.innerHTML = `
@@ -3188,6 +3411,7 @@ function room32ReplyGood() {
     });
 
     relationshipPolina = 'Отличные';
+    localStorage.setItem('relationshipPolina', relationshipPolina);
 }
 
 function room32ReplyTruth() {
@@ -3332,6 +3556,7 @@ function polinaReadyPhobosFight() {
 /* Boss */
 function startPhobosFight() {
     nextTask('Убить Фобоса');
+    localStorage.setItem('task', 'Убить Фобоса');
 
     sound.src = 'sounds/doorOpen.mp3';
     setTimeout(() => {
@@ -3394,9 +3619,11 @@ function mechanicPhobosFight() {
         const checkInterval = setInterval(() => {
             if (clickUserToPhobos == clickPhobosToKill) {
                 statKillEnemies += 1;
+                localStorage.setItem('statKillEnemies', statKillEnemies);
 
                 clearInterval(checkInterval);
                 clearInterval(phobosStatReload);
+
                 try {
                     clearInterval(pressNbuttonInterval);
                 } catch {
@@ -3592,6 +3819,9 @@ function liftTeamDialog() {
         title: 'Блогер: отношения повышены',
     });
 
+    relationshipBloger = 'Отличные';
+    localStorage.setItem('relationshipBloger', relationshipBloger);
+
     name.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -3619,6 +3849,7 @@ function liftTeamDialog() {
     `;
 
     nextTask('Зайти в лифт');
+    localStorage.setItem('task', 'Зайти в лифт');
 
     btnNext('liftAnonimSpeak();');
 }
@@ -3669,6 +3900,8 @@ function end() {
             statDeadPeoplesTeam.push = team[i].name;
         }
     }
+
+    localStorage.setItem('statDeadPeoplesTeam', statDeadPeoplesTeam);
 
     windowDiv.innerHTML = `
         <div class="thanksEnd mt-2">
