@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Записка неизвестного ученого</title>
+    <style>
+        body {
+            background: black;
+        }
+
+        .container {
+            width: 580px;
+            height: 560px;
+            margin-top: 2%;
+            border: 2px solid silver;
+            box-shadow: 1px 1px 10px red;
+        }
+
+        h2 {
+            margin-top: 8%;
+        }
+
+        h3 {
+            margin-top: 4.5%;
+            color: #fff;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="text-center text-white">Диалог неизвестных ученых</h2>
+    <div class="container">
+        <h3 id="text1"></h3>
+        <h3 id="text2"></h3>
+        <h3 id="text3"></h3>
+        <h3 id="text4"></h3>
+        <h3 id="text5"></h3>
+        <h3 id="text6"></h3>
+    </div>
+
+    <script>
+        const container = document.getElementsByClassName('container')[0];
+        const h2 = document.querySelector('h2');
+
+        setTimeout(() => {
+            animateText("text1", "- Мне кажется наш босс Михаил сошел с ума.", 2);
+        }, 3500);
+
+        setTimeout(() => {
+            animateText("text2", "- Кто этот Михаил вообще? ", 2);
+        }, 8500);
+
+        setTimeout(() => {
+            animateText("text3", "- Говорят он ученый, который нашел этот вирус и заставил его нормально функционировать, а потом просто с катушек съехал с ним.", 2);
+        }, 11500);
+
+        setTimeout(() => {
+            animateText("text4", "- Он заставляет нас работать без выходных, перерывов и угрожает нам.", 2);
+        }, 25500);
+
+        setTimeout(() => {
+            animateText("text5", "- Да, мы все очень устали. Из-за этого многие допускают ошибки в формулах, в том числе и я. Все идёт не по плану, он этого не понимает.", 2);
+        }, 33500);
+
+        setTimeout(() => {
+            animateText("text6", "- Этот вирус его же и погубит. Мы все здесь даже не знали чем занимались, а потом стало поздно уходить, они начали угрожать нам и нашим семьям...", 2);
+        }, 48500);
+
+        setTimeout(() => {
+            h2.style.opacity = 0;
+            h2.style.transition = "5s ease";
+
+            container.style.opacity = 0;
+            container.style.transition = "5s ease";
+        }, 65000);
+
+        function animateText(id, text, i) {
+            document.getElementById(id).innerHTML = text.substring(0, i);
+            
+            i++;
+            
+            let interval = setTimeout("animateText('" + id + "','" + text + "'," + i + ")", 100);
+        
+            if (i > text.length) clearInterval(interval);
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/373834e38f.js"></script>
+</body>
+</html>

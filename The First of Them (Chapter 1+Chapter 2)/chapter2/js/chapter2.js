@@ -415,6 +415,7 @@ function meet_polina_last() {
             <p class="lead" id="text-dialog">
                 Я не девочка, я член поисково-спасательного отряда NIAR. 
                 Была им, пока всю мою команду не уничтожила RAIN-Company.
+                А вы кто?
                 И было бы неплохо, если бы вы показали мне выход.
             </p>
         </div>
@@ -427,7 +428,7 @@ function meet_polina_last() {
 
         <div class="row dialog">
             <p class="lead" id="text-dialog">
-                Ладно. Бежим, это здесь. Я Михаил, кстати.
+                А я Михаил. Ученый, работал здесь... Меня использовали, а я даже и не подозревал...
             </p>
         </div>
         <div class="row dialog d-flex justify-content-center">
@@ -447,7 +448,7 @@ function loud_escape() {
     name_dialog.innerHTML = `Учёный`;
     dialogs_div.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Сейчас сюда сбегутся военные! Бежим!</p>
+            <p class="lead" id="text-dialog">Сейчас сюда сбегутся военные! Нужно бежать!</p>
         </div>
 
         <div class="row dialog d-flex justify-content-center">
