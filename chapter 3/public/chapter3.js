@@ -309,28 +309,30 @@ function changeBg(bgName) {
     document.body.style.backgroundSize = 'cover';
 }
 
-/* Пока достижений связанных со статистикой */
-// function checkStatistic() {
-//     let deathAchievemnt = 'Не получено';
-//     let deathsTeamPeopleAchievemnt = 'Не получено';
+function checkStatistic() {
+    const deathsLc = localStorage.getItem('deaths');
+    const blogerLc = localStorage.getItem('bloger');
 
-//     const deathsLc = localStorage.getItem('deaths');
-//     if (deathsLc != null) {
-//         deathAchievemnt = 'Получено';
-//     }
+    if (deathsLc == 0) {
+        localStorage.setItem('deathsAchievement', 'open');
 
-//     if (statDeadPeoplesTeam.length != 0) {
-//         deathsTeamPeopleAchievemnt = 'Получено';
-//     }
+        $('#toast1').toast('show');
+    }
 
-//     Swal.fire({
-//         icon: 'question',
-//         html: `
-//             <p class="lead" id="achievemntDeath">Достижение: Умереть 0 раз - ${deathAchievemnt}</p>
-//             <p class="lead" id="achievemntDeathsTeamPeoples">Достижение: Не потерять ни одного человека из отряда - ${deathsTeamPeopleAchievemnt}</p>
-//         `,
-//     });
-// }
+    if (blogerLc == 'alive') {
+        localStorage.setItem('blogerAchievement', 'open');
+
+        $('#toast3').toast('show');
+    }
+
+    if (relationshipBloger == 'Хорошие' || relationshipBloger == 'Отличные' &&
+        relationshipPolina == 'Хорошие' || relationshipBloger == 'Отличные' &&
+        relationshipTeam == 'Хорошие' || relationshipBloger == 'Отличные') {
+            localStorage.setItem('relationshipAchievement', 'open');
+
+            $('#toast2').toast('show');
+    }
+}
 
 // Main functions - Script
 function helloTeam() {
@@ -422,7 +424,7 @@ function goToMountains() {
 function blogerChangeHeroBloger(letter1, letter2, letter3,
     letter4, letter5, letter6,
     shadowColor) {
-    localStorage.setItem('saveFunc', 'blogerChangeHeroBloger');
+    localStorage.setItem('saveFunc-chapter3', 'blogerChangeHeroBloger');
     document.body.style.background = '#000';
     music.src = '';
     sound.src = 'sounds/bloger_change.mp3';
@@ -739,7 +741,7 @@ function coordinateLab() {
 function changeHeroPolinaMountains(letter1, letter2, letter3,
     letter4, letter5, letter6,
     shadowColor) {
-    localStorage.setItem('saveFunc', 'changeHeroPolinaMountains');
+    localStorage.setItem('saveFunc-chapter3', 'changeHeroPolinaMountains');
     document.body.style.background = '#000';
     music.src = '';
     sound.src = 'sounds/polina_change.mp3';
@@ -2899,6 +2901,8 @@ function blogerAlive() {
         </div>
     `;
 
+    localStorage.setItem('bloger', 'alive');
+
     btnNext(`blogerChangeRoom34('Б', 'Л', 'О', 'Г', 'Е', 'Р', '#f33b3b')`);
 }
 
@@ -3006,6 +3010,8 @@ function blogerDead() {
             <p class="lead" id="text-dialog">Еще одна смерть... Сколько еще людей будут умирать из-за меня?</p>
         </div>
     `;
+
+    localStorage.setItem('bloger', 'dead');
 
     if (relationshipTeam == 'Хорошие' || relationshipTeam == 'Отличные') {
         dialogs.innerHTML += `
@@ -4000,6 +4006,8 @@ function end() {
             </div>
         </div>
     `;
+
+    checkStatistic();
 
     const title = document.getElementById('title-game');
     const titleEnd = document.getElementById('title2');

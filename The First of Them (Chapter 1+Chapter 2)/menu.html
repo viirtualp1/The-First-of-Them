@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The First of Them</title>
+    <link rel="favicon icon" href="../chapter 3/public/img/tfot-icon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="chapter2/css/menu.css">
 </head>
@@ -151,8 +152,27 @@
                                     </h5>
                                 </div>
                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                    <div class="card-body">
-
+                                    <div class="card-body text-center d-flex justify-content-center">                                        
+                                        <div class="d-block">
+                                            <div class="card music text-white bg-dark mb-3" id="achievement3-1" style="max-width: 18rem;">
+                                                <div class="card-header">Эгида бессмертия</div>
+                                                <div class="card-body">
+                                                    <p class="card-title" id="title-achievement3-1">Не открыто</p>
+                                                </div>
+                                            </div>
+                                            <div class="card music text-white bg-dark mb-3" id="achievement3-2" style="max-width: 18rem;">
+                                                <div class="card-header">Великий дипломат</div>
+                                                <div class="card-body">
+                                                    <p class="card-title" id="title-achievement3-2">Не открыто</p>
+                                                </div>
+                                            </div>
+                                            <div class="card music text-white bg-dark mb-3" id="achievement3-2" style="max-width: 18rem;">
+                                                <div class="card-header">Выживший</div>
+                                                <div class="card-body">
+                                                    <p class="card-title" id="title-achievement3-2">Не открыто</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -165,8 +185,8 @@
                                     </h5>
                                 </div>
                                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                                    <div class="card-body">
-
+                                    <div class="card-body text-center d-flex justify-content-center">
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -374,6 +394,38 @@
                 achievement_2_4_div.className = "card bg-warning mb-3";
                 achievement_2_4_text.style.color = "#000";
                 secret_h.style.color = "#000";
+            }
+
+            // Chapter 3 Achievements
+            let achievement_3_1 = localStorage.getItem("deathsAchievement"),
+                achievement_3_2 = localStorage.getItem("relationshipAchievement"),
+                achievement_3_3 = localStorage.getItem("blogerAchievement");
+
+            let achievement_3_1_text = document.getElementById("title-achievement3-1"),
+                achievement_3_2_text = document.getElementById("title-achievement3-2"),
+                achievement_3_3_text = document.getElementById("title-achievement3-3");
+
+            let achievement_3_1_div = document.getElementById("achievement3-1"),
+                achievement_3_2_div = document.getElementById("achievement3-2"),
+                achievement_3_3_div = document.getElementById("achievement3-3");
+
+            // Inner Chapter 3 Achievements
+            if (achievement_3_1 == null) { } else {
+                achievement_3_1_text.innerHTML = "Не умереть";
+                achievement_3_1_div.className = "card text-white bg-success mb-3";
+                achievement_3_1_text.style.color = "#fff";
+            }
+
+            if (achievement_3_2 == null) { } else {
+                achievement_3_2_text.innerHTML = "Сохранить хорошие отношения со всеми до конца главы";
+                achievement_3_2_div.className = "card text-white bg-success mb-3";
+                achievement_3_2_text.style.color = "#fff";
+            }
+
+            if (achievement_3_3 == null) { } else {
+                achievement_3_3_text.innerHTML = "Спасти Блогера";
+                achievement_3_3_div.className = "card text-white bg-success mb-3";
+                achievement_3_3_text.style.color = "#fff";
             }
         }
     </script>

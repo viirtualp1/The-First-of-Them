@@ -312,3 +312,7 @@ body {
     color: #fff;
 }
 
+#toast1, #toast2 {
+    margin-top: 0.5%;
+    margin-right: 0.5%;
+}
