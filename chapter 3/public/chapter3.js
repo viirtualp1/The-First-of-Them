@@ -221,14 +221,6 @@ function saveLoad() {
                 changeHeroPolinaReadyPhobosFight('П', 'О', 'Л', 'И', 'Н', 'А', '#f33be4'); break;
         }
     }
-
-    console.log(deaths);
-    console.log(statKillEnemies);
-    console.log(statDeadPeoplesTeam);
-    console.log(relationshipTeam);
-    console.log(relationshipBloger);
-    console.log(relationshipPolina);
-    console.log(team);
 };
 
 function swalStyles() {
