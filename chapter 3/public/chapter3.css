@@ -16,6 +16,21 @@ body {
     color: #fff;
 }
 
+.note {
+    width: 15em;
+    height: 15em;
+    margin-top: 1em;
+    margin-right: 1%;
+    margin-left: 1%;
+    background: #f1bd2d;
+    color: #fff;
+    box-shadow: 10px 10px 10px rgb(36, 36, 36);
+}
+
+#text-note {
+    margin-top: 0.5em;
+}
+
 .name {
     background: #25292C;
     color: #fff;
@@ -315,4 +330,8 @@ body {
 #toast1, #toast2 {
     margin-top: 0.5%;
     margin-right: 0.5%;
+}
+
+#secret-btn {
+    opacity: 0.1;
 }

@@ -2991,10 +2991,51 @@ function room34Bloger() {
         <div class="row dialog">
             <p class="lead" id="text-dialog">Ключ! Его-то вы и пропустили</p>
         </div>
+
+        <div class="row dialog d-flex justify-content-center" id="secret-btn">
+            <button id="find_room34" type="button" class="btn btn-dark" onclick="findRoom34()">
+                Обыскать еще комнату
+            </button>
+        </div>
     `;
 
     nextTask('Зайти в лифт');
     localStorage.setItem('task', 'Зайти в лифт');
+
+    btnNext('liftAnonimSpeak()');
+}
+
+function findRoom34() {
+    name.innerHTML = `Блогер`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Здесь еще что-то... Записка какая-то</p>
+        </div>
+
+        <div class="row note d-flex justify-content-center">
+            <p class="lead" style="color: #000" id="text-note">Уеду далеко...</p>
+        </div>
+    `;
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+    });
+
+    Toast.fire({
+        icon: 'info',
+        title: `Секретное достижение: Знаток истории`,
+    });
+
+    localStorage.setItem('secretAchievement', 'open');
 
     btnNext('liftAnonimSpeak()');
 }
@@ -3861,19 +3902,36 @@ function liftTeamDialog() {
 }
 
 function liftAnonimSpeak() {
+    footerButtons.style.visibility = 'hidden';
+    nameDiv.style.visibility = 'hidden';
+    dialogsDiv.style.visibility = 'hidden';
+
     sound.src = 'sounds/openDoorLift.mp3';
+
     setTimeout(() => {
+        sound.src = 'sounds/lift-button.mp3';
+    }, 4000);
+
+    setTimeout(() => {
+        sound.src = 'sounds/lift-move.mp3';
+    }, 5000);
+
+    setTimeout(() => {
+        soundFallLift();
+    }, 15000);
+
+    setTimeout(() => {
+        footerButtons.style.visibility = 'visible';
+        nameDiv.style.visibility = 'visible';
+        dialogsDiv.style.visibility = 'visible';
+
         name.innerHTML = `???`;
         dialogs.innerHTML = `
             <div class="row dialog">
                 <p class="lead" id="text-dialog">Всего лишь моя забава...</p>
             </div>
         `;
-
-        setTimeout(() => {
-            soundFallLift();
-        }, 3000);
-    }, 2500);
+    }, 18000);
 }
 
 function soundFallLift() {

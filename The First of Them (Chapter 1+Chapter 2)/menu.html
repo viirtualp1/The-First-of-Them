@@ -172,6 +172,7 @@
                                                     <p class="card-title" id="title-achievement3-2">Не открыто</p>
                                                 </div>
                                             </div>
+                                            <div id="secret-a"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -400,6 +401,7 @@
             let achievement_3_1 = localStorage.getItem("deathsAchievement"),
                 achievement_3_2 = localStorage.getItem("relationshipAchievement"),
                 achievement_3_3 = localStorage.getItem("blogerAchievement");
+                achievement_3_s = localStorage.getItem("secretAchievement");
 
             let achievement_3_1_text = document.getElementById("title-achievement3-1"),
                 achievement_3_2_text = document.getElementById("title-achievement3-2"),
@@ -408,6 +410,7 @@
             let achievement_3_1_div = document.getElementById("achievement3-1"),
                 achievement_3_2_div = document.getElementById("achievement3-2"),
                 achievement_3_3_div = document.getElementById("achievement3-3");
+                achievement_3_s_div = document.getElementById("achievement-s");
 
             // Inner Chapter 3 Achievements
             if (achievement_3_1 == null) { } else {
@@ -426,6 +429,17 @@
                 achievement_3_3_text.innerHTML = "Спасти Блогера";
                 achievement_3_3_div.className = "card text-white bg-success mb-3";
                 achievement_3_3_text.style.color = "#fff";
+            }
+
+            if (achievement_3_s == null) { } else {
+                achievement_3_s_div.innerHTML = `
+                    <div class="card music text-white bg-success mb-3" id="achievement3-s" style="max-width: 18rem;">
+                        <div class="card-header">Знаток истории</div>
+                        <div class="card-body">
+                            <p class="card-title" id="title-achievement3-s">Найти оставшийся обрывок последнего документа</p>
+                        </div>
+                    </div>
+                `;
             }
         }
     </script>

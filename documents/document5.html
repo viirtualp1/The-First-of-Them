@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <title>В полицейском участке</title>
+    <title>???</title>
     <style>
         body {
             background: black;
@@ -30,16 +30,10 @@
     </style>
 </head>
 <body>
-    <h2 class="text-center text-white">В полицейском участке</h2>
+    <h2 class="text-center text-white">???</h2>
     <div class="container">
         <h3 id="text1"></h3>
         <h3 id="text2"></h3>
-        <h3 id="text3"></h3>
-        <h3 id="text4"></h3>
-        <h3 id="text5"></h3>
-        <h3 id="text6"></h3>
-        <h3 id="text7"></h3>
-        <h3 id="text8"></h3>
     </div>
 
     <script>
@@ -47,44 +41,20 @@
         const h2 = document.querySelector('h2');
 
         setTimeout(() => {
-            animateText("text1", "- Всем здравствуйте, солдаты!", 2);
-        }, 3500);
+            animateText("text1", "- Они на месте, начинаем. Действуем по плану, потом отвезете их в деревню.", 2);
+        }, 5500);
 
         setTimeout(() => {
-            animateText("text2", "- Здравствуйте, Мисс! - Отряд", 2);
-        }, 8000);
-
-        setTimeout(() => {
-            animateText("text3", "- Меня зовут Полина. Я первая, кто встретился с Ignavirus. Вы уже знаете с чем нам предстоит бороться?", 2);
-        }, 13000);
-
-        setTimeout(() => {
-            animateText("text4", "- Да, нам рассказали. Ваша история очень впечатлила меня. - Олег", 2);
-        }, 25000);
-
-        setTimeout(() => {
-            animateText("text5", "- Спасибо, но пришлось через многое пройти, чтобы она кому-то понравилась.", 2);
-        }, 33000);
-
-        setTimeout(() => {
-            animateText("text6", "- ... - Отряд", 2);
-        }, 42000);
-
-        setTimeout(() => {
-            animateText("text7", "- Мой давний знакомый рассказал мне где может примерно находится лаборатория с вирусом, поэтому сегодня мы наконец отправляемся на ее поиски в горы. Запасаемся оружием, патронами. Готовимся ко всему...", 2);
-        }, 47000);
-
-        setTimeout(() => {
-            animateText("text8", "- Есть! - Отряд", 2);
-        }, 69000);
+            animateText("text2", "- Вот блин, вход завалило... Но лабораторию нашли, значит он не соврал, ну, разделимся опять", 2);
+        }, 14000);
 
         setTimeout(() => {
             h2.style.opacity = 0;
-            h2.style.transition = "5s ease";
+            h2.style.transition = "10s ease";
 
             container.style.opacity = 0;
-            container.style.transition = "5s ease";
-        }, 72500);
+            container.style.transition = "10s ease";
+        }, 13000);
 
         function animateText(id, text, i) {
             document.getElementById(id).innerHTML = text.substring(0, i);
