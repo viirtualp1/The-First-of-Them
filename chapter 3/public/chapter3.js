@@ -336,7 +336,7 @@ function checkStatistic() {
 
 // Main functions - Script
 function helloTeam() {
-    document.body.style.backgroundImage = 'url(\'img/office.jpeg\')';
+    document.body.style.backgroundImage = `url('img/пол-участок.jpg')`;
     music.src = 'sounds/office.wav';
 
     name.innerHTML = 'Полина';
@@ -484,7 +484,11 @@ function blogerHouse() {
     document.getElementById('name').style.visibility = 'visible';
     document.getElementById('footer-buttons').style.visibility = 'visible';
 
-    document.body.style.background = 'url(\'img/house.jpg\')';
+    document.body.style.background = `url('img/дом-сгр.jpg')`;
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
 
     const p1 = document.getElementById('title-show1');
     const p2 = document.getElementById('title-show2');
@@ -521,8 +525,8 @@ function blogerHouse() {
 function house() {
     music.src = '';
 
-    document.body.style.background = 'url(\'img/house_main_hall.jpg\')';
-    document.body.style.backgroundPosition = 'center center';
+    document.body.style.background = `url('img/холл-сгр.jpg')`;
+    document.body.style.backgroundPosition = 'center';
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundAttachment = 'fixed';
     document.body.style.backgroundSize = 'cover';
@@ -659,8 +663,8 @@ function counterDeadPhobos() {
 }
 
 function houseLabBloger() {
-    document.body.style.background = 'url(\'img/lab.jpg\')';
-    document.body.style.backgroundPosition = 'center center';
+    document.body.style.background = `url('img/Лаборатория-разруш.jpg')`;
+    document.body.style.backgroundPosition = 'center';
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundAttachment = 'fixed';
     document.body.style.backgroundSize = 'cover';
@@ -677,8 +681,8 @@ function houseLabBloger() {
 }
 
 function houseLabOfficeBloger() {
-    document.body.style.background = 'url(\'img/lab_office.jpg\')';
-    document.body.style.backgroundPosition = 'center center';
+    document.body.style.background = `url('img/office.jpg')`;
+    document.body.style.backgroundPosition = 'center';
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundAttachment = 'fixed';
     document.body.style.backgroundSize = 'cover';
@@ -805,8 +809,8 @@ function polinaMountains() {
         const p5 = document.getElementById('title-show5');
         const p6 = document.getElementById('title-show6');
 
-        document.body.style.background = 'url(\'img/mountains.jpg\')';
-        document.body.style.backgroundPosition = 'center center';
+        document.body.style.background = `url('img/Горы.jpg')`;
+        document.body.style.backgroundPosition = 'center';
         document.body.style.backgroundRepeat = 'no-repeat';
         document.body.style.backgroundAttachment = 'fixed';
         document.body.style.backgroundSize = 'cover';
@@ -1291,7 +1295,11 @@ function findLabLives() {
 }
 
 function entryLab() {
-    document.body.style.background = 'img/labMountains.jpg';
+    document.body.style.background = `url('img/дверь-бункер.jpg')`;
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
 
     name.innerHTML = `Полина`;
     dialogs.innerHTML = `
@@ -1309,11 +1317,11 @@ function entryLab() {
 }
 
 function rockfall() {
-    document.body.style.backgroundImage = `url('img/labMountains.jpg')`;
-    document.body.style.backgroundPosition = `center center`;
-    document.body.style.backgroundSize = `no-repeat`;
-    document.body.style.backgroundAttachment = `fixed`;
-    document.body.style.backgroundRepeat = `cover`;
+    document.body.style.backgroundImage = `url('img/lab.jpg')`;
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
 
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -2359,22 +2367,15 @@ function smthWrongRoom32() {
 
 function monsterBg() {
     sound.src = 'sounds/virusMonster.mp3';
-    // document.style.background = `url('img/virusMonster.jpg')`;
+    // document.body.style.background = `url('img/Монстр-кусает-Блогера-сверху.jpg')`;
+
     footerButtons.style.visibility = 'hidden';
     nameDiv.style.visibility = 'hidden';
     dialogsDiv.style.visibility = 'hidden';
 
     setTimeout(() => {
-        blogerBiteBg();
-    }, 2000);
-}
-
-function blogerBiteBg() {
-    // document.style.background = `url('img/blogerBite.jpg')`;
-
-    setTimeout(() => {
         qteMonsterRoom32();
-    }, 1500);
+    }, 2000);
 }
 
 function qteMonsterRoom32() {
@@ -2441,22 +2442,18 @@ function qteMonsterRoom32Counter() {
         progressMonster32.parentNode.removeChild(progressMonster32);
         btnKillMonster32.parentNode.removeChild(btnKillMonster32);
 
-        helpBlogerBg();
+        dialogHelpPolina();
     }
 }
 
-function helpBlogerBg() {
-    // document.body.style.background = `url('img/helpBloger.jpg')`;
-    footerButtons.style.visibility = 'hidden';
-    nameDiv.style.visibility = 'hidden';
-    dialogsDiv.style.visibility = 'hidden';
-
-    setTimeout(() => {
-        dialogHelpPolina();
-    }, 2000);
-}
-
 function dialogHelpPolina() {
+    // document.body.style.background = `url('img/Капсулы-Перевязанный-Блогер-Мертвый-Монстр.jpg')`;
+    document.body.style.background = `url('img/Капсулы.jpg')`;
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
+
     btnNextElem.disabled = false;
     footerButtons.style.visibility = 'visible';
     nameDiv.style.visibility = 'visible';
@@ -3202,6 +3199,12 @@ function noSplitUp() {
 
 function room32NoSplitUp() {
     sound.src = 'sounds/doorOpen.mp3';
+    document.body.style.backgroundImage = `url('img/Капсулы.jpg')`;
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
+
     setTimeout(() => {
         dialogs.innerHTML = `
             <div class="row dialog">
@@ -3305,6 +3308,11 @@ function room32ChangeHeroBloger(letter1, letter2, letter3,
     letter4, letter5, letter6,
     shadowColor) {
     document.body.style.background = '#000';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
+
     music.src = '';
     sound.src = 'sounds/bloger_change.mp3';
 
@@ -3360,11 +3368,12 @@ function room32ChangeHeroBloger(letter1, letter2, letter3,
 }
 
 function room32WhoAreYou() {
-    document.body.style.backgroundImage = `url('img/labMountains.jpg')`;
-    document.body.style.backgroundPosition = `center center`;
-    document.body.style.backgroundSize = `no-repeat`;
-    document.body.style.backgroundAttachment = `fixed`;
-    document.body.style.backgroundRepeat = `cover`;
+    // document.body.style.backgroundImage = `url('img/Капсулы-Блогер-Перевязанный.jpg')`;
+    document.body.style.backgroundImage = `url('img/Капсулы.jpg')`;
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
 
     document.getElementById('name').style.visibility = 'visible';
     document.getElementById('footer-buttons').style.visibility = 'visible';
@@ -3572,8 +3581,8 @@ function polinaReadyPhobosFight() {
     const p5 = document.getElementById('title-show5');
     const p6 = document.getElementById('title-show6');
 
-    document.body.style.background = 'url(\'img/labMountains.jpg\')';
-    document.body.style.backgroundPosition = 'center center';
+    document.body.style.background = `url('img/lab.jpg')`;
+    document.body.style.backgroundPosition = 'center';
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundAttachment = 'fixed';
     document.body.style.backgroundSize = 'cover';
@@ -3906,9 +3915,21 @@ function liftAnonimSpeak() {
     nameDiv.style.visibility = 'hidden';
     dialogsDiv.style.visibility = 'hidden';
 
+    document.body.style.background = `url('img/лифт(2)-снаружи.jpg')`;
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
+
     sound.src = 'sounds/openDoorLift.mp3';
 
     setTimeout(() => {
+        document.body.style.background = `url('img/лифт(1)-внутри.jpg')`;
+        document.body.style.backgroundPosition = 'center';
+        document.body.style.backgroundRepeat = 'no-repeat';
+        document.body.style.backgroundAttachment = 'fixed';
+        document.body.style.backgroundSize = 'cover';
+
         sound.src = 'sounds/lift-button.mp3';
     }, 4000);
 
@@ -3917,11 +3938,16 @@ function liftAnonimSpeak() {
     }, 5000);
 
     setTimeout(() => {
+        document.body.style.background = `url('img/лифт(1)-падает.jpg')`;
+        document.body.style.backgroundPosition = 'center';
+        document.body.style.backgroundRepeat = 'no-repeat';
+        document.body.style.backgroundAttachment = 'fixed';
+        document.body.style.backgroundSize = 'cover';
+
         soundFallLift();
     }, 15000);
 
     setTimeout(() => {
-        footerButtons.style.visibility = 'visible';
         nameDiv.style.visibility = 'visible';
         dialogsDiv.style.visibility = 'visible';
 
@@ -3939,7 +3965,7 @@ function soundFallLift() {
     setTimeout(() => {
         music.src = 'sounds/endGame.mp3';
         document.body.style.background = `url('img/bg.jpg')`;
-        document.body.style.backgroundPosition = 'center center';
+        document.body.style.backgroundPosition = 'center';
         document.body.style.backgroundRepeat = 'no-repeat';
         document.body.style.backgroundAttachment = 'fixed';
         document.body.style.backgroundSize = 'cover';
@@ -3990,7 +4016,7 @@ function end() {
                         <a class="dropdown-item" href="location.href='../../The First of Them (Chapter 1+Chapter 2)/chapter1/show.html'">Глава 1</a>
                         <a class="dropdown-item" href="location.href='../../The First of Them (Chapter 1+Chapter 2)/chapter2/show-chapter2.html">Глава 2</a>
                         <a class="dropdown-item" onclick="location.reload()">Глава 3</a>
-                        <a class="dropdown-item" href="soon()">Глава 4</a>
+                        <a class="dropdown-item" onclick="soon()">Глава 4</a>
                     </div>
                 </div>
                 <button id="quit" type="button" class="btn btn-dark mt-2 ml-2" onclick="deleteDeathsLc(); location.href = '../../The First of Them (Chapter 1+Chapter 2)/menu.html'">
