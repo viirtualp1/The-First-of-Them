@@ -12,40 +12,42 @@
     <audio src="" id="music" autoplay></audio>
     <audio src="" id="sound" autoplay></audio>
 
-    <div class="container" id="window">
-        <div id="name">
-            <div class="row mt-3 name">
-                <p class="lead" id="name-dialog">The First of Them</p>
+    <div class="window-game">
+        <div class="container" id="window">
+            <div id="name">
+                <div class="row mt-3 name">
+                    <p class="lead" id="name-dialog">The First of Them</p>
+                </div>
             </div>
-        </div>
-        <div id="dialogs">
-            <div class="row dialog">
-                <p class="lead" id="text-dialog">Глава 4 - "Деревня"</p>
-            </div>
-        </div>
-    </div>
-
-    <footer class="fixed-bottom d-flex justify-content-center" id="footer-buttons">
-        <nav class="navbar navbar-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleMenu" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-        <div class="collapse" id="navbarToggleMenu">
-            <div class="p-4" id="navbarMenuBg">
-                <div class="row text-white">
-                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <p class="lead text-muted" id="task">Задание: </p>
-
-                        <button class="btn" id="btn-new-game" onclick="location.reload()">Новая игра</button>
-                        <button class="btn" id="btn-save-load" onclick="saveLoad()" disabled>Загрузить сохранение</button>
-                        <button class="btn" id="btn-sign-out-game" onclick="location.href = '../../The First of Them (Chapter 1+Chapter 2)/menu.html'">Выйти из игры</button>
-                    </div>
+            <div id="dialogs">
+                <div class="row dialog">
+                    <p class="lead" id="text-dialog">Глава 4 - "Деревня"</p>
                 </div>
             </div>
         </div>
-        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="helloTeam()">Далее</button>
-    </footer>
+    
+        <footer class="fixed-bottom d-flex justify-content-center" id="footer-buttons">
+            <nav class="navbar navbar-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleMenu" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+            <div class="collapse" id="navbarToggleMenu">
+                <div class="p-4" id="navbarMenuBg">
+                    <div class="row text-white">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <p class="lead text-muted" id="task">Задание: </p>
+    
+                            <button class="btn" id="btn-new-game" onclick="location.reload()">Новая игра</button>
+                            <button class="btn" id="btn-save-load" onclick="saveLoad()" disabled>Загрузить сохранение</button>
+                            <button class="btn" id="btn-sign-out-game" onclick="location.href = '../../The First of Them (Chapter 1+Chapter 2)/menu.html'">Выйти из игры</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="warningBtnNext()">Далее</button>
+        </footer>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

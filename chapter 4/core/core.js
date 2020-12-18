@@ -10,7 +10,8 @@
 const music = document.getElementById('music');
 const sound = document.getElementById('sound');
 const dialogs = document.getElementById('dialogs');
-const name = document.getElementById('name-dialog');
+const nameDialog = document.getElementById('name-dialog');
+const textDialog = document.getElementById('text-dialog');
 const rationFooter = document.getElementById('ration-footer');
 const footerButtons = document.getElementById('footer-buttons');
 const windowDiv = document.getElementById('window');
@@ -21,6 +22,7 @@ const btnSaveLoad = document.getElementById('btn-save-load');
 const nameDiv = document.getElementById('name');
 const dialogsDiv = document.getElementById('dialogs');
 
+// Стили для SweetAlert
 function swalStyles() {
     const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
     swal2Modal.style.background = 'rgb(58, 58, 58)';
@@ -46,6 +48,7 @@ function swalStyles() {
     } catch { }
 }
 
+// Кнопка "Далее" с вызовом функции при клике
 function btnNext(func) {
     btnNextElement = document.getElementById('btn-next');
     btnNextElement = btnNextElement.parentNode.removeChild(btnNextElement);
@@ -54,6 +57,7 @@ function btnNext(func) {
     `;
 }
 
+// Следующее задание
 function nextTask(text) {
     const Toast = Swal.mixin({
         toast: true,
@@ -76,10 +80,12 @@ function nextTask(text) {
     document.getElementById('task').innerHTML = `Задание: ${text}`;
 }
 
+// Рандомное число
 function getRandNumbTeam(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 
+// Смена фона
 function changeBg(bgName) {
     document.body.style.backgroundImage = `url("img/${bgName}")`;
     document.body.style.backgroundPosition = 'center';
@@ -88,14 +94,49 @@ function changeBg(bgName) {
     document.body.style.backgroundSize = 'cover';
 }
 
-function buttons() {
-    if (dialogs_copy[currentDialog].buttons) {
-        for (let i = 0; i < dialogs_copy[currentDialog].buttons.length; i++) {
-            const button = document.createElement('BUTTON');
-            button.onclick = dialogs_copy[currentDialog].buttons[i].onclick;
-            button.innerText = dialogs_copy[currentDialog].buttons[i].text;
+// Выбор диалога
+function chooseDialog({
+    positiveText,
+    neutralText,
+    unpositiveText,
+    positiveFunc,
+    neutralFunc,
+    unpositiveFunc,
+}) {
+    dialogs.innerHTML += `
+        <div id="chooseDialogDiv">
+            <p class="lead text-white" id="chooseDialogText">Выбери, что сказать: </p>
+            
+            <div class="row dialog d-flex justify-content-center" id="chooseDialogDiv">
+                <button id="btn-dialog-1" type="button" class="btn btn-dark mt-1 mb-2 ml-2 mr-2" onclick="${positiveFunc}();">
+                    ${positiveText}
+                </button>
+                <button id="btn-dialog-2" type="button" class="btn btn-dark mt-1 mb-2" onclick="${neutralFunc}();">
+                    ${neutralText}
+                </button>
+                <button id="btn-dialog-3" type="button" class="btn btn-dark mt-1 mb-2 mr-2 ml-2" onclick="${unpositiveFunc}();">
+                    ${unpositiveText}
+                </button>
+            </div>
+        </div>
+    `;
+}
 
-            dialogs_div.appendChild(button);
-        }
-    }
+function deleteChooseDialogDiv() {
+    const chooseDialogDiv = document.getElementById('chooseDialogDiv');
+    chooseDialogDiv.parentNode.removeChild(chooseDialogDiv);
+}
+
+// Если в кнопке "Далее" нет функции для вызова - будет вызываться эта функция.
+function warningBtnNext() {
+    Swal.fire({
+        icon: 'error',
+        title: 'Ошибка!',
+        html: `
+            Попробуй перезагрузить страницу! <br />
+            Если ошибка не исчезла, <a href="https://vk.com/im?media=&sel=-173188978" target="_blank">напиши нам</a>
+        `,
+    });
+
+    swalStyles();
 }
