@@ -32,3 +32,5 @@ function unpositiveFunc() {
     deleteChooseDialogDiv();
 }
 
+// Механика с вентелями
+valve();

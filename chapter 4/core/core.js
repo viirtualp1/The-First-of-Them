@@ -6,6 +6,15 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 
+// Progress variables
+let widthProgress1 = 0;
+let widthProgress2 = 0;
+let widthProgress3 = 0;
+
+let progressClickDirection1 = 'top';
+let progressClickDirection2 = 'top';
+let progressClickDirection3 = 'top';
+
 // Main variables
 const music = document.getElementById('music');
 const sound = document.getElementById('sound');
@@ -81,7 +90,7 @@ function nextTask(text) {
 }
 
 // Рандомное число
-function getRandNumbTeam(min, max) {
+function getRandNumb(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 
@@ -121,6 +130,122 @@ function chooseDialog({
         </div>
     `;
 }
+
+function valve() {
+    const massiveNubmers = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+
+    let valveProgressWidthStart1 = getRandNumb(0, 8);
+    let valveProgressWidthStart2 = getRandNumb(0, 8);
+    let valveProgressWidthStart3 = getRandNumb(0, 8);
+
+    valveProgressWidthStart1 = massiveNubmers[valveProgressWidthStart1];
+    valveProgressWidthStart2 = massiveNubmers[valveProgressWidthStart2];
+    valveProgressWidthStart3 = massiveNubmers[valveProgressWidthStart3];
+
+    widthProgress1 = valveProgressWidthStart1;
+    widthProgress2 = valveProgressWidthStart2;
+    widthProgress3 = valveProgressWidthStart3;
+
+    progressClickDirection1 = 'top';
+    progressClickDirection2 = 'top';
+    progressClickDirection3 = 'top';
+
+    dialogs.innerHTML += `
+        <div class="d-flex justify-content-center" id="valveDiv"> 
+            <div class="d-flex align-items-center" id="valve-1">
+                <div class="progress" id="valve-progress-1">
+                    <div id="valve-progress-w-1" class="progress-bar bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart1}%"></div>
+                </div>
+                <button type="button" id="btn-valve-1" class="btn btn-secondary" onclick="valveProgressClick(1)">
+                    <i class="fas fa-sync"></i>
+                </button>
+            </div>
+
+
+            <div class="d-flex align-items-center" id="valve-2">
+                <div class="progress" id="valve-progress-2">
+                    <div id="valve-progress-w-2" class="progress-bar bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart2}%"></div>
+                </div>
+                <button type="button" id="btn-valve-2" class="btn btn-secondary" onclick="valveProgressClick(2)">
+                    <i class="fas fa-sync"></i>
+                </button>
+            </div>
+
+            <div class="d-flex align-items-center" id="valve-3">
+                <div class="progress" id="valve-progress-3">
+                    <div id="valve-progress-w-3" class="progress-bar bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart3}%"></div>
+                </div>
+                <button type="button" id="btn-valve-3" class="btn btn-secondary" onclick="valveProgressClick(3)">
+                    <i class="fas fa-sync"></i>
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+function valveProgressClick(progressElement) {
+    const progress1 = document.getElementById('valve-progress-w-1');
+    const progress2 = document.getElementById('valve-progress-w-2');
+    const progress3 = document.getElementById('valve-progress-w-3');
+
+    if ((widthProgress1 == 50 || widthProgress1 == 60) &&
+        (widthProgress2 == 50 || widthProgress2 == 60) &&
+        (widthProgress3 == 50 || widthProgress3 == 60)) {
+        sound.src = 'sounds/valveSuccess.mp3';
+
+        const valveDiv = document.getElementById('valveDiv');
+        valveDiv.parentNode.removeChild(valveDiv);
+    } else {
+        switch (progressElement) {
+            case 1:
+                if (widthProgress1 <= 0) {
+                    progressClickDirection1 = 'top';
+                } else if (widthProgress1 >= 100) {
+                    progressClickDirection1 = 'bottom';
+                }
+
+                if (progressClickDirection1 == 'top') {
+                    widthProgress1 += 10;
+                    progress1.style.width = `${widthProgress1}%`;
+                } else if (progressClickDirection1 == 'bottom') {
+                    widthProgress1 -= 10;
+                    progress1.style.width = `${widthProgress1}%`;
+                }
+            break;
+            case 2:
+                if (widthProgress2 <= 0) {
+                    progressClickDirection2 = 'top';
+                } else if (widthProgress2 >= 100) {
+                    progressClickDirection2 = 'bottom';
+                }
+
+                if (progressClickDirection2 == 'top') {
+                    widthProgress2 += 10;
+                    progress2.style.width = `${widthProgress2}%`;
+                } else if (progressClickDirection2 == 'bottom') {
+                    widthProgress2 -= 10;
+                    progress2.style.width = `${widthProgress2}%`;
+                }
+            break;
+            case 3:
+                if (widthProgress3 <= 0) {
+                    progressClickDirection3 = 'top';
+                } else if (widthProgress3 >= 100) {
+                    progressClickDirection3 = 'bottom';
+                }
+
+                if (progressClickDirection3 == 'top') {
+                     widthProgress3 += 10;
+                    progress3.style.width = `${widthProgress3}%`;
+                } else if (progressClickDirection3 == 'bottom') {
+                    widthProgress3 -= 10;
+                    progress3.style.width = `${widthProgress3}%`;
+                }
+            break;
+        }
+    }
+}
+
 
 function deleteChooseDialogDiv() {
     const chooseDialogDiv = document.getElementById('chooseDialogDiv');
