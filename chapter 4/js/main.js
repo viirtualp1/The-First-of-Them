@@ -34,3 +34,6 @@ function unpositiveFunc() {
 
 // Механика с вентелями
 valve();
+
+// Механика с домами
+house('../img/bg.jpg', 'True');
