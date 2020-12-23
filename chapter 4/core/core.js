@@ -156,6 +156,7 @@ function valve() {
                 <div class="progress" id="valve-progress-1">
                     <div id="valve-progress-w-1" class="progress-bar bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart1}%"></div>
                 </div>
+
                 <button type="button" id="btn-valve-1" class="btn btn-secondary" onclick="valveProgressClick(1)">
                     <i class="fas fa-sync"></i>
                 </button>
@@ -166,6 +167,7 @@ function valve() {
                 <div class="progress" id="valve-progress-2">
                     <div id="valve-progress-w-2" class="progress-bar bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart2}%"></div>
                 </div>
+
                 <button type="button" id="btn-valve-2" class="btn btn-secondary" onclick="valveProgressClick(2)">
                     <i class="fas fa-sync"></i>
                 </button>
@@ -175,6 +177,7 @@ function valve() {
                 <div class="progress" id="valve-progress-3">
                     <div id="valve-progress-w-3" class="progress-bar bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart3}%"></div>
                 </div>
+
                 <button type="button" id="btn-valve-3" class="btn btn-secondary" onclick="valveProgressClick(3)">
                     <i class="fas fa-sync"></i>
                 </button>
@@ -303,29 +306,7 @@ function house(bg, key) {
     }
 }
 
-function takeTrueKey() {
-    alert('True key');
-}
-
-function takeFakeKey() {
-    alert('Fake key');
-}
-
 function deleteChooseDialogDiv() {
     const chooseDialogDiv = document.getElementById('chooseDialogDiv');
     chooseDialogDiv.parentNode.removeChild(chooseDialogDiv);
-}
-
-// Если в кнопке "Далее" нет функции для вызова - будет вызываться эта функция.
-function warningBtnNext() {
-    Swal.fire({
-        icon: 'error',
-        title: 'Ошибка!',
-        html: `
-            Попробуй перезагрузить страницу! <br />
-            Если ошибка не исчезла, <a href="https://vk.com/im?media=&sel=-173188978" target="_blank">напиши нам</a>
-        `,
-    });
-
-    swalStyles();
 }
