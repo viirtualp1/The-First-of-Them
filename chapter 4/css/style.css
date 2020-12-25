@@ -87,6 +87,15 @@ body {
 
 #valve-1, #valve-2, #valve-3 {
     transform: rotate(90deg);
+    position: absolute;
+}
+
+#valve-1 {
+    margin-right: 15em;
+}
+
+#valve-3 {
+    margin-left: 15em;
 }
 
 #valve-progress-1, #valve-progress-2, #valve-progress-3 {

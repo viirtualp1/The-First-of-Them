@@ -78,4 +78,6 @@ function houseInside() {
             <p class="lead" id="text-dialog"></p>
         </div>
     `;
+
+    btnNext('');
 }

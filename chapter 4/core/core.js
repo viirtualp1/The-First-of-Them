@@ -62,7 +62,7 @@ function btnNext(func) {
     btnNextElement = document.getElementById('btn-next');
     btnNextElement = btnNextElement.parentNode.removeChild(btnNextElement);
     document.getElementById('footer-buttons').innerHTML += `
-        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="${func}">Далее</button>
+        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="${func}()">Далее</button>
     `;
 }
 
@@ -268,16 +268,16 @@ function house(bg, key) {
                 </div>
 
                 <div class="row dialog d-flex justify-content-center" id="div-btn-key">
-                    <button id="btn-take-key" type="button" onclick="take${key}Key()" class="btn btn-dark mt-2 mb-2">
+                    <button id="btn-take-key" type="button" onclick="" class="btn btn-dark mt-2 mb-2">
                         Взять ключ
                     </button>
                 </div>
 
                 <div class="row dialog d-flex justify-content-center" id="div-btn-key">
-                    <button id="btn-next-house" type="button" onclick="${id}[].next" class="btn btn-dark mt-2 mb-2">
+                    <button id="btn-next-house" type="button" onclick="" class="btn btn-dark mt-2 mb-2">
                         Следующий дом
                     </button>
-                    <button id="btn-previous-house" type="button" onclick="${id}.next" class="btn btn-dark mt-2 mb-2">
+                    <button id="btn-previous-house" type="button" onclick="" class="btn btn-dark mt-2 mb-2">
                         Предыдущий дом
                     </button>
                 </div>
@@ -295,6 +295,15 @@ function house(bg, key) {
                         Взять ключ
                     </button>
                 </div>
+
+                <div class="row dialog d-flex justify-content-center" id="div-btn-key">
+                    <button id="btn-next-house" type="button" onclick="" class="btn btn-dark mt-2 mb-2">
+                        Следующий дом
+                    </button>
+                    <button id="btn-previous-house" type="button" onclick="" class="btn btn-dark mt-2 mb-2">
+                        Предыдущий дом
+                    </button>
+                </div>
             `;
         ; break;
         case 2:
@@ -307,6 +316,15 @@ function house(bg, key) {
                 <div class="row dialog d-flex justify-content-center" id="div-btn-key">
                     <button id="btn-take-key" type="button" onclick="take${key}Key()" class="btn btn-dark mt-2 mb-2">
                         Взять ключ
+                    </button>
+                </div>
+
+                <div class="row dialog d-flex justify-content-center" id="div-btn-key">
+                    <button id="btn-next-house" type="button" onclick="" class="btn btn-dark mt-2 mb-2">
+                        Следующий дом
+                    </button>
+                    <button id="btn-previous-house" type="button" onclick="" class="btn btn-dark mt-2 mb-2">
+                        Предыдущий дом
                     </button>
                 </div>
             `;
