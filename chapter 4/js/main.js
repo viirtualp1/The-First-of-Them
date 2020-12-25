@@ -48,7 +48,7 @@
 //     alert('Fake key');
 // }
 
-// (DEG) NIKITA // 
+// (DEG) NIKITA //
 
 function vasiliyStart() {
     // changeBg('jungle-house');
@@ -229,5 +229,6 @@ function houseWakeUp() {
 //     } else { }
 // };
 // function transition() {
-//     window.location.href = "././searchItems/index-nosplash.html");
+//     window.location.href = "../searchItems/index-nosplash.html";
 // }
+
