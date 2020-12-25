@@ -176,6 +176,14 @@ function changeHeroPolina() {
     }, 200);
 
     setTimeout(() => {
+        houseWakeUp();
+    }, 5000);
+}
+
+function houseWakeUp() {
+    // changeBg('houseNew');
+
+    try {
         const p1 = document.getElementById('title-show1');
         const p2 = document.getElementById('title-show2');
         const p3 = document.getElementById('title-show3');
@@ -195,22 +203,15 @@ function changeHeroPolina() {
         p4.parentNode.removeChild(p4);
         p5.parentNode.removeChild(p5);
         p6.parentNode.removeChild(p6);
+    } catch { }
 
-        nameDiv.style.opacity = 1;
-        nameDiv.style.transition = 0;
+    nameDiv.style.opacity = 1;
+    nameDiv.style.transition = 0;
 
-        dialogsDiv.style.opacity = 1;
-        dialogsDiv.style.visibility = 'visible';
+    dialogsDiv.style.opacity = 1;
+    dialogsDiv.style.visibility = 'visible';
 
-        footerButtons.style.visibility = 'visible';
-
-        houseWakeUp();
-    }, 5000);
-}
-
-function houseWakeUp() {
-    // changeBg('houseNew');
-
+    footerButtons.style.visibility = 'visible';
 }
 
 // WARNING //
