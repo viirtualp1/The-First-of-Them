@@ -254,7 +254,7 @@ const randomHouseEvents = [{
     default: 'Таак, вот он ключ какой-то ключ!',
 }];
 
-function house(bg, key, id) {
+function house(bg, key) {
     changeBg(bg);
 
     const houseEvent = getRandNumb(0, 2);
@@ -274,7 +274,7 @@ function house(bg, key, id) {
                 </div>
 
                 <div class="row dialog d-flex justify-content-center" id="div-btn-key">
-                    <button id="btn-next-house" type="button" onclick="${id}.next" class="btn btn-dark mt-2 mb-2">
+                    <button id="btn-next-house" type="button" onclick="${id}[].next" class="btn btn-dark mt-2 mb-2">
                         Следующий дом
                     </button>
                     <button id="btn-previous-house" type="button" onclick="${id}.next" class="btn btn-dark mt-2 mb-2">
