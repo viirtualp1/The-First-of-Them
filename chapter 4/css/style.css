@@ -107,3 +107,103 @@ body {
     margin-top: 0;
     float: right;
 }
+
+/* Скрытое имя */
+#name-text-div { margin-top: 35vh; }
+
+.title-show1 { 
+    opacity: 0;
+    font-size: 7vh;
+    /* text-shadow: 1px 1px 10px #f33b3b; - Блогер */
+    /* text-shadow: 1px 1px 10px #f33be4; - Полина */ 
+}
+
+.title-show2 { 
+    opacity: 0;
+    font-size: 7vh;
+    /* text-shadow: 1px 1px 10px #f33b3b; - Блогер */
+    /* text-shadow: 1px 1px 10px #f33be4; - Полина */ 
+}
+
+.title-show3 { 
+    opacity: 0;
+    font-size: 7vh; 
+    /* text-shadow: 1px 1px 10px #f33b3b; - Блогер */
+    /* text-shadow: 1px 1px 10px #f33be4; - Полина */ 
+}
+
+.title-show4 { 
+    opacity: 0; 
+    font-size: 7vh; 
+    /* text-shadow: 1px 1px 10px #f33b3b; - Блогер */
+    /* text-shadow: 1px 1px 10px #f33be4; - Полина */ 
+}
+
+.title-show5 { 
+    opacity: 0; 
+    font-size: 7vh; 
+    /* text-shadow: 1px 1px 10px #f33b3b; - Блогер */
+    /* text-shadow: 1px 1px 10px #f33be4; - Полина */ 
+}
+
+.title-show6 { 
+    opacity: 0; 
+    font-size: 7vh; 
+    /* text-shadow: 1px 1px 10px #f33b3b; - Блогер */
+    /* text-shadow: 1px 1px 10px #f33be4; - Полина */ 
+}
+
+/* Анимация появления имени */
+#title-show1 { 
+    opacity: 1; 
+    font-size: 7vh; 
+    transition: opacity 2s;
+    color: #fff;
+    /* text-shadow: 1px 1px 10px #f33b3b; - Блогер */
+    /* text-shadow: 1px 1px 10px #f33be4; - Полина */ 
+}
+
+#title-show2 { 
+    opacity: 1; 
+    font-size: 7vh; 
+    transition: opacity 4s;
+    color: #fff;
+    /* text-shadow: 1px 1px 10px #f33b3b; - Блогер */
+    /* text-shadow: 1px 1px 10px #f33be4; - Полина */ 
+}
+
+#title-show3 { 
+    opacity: 1; 
+    font-size: 7vh; 
+    transition: opacity 5s;
+    color: #fff;
+    /* text-shadow: 1px 1px 10px #f33b3b; - Блогер */
+    /* text-shadow: 1px 1px 10px #f33be4; - Полина */ 
+}
+
+#title-show4 { 
+    opacity: 1; 
+    font-size: 7vh; 
+    transition: opacity 6s;
+    color: #fff;
+    /* text-shadow: 1px 1px 10px #f33b3b; - Блогер */
+    /* text-shadow: 1px 1px 10px #f33be4; - Полина */ 
+}
+
+#title-show5 { 
+    opacity: 1; 
+    font-size: 7vh; 
+    transition: opacity 7s;
+    color: #fff;
+    /* text-shadow: 1px 1px 10px #f33b3b; - Блогер */
+    /* text-shadow: 1px 1px 10px #f33be4; - Полина */ 
+}
+
+#title-show6 { 
+    opacity: 1; 
+    font-size: 7vh; 
+    transition: opacity 8s;
+    color: #fff;
+    /* text-shadow: 1px 1px 10px #f33b3b; - Блогер */
+    /* text-shadow: 1px 1px 10px #f33be4; - Полина */ 
+}
