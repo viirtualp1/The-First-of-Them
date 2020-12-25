@@ -65,7 +65,17 @@ function jungleVasiliy() {
     nameDialog.innerHTML = `Василий`;
     dialogs.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Вроде бы ничего такого... Ага! За деревьями вижу дом.</p>
+            <p class="lead" id="text-dialog">Вроде бы ничего такого... Ага! За деревьями вижу что-то.</p>
+        </div>
+    `;
+
+    btnNext('houseInside');
+}
+
+function houseOutside() {
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Что за... Какой-то особняк посреди леса, весь разрушенный. Что же там?</p>
         </div>
     `;
 
