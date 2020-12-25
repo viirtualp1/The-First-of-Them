@@ -199,6 +199,10 @@ function changeHeroPolina() {
 
             nameDiv.style.opacity = 1;
             nameDiv.style.transition = 0;
+
+            dialogsDiv.style.opacity = 1;
+            dialogsDiv.style.visibility = 'visible';
+
             footerButtons.style.visibility = 'visible';
         } catch { }
 
@@ -210,6 +214,7 @@ function houseWakeUp() {
     // changeBg('houseNew');
 
 }
+
 
 // WARNING //
 // FUTURE CODE //
@@ -226,7 +231,6 @@ function houseWakeUp() {
 //         }
 //     } else { }
 // };
-
-function transition() {
-    window.location.assign("././searchItems/index-nosplash.html");
-}
+// function transition() {
+//     window.location.assign("././searchItems/index-nosplash.html");
+// }
