@@ -176,35 +176,33 @@ function changeHeroPolina() {
     }, 200);
 
     setTimeout(() => {
-        try {
-            const p1 = document.getElementById('title-show1');
-            const p2 = document.getElementById('title-show2');
-            const p3 = document.getElementById('title-show3');
-            const p4 = document.getElementById('title-show4');
-            const p5 = document.getElementById('title-show5');
-            const p6 = document.getElementById('title-show6');
+        const p1 = document.getElementById('title-show1');
+        const p2 = document.getElementById('title-show2');
+        const p3 = document.getElementById('title-show3');
+        const p4 = document.getElementById('title-show4');
+        const p5 = document.getElementById('title-show5');
+        const p6 = document.getElementById('title-show6');
 
-            document.body.style.background = `url('img/new-house.jpg')`;
-            document.body.style.backgroundPosition = 'center';
-            document.body.style.backgroundRepeat = 'no-repeat';
-            document.body.style.backgroundAttachment = 'fixed';
-            document.body.style.backgroundSize = 'cover';
+        document.body.style.background = `url('img/new-house.jpg')`;
+        document.body.style.backgroundPosition = 'center';
+        document.body.style.backgroundRepeat = 'no-repeat';
+        document.body.style.backgroundAttachment = 'fixed';
+        document.body.style.backgroundSize = 'cover';
 
-            p1.parentNode.removeChild(p1);
-            p2.parentNode.removeChild(p2);
-            p3.parentNode.removeChild(p3);
-            p4.parentNode.removeChild(p4);
-            p5.parentNode.removeChild(p5);
-            p6.parentNode.removeChild(p6);
+        p1.parentNode.removeChild(p1);
+        p2.parentNode.removeChild(p2);
+        p3.parentNode.removeChild(p3);
+        p4.parentNode.removeChild(p4);
+        p5.parentNode.removeChild(p5);
+        p6.parentNode.removeChild(p6);
 
-            nameDiv.style.opacity = 1;
-            nameDiv.style.transition = 0;
+        nameDiv.style.opacity = 1;
+        nameDiv.style.transition = 0;
 
-            dialogsDiv.style.opacity = 1;
-            dialogsDiv.style.visibility = 'visible';
+        dialogsDiv.style.opacity = 1;
+        dialogsDiv.style.visibility = 'visible';
 
-            footerButtons.style.visibility = 'visible';
-        } catch { }
+        footerButtons.style.visibility = 'visible';
 
         houseWakeUp();
     }, 5000);
@@ -214,7 +212,6 @@ function houseWakeUp() {
     // changeBg('houseNew');
 
 }
-
 
 // WARNING //
 // FUTURE CODE //
@@ -232,5 +229,5 @@ function houseWakeUp() {
 //     } else { }
 // };
 // function transition() {
-//     window.location.assign("././searchItems/index-nosplash.html");
+//     window.location.href = "././searchItems/index-nosplash.html");
 // }
