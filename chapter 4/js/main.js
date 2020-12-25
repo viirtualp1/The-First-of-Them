@@ -85,9 +85,20 @@ function houseOutside() {
 function houseInside() {
     dialogs.innerHTML = `
         <div class="row dialog">
+            <p class="lead" id="text-dialog">Какая-то лаборатория, хмм</p>
+        </div>
+    `;
+
+    btnNext('rainSleepVasiliy');
+}
+
+function rainSleepVasiliy() {
+    dialogs.innerHTML = `
+        <div class="row dialog">
             <p class="lead" id="text-dialog"></p>
         </div>
     `;
 
-    btnNext('');
+    btnNext();
 }
+
