@@ -48,6 +48,42 @@
 //     alert('Fake key');
 // }
 
+const houses = [
+    house1 = {
+        id: 1,
+        next: 2,
+    },
+
+    house2 = {
+        id: 2,
+        next: 3,
+        previous: 1,
+    },
+
+    house3 = {
+        id: 3,
+        next: 4,
+        previous: 2,
+    },
+
+    house4 = {
+        id: 4,
+        next: 5,
+        previous: 3,
+    },
+
+    house5 = {
+        id: 5,
+        next: church,
+        previous: 4,
+    },
+
+    church = {
+        id: ch,
+        previous: 5,
+    },
+];
+
 function vasiliyStart() {
     // changeBg('jungle-house');
 

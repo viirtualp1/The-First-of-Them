@@ -162,7 +162,6 @@ function valve() {
                 </button>
             </div>
 
-
             <div class="d-flex align-items-center" id="valve-2">
                 <div class="progress" id="valve-progress-2">
                     <div id="valve-progress-w-2" class="progress-bar bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart2}%"></div>
@@ -255,7 +254,7 @@ const randomHouseEvents = [{
     default: 'Таак, вот он ключ какой-то ключ!',
 }];
 
-function house(bg, key) {
+function house(bg, key, id) {
     changeBg(bg);
 
     const houseEvent = getRandNumb(0, 2);
@@ -271,6 +270,15 @@ function house(bg, key) {
                 <div class="row dialog d-flex justify-content-center" id="div-btn-key">
                     <button id="btn-take-key" type="button" onclick="take${key}Key()" class="btn btn-dark mt-2 mb-2">
                         Взять ключ
+                    </button>
+                </div>
+
+                <div class="row dialog d-flex justify-content-center" id="div-btn-key">
+                    <button id="btn-next-house" type="button" onclick="${id}.next" class="btn btn-dark mt-2 mb-2">
+                        Следующий дом
+                    </button>
+                    <button id="btn-previous-house" type="button" onclick="${id}.next" class="btn btn-dark mt-2 mb-2">
+                        Предыдущий дом
                     </button>
                 </div>
             `;
