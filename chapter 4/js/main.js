@@ -176,6 +176,37 @@ function changeHeroPolina() {
     }, 200);
 
     setTimeout(() => {
+        try {
+            const p1 = document.getElementById('title-show1');
+            const p2 = document.getElementById('title-show2');
+            const p3 = document.getElementById('title-show3');
+            const p4 = document.getElementById('title-show4');
+            const p5 = document.getElementById('title-show5');
+            const p6 = document.getElementById('title-show6');
+
+            document.body.style.background = `url('img/new-house.jpg')`;
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundRepeat = 'no-repeat';
+            document.body.style.backgroundAttachment = 'fixed';
+            document.body.style.backgroundSize = 'cover';
+
+            p1.parentNode.removeChild(p1);
+            p2.parentNode.removeChild(p2);
+            p3.parentNode.removeChild(p3);
+            p4.parentNode.removeChild(p4);
+            p5.parentNode.removeChild(p5);
+            p6.parentNode.removeChild(p6);
+        } catch { }
+
+        nameDiv.style.opacity = 1;
+        nameDiv.style.transition = '0s';
+        nameDiv.style.visibility = 'visible';
+
+        dialogsDiv.style.opacity = 1;
+        dialogsDiv.style.visibility = 'visible';
+
+        footerButtons.style.visibility = 'visible';
+
         houseWakeUp();
     }, 5000);
 }
@@ -183,35 +214,24 @@ function changeHeroPolina() {
 function houseWakeUp() {
     // changeBg('houseNew');
 
-    try {
-        const p1 = document.getElementById('title-show1');
-        const p2 = document.getElementById('title-show2');
-        const p3 = document.getElementById('title-show3');
-        const p4 = document.getElementById('title-show4');
-        const p5 = document.getElementById('title-show5');
-        const p6 = document.getElementById('title-show6');
+    nameDialog.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Ты кто?</p>
+        </div>
+    `;
 
-        document.body.style.background = `url('img/new-house.jpg')`;
-        document.body.style.backgroundPosition = 'center';
-        document.body.style.backgroundRepeat = 'no-repeat';
-        document.body.style.backgroundAttachment = 'fixed';
-        document.body.style.backgroundSize = 'cover';
+    setTimeout(() => {
+        dialogs.innerHTML += `
+            <div class="row mt-3 name">
+                <p class="lead" id="name-dialog">Василий</p>
+            </div>
 
-        p1.parentNode.removeChild(p1);
-        p2.parentNode.removeChild(p2);
-        p3.parentNode.removeChild(p3);
-        p4.parentNode.removeChild(p4);
-        p5.parentNode.removeChild(p5);
-        p6.parentNode.removeChild(p6);
-    } catch { }
-
-    nameDiv.style.opacity = 1;
-    nameDiv.style.transition = 0;
-
-    dialogsDiv.style.opacity = 1;
-    dialogsDiv.style.visibility = 'visible';
-
-    footerButtons.style.visibility = 'visible';
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Я - Василий, бывший солдат. А вы кто такие?</p>
+            </div>
+        `;
+    }, 2000);
 }
 
 // WARNING //
