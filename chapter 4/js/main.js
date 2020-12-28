@@ -349,6 +349,8 @@ function blogerProtect() {
                 а ты тут раскомандовался.</p>
         </div>
     `;
+
+    btnNext('houseSearch');
 }
 
 function noOneProtect() {
@@ -359,6 +361,8 @@ function noOneProtect() {
                 Давайте выбираться лучше. Я осмотрю дом</p>
         </div>
     `;
+
+    btnNext('houseSearch');
 }
 
 function vasiliyProtect() {
@@ -388,10 +392,12 @@ function vasiliyProtect() {
                 Блогер, давай поищем что-то, выход найти отсюда нужно.</p>
         </div>
     `;
+
+    btnNext('houseSearch');
 }
 
 function houseSearch() {
-
+    
 }
 
 // WARNING //
