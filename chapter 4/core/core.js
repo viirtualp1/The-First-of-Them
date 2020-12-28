@@ -114,7 +114,7 @@ function chooseDialog({
 }) {
     dialogs.innerHTML += `
         <div id="chooseDialogDiv">
-            <p class="lead text-white" id="chooseDialogText">Выбери, что сказать: </p>
+            <p class="lead text-white" id="chooseDialogText">Выбери: </p>
             
             <div class="row dialog d-flex justify-content-center" id="chooseDialogDiv">
                 <button id="btn-dialog-1" type="button" class="btn btn-dark mt-1 mb-2 ml-2 mr-2" onclick="${positiveFunc}();">

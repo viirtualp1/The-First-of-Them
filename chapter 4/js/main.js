@@ -48,7 +48,8 @@
 //     alert('Fake key');
 // }
 
-// (DEG) NIKITA //
+let blogerRelationship = 'Хорошие';
+let vasiliyRelationship = 'Хорошие';
 
 function vasiliyStart() {
     // changeBg('jungle-house');
@@ -95,6 +96,8 @@ function houseInside() {
 }
 
 function rainSleepVasiliy() {
+    document.getElementById('btn-next').disabled = false;
+
     setTimeout(() => {
         // changeBg('rainSleepVasiliy');
 
@@ -221,6 +224,8 @@ function houseWakeUp() {
         </div>
     `;
 
+    document.getElementById('btn-next').disabled = true;
+
     setTimeout(() => {
         dialogs.innerHTML += `
             <div class="row mt-3 name">
@@ -231,7 +236,162 @@ function houseWakeUp() {
                 <p class="lead" id="text-dialog">Я - Василий, бывший солдат. А вы кто такие?</p>
             </div>
         `;
-    }, 2000);
+
+        setTimeout(() => {
+            dialogs.innerHTML += `
+                <div class="row mt-3 name">
+                    <p class="lead" id="name-dialog">Полина</p>
+                </div>
+
+                <div class="row dialog">
+                    <p class="lead" id="text-dialog">Я - Полина, это Блогер. 
+                        Мы с отрядом пытаемся найти и уничтожить остатки вируса из инцидента в особняке.</p>
+                </div>
+            `;
+
+            document.getElementById('btn-next').disabled = false;
+            btnNext('trustBlogerConflictStart');
+        }, 5000);
+    }, 3500);
+}
+
+function trustBlogerConflictStart() {
+    document.getElementById('btn-next').disabled = true;
+
+    nameDialog.innerHTML = `Василий`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Значит нам нужно выбраться из дома, 
+                исследуйте весь дом, я осмотрю здесь.</p>
+        </div>
+    `;
+
+    setTimeout(() => {
+        dialogs.innerHTML += `
+            <div class="row mt-3 name">
+                <p class="lead" id="name-dialog">Блогер</p>
+            </div>
+
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">А ты чего здесь раскомандовался? 
+                    Мы тебя вообще не знаем, а оружие есть только у нас.</p>
+            </div>
+        `;
+
+        setTimeout(() => {
+            dialogs.innerHTML += `
+                <div class="row mt-3 name">
+                    <p class="lead" id="name-dialog">Василий</p>
+                </div>
+
+                <div class="row dialog">
+                    <p class="lead" id="text-dialog">Я - единственный у кого есть опыт в военных делах, 
+                        поэтому я лучше вас понимаю, что нужно делать, так что исследуйте дом.</p>
+                </div>
+            `;
+
+            document.getElementById('btn-next').disabled = false;
+            btnNext('blogerConflictAngryEnds');
+        }, 5000);
+    }, 5000);
+}
+
+function blogerConflictAngryEnds() {
+    nameDialog.innerHTML = `Блогер`;
+    dialogsDiv.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Да неужели?..</p>
+        </div>
+    `;
+
+    btnNext('polinaChoose');
+}
+
+function polinaChoose() {
+    nameDialog.innerHTML = `Полина`;
+    dialogs.innerHTML = ``;
+
+    chooseDialog({
+        positiveText: 'Встать на сторону Блогера',
+        neutralText: 'Не защищать никого',
+        unpositiveText: 'Встать на сторону Василия',
+
+        positiveFunc: 'blogerProtect',
+        neutralFunc: 'noOneProtect',
+        unpositiveFunc: 'vasiliyProtect',
+    });
+}
+
+function blogerProtect() {
+    blogerRelationship = 'Отличные';
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+    });
+
+    Toast.fire({
+        icon: 'success',
+        title: 'Блогер: отношения повышены',
+    });
+
+    nameDialog.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Ну вообще-то Блогер прав, мы тебя толком не знаем, 
+                а ты тут раскомандовался.</p>
+        </div>
+    `;
+}
+
+function noOneProtect() {
+    nameDialog.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Хватит! Устроили здесь. 
+                Давайте выбираться лучше. Я осмотрю дом</p>
+        </div>
+    `;
+}
+
+function vasiliyProtect() {
+    blogerRelationship = 'Плохие';
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+    });
+
+    Toast.fire({
+        icon: 'error',
+        title: 'Блогер: отношения понижены',
+    });
+
+    nameDialog.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Не горячись сильно, 
+                Блогер, давай поищем что-то, выход найти отсюда нужно.</p>
+        </div>
+    `;
+}
+
+function houseSearch() {
+
 }
 
 // WARNING //
