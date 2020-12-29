@@ -207,3 +207,7 @@ body {
     /* text-shadow: 1px 1px 10px #f33b3b; - Блогер */
     /* text-shadow: 1px 1px 10px #f33be4; - Полина */ 
 }
+
+#passwordHouse {
+    border: none;
+}

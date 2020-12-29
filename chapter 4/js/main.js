@@ -397,7 +397,104 @@ function vasiliyProtect() {
 }
 
 function houseSearch() {
-    
+    nameDialog.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Что исследовать?</p>
+        </div>
+
+        <div id="chooseRoom">
+            <div class="row dialog d-flex justify-content-center" id="chooseRoomDiv">
+                <button id="btn-dialog-3" type="button" class="btn btn-dark mt-2 mb-2 ml-2" onclick="mainDoorHouse()">
+                    Входная дверь
+                </button>
+                <button id="btn-dialog-1" type="button" class="btn btn-dark mt-2 mb-2 ml-2 mr-2" onclick="books()">
+                    Книжная полка
+                </button>
+                <button id="btn-dialog-2" type="button" class="btn btn-dark mt-2 mb-2" onclick="table()">
+                    Стол
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+function mainDoorHouse() {
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Надо ввести код от замка.</p>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="chooseRoomDiv">
+            <div class="form-group">
+                <input type="email" class="form-control mt-3 bg-dark text-white" id="passwordHouse" placeholder="Код от замка">
+            </div>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center">
+            <button id="btn-dialog-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkCodeInput()">
+                Открыть
+            </button>
+
+            <button id="btn-dialog-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="houseSearch()">
+                Назад
+            </button>
+        </div>
+    `;
+}
+
+function books() {
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Здесь очень много книг и еще какая-то записка.</p>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="chooseRoomDiv">
+            <button id="btn-dialog-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="$('#booksYear').modal('show')">
+                Прочитать
+            </button>
+
+            <button id="btn-dialog-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="houseSearch()">
+                Назад
+            </button>
+        </div>
+    `;
+}
+
+function table() {
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Бесполезные бумаги, ничего интересного</p>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="chooseRoomDiv">
+            <button id="btn-dialog-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="houseSearch()">
+                Назад
+            </button>
+        </div>
+    `;
+}
+
+function checkCodeInput() {
+    const passwordHouse = document.getElementById('passwordHouse');
+
+    if (passwordHouse != 1906) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Неправильно',
+        });
+    } else {
+        Swal.fire({
+            icon: 'success',
+            title: 'Правильно!',
+        });
+
+        villageOutside();
+    }
+}
+
+function villageOutside() {
+
 }
 
 // WARNING //
