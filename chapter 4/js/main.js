@@ -464,10 +464,14 @@ function books() {
 function table() {
     dialogs.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Бесполезные бумаги, ничего интересного</p>
+            <p class="lead" id="text-dialog">Какой-то документ...</p>
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="chooseRoomDiv">
+            <button id="btn-dialog-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="$('#documents').modal('show')">
+                Прочитать
+            </button>
+
             <button id="btn-dialog-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="houseSearch()">
                 Назад
             </button>
