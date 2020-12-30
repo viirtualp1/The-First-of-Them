@@ -62,6 +62,9 @@ let valve2Destroy = '';
 let valve3Destroy = '';
 let valve4Destroy = '';
 
+// Polina Hp
+let polinaHp = 100;
+
 // confirm bloger with his choose
 let confirmBloger;
 
@@ -1252,7 +1255,204 @@ function checkKeyMainRoomLaboratory() {
 }
 
 function mainRoomLaboratory() {
+    nameDialog.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">О, нет... Василий...</p>
+        </div>
+    `;
 
+    btnNext('fightVasiliy');
+}
+
+function fightVasiliy() {
+    try {
+        nameDiv.parentNode.removeChild(nameDiv);
+    } catch {}
+
+    dialogs.innerHTML = `
+        <div class="progress mt-3" id="progress-div-polina-hp">
+            <div class="progress-bar progress-bar-striped bg-success" id="progressbarPolinaHp" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">${polinaHp}%</div>
+        </div>
+
+        <div class="progress mt-3" id="progress-div-vasiliy-hp">
+            <div class="progress-bar progress-bar-striped bg-danger" id="progressbarVasiliyHp" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">${vasiliyHp}%</div>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center mt-3" id="church">
+            <button id="btn-valve-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="valve(); valveBtn='btn-valve-1'">
+                Вентиль 1
+            </button>
+
+            <button id="btn-valve-2" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="valve(); valveBtn='btn-valve-2'">
+                Вентиль 2
+            </button>
+
+            <button id="btn-valve-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="valve(); valveBtn='btn-valve-3'">
+                Вентиль 3
+            </button>
+
+            <button id="btn-valve-4" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="valve(); valveBtn='btn-valve-4'">
+                Вентиль 4
+            </button>
+        </div>
+    `;
+
+    const polinaHpInterval = setInterval(() => {
+        const polinaHpProgressBar = document.getElementById('progressbarPolinaHp');
+        polinaHp -= 10;
+
+        polinaHpProgressBar.style.width = `${polinaHp}%`;
+        polinaHpProgressBar.innerHTML = `${polinaHp}%`;
+
+        if (polinaHp == 0) {
+            Swal.fire({
+                title: 'Вы проиграли!',
+                icon: 'error',
+            }).then((result) => {
+                if (result.value) {
+                    clearInterval(polinaHpInterval);
+                    location.reload();
+                }
+            });
+        }
+    }, 10000);
+
+    // Обратный отсчет самоуничтожения
+    setTimeout(() => {
+        soundSelfDestructionStart();
+    }, 5000);
+}
+
+function soundSelfDestructionStart() {
+    // sound.src = 'selfDestructionStart';
+    // self destruction start code
+}
+
+function checkRelationShip() {
+    if (blogerRelationship == 'Хорошие' || blogerRelationship == 'Отличные') {
+        dialogs.innerHTML = `
+            <div class="row mt-3 name">
+                <p class="lead" id="name-dialog">Блогер</p>
+            </div>
+            
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Там комната связи... Нужно отправить файлы в общий доступ, пока дверь не закрылась...</p>
+            </div>
+        `;
+
+        setTimeout(() => {
+            blogerDead();
+        }, 2000);
+    } else {
+        dialogs.innerHTML = `
+            <div class="row mt-3 name">
+                <p class="lead" id="name-dialog">Блогер</p>
+            </div>
+
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Полина! Нужно из комнаты связи отправить файлы в общий доступ, пока дверь не закрылась!</p>
+            </div>
+        `;
+
+        setTimeout(() => {
+            polinaDead();
+        }, 2000);
+    }
+}
+
+function blogerDead() {
+    // changeBg('blogerCloseRoom');
+}
+
+function polinaDead() {
+    // changeBg('polinaCloseRoom');
+}
+
+function end() {
+    footerButtons.style.visibility = 'hidden';
+
+    windowDiv.innerHTML = `
+        <div class="thanksEnd mt-2">
+            <p class="lead text-center text-light mt-2 display-4 title" id="title-game">The First of Them</p>
+            <p class="lead text-center text-light mt-1 mt-4 display-3 title-end" id="title2">Конец игры</p>
+            
+            <div class="d-flex justify-content-center" id="links">
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle mt-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ссылки
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <a class="dropdown-item" href="https://vk.com/public_lar"><i id="vk-icon" class="fab fa-vk"></i> Группа Vk</a>
+                        <a class="dropdown-item" href="https://www.youtube.com/channel/UCeh4yaV7iYy0zrbN1-qy2IQ"><i id="youtube-icon" class="fab fa-youtube"></i> Канал YouTube</a>
+                    </div>
+                </div>
+                <div class="btn-group ml-2" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle mt-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Выбрать главу
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <a class="dropdown-item" href="location.href='../The First of Them (Chapter 1+Chapter 2)/chapter1/show.html'">Глава 1</a>
+                        <a class="dropdown-item" href="location.href='../The First of Them (Chapter 1+Chapter 2)/chapter2/show-chapter2.html">Глава 2</a>
+                        <a class="dropdown-item" onclick="../chapter 3/public/show.html">Глава 3</a>
+                        <a class="dropdown-item" onclick="location.reload()">Глава 4</a>
+                    </div>
+                </div>
+                <button id="quit" type="button" class="btn btn-dark mt-2 ml-2" onclick="location.href = '../The First of Them (Chapter 1+Chapter 2)/logo.html'">
+                    Выход
+                </button>
+            </div>
+            <div class="d-flex justify-content-center" id="links2">
+                <button class="btn btn-dark mt-2 ml-2" id="btn-thanks" data-toggle="modal" data-target="#thanks-div">Благодарность</button>
+            </div>
+
+            <div class="card-deck text-center mt-4">
+                <div class="card text-white bg-dark">
+                    <div class="card-body">
+                        <h5 class="card-title">Программисты</h5>
+                        <p class="card-text">Никита Зинин</p>
+                        <p class="card-text">Анна Пастухова</p>
+                        <p class="card-text">Данил Чернышев</p>
+                    </div>
+                </div>
+                <div class="card text-white bg-dark">
+                    <div class="card-body">
+                        <h5 class="card-title">Сценарий</h5>
+                        <p class="card-text">Никита Зинин</p>
+                        <p class="card-text">Анна Пастухова</p>
+                        <p class="card-text">Данил Чернышев</p>
+                    </div>
+                </div>
+                <div class="card text-white bg-dark">
+                    <div class="card-body">
+                        <h5 class="card-title">Художник</h5>
+                        <p class="card-text">Данил Чернышев</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="thanks-div" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header text-white">
+                        <h5 class="modal-title" id="thanks-title">Благодарность</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center text-white">
+                        <p class="lead">Отдельная благодарность всем тем,
+                            кто так или иначе принял участие в разработке игры. Оценил, поиграл и замотивировал нас!</p>
+                        <p class="lead bg-success" id="you">Особая благодарность тебе за прохождение!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
 }
 
 // WARNING //

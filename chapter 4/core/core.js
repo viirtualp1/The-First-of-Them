@@ -11,6 +11,12 @@ let widthProgress1 = 0;
 let widthProgress2 = 0;
 let widthProgress3 = 0;
 
+// Hp Vasiliy
+let vasiliyHp = 100;
+
+// delete valve btn
+let valveBtn = '';
+
 let progressClickDirection1 = 'top';
 let progressClickDirection2 = 'top';
 let progressClickDirection3 = 'top';
@@ -197,6 +203,19 @@ function valveProgressClick(progressElement) {
 
         const valveDiv = document.getElementById('valveDiv');
         valveDiv.parentNode.removeChild(valveDiv);
+
+        vasiliyHp -= 10;
+
+        const progressbarVasiliyHp = document.getElementById('progressbarVasiliyHp');
+        progressbarVasiliyHp.style.width = `${vasiliyHp}%`;
+        progressbarVasiliyHp.innerHTML = `${vasiliyHp}%`;
+
+        const btnValve = document.getElementById(valveBtn);
+        btnValve.parentNode.removeChild(btnValve);
+
+        if (vasiliyHp == 60) {
+            checkRelationShip();
+        }
     } else {
         switch (progressElement) {
             case 1:
