@@ -35,10 +35,6 @@
 // Механика с вентелями
 // valve();
 
-// Механика с домами
-// house('../img/bg.jpg', 'True');
-
-
 // Ключ
 // function takeTrueKey() {
 //     alert('True key');
@@ -49,7 +45,22 @@
 // }
 
 let blogerRelationship = 'Хорошие';
-let vasiliyRelationship = 'Хорошие';
+let churchKey = '';
+
+// Houses (Key for house 4)
+let firstChapterKeyHouse4 = '';
+let secondChapterKeyHouse4 = '';
+
+// QTE kill zombies in church
+let zombieChurchWidth = 100;
+let zombieChurchSec = 10;
+let clickZombieChurch = 0;
+
+// Valves (Boss fight)
+let valve1Destroy = '';
+let valve2Destroy = '';
+let valve3Destroy = '';
+let valve4Destroy = '';
 
 function vasiliyStart() {
     // changeBg('jungle-house');
@@ -480,7 +491,7 @@ function table() {
 }
 
 function checkCodeInput() {
-    const passwordHouse = document.getElementById('passwordHouse');
+    const passwordHouse = document.getElementById('passwordHouse').value;
 
     if (passwordHouse != 1906) {
         Swal.fire({
@@ -498,8 +509,391 @@ function checkCodeInput() {
 }
 
 function villageOutside() {
+    nameDialog.innerHTML = `Василий`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Молодцы... Теперь вам нужно найти ключ к церкви.</p>
+        </div>
 
+        <div class="row dialog d-flex justify-content-center" id="houses">
+            <button id="btn-house-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house1()">
+                Дом 1
+            </button>
+
+            <button id="btn-house-2" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house2()">
+                Дом 2
+            </button>
+
+            <button id="btn-house-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house3()">
+                Дом 3
+            </button>
+
+            <button id="btn-house-4" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house4()">
+                Дом 4
+            </button>
+
+            <button id="btn-house-5" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house5()">
+                Дом 5
+            </button>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="church">
+            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
+                Церковь
+            </button>
+        </div>
+    `;
+
+    document.getElementById('btn-next').disabled = true;
 }
+
+function house1() {
+    nameDialog.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Ключ с рисунком скорпиона... Хм...</p>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="houses">
+            <button id="btn-house-4" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkKeyHouse4()">
+                Дом 4
+            </button>
+
+            <button id="btn-house-5" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house5()">
+                Дом 5
+            </button>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="church">
+            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
+                Церковь
+            </button>
+        </div>
+    `;
+
+    churchKey = 'false';
+}
+
+function house2() {
+    nameDialog.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Здесь ключ с рисунком скорпиона</p>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="houses">
+            <button id="btn-house-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house3()">
+                Дом 3
+            </button>
+
+            <button id="btn-house-4" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkKeyHouse4()">
+                Дом 4
+            </button>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="church">
+            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
+                Церковь
+            </button>
+        </div>
+    `;
+
+    churchKey = 'false';
+}
+
+function house3() {
+    nameDialog.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Здесь часть какого-то ключа</p>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="houses">
+            <button id="btn-house-2" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house2()">
+                Дом 2
+            </button>
+
+            <button id="btn-house-4" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkKeyHouse4()">
+                Дом 4
+            </button>
+
+            <button id="btn-house-5" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house5()">
+                Дом 5
+            </button>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="church">
+            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
+                Церковь
+            </button>
+        </div>
+    `;
+
+    firstChapterKeyHouse4 = 'true';
+}
+
+function house4() {
+    nameDialog.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">О, по-моему здесь настоящий ключ от церкви!</p>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="houses">
+            <button id="btn-house-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house3()">
+                Дом 3
+            </button>
+
+            <button id="btn-house-5" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house5()">
+                Дом 5
+            </button>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="church">
+            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
+                Церковь
+            </button>
+        </div>
+    `;
+
+    churchKey = 'true';
+}
+
+function house5() {
+    nameDialog.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Здесь часть какого-то ключа, хм...</p>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="houses">
+            <button id="btn-house-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house1()">
+                Дом 1
+            </button>
+
+            <button id="btn-house-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house3()">
+                Дом 3
+            </button>
+
+            <button id="btn-house-4" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house4()">
+                Дом 4
+            </button>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="church">
+            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
+                Церковь
+            </button>
+        </div>
+    `;
+
+    secondChapterKeyHouse4 = 'true';
+}
+
+function church() {
+    nameDialog.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Церковь. Сюда нам и нужно. Для нее нужен ключ со скорпионом.</p>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="churchKey">
+            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkChurchKey()">
+                Вставить ключ
+            </button>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="houses">
+            <button id="btn-house-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house3()">
+                Дом 3
+            </button>
+
+            <button id="btn-house-4" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkKeyHouse4()">
+                Дом 4
+            </button>
+
+            <button id="btn-house-5" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house5()">
+                Дом 5
+            </button>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="church">
+            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
+                Церковь
+            </button>
+        </div>
+    `;
+}
+
+function checkKeyHouse4() {
+    if (firstChapterKeyHouse4 == 'true' && secondChapterKeyHouse4 == 'true') {
+        house4();
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Ключ',
+            text: 'Здесь нужны какие-то две части ключа',
+        });
+    }
+}
+
+function checkChurchKey() {
+    if (churchKey == 'true') {
+        churchFight();
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Ключ',
+            text: 'Дверь не открывается',
+        });
+    }
+}
+
+function churchFight() {
+    nameDialog.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Зомби лезут из всех щелей!</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Блогер</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Дело дрянь!</p>
+        </div>
+    `;
+
+    document.getElementById('btn-next').disabled = false;
+    btnNext('churchFight2');
+}
+
+function churchFight2() {
+    nameDialog.innerHTML = `Василий`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Бой будет жаркий!</p>
+        </div>
+    `;
+    btnNext('qteZombieChurch');
+}
+
+function qteZombieChurch() {
+    nameDialog.innerHTML = `Игра`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Стреляйте в зомби!</p>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="shot-zombie-church-div-btn">
+            <button id="btn-shot-zombie-church" type="button" class="btn btn-dark mt-2 mb-2" onclick="shotZombieChurch()">
+                Стрелять
+            </button>
+        </div>
+
+        <div class="progress mt-4" id="progress-div-zombie-church">
+            <div class="progress-bar progress-bar-striped bg-danger" id="progressbarZombieChurchsec" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">5 сек</div>
+        </div>
+    `;
+
+    setInterval(() => {
+        const progressbarZombieChurchSec = document.getElementById('progressbarZombieChurchsec');
+
+        zombieChurchWidth -= 20;
+        zombieChurchSec -= 1;
+
+        try {
+            progressbarZombieChurchSec.style.width = `${zombieChurchWidth}%`;
+            progressbarZombieChurchSec.innerHTML = `${zombieChurchSec}сек`;
+        } catch {
+            zombieChurchSec = false;
+        }
+
+        if (zombieChurchSec === 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Вы умерли!',
+            });
+
+            setInterval(() => {
+                location.reload();
+            }, 1000);
+        }
+    }, 1000);
+}
+
+function shotZombieChurch() {
+    const progressZombieChurch = document.getElementById('progress-div-zombie-Church');
+    const btnKillZombieChurch = document.getElementById('btn-shot-zombie-church');
+
+    clickZombieChurch += 1;
+
+    if (clickZombieChurch == 10) {
+        progressZombieChurch.parentNode.removeChild(progressZombieChurch);
+        btnKillZombieChurch.parentNode.removeChild(btnKillZombieChurch);
+
+        churchFightEnd();
+    }
+}
+
+function churchFightEnd() {
+    nameDialog.innerHTML = `Блогер`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Полин! Где Василий?</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Полина</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Черт! Нет! Василий!</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Блогер</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Сволочи!</p>
+        </div>
+
+    `;
+
+    btnNext('churchWhereVasiliy');
+}
+
+function churchWhereVasiliy() {
+    nameDialog.innerHTML = `Михаил`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Михаил, сможешь обнаружить Василия?!</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Михаил</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Думаю, что да. Секунду. Давай же...</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Блогер</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Сволочи!</p>
+        </div>
+
+    `;
+
+    btnNext('churchFight4');
+}
+
+
 
 // WARNING //
 // FUTURE CODE //
