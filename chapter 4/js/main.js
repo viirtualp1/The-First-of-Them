@@ -62,6 +62,9 @@ let valve2Destroy = '';
 let valve3Destroy = '';
 let valve4Destroy = '';
 
+// confirm bloger with his choose
+let confirmBloger;
+
 function vasiliyStart() {
     // changeBg('jungle-house');
 
@@ -793,7 +796,7 @@ function qteZombieChurch() {
         </div>
 
         <div class="progress mt-4" id="progress-div-zombie-church">
-            <div class="progress-bar progress-bar-striped bg-danger" id="progressbarZombieChurchsec" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">5 сек</div>
+            <div class="progress-bar progress-bar-striped bg-danger" id="progressbarZombieChurchsec" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">10 сек</div>
         </div>
     `;
 
@@ -824,7 +827,7 @@ function qteZombieChurch() {
 }
 
 function shotZombieChurch() {
-    const progressZombieChurch = document.getElementById('progress-div-zombie-Church');
+    const progressZombieChurch = document.getElementById('progress-div-zombie-church');
     const btnKillZombieChurch = document.getElementById('btn-shot-zombie-church');
 
     clickZombieChurch += 1;
@@ -869,15 +872,15 @@ function churchWhereVasiliy() {
     nameDialog.innerHTML = `Михаил`;
     dialogs.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Михаил, сможешь обнаружить Василия?!</p>
+            <p class="lead" id="text-dialog">Василий в лаборатории под церквью.</p>
         </div>
 
         <div class="row mt-3 name">
-            <p class="lead" id="name-dialog">Михаил</p>
+            <p class="lead" id="name-dialog">Полина</p>
         </div>
 
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Думаю, что да. Секунду. Давай же...</p>
+            <p class="lead" id="text-dialog">Блин, вот мы попали...</p>
         </div>
 
         <div class="row mt-3 name">
@@ -885,15 +888,372 @@ function churchWhereVasiliy() {
         </div>
 
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Сволочи!</p>
+            <p class="lead" id="text-dialog">Ловушка нам там обеспечина. Что делаем?</p>
         </div>
 
     `;
 
-    btnNext('churchFight4');
+    btnNext('blogerSayWhatDoing');
+}
+
+function blogerSayWhatDoing() {
+    nameDialog.innerHTML = `Блогер`;
+    if (blogerRelationship == 'Отличные' || blogerRelationship == 'Плохие') {
+        dialogs.innerHTML = `
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Предлагаю сначала пойти поискать отряд, а потом Василия</p>
+            </div>
+        `;
+
+        dialogs.innerHTML += `
+            <div id="chooseDialogDiv">
+                <p class="lead text-white" id="chooseDialogText">Выбери, что ответить: </p>
+                
+                <div class="row dialog d-flex justify-content-center" id="chooseDialogDiv">
+                    <button id="btn-dialog-1" type="button" class="btn btn-dark mt-1 mb-2 ml-2 mr-2" onclick="confirmBloger = true; firstTeamThenVasiliy()">
+                        Да, давай
+                    </button>
+                    <button id="btn-dialog-2" type="button" class="btn btn-dark mt-1 mb-2 mr-2 ml-2" onclick="confirmBloger = false; firstTeamThenVasiliy()">
+                        Нет, давай сделаем по другому
+                    </button>
+                </div>
+            </div>
+        `;
+    } else if (blogerRelationship == 'Хорошие') {
+        dialogs.innerHTML = `
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Предлагаю сначала пойти поискать Василия, а потом отряд</p>
+            </div>
+        `;
+
+        dialogs.innerHTML += `
+            <div id="chooseDialogDiv">
+                <p class="lead text-white" id="chooseDialogText">Выбери, что ответить: </p>
+                
+                <div class="row dialog d-flex justify-content-center" id="chooseDialogDiv">
+                    <button id="btn-dialog-1" type="button" class="btn btn-dark mt-1 mb-2 ml-2 mr-2" onclick="confirmBloger = true; firstVasiliyThenTeam()">
+                        Да, давай
+                    </button>
+                    <button id="btn-dialog-2" type="button" class="btn btn-dark mt-1 mb-2 mr-2 ml-2" onclick="confirmBloger = false; firstVasiliyThenTeam()">
+                        Нет, давай сделаем по другому
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+}
+
+function firstTeamThenVasiliy() {
+    if (confirmBloger == true) {
+        blogerRelationship = 'Отличные';
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            },
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Блогер: отношения повышены',
+        });
+
+        nameDialog.innerHTML = `Полина`;
+        dialogs.innerHTML = `
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Полезли! Смотри в оба!</p>
+            </div>
+
+            <div class="row mt-3 name">
+                <p class="lead" id="name-dialog">Блогер</p>
+            </div>
+
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Понял, хорошо, ты тоже.</p>
+            </div>
+        `;
+        btnNext('churchMonitor');
+    } else if (confirmBloger == false) {
+        blogerRelationship = 'Плохие';
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            },
+        });
+
+        Toast.fire({
+            icon: 'error',
+            title: 'Блогер: отношения понижены',
+        });
+
+        nameDialog.innerHTML = `Полина`;
+        dialogs.innerHTML = `
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Сначала за Василием. Полезли, смотри в оба!</p>
+            </div>
+
+            <div class="row mt-3 name">
+                <p class="lead" id="name-dialog">Блогер</p>
+            </div>
+
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Понял, хорошо, ты тоже.</p>
+            </div>
+        `;
+
+        btnNext('laboratory');
+    }
+}
+
+function firstVasiliyThenTeam() {
+    if (confirmBloger == true) {
+        blogerRelationship = 'Отличные';
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            },
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Блогер: отношения повышены',
+        });
+
+        nameDialog.innerHTML = `Полина`;
+        dialogs.innerHTML = `
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Полезли! Смотри в оба!</p>
+            </div>
+
+            <div class="row mt-3 name">
+                <p class="lead" id="name-dialog">Блогер</p>
+            </div>
+
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Понял, хорошо, ты тоже.</p>
+            </div>
+        `;
+
+        btnNext('laboratory');
+    } else if (confirmBloger == false) {
+        blogerRelationship = 'Плохие';
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+
+            onOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            },
+        });
+
+        Toast.fire({
+            icon: 'error',
+            title: 'Блогер: отношения понижены',
+        });
+
+        nameDialog.innerHTML = `Полина`;
+        dialogs.innerHTML = `
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Полезли! Смотри в оба!</p>
+            </div>
+
+            <div class="row mt-3 name">
+                <p class="lead" id="name-dialog">Блогер</p>
+            </div>
+
+            <div class="row dialog">
+                <p class="lead" id="text-dialog">Понял, хорошо, ты тоже.</p>
+            </div>
+        `;
+
+        btnNext('churchMonitor');
+    }
+}
+
+function churchMonitor() {
+    nameDialog.innerHTML = `Полина`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Смотри, тут какой-то монитор.</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Полина</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Твою ж мать!</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Блогер</p>
+        </div>
+
+         <div class="row dialog">
+            <p class="lead" id="text-dialog">Что там!? Черт, они все мертвы!</p>
+        </div>
+    `;
+
+    btnNext('churchMonitor2');
 }
 
 
+function churchMonitor2() {
+    nameDialog.innerHTML = `Блогер`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Уходим! Для нас, скорей всего, все кончено... Там дальше западня!</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Полина</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Мы никогда не уходим! Мы должны попытаться вытащить Василия!</p>
+        </div>
+    `;
+
+    btnNext('churchMonitor3');
+}
+
+function churchMonitor3() {
+    nameDialog.innerHTML = `Блогер`;
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Хорошо... Я с тобой.</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Полина</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Нам надо держаться вместе! Только вместе мы сила!</p>
+        </div>
+ 
+    `;
+
+    btnNext('laboratory');
+}
+
+function laboratory() {
+    nameDialog.innerHTML = 'Полина';
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Я так понимаю за большой дверью - Василий, 
+                но она естественно закрыта. Нужен ключ.</p>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="laboratory">
+            <button id="btn-main-room" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkKeyMainRoomLaboratory()">
+                Главная комната
+            </button>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="laboratory">
+            <button id="btn-room-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="roomLaboratory1()">
+                Комната 1
+            </button>
+            <button id="btn-room-2" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="roomLaboratory2()">
+                Комната 2
+            </button>
+        </div>
+    `;
+}
+
+function roomLaboratory1() {
+    // Поиск предметов 1
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Какой же здесь беспорядок...</p>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="laboratory">
+            <button id="btn-find-key-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house3()">
+                Искать ключ
+            </button>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="church">
+            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="roomLaboratory2()">
+                Комната 2
+            </button>
+
+            <button id="btn-main-room" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkKeyMainRoomLaboratory()">
+                Главная комната
+            </button>
+        </div>
+    `;
+}
+
+function roomLaboratory2() {
+    // Поиск предметов 2
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">А здесь что случилось...</p>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="churchKey">
+            <button id="btn-find-key-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkChurchKey()">
+                Искать ключ
+            </button>
+        </div>
+
+        <div class="row dialog d-flex justify-content-center" id="church">
+            <button id="btn-room-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="roomLaboratory1()">
+                Комната 1
+            </button>
+
+            <button id="btn-main-room" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkKeyMainRoomLaboratory()">
+                Главная комната
+            </button>
+        </div>
+    `;
+}
+
+function checkKeyMainRoomLaboratory() {
+    if (mainRoomLaboratoryKey == 'true') {
+        mainRoomLaboratory();
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Нет ключа!',
+        });
+    }
+}
+
+function mainRoomLaboratory() {
+
+}
 
 // WARNING //
 // FUTURE CODE //
