@@ -5,45 +5,6 @@
 /* eslint-disable max-len */
 /* eslint-disable linebreak-style */
 
-// Пример использования диалога
-// chooseDialog({
-//     positiveText: '- Привет!', Текст "позитивной" кнопки
-//     neutralText: '- Здравствуй', Текст "нейтральной" кнопки
-//     unpositiveText: '- Пока', Текст "отрицательной" кнопки
-
-//     positiveFunc: 'positiveFunc', Функций "позитивной" кнопки
-//     neutralFunc: 'neutralFunc', Функций "нейтральной" кнопки
-//     unpositiveFunc: 'unpositiveFunc', Функций "отрицательной" кнопки
-// });
-
-// Функции для примера использования диалогов
-// function positiveFunc() {
-//     alert('positiveFunc');
-//     deleteChooseDialogDiv();
-// }
-
-// function neutralFunc() {
-//     alert('neutralFunc');
-//     deleteChooseDialogDiv();
-// }
-
-// function unpositiveFunc() {
-//     alert('unpositiveFunc');
-//     deleteChooseDialogDiv();
-// }
-
-// Механика с вентелями
-// valve();
-
-// Ключ
-// function takeTrueKey() {
-//     alert('True key');
-// }
-
-// function takeFakeKey() {
-//     alert('Fake key');
-// }
-
 let blogerRelationship = 'Хорошие';
 let churchKey = '';
 
@@ -1270,6 +1231,8 @@ function mainRoomLaboratory() {
 }
 
 function fightVasiliy() {
+    document.getElementById('btn-next').disabled = true;
+
     try {
         nameDiv.parentNode.removeChild(nameDiv);
     } catch {}
@@ -1320,15 +1283,15 @@ function fightVasiliy() {
                 }
             });
         }
-    }, 10000);
+    }, 5000);
 
     // Обратный отсчет самоуничтожения
     setTimeout(() => {
         soundSelfDestructionStart();
-    }, 5000);
+    }, 3000);
 }
 
-let timerMinutes = 2;
+let timerMinutes = 1;
 let timerSeconds = 30;
 
 function soundSelfDestructionStart() {
@@ -1401,7 +1364,7 @@ function checkRelationShip() {
 
         setTimeout(() => {
             blogerDead();
-        }, 2000);
+        }, 7000);
     } else {
         dialogs.innerHTML = `
             <div class="row mt-3 name">
@@ -1415,7 +1378,7 @@ function checkRelationShip() {
 
         setTimeout(() => {
             polinaDead();
-        }, 2000);
+        }, 7000);
     }
 }
 
@@ -1423,14 +1386,63 @@ function blogerDead() {
     // changeBg('blogerCloseRoom');
     console.log('Relationship with Bloger - ', blogerRelationship);
     console.log('Bloger is dead');
-    end();
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Беги, я все сделаю! Сейчас лаборатория взорвется!</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Полина</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Нет... Я тебя вытащу!</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Блогер</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Уже поздно! Беги!</p>
+        </div>
+    `;
+
+    setTimeout(() => {
+        end();
+    }, 10000);
 }
 
 function polinaDead() {
     // changeBg('polinaCloseRoom');
     console.log('Relationship with Bloger - ', blogerRelationship);
     console.log('Polina is dead');
-    end();
+
+    dialogs.innerHTML = `
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Беги, я все сделаю! Сейчас здесь все взорвется!</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Блогер</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Я тебя вытащу!</p>
+        </div>
+
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Полина</p>
+        </div>
+
+        <div class="row dialog">
+            <p class="lead" id="text-dialog">Поздно! Беги!</p>
+        </div>
+    `;
+
+    setTimeout(() => {
+        end();
+    }, 10000);
 }
 
 function end() {
