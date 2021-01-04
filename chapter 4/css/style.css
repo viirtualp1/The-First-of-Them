@@ -211,3 +211,15 @@ body {
 #passwordHouse {
     border: none;
 }
+
+#progressTimer {
+    width: 6em;
+    height: 5em;
+    color: #fff;
+    margin-left: 1%;
+    margin-top: 1%;
+    padding-top: 1.5em;
+    padding-left: 2em;
+    font-size: 20px;
+    position: fixed;
+}

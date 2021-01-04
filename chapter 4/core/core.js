@@ -21,6 +21,12 @@ let progressClickDirection1 = 'top';
 let progressClickDirection2 = 'top';
 let progressClickDirection3 = 'top';
 
+// valves indicators
+let valveIndicator1 = false;
+let valveIndicator2 = false;
+let valveIndicator3 = false;
+let valveIndicator4 = false;
+
 // Main variables
 const music = document.getElementById('music');
 const sound = document.getElementById('sound');
@@ -137,7 +143,9 @@ function chooseDialog({
     `;
 }
 
-function valve() {
+function valve(valveIndicator) {
+    valveIndicator = true;
+
     const massiveNubmers = [10, 20, 30, 40, 50, 60, 70, 80, 90];
 
     let valveProgressWidthStart1 = getRandNumb(0, 8);

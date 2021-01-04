@@ -1187,8 +1187,8 @@ function sendTeamMountains() {
     } else {
         Swal.fire({
             icon: 'error',
-            title: 'Ошибка',
-            text: 'Нельзя отправить одного человека!',
+            title: 'Ошибка!',
+            text: 'Нельзя отправить одного и того же человека!',
         });
 
         swalStyles();
@@ -1199,6 +1199,7 @@ function qteFindLab() {
     btnNextElement = document.getElementById('btn-next');
     btnNextElement.disabled = true;
 
+    name.innerHTML = `Игра`;
     dialogs.innerHTML = `
         <div class="row dialog">
             <p class="lead" id="text-dialog">Поиск лаборатории...</p> 
@@ -2308,7 +2309,13 @@ function sendTeamLaboratories() {
 
                 swalStyles();
             } else {
-                console.log('Не работает');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Ошибка',
+                    text: 'Нельзя отправить одного человека в две комнаты!',
+                });
+
+                swalStyles();
             }
         }
 }
@@ -2337,6 +2344,12 @@ function room32SplitUp() {
 function smthWrongRoom32() {
     btnNextElem.disabled = true;
 
+    document.body.style.background = `url('img/Капсулы.jpg')`;
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
+
     sound.src = 'sounds/doorOpen.mp3';
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -2359,7 +2372,6 @@ function smthWrongRoom32() {
 
 function monsterBg() {
     sound.src = 'sounds/virusMonster.mp3';
-    // document.body.style.background = `url('img/Монстр-кусает-Блогера-сверху.jpg')`;
 
     footerButtons.style.visibility = 'hidden';
     nameDiv.style.visibility = 'hidden';

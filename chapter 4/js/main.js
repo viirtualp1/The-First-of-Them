@@ -515,7 +515,7 @@ function checkCodeInput() {
 }
 
 function villageOutside() {
-    nameDialog.innerHTML = `Василий`;
+    nameDialog.innerHTML = `Михаил`;
     dialogs.innerHTML = `
         <div class="row dialog">
             <p class="lead" id="text-dialog">Молодцы... Теперь вам нужно найти ключ к церкви.</p>
@@ -530,22 +530,14 @@ function villageOutside() {
                 Дом 2
             </button>
 
-            <button id="btn-house-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house3()">
-                Дом 3
-            </button>
-
-            <button id="btn-house-4" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house4()">
+            <button id="btn-house-4" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkKeyHouse4()">
                 Дом 4
-            </button>
-
-            <button id="btn-house-5" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house5()">
-                Дом 5
             </button>
         </div>
 
-        <div class="row dialog d-flex justify-content-center" id="church">
-            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
-                Церковь
+        <div class="row dialog d-flex justify-content-center" id="village-map-div">
+            <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage()">
+                Карта деревни
             </button>
         </div>
     `;
@@ -570,9 +562,9 @@ function house1() {
             </button>
         </div>
 
-        <div class="row dialog d-flex justify-content-center" id="church">
-            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
-                Церковь
+        <div class="row dialog d-flex justify-content-center" id="village-map-div">
+            <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage1()">
+                Карта деревни
             </button>
         </div>
     `;
@@ -597,9 +589,9 @@ function house2() {
             </button>
         </div>
 
-        <div class="row dialog d-flex justify-content-center" id="church">
-            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
-                Церковь
+        <div class="row dialog d-flex justify-content-center" id="village-map-div">
+            <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage2()">
+                Карта деревни
             </button>
         </div>
     `;
@@ -628,9 +620,9 @@ function house3() {
             </button>
         </div>
 
-        <div class="row dialog d-flex justify-content-center" id="church">
-            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
-                Церковь
+        <div class="row dialog d-flex justify-content-center" id="village-map-div">
+            <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage3()">
+                Карта деревни
             </button>
         </div>
     `;
@@ -646,6 +638,14 @@ function house4() {
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="houses">
+            <button id="btn-house-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house1()">
+                Дом 1
+            </button>
+
+            <button id="btn-house-2" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house2()">
+                Дом 2
+            </button>
+
             <button id="btn-house-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house3()">
                 Дом 3
             </button>
@@ -653,11 +653,15 @@ function house4() {
             <button id="btn-house-5" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house5()">
                 Дом 5
             </button>
+
+            <button id="btn-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
+                Церковь
+            </button>
         </div>
 
-        <div class="row dialog d-flex justify-content-center" id="church">
-            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
-                Церковь
+        <div class="row dialog d-flex justify-content-center" id="village-map-div">
+            <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage4()">
+                Карта деревни
             </button>
         </div>
     `;
@@ -677,18 +681,18 @@ function house5() {
                 Дом 1
             </button>
 
-            <button id="btn-house-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house3()">
-                Дом 3
+            <button id="btn-house-4" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkKeyHouse4()">
+                Дом 4
             </button>
 
-            <button id="btn-house-4" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house4()">
-                Дом 4
+            <button id="btn-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
+                Церковь
             </button>
         </div>
 
-        <div class="row dialog d-flex justify-content-center" id="church">
-            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
-                Церковь
+        <div class="row dialog d-flex justify-content-center" id="village-map-div">
+            <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage5()">
+                Карта деревни
             </button>
         </div>
     `;
@@ -723,9 +727,9 @@ function church() {
             </button>
         </div>
 
-        <div class="row dialog d-flex justify-content-center" id="church">
-            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
-                Церковь
+        <div class="row dialog d-flex justify-content-center" id="village-map-div">
+            <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillageChurch()">
+                Карта деревни
             </button>
         </div>
     `;
@@ -1280,19 +1284,19 @@ function fightVasiliy() {
         </div>
 
         <div class="row dialog d-flex justify-content-center mt-3" id="church">
-            <button id="btn-valve-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="valve(); valveBtn='btn-valve-1'">
+            <button id="btn-valve-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="valve('valveIndicator1'); valveBtn='btn-valve-1'">
                 Вентиль 1
             </button>
 
-            <button id="btn-valve-2" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="valve(); valveBtn='btn-valve-2'">
+            <button id="btn-valve-2" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="valve('valveIndicator2'); valveBtn='btn-valve-2'">
                 Вентиль 2
             </button>
 
-            <button id="btn-valve-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="valve(); valveBtn='btn-valve-3'">
+            <button id="btn-valve-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="valve('valveIndicator3'); valveBtn='btn-valve-3'">
                 Вентиль 3
             </button>
 
-            <button id="btn-valve-4" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="valve(); valveBtn='btn-valve-4'">
+            <button id="btn-valve-4" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="valve('valveIndicator4'); valveBtn='btn-valve-4'">
                 Вентиль 4
             </button>
         </div>
@@ -1324,9 +1328,63 @@ function fightVasiliy() {
     }, 5000);
 }
 
+let timerMinutes = 2;
+let timerSeconds = 30;
+
 function soundSelfDestructionStart() {
     // sound.src = 'selfDestructionStart';
     // self destruction start code
+
+    dialogs.innerHTML += `
+        <div class="bg-danger" id="progressTimer" role="progressbar">${timerMinutes}:${timerSeconds}</div>
+    `;
+
+    const timerSelfDestruction = setTimeout(() => {
+        if (valveIndicator1 == true &&
+            valveIndicator2 == true &&
+            valveIndicator3 == true &&
+            valveIndicator4 == true) {
+            clearInterval(intervalChangerTimer);
+            clearTimeout(timerSelfDestruction);
+            checkRelationShip();
+        }
+
+        setInterval(() => {
+            location.reload();
+        }, 1000);
+    }, 120000);
+
+    const progressTimer = document.getElementById('progressTimer');
+
+    const intervalChangerTimer = setInterval(() => {
+        if (timerMinutes == 0 &&
+            timerSeconds == 0 &&
+            valveIndicator1 == false &&
+            valveIndicator2 == false &&
+            valveIndicator3 == false &&
+            valveIndicator4 == false) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Вы умерли!',
+            });
+
+            setInterval(() => {
+                location.reload();
+            }, 1000);
+        }
+
+        if (timerSeconds == 0) {
+            timerSeconds = 60;
+            timerMinutes -= 1;
+        }
+
+        timerSeconds -= 1;
+        if (timerSeconds < 10) {
+            progressTimer.innerHTML = `${timerMinutes}:0${timerSeconds}`;
+        } else {
+            progressTimer.innerHTML = `${timerMinutes}:${timerSeconds}`;
+        }
+    }, 1000);
 }
 
 function checkRelationShip() {
@@ -1363,10 +1421,16 @@ function checkRelationShip() {
 
 function blogerDead() {
     // changeBg('blogerCloseRoom');
+    console.log('Relationship with Bloger - ', blogerRelationship);
+    console.log('Bloger is dead');
+    end();
 }
 
 function polinaDead() {
     // changeBg('polinaCloseRoom');
+    console.log('Relationship with Bloger - ', blogerRelationship);
+    console.log('Polina is dead');
+    end();
 }
 
 function end() {
@@ -1474,3 +1538,31 @@ function end() {
 //     window.location.href = "../searchItems/index-nosplash.html";
 // }
 
+// Map backgrounds
+function mapVillage() {
+    $('#mapVillageOriginal').modal('show');
+}
+
+function mapVillage1() {
+    $('#mapVillage1').modal('show');
+}
+
+function mapVillage2() {
+    $('#mapVillage2').modal('show');
+}
+
+function mapVillage3() {
+    $('#mapVillage3').modal('show');
+}
+
+function mapVillage4() {
+    $('#mapVillage4').modal('show');
+}
+
+function mapVillage5() {
+    $('#mapVillage5').modal('show');
+}
+
+function mapVillageChurch() {
+    $('#mapVillageChurch').modal('show');
+}
