@@ -39,6 +39,17 @@ let polinaHp = 100;
 // confirm bloger with his choose
 let confirmBloger;
 
+// load main room laboratory (after search items)
+window.onload = () => {
+    const currentFunctionLc = localStorage.getItem('mainRoomLaboratory');
+
+    if (currentFunctionLc != null) {
+        if (currentFunctionLc == 'mainRoomLaboratory') {
+            mainRoomLaboratory();
+        }
+    } else { }
+};
+
 function vasiliyStart() {
     // changeBg('jungle-house');
 
@@ -1285,20 +1296,20 @@ function laboratory() {
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="laboratory">
-            <button id="btn-main-room" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkKeyMainRoomLaboratory()">
-                Главная комната
-            </button>
-        </div>
-
-        <div class="row dialog d-flex justify-content-center" id="laboratory">
             <button id="btn-room-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="roomLaboratory1()">
                 Комната 1
             </button>
-            <button id="btn-room-2" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="roomLaboratory2()">
-                Комната 2
-            </button>
         </div>
     `;
+}
+
+// transition in search items mechanics
+function mainRoomLaboratoryTransition() {
+    localStorage.setItem('mainRoomLaboratory', 'mainRoomLaboratory');
+}
+
+function transitionRoom1() {
+    location.href = 'searchRoom1/';
 }
 
 function roomLaboratory1() {
@@ -1309,49 +1320,11 @@ function roomLaboratory1() {
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="laboratory">
-            <button id="btn-find-key-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="">
+            <button id="btn-find-key-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mainRoomLaboratoryTransition(); transitionRoom1()">
                 Искать ключ
             </button>
         </div>
-
-        <div class="row dialog d-flex justify-content-center" id="church">
-            <button id="btn-main-room" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkKeyMainRoomLaboratory()">
-                Главная комната
-            </button>
-        </div>
     `;
-}
-
-function roomLaboratory2() {
-    // Поиск предметов 2
-    dialogs.innerHTML = `
-        <div class="row dialog">
-            <p class="lead" id="text-dialog">А здесь что случилось...</p>
-        </div>
-
-        <div class="row dialog d-flex justify-content-center" id="churchKey">
-            <button id="btn-find-key-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="">
-                Искать ключ
-            </button>
-        </div>
-
-        <div class="row dialog d-flex justify-content-center" id="church">
-            <button id="btn-main-room" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkKeyMainRoomLaboratory()">
-                Главная комната
-            </button>
-        </div>
-    `;
-}
-
-function checkKeyMainRoomLaboratory() {
-    if (mainRoomLaboratoryKey == 'true') {
-        mainRoomLaboratory();
-    } else {
-        Swal.fire({
-            icon: 'error',
-            title: 'Нет ключа!',
-        });
-    }
 }
 
 function mainRoomLaboratory() {
@@ -1429,14 +1402,48 @@ function fightVasiliy() {
 }
 
 let timerMinutes = 1;
-let timerSeconds = 30;
+let timerSeconds = 0;
 
 function soundSelfDestructionStart() {
-    // sound.src = 'selfDestructionStart';
     // self destruction start code
+    sound.src = 'sounds/1minutes.mp3';
+
+    const intervalSelfDestruction = setInterval(() => {
+        if (timerSeconds == 30) {
+            // sound.src = '';
+        }
+
+        if (timerMinutes == 0 && timerSeconds == 7) {
+            sound.src = 'sounds/7.mp3';
+        }
+
+        if (timerMinutes == 0 && timerSeconds == 6) {
+            sound.src = 'sounds/6.mp3';
+        }
+
+        if (timerMinutes == 0 && timerSeconds == 5) {
+            sound.src = 'sounds/5.mp3';
+        }
+
+        if (timerMinutes == 0 && timerSeconds == 4) {
+            sound.src = 'sounds/4.mp3';
+        }
+
+        if (timerMinutes == 0 && timerSeconds == 3) {
+            sound.src = 'sounds/3.mp3';
+        }
+
+        if (timerMinutes == 0 && timerSeconds == 2) {
+            sound.src = 'sounds/2.mp3';
+        }
+
+        if (timerMinutes == 0 && timerSeconds == 1) {
+            sound.src = 'sounds/1.mp3';
+        }
+    }, 1000);
 
     dialogs.innerHTML += `
-        <div class="bg-danger" id="progressTimer" role="progressbar">${timerMinutes}:${timerSeconds}</div>
+        <div class="bg-danger" id="progressTimer" role="progressbar">${timerMinutes}:0${timerSeconds}</div>
     `;
 
     const timerSelfDestruction = setTimeout(() => {
@@ -1668,25 +1675,6 @@ function end() {
         </div>
     `;
 }
-
-// WARNING //
-// FUTURE CODE //
-// function futureFunction() {
-//     localStorage.setItem('currentFunction', 'future(Current)Function');
-// }
-
-// window.onload = () => {
-//     const currentFunctionLc = localStorage.getItem('currentFunction');
-
-//     if (currentFunctionLc != null) {
-//         if (currentFunctionLc == 'future(Current)Function') {
-//             futureFunction();
-//         }
-//     } else { }
-// };
-// function transition() {
-//     window.location.href = "../searchItems/index-nosplash.html";
-// }
 
 // Map images
 function mapVillage() {
