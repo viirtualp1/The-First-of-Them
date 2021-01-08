@@ -234,3 +234,28 @@ body {
     font-size: 20px;
     position: fixed;
 }
+
+#inventory-content {
+    background-color: #25292C;
+}
+
+.img-inventory {
+    margin: 2vw;
+    width: 8em;
+    height: 4em;
+    border: 2px solid #25292C;
+}
+
+.img-inventory-part-key {
+    margin: 2vw;
+    width: 8em;
+    height: 10em;
+    border: 2px solid #25292C;
+}
+
+.img-inventory-full-key {
+    margin: 2vw;
+    width: 7em;
+    height: 6em;
+    border: 2px solid #25292C;
+}

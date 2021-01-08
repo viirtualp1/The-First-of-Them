@@ -42,6 +42,7 @@ const footerButtons = document.getElementById('footer-buttons');
 const windowDiv = document.getElementById('window');
 const btnNextElem = document.getElementById('btn-next');
 const btnSaveLoad = document.getElementById('btn-save-load');
+const inventoryInner = document.getElementById('inventoryInner');
 
 // Div - name and dialog
 const nameDiv = document.getElementById('name');

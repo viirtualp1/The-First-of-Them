@@ -8,6 +8,13 @@
 let blogerRelationship = 'Хорошие';
 let churchKey = '';
 
+// keys
+let fakeChurchKeys = 0;
+let trueChurchKey = 0;
+
+let takeKeyHouse1 = false;
+let takeKeyHouse2 = false;
+
 // Houses (Key for house 4)
 let firstChapterKeyHouse4 = '';
 let secondChapterKeyHouse4 = '';
@@ -232,7 +239,7 @@ function houseWakeUp() {
 
             document.getElementById('btn-next').disabled = false;
             btnNext('trustBlogerConflictStart');
-        }, 5000);
+        }, 4000);
     }, 3500);
 }
 
@@ -273,8 +280,8 @@ function trustBlogerConflictStart() {
 
             document.getElementById('btn-next').disabled = false;
             btnNext('blogerConflictAngryEnds');
-        }, 5000);
-    }, 5000);
+        }, 4000);
+    }, 4000);
 }
 
 function blogerConflictAngryEnds() {
@@ -291,26 +298,6 @@ function blogerConflictAngryEnds() {
 function polinaChoose() {
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = ``;
-
-    footerButtons.innerHTML += `
-        <nav class="navbar navbar-dark" id="talkBtnNav">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#talkToOne" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-        <div class="collapse" id="talkToOne">
-            <div class="p-4" id="navbarMenuBg">
-                <div class="row text-white">
-                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <p class="lead text-muted" id="task">Вы можете поговорить с кем-то </p>
-
-                        <button class="btn" id="btn-talk-mikhail" onclick="talkMikhail(); btnClickTalkMikhail+=1">Михаил</button>
-                        <button class="btn" id="btn-talk-vasiliy" onclick="talkVasiliy(); btnClickTalkVasiliy+=1">Василий</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
 
     chooseDialog({
         positiveText: 'Встать на сторону Блогера',
@@ -356,25 +343,6 @@ function blogerProtect() {
 }
 
 function noOneProtect() {
-    footerButtons.innerHTML += `
-        <nav class="navbar navbar-dark" id="talkBtnNav">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#talkToOne" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-        <div class="collapse" id="talkToOne">
-            <div class="p-4" id="navbarMenuBg">
-                <div class="row text-white">
-                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <p class="lead text-muted" id="task">Вы можете поговорить с кем-то </p>
-
-                        <button class="btn" id="btn-talk-mikhail" onclick="talkMikhail(); btnClickTalkMikhail+=1">Михаил</button>
-                        <button class="btn" id="btn-talk-vasiliy" onclick="talkVasiliy(); btnClickTalkVasiliy+=1">Василий</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
     nextTask('Осмотреть особняк');
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
@@ -388,25 +356,6 @@ function noOneProtect() {
 }
 
 function vasiliyProtect() {
-    footerButtons.innerHTML += `
-        <nav class="navbar navbar-dark" id="talkBtnNav">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#talkToOne" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-        <div class="collapse" id="talkToOne">
-            <div class="p-4" id="navbarMenuBg">
-                <div class="row text-white">
-                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <p class="lead text-muted" id="task">Вы можете поговорить с кем-то </p>
-
-                        <button class="btn" id="btn-talk-mikhail" onclick="talkMikhail(); btnClickTalkMikhail+=1">Михаил</button>
-                        <button class="btn" id="btn-talk-vasiliy" onclick="talkVasiliy(); btnClickTalkVasiliy+=1">Василий</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
     nextTask('Осмотреть особняк');
     blogerRelationship = 'Плохие';
     const Toast = Swal.mixin({
@@ -439,6 +388,28 @@ function vasiliyProtect() {
 }
 
 function houseSearch() {
+    document.getElementById('btn-next').disabled = true;
+
+    footerButtons.innerHTML += `
+        <nav class="navbar navbar-dark" id="talkBtnNav">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#talkToOne" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+        <div class="collapse" id="talkToOne">
+            <div class="p-4" id="navbarMenuBg">
+                <div class="row text-white">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <p class="lead text-muted" id="talkAnyOne">Вы можете поговорить с кем-то</p>
+
+                        <button class="btn" id="btn-talk-mikhail" onclick="talkMikhail(); btnClickTalkMikhail+=1">Блогер</button>
+                        <button class="btn" id="btn-talk-vasiliy" onclick="talkVasiliy(); btnClickTalkVasiliy+=1">Василий</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -566,6 +537,7 @@ function villageOutside() {
             <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage()">
                 Карта деревни
             </button>
+            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-toggle="modal" data-target="#inventory">Инвентарь</button>
         </div>
     `;
 
@@ -573,6 +545,11 @@ function villageOutside() {
 }
 
 function house1() {
+    fakeChurchKeys += 1;
+    inventoryInner.innerHTML += `
+        <img src="img/keyScorpion (fake).png" id="fakeKeyScorpion${fakeChurchKeys}" class="img-inventory" alt="map-village">
+    `;
+
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -593,6 +570,7 @@ function house1() {
             <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage1()">
                 Карта деревни
             </button>
+            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-toggle="modal" data-target="#inventory">Инвентарь</button>
         </div>
     `;
 
@@ -600,6 +578,11 @@ function house1() {
 }
 
 function house2() {
+    fakeChurchKeys += 1;
+    inventoryInner.innerHTML += `
+        <img src="img/keyScorpion (fake).png" id="fakeKeyScorpion${fakeChurchKeys}" class="img-inventory">
+    `;
+
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -620,6 +603,7 @@ function house2() {
             <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage2()">
                 Карта деревни
             </button>
+            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-toggle="modal" data-target="#inventory">Инвентарь</button>
         </div>
     `;
 
@@ -651,10 +635,14 @@ function house3() {
             <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage3()">
                 Карта деревни
             </button>
+            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-toggle="modal" data-target="#inventory">Инвентарь</button>
         </div>
     `;
 
     firstChapterKeyHouse4 = 'true';
+    inventoryInner.innerHTML += `
+        <img src="img/firstPartKeyHouse4.png" id="firstPartKeyHouse4" class="img-inventory-part-key">
+    `;
 }
 
 function house4() {
@@ -665,22 +653,6 @@ function house4() {
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="houses">
-            <button id="btn-house-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house1()">
-                Дом 1
-            </button>
-
-            <button id="btn-house-2" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house2()">
-                Дом 2
-            </button>
-
-            <button id="btn-house-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house3()">
-                Дом 3
-            </button>
-
-            <button id="btn-house-5" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house5()">
-                Дом 5
-            </button>
-
             <button id="btn-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="church()">
                 Церковь
             </button>
@@ -690,7 +662,13 @@ function house4() {
             <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage4()">
                 Карта деревни
             </button>
+            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-toggle="modal" data-target="#inventory">Инвентарь</button>
         </div>
+    `;
+
+    trueChurchKey += 1;
+    inventoryInner.innerHTML += `
+        <img src="img/keyScorpion (true).png" id="trueKeyScorpion${trueChurchKey}" class="img-inventory">
     `;
 
     churchKey = 'true';
@@ -721,10 +699,24 @@ function house5() {
             <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage5()">
                 Карта деревни
             </button>
+            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-toggle="modal" data-target="#inventory">Инвентарь</button>
         </div>
     `;
 
     secondChapterKeyHouse4 = 'true';
+
+    if (firstChapterKeyHouse4 == 'true' && secondChapterKeyHouse4 == 'true') {
+        const firstPartKeyHouse4 = document.getElementById('firstPartKeyHouse4');
+        firstPartKeyHouse4.parentNode.removeChild(firstPartKeyHouse4);
+
+        inventoryInner.innerHTML += `
+            <img src="img/fullKeyHouse4.png" id="fullKeyHouse4" class="img-inventory-full-key">
+        `;
+    } else {
+        inventoryInner.innerHTML += `
+            <img src="img/secondPartKeyHouse4.png" id="secondPartKeyHouse4" class="img-inventory-part-key">
+        `;
+    }
 }
 
 function church() {
@@ -758,6 +750,7 @@ function church() {
             <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillageChurch()">
                 Карта деревни
             </button>
+            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-toggle="modal" data-target="#inventory">Инвентарь</button>
         </div>
     `;
 }
@@ -768,9 +761,20 @@ function checkKeyHouse4() {
     } else {
         Swal.fire({
             icon: 'error',
-            title: 'Ключ',
-            text: 'Здесь нужны какие-то две части ключа',
+            title: 'Не открывается',
         });
+
+        if (firstChapterKeyHouse4 == 'true') {
+            const firstPartKeyHouse4 = document.getElementById('firstPartKeyHouse4');
+            firstPartKeyHouse4.parentNode.removeChild(firstPartKeyHouse4);
+        }
+
+        if (secondChapterKeyHouse4 == 'true') {
+            const secondPartKeyHouse4 = document.getElementById('secondPartKeyHouse4');
+            secondPartKeyHouse4.parentNode.removeChild(secondPartKeyHouse4);
+        }
+
+        swalStyles();
     }
 }
 
@@ -780,13 +784,25 @@ function checkChurchKey() {
     } else {
         Swal.fire({
             icon: 'error',
-            title: 'Ключ',
-            text: 'Дверь не открывается',
+            text: 'Не открывается',
         });
+
+        if (fakeChurchKeys > 0) {
+            const imgFakeKeyChurch = document.getElementById(`fakeKeyScorpion${fakeChurchKeys}`);
+            imgFakeKeyChurch.parentNode.removeChild(imgFakeKeyChurch);
+
+            fakeChurchKeys -= 1;
+        }
     }
 }
 
 function churchFight() {
+    const btnTalkMikhail = document.getElementById('btn-talk-mikhail');
+    const btnTalkVasiliy = document.getElementById('btn-talk-vasiliy');
+
+    btnTalkMikhail.disabled = true;
+    btnTalkVasiliy.disabled = true;
+
     nextTask('Отбиться от зомби');
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
@@ -906,6 +922,15 @@ function churchFightEnd() {
 }
 
 function churchWhereVasiliy() {
+    const btnTalkMikhail = document.getElementById('btn-talk-mikhail');
+    btnTalkMikhail.disabled = false;
+
+    const btnTalkVasiliy = document.getElementById('btn-talk-vasiliy');
+    btnTalkVasiliy.parentNode.removeChild(btnTalkVasiliy);
+
+    const talkAnyOne = document.getElementById('talkAnyOne');
+    talkAnyOne.innerHTML = `Вы можете поговорить с Блогером`;
+
     nameDialog.innerHTML = `Михаил`;
     dialogs.innerHTML = `
         <div class="row dialog">
