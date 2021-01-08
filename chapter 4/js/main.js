@@ -1315,10 +1315,6 @@ function roomLaboratory1() {
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="church">
-            <button id="btn-key-church" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="roomLaboratory2()">
-                Комната 2
-            </button>
-
             <button id="btn-main-room" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkKeyMainRoomLaboratory()">
                 Главная комната
             </button>
@@ -1340,10 +1336,6 @@ function roomLaboratory2() {
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="church">
-            <button id="btn-room-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="roomLaboratory1()">
-                Комната 1
-            </button>
-
             <button id="btn-main-room" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkKeyMainRoomLaboratory()">
                 Главная комната
             </button>
@@ -1696,7 +1688,7 @@ function end() {
 //     window.location.href = "../searchItems/index-nosplash.html";
 // }
 
-// Map backgrounds
+// Map images
 function mapVillage() {
     $('#mapVillageOriginal').modal('show');
 }
