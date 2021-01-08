@@ -14,6 +14,9 @@ let trueChurchKey = 0;
 
 let takeKeyHouse1 = false;
 let takeKeyHouse2 = false;
+let takeKeyHouse3 = false;
+let takeKeyHouse4 = false;
+let takeKeyHouse5 = false;
 
 // Houses (Key for house 4)
 let firstChapterKeyHouse4 = '';
@@ -545,15 +548,10 @@ function villageOutside() {
 }
 
 function house1() {
-    fakeChurchKeys += 1;
-    inventoryInner.innerHTML += `
-        <img src="img/keyScorpion (fake).png" id="fakeKeyScorpion${fakeChurchKeys}" class="img-inventory" alt="map-village">
-    `;
-
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Ключ с рисунком скорпиона... Хм...</p>
+            <p class="lead text-dialog" id="whatInHereHouse1"></p>
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="houses">
@@ -574,19 +572,28 @@ function house1() {
         </div>
     `;
 
+    const whatInHereHouse1 = document.getElementById('whatInHereHouse1');
+
+    if (takeKeyHouse1 == false) {
+        whatInHereHouse1.innerHTML = `Ключ с рисунком скорпиона... Хм...`;
+
+        fakeChurchKeys += 1;
+        inventoryInner.innerHTML += `
+            <img src="img/keyScorpion (fake).png" id="fakeKeyScorpion${fakeChurchKeys}" class="img-inventory" alt="map-village">
+        `;
+    } else {
+        whatInHereHouse1.innerHTML = `Здесь уже ничего нет`;
+    }
+
+    takeKeyHouse1 = true;
     churchKey = 'false';
 }
 
 function house2() {
-    fakeChurchKeys += 1;
-    inventoryInner.innerHTML += `
-        <img src="img/keyScorpion (fake).png" id="fakeKeyScorpion${fakeChurchKeys}" class="img-inventory">
-    `;
-
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Здесь ключ с рисунком скорпиона</p>
+            <p class="lead text-dialog" id="whatInHereHouse2"></p>
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="houses">
@@ -607,6 +614,20 @@ function house2() {
         </div>
     `;
 
+    const whatInHereHouse2 = document.getElementById('whatInHereHouse2');
+
+    if (takeKeyHouse2 == false) {
+        whatInHereHouse2.innerHTML = `Здесь ключ с рисунком скорпиона`;
+
+        fakeChurchKeys += 1;
+        inventoryInner.innerHTML += `
+            <img src="img/keyScorpion (fake).png" id="fakeKeyScorpion${fakeChurchKeys}" class="img-inventory">
+        `;
+    } else {
+        whatInHereHouse2.innerHTML = `Здесь ничего нет`;
+    }
+
+    takeKeyHouse2 = true;
     churchKey = 'false';
 }
 
@@ -614,7 +635,7 @@ function house3() {
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Здесь часть какого-то ключа</p>
+            <p class="lead text-dialog" id="whatInHereHouse3"></p>
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="houses">
@@ -639,17 +660,27 @@ function house3() {
         </div>
     `;
 
-    firstChapterKeyHouse4 = 'true';
-    inventoryInner.innerHTML += `
-        <img src="img/firstPartKeyHouse4.png" id="firstPartKeyHouse4" class="img-inventory-part-key">
-    `;
+    const whatInHereHouse3 = document.getElementById('whatInHereHouse3');
+
+    if (takeKeyHouse3 == false) {
+        whatInHereHouse3.innerHTML = `Здесь ключ с рисунком скорпиона`;
+
+        firstChapterKeyHouse4 = 'true';
+        inventoryInner.innerHTML += `
+            <img src="img/firstPartKeyHouse4.png" id="firstPartKeyHouse4" class="img-inventory-part-key">
+        `;
+    } else {
+        whatInHereHouse3.innerHTML = `Ничего нет`;
+    }
+
+    takeKeyHouse3 = true;
 }
 
 function house4() {
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">О, по-моему здесь настоящий ключ от церкви!</p>
+            <p class="lead text-dialog" id="whatInHereHouse4"></p>
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="houses">
@@ -666,11 +697,20 @@ function house4() {
         </div>
     `;
 
-    trueChurchKey += 1;
-    inventoryInner.innerHTML += `
-        <img src="img/keyScorpion (true).png" id="trueKeyScorpion${trueChurchKey}" class="img-inventory">
-    `;
+    const whatInHereHouse4 = document.getElementById('whatInHereHouse4');
 
+    if (takeKeyHouse4 == false) {
+        whatInHereHouse4.innerHTML = `О, по-моему здесь настоящий ключ от церкви!`;
+
+        trueChurchKey += 1;
+        inventoryInner.innerHTML += `
+            <img src="img/keyScorpion (true).png" id="trueKeyScorpion${trueChurchKey}" class="img-inventory">
+        `;
+    } else {
+        whatInHereHouse4.innerHTML = `Здесь... Ничего!`;
+    }
+
+    takeKeyHouse4 = true;
     churchKey = 'true';
 }
 
@@ -678,7 +718,7 @@ function house5() {
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Здесь часть какого-то ключа, хм...</p>
+            <p class="lead text-dialog" id="whatInHereHouse5"></p>
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="houses">
@@ -703,20 +743,21 @@ function house5() {
         </div>
     `;
 
-    secondChapterKeyHouse4 = 'true';
+    const whatInHereHouse5 = document.getElementById('whatInHereHouse5');
 
-    if (firstChapterKeyHouse4 == 'true' && secondChapterKeyHouse4 == 'true') {
-        const firstPartKeyHouse4 = document.getElementById('firstPartKeyHouse4');
-        firstPartKeyHouse4.parentNode.removeChild(firstPartKeyHouse4);
+    if (takeKeyHouse5 == false) {
+        whatInHereHouse5.innerHTML = `Здесь часть какого-то ключа, хм...`;
 
-        inventoryInner.innerHTML += `
-            <img src="img/fullKeyHouse4.png" id="fullKeyHouse4" class="img-inventory-full-key">
-        `;
-    } else {
+        secondChapterKeyHouse4 = 'true';
+
         inventoryInner.innerHTML += `
             <img src="img/secondPartKeyHouse4.png" id="secondPartKeyHouse4" class="img-inventory-part-key">
         `;
+    } else {
+        whatInHereHouse5.innerHTML = `Ничего...`;
     }
+
+    takeKeyHouse5 = true;
 }
 
 function church() {
@@ -756,6 +797,16 @@ function church() {
 }
 
 function checkKeyHouse4() {
+    if (firstChapterKeyHouse4 == 'true') {
+        const firstPartKeyHouse4 = document.getElementById('firstPartKeyHouse4');
+        firstPartKeyHouse4.parentNode.removeChild(firstPartKeyHouse4);
+    }
+
+    if (secondChapterKeyHouse4 == 'true') {
+        const secondPartKeyHouse4 = document.getElementById('secondPartKeyHouse4');
+        secondPartKeyHouse4.parentNode.removeChild(secondPartKeyHouse4);
+    }
+
     if (firstChapterKeyHouse4 == 'true' && secondChapterKeyHouse4 == 'true') {
         house4();
     } else {
@@ -763,16 +814,6 @@ function checkKeyHouse4() {
             icon: 'error',
             title: 'Не открывается',
         });
-
-        if (firstChapterKeyHouse4 == 'true') {
-            const firstPartKeyHouse4 = document.getElementById('firstPartKeyHouse4');
-            firstPartKeyHouse4.parentNode.removeChild(firstPartKeyHouse4);
-        }
-
-        if (secondChapterKeyHouse4 == 'true') {
-            const secondPartKeyHouse4 = document.getElementById('secondPartKeyHouse4');
-            secondPartKeyHouse4.parentNode.removeChild(secondPartKeyHouse4);
-        }
 
         swalStyles();
     }

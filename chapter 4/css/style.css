@@ -23,7 +23,8 @@ body {
     margin-left: 1%;
 }
 
-#name-dialog, #text-dialog {
+#name-dialog, #text-dialog,
+.text-dialog {
     padding-top: 1vh;
     padding-left: 2vh;
 }
