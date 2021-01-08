@@ -51,8 +51,6 @@ window.onload = () => {
 };
 
 function vasiliyStart() {
-    // changeBg('jungle-house');
-
     nameDialog.innerHTML = `Василий`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -400,27 +398,28 @@ function vasiliyProtect() {
 }
 
 function houseSearch() {
+    changeBg('bg20-part4.png');
     document.getElementById('btn-next').disabled = true;
 
-    footerButtons.innerHTML += `
-        <nav class="navbar navbar-dark" id="talkBtnNav">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#talkToOne" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-        <div class="collapse" id="talkToOne">
-            <div class="p-4" id="navbarMenuBg">
-                <div class="row text-white">
-                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <p class="lead text-muted" id="talkAnyOne">Вы можете поговорить с кем-то</p>
+    // footerButtons.innerHTML += `
+    //     <nav class="navbar navbar-dark" id="talkBtnNav">
+    //         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#talkToOne" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+    //             <span class="navbar-toggler-icon"></span>
+    //         </button>
+    //     </nav>
+    //     <div class="collapse" id="talkToOne">
+    //         <div class="p-4" id="navbarMenuBg">
+    //             <div class="row text-white">
+    //                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    //                     <p class="lead text-muted" id="talkAnyOne">Вы можете поговорить с кем-то</p>
 
-                        <button class="btn" id="btn-talk-mikhail" onclick="talkMikhail(); btnClickTalkMikhail+=1">Блогер</button>
-                        <button class="btn" id="btn-talk-vasiliy" onclick="talkVasiliy(); btnClickTalkVasiliy+=1">Василий</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
+    //                     <button class="btn" id="btn-talk-mikhail" onclick="talkMikhail(); btnClickTalkMikhail+=1">Блогер</button>
+    //                     <button class="btn" id="btn-talk-vasiliy" onclick="talkVasiliy(); btnClickTalkVasiliy+=1">Василий</button>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     </div>
+    // `;
 
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
@@ -470,6 +469,8 @@ function mainDoorHouse() {
 }
 
 function books() {
+    changeBg('bg19-part4.png');
+
     dialogs.innerHTML = `
         <div class="row dialog">
             <p class="lead" id="text-dialog">Здесь очень много книг и еще какая-то записка.</p>
@@ -488,6 +489,8 @@ function books() {
 }
 
 function table() {
+    changeBg('bg19-part4.png');
+
     dialogs.innerHTML = `
         <div class="row dialog">
             <p class="lead" id="text-dialog">Какой-то документ...</p>
@@ -524,6 +527,8 @@ function checkCodeInput() {
 }
 
 function villageOutside() {
+    changeBg('bg1-part4.png');
+
     nextTask('Найти ключ к церкви');
     nameDialog.innerHTML = `Михаил`;
     dialogs.innerHTML = `
@@ -557,6 +562,8 @@ function villageOutside() {
 }
 
 function house1() {
+    changeBg('bg15-part4.png');
+
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -599,6 +606,8 @@ function house1() {
 }
 
 function house2() {
+    changeBg('bg17-part4.png');
+
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -641,6 +650,8 @@ function house2() {
 }
 
 function house3() {
+    changeBg('bg18-part4.png');
+
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -686,6 +697,8 @@ function house3() {
 }
 
 function house4() {
+    changeBg('bg16-part4.png');
+
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -724,6 +737,8 @@ function house4() {
 }
 
 function house5() {
+    changeBg('bg14-part4.png');
+
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -770,6 +785,8 @@ function house5() {
 }
 
 function church() {
+    changeBg('bg4-part4.png');
+
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -849,11 +866,13 @@ function checkChurchKey() {
 }
 
 function churchFight() {
-    const btnTalkMikhail = document.getElementById('btn-talk-mikhail');
-    const btnTalkVasiliy = document.getElementById('btn-talk-vasiliy');
+    changeBg('bg9-part4.png');
 
-    btnTalkMikhail.disabled = true;
-    btnTalkVasiliy.disabled = true;
+    // const btnTalkMikhail = document.getElementById('btn-talk-mikhail');
+    // const btnTalkVasiliy = document.getElementById('btn-talk-vasiliy');
+
+    // btnTalkMikhail.disabled = true;
+    // btnTalkVasiliy.disabled = true;
 
     nextTask('Отбиться от зомби');
     nameDialog.innerHTML = `Полина`;
@@ -946,6 +965,8 @@ function shotZombieChurch() {
 }
 
 function churchFightEnd() {
+    changeBg('bg5-part4.png');
+
     nameDialog.innerHTML = `Блогер`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -974,14 +995,14 @@ function churchFightEnd() {
 }
 
 function churchWhereVasiliy() {
-    const btnTalkMikhail = document.getElementById('btn-talk-mikhail');
-    btnTalkMikhail.disabled = false;
+    // const btnTalkMikhail = document.getElementById('btn-talk-mikhail');
+    // btnTalkMikhail.disabled = false;
 
-    const btnTalkVasiliy = document.getElementById('btn-talk-vasiliy');
-    btnTalkVasiliy.parentNode.removeChild(btnTalkVasiliy);
+    // const btnTalkVasiliy = document.getElementById('btn-talk-vasiliy');
+    // btnTalkVasiliy.parentNode.removeChild(btnTalkVasiliy);
 
-    const talkAnyOne = document.getElementById('talkAnyOne');
-    talkAnyOne.innerHTML = `Вы можете поговорить с Блогером`;
+    // const talkAnyOne = document.getElementById('talkAnyOne');
+    // talkAnyOne.innerHTML = `Вы можете поговорить с Блогером`;
 
     nameDialog.innerHTML = `Михаил`;
     dialogs.innerHTML = `
@@ -1220,6 +1241,8 @@ function firstVasiliyThenTeam() {
 }
 
 function churchMonitor() {
+    changeBg('bg10-part4.png');
+
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -1288,6 +1311,8 @@ function churchMonitor3() {
 }
 
 function laboratory() {
+    changeBg('bg10-part4.png');
+
     nameDialog.innerHTML = 'Полина';
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -1313,6 +1338,8 @@ function transitionRoom1() {
 }
 
 function roomLaboratory1() {
+    changeBg('bg12-part4.png');
+
     // Поиск предметов 1
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -1328,6 +1355,8 @@ function roomLaboratory1() {
 }
 
 function mainRoomLaboratory() {
+    changeBg('bg10-part4.png');
+
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
