@@ -4086,7 +4086,7 @@ function end() {
                 <div class="body">
                     <p class="lead" id="statDeaths">Смертей: ${deathsLc}</p>
                     <p class="lead" id="statKillEnemy">Врагов убито: ${statKillEnemies}</p>
-                    <p class="lead" id="statDeadPeopleTeam">Погибло людей из отряда: ${statDeadPeoplesTeam.length == 0 ? statDeadPeoplesTeam.length : statDeadPeoplesTeam.toString().replace(/,/g, ', ')}</p>
+                    <p class="lead" id="statDeadPeopleTeam">Погибло людей из отряда: ${statDeadPeoplesTeam.length}</p>
                     <p class="lead" id="statRelationshipPolina">Отношения с Полиной(Блогер): ${relationshipPolina}</p>
                     <p class="lead" id="statRelationshipBloger">Отношения с Блогером(Полина): ${relationshipBloger}</p>
                     <p class="lead" id="statRelationshipTeam">Отношения с Отрядом: ${relationshipTeam}</p>

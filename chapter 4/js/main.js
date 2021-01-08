@@ -87,7 +87,7 @@ function houseInside() {
 }
 
 function rainSleepVasiliy() {
-    document.getElementById('btn-next').disabled = false;
+    document.getElementById('btn-next').disabled = true;
 
     setTimeout(() => {
         // changeBg('rainSleepVasiliy');
@@ -214,8 +214,6 @@ function houseWakeUp() {
             <p class="lead" id="text-dialog">Ты кто?</p>
         </div>
     `;
-
-    document.getElementById('btn-next').disabled = true;
 
     setTimeout(() => {
         dialogs.innerHTML += `
@@ -797,15 +795,17 @@ function church() {
 }
 
 function checkKeyHouse4() {
-    if (firstChapterKeyHouse4 == 'true') {
-        const firstPartKeyHouse4 = document.getElementById('firstPartKeyHouse4');
-        firstPartKeyHouse4.parentNode.removeChild(firstPartKeyHouse4);
-    }
+    try {
+        if (firstChapterKeyHouse4 == 'true') {
+            const firstPartKeyHouse4 = document.getElementById('firstPartKeyHouse4');
+            firstPartKeyHouse4.parentNode.removeChild(firstPartKeyHouse4);
+        }
 
-    if (secondChapterKeyHouse4 == 'true') {
-        const secondPartKeyHouse4 = document.getElementById('secondPartKeyHouse4');
-        secondPartKeyHouse4.parentNode.removeChild(secondPartKeyHouse4);
-    }
+        if (secondChapterKeyHouse4 == 'true') {
+            const secondPartKeyHouse4 = document.getElementById('secondPartKeyHouse4');
+            secondPartKeyHouse4.parentNode.removeChild(secondPartKeyHouse4);
+        }
+    } catch { }
 
     if (firstChapterKeyHouse4 == 'true' && secondChapterKeyHouse4 == 'true') {
         house4();
