@@ -36,7 +36,6 @@ body {
 #navbarToggleMenu, #btn-next {
     margin-top: 1vh;
     margin-bottom: 1vh;
-    margin-right: 1vh;
 }
 
 #btn-next { 
@@ -108,8 +107,20 @@ body {
     float: right;
 }
 
+#menuBtnNav {
+    padding-right: 1vh;
+}
+
+#talkBtnNav {
+    padding-left: 1vh;
+}
+
+#btn-talk-mikhail, #btn-talk-vasiliy {
+    color: rgba(255,255,255,.75);
+}
+
 /* Скрытое имя */
-#name-text-div { margin-top: 35vh; }
+#name-text-div { margin-top: 30vh; }
 
 .title-show1 { 
     opacity: 0;

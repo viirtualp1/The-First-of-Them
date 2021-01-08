@@ -54,9 +54,10 @@ function jungleVasiliy() {
 }
 
 function houseOutside() {
+    nextTask('Проверить особняк');
     dialogs.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Что за... Какой-то особняк посреди леса, весь разрушенный. Что же там?</p>
+            <p class="lead" id="text-dialog">Что за... Какой-то особняк посреди леса, весь разрушенный</p>
         </div>
     `;
 
@@ -64,9 +65,11 @@ function houseOutside() {
 }
 
 function houseInside() {
+    changeBg('new-house.jpg');
+
     dialogs.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Какая-то лаборатория, хмм</p>
+            <p class="lead" id="text-dialog">Спуск вниз..? Куда он ведет?</p>
         </div>
     `;
 
@@ -193,7 +196,7 @@ function changeHeroPolina() {
 }
 
 function houseWakeUp() {
-    // changeBg('houseNew');
+    changeBg('bg20-part4.png');
 
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
@@ -289,6 +292,26 @@ function polinaChoose() {
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = ``;
 
+    footerButtons.innerHTML += `
+        <nav class="navbar navbar-dark" id="talkBtnNav">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#talkToOne" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+        <div class="collapse" id="talkToOne">
+            <div class="p-4" id="navbarMenuBg">
+                <div class="row text-white">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <p class="lead text-muted" id="task">Вы можете поговорить с кем-то </p>
+
+                        <button class="btn" id="btn-talk-mikhail" onclick="talkMikhail(); btnClickTalkMikhail+=1">Михаил</button>
+                        <button class="btn" id="btn-talk-vasiliy" onclick="talkVasiliy(); btnClickTalkVasiliy+=1">Василий</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
     chooseDialog({
         positiveText: 'Встать на сторону Блогера',
         neutralText: 'Не защищать никого',
@@ -301,6 +324,7 @@ function polinaChoose() {
 }
 
 function blogerProtect() {
+    nextTask('Осмотреть особняк');
     blogerRelationship = 'Отличные';
     const Toast = Swal.mixin({
         toast: true,
@@ -332,6 +356,26 @@ function blogerProtect() {
 }
 
 function noOneProtect() {
+    footerButtons.innerHTML += `
+        <nav class="navbar navbar-dark" id="talkBtnNav">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#talkToOne" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+        <div class="collapse" id="talkToOne">
+            <div class="p-4" id="navbarMenuBg">
+                <div class="row text-white">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <p class="lead text-muted" id="task">Вы можете поговорить с кем-то </p>
+
+                        <button class="btn" id="btn-talk-mikhail" onclick="talkMikhail(); btnClickTalkMikhail+=1">Михаил</button>
+                        <button class="btn" id="btn-talk-vasiliy" onclick="talkVasiliy(); btnClickTalkVasiliy+=1">Василий</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    nextTask('Осмотреть особняк');
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -344,6 +388,26 @@ function noOneProtect() {
 }
 
 function vasiliyProtect() {
+    footerButtons.innerHTML += `
+        <nav class="navbar navbar-dark" id="talkBtnNav">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#talkToOne" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+        <div class="collapse" id="talkToOne">
+            <div class="p-4" id="navbarMenuBg">
+                <div class="row text-white">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <p class="lead text-muted" id="task">Вы можете поговорить с кем-то </p>
+
+                        <button class="btn" id="btn-talk-mikhail" onclick="talkMikhail(); btnClickTalkMikhail+=1">Михаил</button>
+                        <button class="btn" id="btn-talk-vasiliy" onclick="talkVasiliy(); btnClickTalkVasiliy+=1">Василий</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    nextTask('Осмотреть особняк');
     blogerRelationship = 'Плохие';
     const Toast = Swal.mixin({
         toast: true,
@@ -398,6 +462,7 @@ function houseSearch() {
 }
 
 function mainDoorHouse() {
+    nextTask('Найти код от замка');
     dialogs.innerHTML = `
         <div class="row dialog">
             <p class="lead" id="text-dialog">Надо ввести код от замка.</p>
@@ -476,6 +541,7 @@ function checkCodeInput() {
 }
 
 function villageOutside() {
+    nextTask('Найти ключ к церкви');
     nameDialog.innerHTML = `Михаил`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -721,6 +787,7 @@ function checkChurchKey() {
 }
 
 function churchFight() {
+    nextTask('Отбиться от зомби');
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -795,6 +862,8 @@ function qteZombieChurch() {
 }
 
 function shotZombieChurch() {
+    sound.src = 'sounds/shot.mp3';
+
     const progressZombieChurch = document.getElementById('progress-div-zombie-church');
     const btnKillZombieChurch = document.getElementById('btn-shot-zombie-church');
 
@@ -934,6 +1003,7 @@ function firstTeamThenVasiliy() {
         });
 
         nameDialog.innerHTML = `Полина`;
+        document.getElementById('task').innerHTML = `Задание: Найдите команду`;
         dialogs.innerHTML = `
             <div class="row dialog">
                 <p class="lead" id="text-dialog">Полезли! Смотри в оба!</p>
@@ -968,6 +1038,8 @@ function firstTeamThenVasiliy() {
             icon: 'error',
             title: 'Блогер: отношения понижены',
         });
+
+        document.getElementById('task').innerHTML = `Задание: Найдите Василия`;
 
         nameDialog.innerHTML = `Полина`;
         dialogs.innerHTML = `
@@ -1010,6 +1082,8 @@ function firstVasiliyThenTeam() {
             title: 'Блогер: отношения повышены',
         });
 
+        document.getElementById('task').innerHTML = `Задание: Найдите Василия`;
+
         nameDialog.innerHTML = `Полина`;
         dialogs.innerHTML = `
             <div class="row dialog">
@@ -1047,10 +1121,12 @@ function firstVasiliyThenTeam() {
             title: 'Блогер: отношения понижены',
         });
 
+        document.getElementById('task').innerHTML = `Задание: Найдите команду`;
+
         nameDialog.innerHTML = `Полина`;
         dialogs.innerHTML = `
             <div class="row dialog">
-                <p class="lead" id="text-dialog">Полезли! Смотри в оба!</p>
+                <p class="lead" id="text-dialog">Сначала за командой! Смотри в оба!</p>
             </div>
 
             <div class="row mt-3 name">
@@ -1095,6 +1171,7 @@ function churchMonitor() {
 
 
 function churchMonitor2() {
+    document.getElementById('task').innerHTML = `Задание: Найдите Василия`;
     nameDialog.innerHTML = `Блогер`;
     dialogs.innerHTML = `
         <div class="row dialog">
@@ -1166,7 +1243,7 @@ function roomLaboratory1() {
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="laboratory">
-            <button id="btn-find-key-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="house3()">
+            <button id="btn-find-key-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="">
                 Искать ключ
             </button>
         </div>
@@ -1191,7 +1268,7 @@ function roomLaboratory2() {
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="churchKey">
-            <button id="btn-find-key-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkChurchKey()">
+            <button id="btn-find-key-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="">
                 Искать ключ
             </button>
         </div>
@@ -1231,7 +1308,9 @@ function mainRoomLaboratory() {
 }
 
 function fightVasiliy() {
+    nextTask('Одолеть Василия');
     document.getElementById('btn-next').disabled = true;
+    music.src = 'musics/vasiliyFight.mp3';
 
     try {
         nameDiv.parentNode.removeChild(nameDiv);
@@ -1283,7 +1362,7 @@ function fightVasiliy() {
                 }
             });
         }
-    }, 5000);
+    }, 15000);
 
     // Обратный отсчет самоуничтожения
     setTimeout(() => {
@@ -1446,6 +1525,7 @@ function polinaDead() {
 }
 
 function end() {
+    music.src = 'musics/The Seige - I Am Defiant (prettymp3.ru).mp3';
     footerButtons.style.visibility = 'hidden';
 
     windowDiv.innerHTML = `

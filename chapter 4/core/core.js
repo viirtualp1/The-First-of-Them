@@ -6,6 +6,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 
+// btn talk
+let btnClickTalkMikhail = 0;
+let btnClickTalkVasiliy = 0;
+
 // Progress variables
 let widthProgress1 = 0;
 let widthProgress2 = 0;
@@ -278,4 +282,36 @@ function valveProgressClick(progressElement) {
 function deleteChooseDialogDiv() {
     const chooseDialogDiv = document.getElementById('chooseDialogDiv');
     chooseDialogDiv.parentNode.removeChild(chooseDialogDiv);
+}
+
+function talkMikhail() {
+    switch (btnClickTalkMikhail) {
+        case 1:
+
+        ; break;
+    }
+}
+
+function talkVasiliy() {
+    switch (btnClickTalkVasiliy) {
+        case 1:
+            dialogs.innerHTML += `
+                <div id="chooseDialogDiv">
+                    <p class="lead text-white" id="chooseDialogText">Выбери: </p>
+                    
+                    <div class="row dialog" id="chooseDialogDiv">
+                        <button id="btn-dialog-1" type="button" class="btn" onclick="();">
+                            - Расскажи о себе побольше
+                        </button>
+                        <button id="btn-dialog-2" type="button" class="btn" onclick="();">
+                            - Как дела?
+                        </button>
+                        <button id="btn-dialog-3" type="button" class="btn" onclick="();">
+                            - Расскажи побольше о пропажах в деревни
+                        </button>
+                    </div>
+                </div>
+            `;
+        ; break;
+    }
 }
