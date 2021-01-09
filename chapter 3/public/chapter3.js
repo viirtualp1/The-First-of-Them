@@ -1553,8 +1553,7 @@ function sendTeamLaboratories() {
 
     if (team[0].alive == 'false') {
         if (danil1.checked &&
-            anna2.checked &&
-            nikita3.checked) {
+            anna2.checked) {
             Swal.fire({
                 title: 'Ваш выбор:',
                 html: `<p>${namesString}</p>`,
@@ -1574,17 +1573,120 @@ function sendTeamLaboratories() {
             });
 
             swalStyles();
-        }
-    }
+        } else if (danil2.checked &&
+            anna1.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.setItem('nikita', team[0].alive);
+                    localStorage.setItem('anna', team[1].alive);
+                    localStorage.setItem('danil', team[2].alive);
 
-    if (team[0].alive &&
+                    $('#ration-modal').modal('hide');
+                    room32SplitUp();
+                }
+            });
+
+            swalStyles();
+        }
+    } else if (team[1].alive == 'false') {
+        if (nikita1.checked &&
+            danil2.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[0].alive = 'false';
+                    localStorage.setItem('nikita', team[0].alive);
+                    localStorage.setItem('anna', team[1].alive);
+                    localStorage.setItem('danil', team[2].alive);
+
+                    $('#ration-modal').modal('hide');
+                    room32SplitUp();
+                }
+            });
+
+            swalStyles();
+        } else if (nikita2.checked &&
+            danil1.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.setItem('nikita', team[0].alive);
+                    localStorage.setItem('anna', team[1].alive);
+                    localStorage.setItem('danil', team[2].alive);
+
+                    $('#ration-modal').modal('hide');
+                    room32SplitUp();
+                }
+            });
+
+            swalStyles();
+        }
+    } else if (team[2].alive == 'false') {
+        if (nikita1.checked &&
+            anna2.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[2].alive = 'false';
+                    localStorage.setItem('nikita', team[0].alive);
+                    localStorage.setItem('anna', team[1].alive);
+                    localStorage.setItem('danil', team[2].alive);
+
+                    $('#ration-modal').modal('hide');
+                    room32SplitUp();
+                }
+            });
+
+            swalStyles();
+        } else if (anna1.checked &&
+            nikita2.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.setItem('nikita', team[0].alive);
+                    localStorage.setItem('anna', team[1].alive);
+                    localStorage.setItem('danil', team[2].alive);
+
+                    $('#ration-modal').modal('hide');
+                    room32SplitUp();
+                }
+            });
+
+            swalStyles();
+        }
+    } else if (team[0].alive &&
         team[1].alive &&
         team[2].alive) {
             console.log('0, 1, 2, 3 - true');
 
-            if (danil1.checked &&
-                anna2.checked &&
-                nikita3.checked) {
+            if (nikita1.checked &&
+                anna2.checked) {
                 Swal.fire({
                     title: 'Ваш выбор:',
                     html: `<p>${namesString}</p>`,
@@ -1593,51 +1695,7 @@ function sendTeamLaboratories() {
                     confirmButtonText: `Отправить`,
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        team[1].alive = 'false';
-                        localStorage.setItem('nikita', team[0].alive);
-                        localStorage.setItem('anna', team[1].alive);
-                        localStorage.setItem('danil', team[2].alive);
-
-                        $('#ration-modal').modal('hide');
-                        room32SplitUp();
-                    }
-                });
-
-                swalStyles();
-            } else if (nikita1.checked &&
-                anna2.checked &&
-                danil3.checked) {
-                Swal.fire({
-                    title: 'Ваш выбор:',
-                    html: `<p>${namesString}</p>`,
-                    showCancelButton: true,
-                    cancelButtonText: 'Отмена',
-                    confirmButtonText: `Отправить`,
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        team[1].alive = 'false';
-                        localStorage.setItem('nikita', team[0].alive);
-                        localStorage.setItem('anna', team[1].alive);
-                        localStorage.setItem('danil', team[2].alive);
-
-                        $('#ration-modal').modal('hide');
-                        room32SplitUp();
-                    }
-                });
-
-                swalStyles();
-            } else if (nikita1.checked &&
-                anna2.checked &&
-                danil3.checked) {
-                Swal.fire({
-                    title: 'Ваш выбор:',
-                    html: `<p>${namesString}</p>`,
-                    showCancelButton: true,
-                    cancelButtonText: 'Отмена',
-                    confirmButtonText: `Отправить`,
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        team[1].alive = 'false';
+                        team[2].alive = 'false';
                         localStorage.setItem('nikita', team[0].alive);
                         localStorage.setItem('anna', team[1].alive);
                         localStorage.setItem('danil', team[2].alive);
@@ -1649,8 +1707,7 @@ function sendTeamLaboratories() {
 
                 swalStyles();
             } else if (anna1.checked &&
-                danil2.checked &&
-                nikita3.checked) {
+                nikita2.checked) {
                 Swal.fire({
                     title: 'Ваш выбор:',
                     html: `<p>${namesString}</p>`,
@@ -1659,16 +1716,18 @@ function sendTeamLaboratories() {
                     confirmButtonText: `Отправить`,
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        team[0].alive = 'false';
+                        localStorage.setItem('nikita', team[0].alive);
+                        localStorage.setItem('anna', team[1].alive);
+                        localStorage.setItem('danil', team[2].alive);
+
                         $('#ration-modal').modal('hide');
                         room32SplitUp();
                     }
                 });
 
                 swalStyles();
-            } else if (anna1.checked &&
-                nikita2.checked &&
-                danil3.checked) {
+            } else if (nikita1.checked &&
+                danil2.checked) {
                 Swal.fire({
                     title: 'Ваш выбор:',
                     html: `<p>${namesString}</p>`,
@@ -1678,6 +1737,67 @@ function sendTeamLaboratories() {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         team[0].alive = 'false';
+                        localStorage.setItem('nikita', team[0].alive);
+                        localStorage.setItem('anna', team[1].alive);
+                        localStorage.setItem('danil', team[2].alive);
+
+                        $('#ration-modal').modal('hide');
+                        room32SplitUp();
+                    }
+                });
+
+                swalStyles();
+            } else if (nikita2.checked &&
+                danil1.checked) {
+                Swal.fire({
+                    title: 'Ваш выбор:',
+                    html: `<p>${namesString}</p>`,
+                    showCancelButton: true,
+                    cancelButtonText: 'Отмена',
+                    confirmButtonText: `Отправить`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        localStorage.setItem('nikita', team[0].alive);
+                        localStorage.setItem('anna', team[1].alive);
+                        localStorage.setItem('danil', team[2].alive);
+
+                        $('#ration-modal').modal('hide');
+                        room32SplitUp();
+                    }
+                });
+
+                swalStyles();
+            } else if (danil1.checked &&
+                anna2.checked) {
+                Swal.fire({
+                    title: 'Ваш выбор:',
+                    html: `<p>${namesString}</p>`,
+                    showCancelButton: true,
+                    cancelButtonText: 'Отмена',
+                    confirmButtonText: `Отправить`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        team[1].alive = 'false';
+                        localStorage.setItem('nikita', team[0].alive);
+                        localStorage.setItem('anna', team[1].alive);
+                        localStorage.setItem('danil', team[2].alive);
+
+                        $('#ration-modal').modal('hide');
+                        room32SplitUp();
+                    }
+                });
+
+                swalStyles();
+            } else if (danil2.checked &&
+                anna1.checked) {
+                Swal.fire({
+                    title: 'Ваш выбор:',
+                    html: `<p>${namesString}</p>`,
+                    showCancelButton: true,
+                    cancelButtonText: 'Отмена',
+                    confirmButtonText: `Отправить`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
                         localStorage.setItem('nikita', team[0].alive);
                         localStorage.setItem('anna', team[1].alive);
                         localStorage.setItem('danil', team[2].alive);
