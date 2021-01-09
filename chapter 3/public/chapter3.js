@@ -1418,6 +1418,8 @@ function splitUp() {
     try {
         if (team[0].alive == 'false') {
             nSymbol.parentNode.removeChild(nSymbol);
+            nikita1Td.parentNode.removeChild(nikita1Td);
+            nikita2Td.parentNode.removeChild(nikita2Td);
             nikita3Td.parentNode.removeChild(nikita3Td);
             anna3Td.parentNode.removeChild(anna3Td);
             danil3Td.parentNode.removeChild(danil3Td);
@@ -1425,6 +1427,8 @@ function splitUp() {
         } else if (team[1].alive == 'false') {
             aSymbol.parentNode.removeChild(aSymbol);
             nikita3Td.parentNode.removeChild(nikita3Td);
+            anna1Td.parentNode.removeChild(anna1Td);
+            anna2Td.parentNode.removeChild(anna2Td);
             anna3Td.parentNode.removeChild(anna3Td);
             danil3Td.parentNode.removeChild(danil3Td);
             arrowLeftRemove.parentNode.removeChild(arrowLeftRemove);
@@ -1432,6 +1436,8 @@ function splitUp() {
             dSymbol.parentNode.removeChild(dSymbol);
             nikita3Td.parentNode.removeChild(nikita3Td);
             anna3Td.parentNode.removeChild(anna3Td);
+            danil1Td.parentNode.removeChild(danil1Td);
+            danil2Td.parentNode.removeChild(danil2Td);
             danil3Td.parentNode.removeChild(danil3Td);
             arrowLeftRemove.parentNode.removeChild(arrowLeftRemove);
         } else {
