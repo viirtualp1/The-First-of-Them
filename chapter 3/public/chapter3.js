@@ -112,9 +112,9 @@ let chooseDialogHope = false;
 window.onload = () => {
     const saveFunc = localStorage.getItem('saveFunc-chapter3');
 
-    if (saveFunc == undefined) {} else {
+    if (saveFunc != null) {
         btnSaveLoad.disabled = false;
-    }
+    } else {}
 };
 
 function saveLoad() {
