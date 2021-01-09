@@ -118,7 +118,7 @@ window.onload = () => {
 };
 
 function saveLoad() {
-    const saveFunc = localStorage.getItem('saveFunc');
+    const saveFunc = localStorage.getItem('saveFunc-chapter3');
     const nikitaLc = localStorage.getItem('nikita');
     const annaLc = localStorage.getItem('anna');
     const danilLc = localStorage.getItem('danil');
