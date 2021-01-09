@@ -3529,7 +3529,7 @@ function end() {
                     </button>
                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <a class="dropdown-item" href="location.href='../../The First of Them (Chapter 1+Chapter 2)/chapter1/show.html'">Глава 1</a>
-                        <a class="dropdown-item" href="location.href='../../The First of Them (Chapter 1+Chapter 2)/chapter2/show-chapter2.html">Глава 2</a>
+                        <a class="dropdown-item" href="location.href='../../The First of Them (Chapter 1+Chapter 2)/chapter2/show-chapter2.html'">Глава 2</a>
                         <a class="dropdown-item" onclick="location.reload()">Глава 3</a>
                         <a class="dropdown-item" onclick="location.href='../../chapter4/show.html'">Глава 4</a>
                     </div>
