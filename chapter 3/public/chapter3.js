@@ -133,7 +133,7 @@ function saveLoad() {
     const statKillEnemiesLc = localStorage.getItem('statKillEnemies');
     const statDeadPeoplesTeamLc = localStorage.getItem('statDeadPeoplesTeam');
 
-    if (saveFunc == undefined) {} else {
+    if (saveFunc == null) {} else {
         switch (saveFunc) {
             case 'blogerChangeHeroBloger':
                 team[0].alive = nikitaLc;
