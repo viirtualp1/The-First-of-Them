@@ -1451,7 +1451,8 @@ function splitUp() {
 
     $('#ration-modal').modal('show');
 
-    rationFooter.innerHTML += `
+    const btnSubmitDiv = document.getElementById('btnSubmitDiv');
+    btnSubmitDiv.innerHTML = `
         <button class="btn btn-dark" onclick="sendTeamLaboratories()">Отправить</button>
     `;
 
