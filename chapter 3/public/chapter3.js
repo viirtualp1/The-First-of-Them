@@ -60,7 +60,7 @@ const mainHeroes = [
 let relationshipBloger = 'Хорошие';
 let relationshipPolina = 'Хорошие';
 let relationshipTeam = 'Хорошие';
-let statDeadPeoplesTeam = [];
+let statDeadPeoplesTeam = 0;
 let statKillEnemies = 0;
 
 let deaths = 0;
@@ -926,6 +926,7 @@ function sendTeamMountains() {
         }).then((result) => {
             if (result.isConfirmed) {
                 team[2].alive = 'false';
+                statDeadPeoplesTeam += 1;
 
                 $('#ration-modal').modal('hide');
                 qteFindLab();
@@ -981,6 +982,7 @@ function sendTeamMountains() {
         }).then((result) => {
             if (result.isConfirmed) {
                 team[1].alive = 'false';
+                statDeadPeoplesTeam += 1;
 
                 $('#ration-modal').modal('hide');
                 qteFindLab();
@@ -1017,6 +1019,7 @@ function sendTeamMountains() {
         }).then((result) => {
             if (result.isConfirmed) {
                 team[0].alive = 'false';
+                statDeadPeoplesTeam += 1;
 
                 $('#ration-modal').modal('hide');
                 qteFindLab();
@@ -1036,6 +1039,7 @@ function sendTeamMountains() {
         }).then((result) => {
             if (result.isConfirmed) {
                 team[0].alive = 'false';
+                statDeadPeoplesTeam += 1;
 
                 $('#ration-modal').modal('hide');
                 qteFindLab();
@@ -1564,6 +1568,7 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     team[1].alive = 'false';
+                    statDeadPeoplesTeam += 1;
                     localStorage.setItem('nikita', team[0].alive);
                     localStorage.setItem('anna', team[1].alive);
                     localStorage.setItem('danil', team[2].alive);
@@ -1607,6 +1612,7 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     team[0].alive = 'false';
+                    statDeadPeoplesTeam += 1;
                     localStorage.setItem('nikita', team[0].alive);
                     localStorage.setItem('anna', team[1].alive);
                     localStorage.setItem('danil', team[2].alive);
@@ -1650,6 +1656,7 @@ function sendTeamLaboratories() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     team[2].alive = 'false';
+                    statDeadPeoplesTeam += 1;
                     localStorage.setItem('nikita', team[0].alive);
                     localStorage.setItem('anna', team[1].alive);
                     localStorage.setItem('danil', team[2].alive);
@@ -1697,6 +1704,7 @@ function sendTeamLaboratories() {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         team[2].alive = 'false';
+                    statDeadPeoplesTeam += 1;
                         localStorage.setItem('nikita', team[0].alive);
                         localStorage.setItem('anna', team[1].alive);
                         localStorage.setItem('danil', team[2].alive);
@@ -1738,6 +1746,7 @@ function sendTeamLaboratories() {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         team[0].alive = 'false';
+                        statDeadPeoplesTeam += 1;
                         localStorage.setItem('nikita', team[0].alive);
                         localStorage.setItem('anna', team[1].alive);
                         localStorage.setItem('danil', team[2].alive);
@@ -1779,6 +1788,7 @@ function sendTeamLaboratories() {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         team[1].alive = 'false';
+                        statDeadPeoplesTeam += 1;
                         localStorage.setItem('nikita', team[0].alive);
                         localStorage.setItem('anna', team[1].alive);
                         localStorage.setItem('danil', team[2].alive);
@@ -2979,8 +2989,8 @@ function room32ReplyTruth() {
     name.innerHTML = `Блогер`;
     dialogs.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Я - Блогер. 
-                Ищу все, что связано с Вирусом, а ты?</p>
+            <p class="lead" id="text-dialog">Я - Блогер.
+                Ищу все, что связано с вирусом, а ты?</p>
         </div>
         <div id="name">
             <div class="row mt-3 name">
@@ -3521,7 +3531,7 @@ function end() {
                         <a class="dropdown-item" href="location.href='../../The First of Them (Chapter 1+Chapter 2)/chapter1/show.html'">Глава 1</a>
                         <a class="dropdown-item" href="location.href='../../The First of Them (Chapter 1+Chapter 2)/chapter2/show-chapter2.html">Глава 2</a>
                         <a class="dropdown-item" onclick="location.reload()">Глава 3</a>
-                        <a class="dropdown-item" onclick="soon()">Глава 4</a>
+                        <a class="dropdown-item" onclick="location.href='../../chapter4/show.html"">Глава 4</a>
                     </div>
                 </div>
                 <button id="quit" type="button" class="btn btn-dark mt-2 ml-2" onclick="deleteDeathsLc(); location.href = '../../The First of Them (Chapter 1+Chapter 2)/menu.html'">
@@ -3587,7 +3597,7 @@ function end() {
                 <div class="body">
                     <p class="lead" id="statDeaths">Смертей: ${deathsLc}</p>
                     <p class="lead" id="statKillEnemy">Врагов убито: ${statKillEnemies}</p>
-                    <p class="lead" id="statDeadPeopleTeam">Погибло людей из отряда: ${statDeadPeoplesTeam.length}</p>
+                    <p class="lead" id="statDeadPeopleTeam">Погибло людей из отряда: ${statDeadPeoplesTeam}</p>
                     <p class="lead" id="statRelationshipPolina">Отношения с Полиной(Блогер): ${relationshipPolina}</p>
                     <p class="lead" id="statRelationshipBloger">Отношения с Блогером(Полина): ${relationshipBloger}</p>
                     <p class="lead" id="statRelationshipTeam">Отношения с Отрядом: ${relationshipTeam}</p>
