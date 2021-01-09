@@ -153,7 +153,7 @@ function saveLoad() {
 
                 blogerChangeHeroBloger('Б', 'Л', 'О', 'Г', 'Е', 'Р', '#f33b3b'); break;
             case 'changeHeroPolinaMountains':
-                team = teamLc;
+                // team = teamLc;
                 changeHeroPolinaMountains('П', 'О', 'Л', 'И', 'Н', 'А', '#f33be4'); break;
             case 'room32ChangeHeroPolinaExplore':
                 team[0].alive = nikitaLc;
