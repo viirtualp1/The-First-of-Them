@@ -1414,6 +1414,7 @@ function splitUp() {
     arrowRight.innerHTML = `<i class="fas fa-arrow-left" id="arrow-left-remove"></i>`;
 
     const arrowLeftRemove = document.getElementById('arrow-left-remove');
+    const arrowRightRemove = document.getElementById('arrowRight-remove');
 
     try {
         if (team[0].alive == 'false') {
@@ -1423,6 +1424,7 @@ function splitUp() {
             nikita3Td.parentNode.removeChild(nikita3Td);
             anna3Td.parentNode.removeChild(anna3Td);
             danil3Td.parentNode.removeChild(danil3Td);
+            arrowRightRemove.parentNode.removeChild(arrowRightRemove);
             arrowLeftRemove.parentNode.removeChild(arrowLeftRemove);
         } else if (team[1].alive == 'false') {
             aSymbol.parentNode.removeChild(aSymbol);
@@ -1431,6 +1433,7 @@ function splitUp() {
             anna2Td.parentNode.removeChild(anna2Td);
             anna3Td.parentNode.removeChild(anna3Td);
             danil3Td.parentNode.removeChild(danil3Td);
+            arrowRightRemove.parentNode.removeChild(arrowRightRemove);
             arrowLeftRemove.parentNode.removeChild(arrowLeftRemove);
         } else if (team[2].alive == 'false') {
             dSymbol.parentNode.removeChild(dSymbol);
@@ -1439,6 +1442,7 @@ function splitUp() {
             danil1Td.parentNode.removeChild(danil1Td);
             danil2Td.parentNode.removeChild(danil2Td);
             danil3Td.parentNode.removeChild(danil3Td);
+            arrowRightRemove.parentNode.removeChild(arrowRightRemove);
             arrowLeftRemove.parentNode.removeChild(arrowLeftRemove);
         } else {
             console.log('Не работает, либо все выжили');
