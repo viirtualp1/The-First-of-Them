@@ -1449,35 +1449,43 @@ function soundSelfDestructionStart() {
     `;
 
     const intervalSelfDestruction = setInterval(() => {
-        if (timerSeconds == 30) {
-            // sound.src = '';
+        if (timerMinutes == 0 && timerSeconds == 11) {
+            sound.src = 'sounds/10.mp3';
         }
 
-        if (timerMinutes == 0 && timerSeconds == 7) {
+        if (timerMinutes == 0 && timerSeconds == 10) {
+            sound.src = 'sounds/9.mp3';
+        }
+
+        if (timerMinutes == 0 && timerSeconds == 9) {
+            sound.src = 'sounds/8.mp3';
+        }
+
+        if (timerMinutes == 0 && timerSeconds == 8) {
             sound.src = 'sounds/7.mp3';
         }
 
-        if (timerMinutes == 0 && timerSeconds == 6) {
+        if (timerMinutes == 0 && timerSeconds == 7) {
             sound.src = 'sounds/6.mp3';
         }
 
-        if (timerMinutes == 0 && timerSeconds == 5) {
+        if (timerMinutes == 0 && timerSeconds == 6) {
             sound.src = 'sounds/5.mp3';
         }
 
-        if (timerMinutes == 0 && timerSeconds == 4) {
+        if (timerMinutes == 0 && timerSeconds == 5) {
             sound.src = 'sounds/4.mp3';
         }
 
-        if (timerMinutes == 0 && timerSeconds == 3) {
+        if (timerMinutes == 0 && timerSeconds == 4) {
             sound.src = 'sounds/3.mp3';
         }
 
-        if (timerMinutes == 0 && timerSeconds == 2) {
+        if (timerMinutes == 0 && timerSeconds == 3) {
             sound.src = 'sounds/2.mp3';
         }
 
-        if (timerMinutes == 0 && timerSeconds == 1) {
+        if (timerMinutes == 0 && timerSeconds == 2) {
             sound.src = 'sounds/1.mp3';
         }
     }, 1000);

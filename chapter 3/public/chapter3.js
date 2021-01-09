@@ -382,7 +382,7 @@ function blogerChangeHeroBloger(letter1, letter2, letter3,
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 2000,
+        timer: 2500,
         timerProgressBar: true,
 
         onOpen: (toast) => {
@@ -721,7 +721,7 @@ function changeHeroPolinaMountains(letter1, letter2, letter3,
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 2000,
+        timer: 2500,
         timerProgressBar: true,
 
         onOpen: (toast) => {
