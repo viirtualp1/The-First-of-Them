@@ -28,10 +28,10 @@ let zombieChurchSec = 10;
 let clickZombieChurch = 0;
 
 // Valves (Boss fight)
-let valve1Destroy = '';
-let valve2Destroy = '';
-let valve3Destroy = '';
-let valve4Destroy = '';
+// let valve1Destroy = '';
+// let valve2Destroy = '';
+// let valve3Destroy = '';
+// let valve4Destroy = '';
 
 // Polina Hp
 let polinaHp = 100;
