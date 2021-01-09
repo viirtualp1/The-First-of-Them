@@ -1165,6 +1165,78 @@ function sendTeamMountains() {
         });
 
         swalStyles();
+    } else if (oleg1.checked &&
+        danil2.checked &&
+        nikita3.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                        team[1].alive = 'false';
+
+                    $('#ration-modal').modal('hide');
+                    qteFindLab();
+                }
+            });
+
+        swalStyles();
+    } else if (danil1.checked &&
+        oleg2.checked &&
+        nikita3.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                        team[2].alive = 'false';
+
+                    $('#ration-modal').modal('hide');
+                    qteFindLab();
+                }
+            });
+
+        swalStyles();
+    } else if (danil1.checked &&
+        nikita2.checked &&
+        oleg3.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#ration-modal').modal('hide');
+                    qteFindLab();
+                }
+            });
+
+        swalStyles();
+    } else if (oleg1.checked &&
+        anna2.checked &&
+        nikita3.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#ration-modal').modal('hide');
+                    qteFindLab();
+                }
+            });
+
+        swalStyles();
     } else if (anna1.checked &&
         oleg2.checked &&
         danil3.checked) {
