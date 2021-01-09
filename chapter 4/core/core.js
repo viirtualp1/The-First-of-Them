@@ -169,7 +169,8 @@ function valve(valveIndicator) {
     progressClickDirection2 = 'top';
     progressClickDirection3 = 'top';
 
-    dialogs.innerHTML += `
+    const valvesDiv = document.getElementById('valvesDiv');
+    valvesDiv.innerHTML = `
         <div class="d-flex justify-content-center" id="valveDiv"> 
             <div class="d-flex align-items-center" id="valve-1">
                 <div class="progress" id="valve-progress-1">

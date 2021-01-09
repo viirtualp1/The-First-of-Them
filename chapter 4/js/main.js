@@ -1377,6 +1377,8 @@ function fightVasiliy() {
     } catch {}
 
     dialogs.innerHTML = `
+        <div class="d-flex justify-content-center mt-2" id="timerDiv"></div>
+
         <div class="progress mt-3" id="progress-div-polina-hp">
             <div class="progress-bar progress-bar-striped bg-success" id="progressbarPolinaHp" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">${polinaHp}%</div>
         </div>
@@ -1402,6 +1404,8 @@ function fightVasiliy() {
                 Вентиль 4
             </button>
         </div>
+
+        <div id="valvesDiv"></div>
     `;
 
     const polinaHpInterval = setInterval(() => {
@@ -1413,16 +1417,15 @@ function fightVasiliy() {
 
         if (polinaHp == 0) {
             Swal.fire({
-                title: 'Вы проиграли!',
                 icon: 'error',
-            }).then((result) => {
-                if (result.value) {
-                    clearInterval(polinaHpInterval);
-                    location.reload();
-                }
+                title: 'Вы умерли!',
             });
+
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
         }
-    }, 15000);
+    }, 10000);
 
     // Обратный отсчет самоуничтожения
     setTimeout(() => {
@@ -1471,7 +1474,8 @@ function soundSelfDestructionStart() {
         }
     }, 1000);
 
-    dialogs.innerHTML += `
+    const timerDiv = document.getElementById('timerDiv');
+    timerDiv.innerHTML += `
         <div class="bg-danger" id="progressTimer" role="progressbar">${timerMinutes}:0${timerSeconds}</div>
     `;
 
@@ -1480,6 +1484,7 @@ function soundSelfDestructionStart() {
             valveIndicator2 == true &&
             valveIndicator3 == true &&
             valveIndicator4 == true) {
+            clearInterval(intervalSelfDestruction);
             clearInterval(intervalChangerTimer);
             clearTimeout(timerSelfDestruction);
             checkRelationShip();
@@ -1493,12 +1498,7 @@ function soundSelfDestructionStart() {
     const progressTimer = document.getElementById('progressTimer');
 
     const intervalChangerTimer = setInterval(() => {
-        if (timerMinutes == 0 &&
-            timerSeconds == 0 &&
-            valveIndicator1 == false &&
-            valveIndicator2 == false &&
-            valveIndicator3 == false &&
-            valveIndicator4 == false) {
+        if (timerMinutes == 0 && timerSeconds == 0) {
             Swal.fire({
                 icon: 'error',
                 title: 'Вы умерли!',
@@ -1556,7 +1556,6 @@ function checkRelationShip() {
 }
 
 function blogerDead() {
-    // changeBg('blogerCloseRoom');
     console.log('Relationship with Bloger - ', blogerRelationship);
     console.log('Bloger is dead');
     dialogs.innerHTML = `
@@ -1587,7 +1586,6 @@ function blogerDead() {
 }
 
 function polinaDead() {
-    // changeBg('polinaCloseRoom');
     console.log('Relationship with Bloger - ', blogerRelationship);
     console.log('Polina is dead');
 
