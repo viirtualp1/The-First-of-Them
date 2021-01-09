@@ -1013,6 +1013,25 @@ function sendTeamMountains() {
         });
 
         swalStyles();
+    } else if (danil1.checked &&
+        oleg2.checked &&
+        anna3.checked) {
+        Swal.fire({
+            title: 'Ваш выбор:',
+            html: `<p>${namesString}</p>`,
+            showCancelButton: true,
+            cancelButtonText: 'Отмена',
+            confirmButtonText: `Отправить`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                team[1].alive = 'false';
+
+                $('#ration-modal').modal('hide');
+                qteFindLab();
+            }
+        });
+
+        swalStyles();
     } else if (anna1.checked &&
         oleg3.checked &&
         nikita2.checked) {
