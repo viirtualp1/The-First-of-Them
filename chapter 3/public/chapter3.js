@@ -343,33 +343,6 @@ function helloTeam() {
     btnNext('training()');
 }
 
-function training() {
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: 'btn btn-dark',
-        },
-
-        buttonsStyling: false,
-    });
-
-    swalWithBootstrapButtons.fire({
-        title: 'Обучение',
-        imageUrl: 'img/ration.PNG',
-        html: `
-            Перед вами рация. <br /> 
-            Сверху имя ваших людей из отряда: Анна, Никита, Данил, Олег. <br /> 
-            Слева направление куда их можно отправить: налево, прямо, направо.
-        `,
-        confirmButtonText: 'Понятно',
-    }).then((result) => {
-        if (result.value) {
-            goToMountains();
-        }
-    });
-
-    swalStyles();
-}
-
 function goToMountains() {
     name.innerHTML = 'Полина';
     dialogs.innerHTML = `
@@ -405,6 +378,24 @@ function blogerChangeHeroBloger(letter1, letter2, letter3,
     letter4, letter5, letter6,
     shadowColor) {
     localStorage.setItem('saveFunc-chapter3', 'blogerChangeHeroBloger');
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+    });
+
+    Toast.fire({
+        icon: 'info',
+        title: 'Игра сохранена',
+    });
+
     document.body.style.background = '#000';
     music.src = '';
     sound.src = 'sounds/bloger_change.mp3';
@@ -726,6 +717,24 @@ function changeHeroPolinaMountains(letter1, letter2, letter3,
     letter4, letter5, letter6,
     shadowColor) {
     localStorage.setItem('saveFunc-chapter3', 'changeHeroPolinaMountains');
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+    });
+
+    Toast.fire({
+        icon: 'info',
+        title: 'Игра сохранена',
+    });
+
     document.body.style.background = '#000';
     music.src = '';
     sound.src = 'sounds/polina_change.mp3';
@@ -822,12 +831,35 @@ function polinaMountains() {
     btnNextElement = document.getElementById('btn-next');
     btnNextElement = btnNextElement.parentNode.removeChild(btnNextElement);
     document.getElementById('footer-buttons').innerHTML += `
-        <button id="btn-next" type="button" class="btn btn-lg btn-dark" data-toggle="modal" data-target="#ration-modal">Далее</button>
+        <button id="btn-next" type="button" class="btn btn-lg btn-dark" onclick="training()" data-toggle="modal" data-target="#ration-modal">Далее</button>
     `;
 
     rationFooter.innerHTML += `
         <button class="btn btn-dark" onclick="sendTeamMountains()" id="sendTeamMountains">Отправить</button>
     `;
+}
+
+function training() {
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-dark',
+        },
+
+        buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons.fire({
+        title: 'Обучение',
+        imageUrl: 'img/ration.PNG',
+        html: `
+            Перед вами рация. <br /> 
+            Сверху имя ваших людей из отряда: Анна, Никита, Данил. <br /> 
+            Слева направление куда их можно отправить: налево, прямо, направо.
+        `,
+        confirmButtonText: 'Понятно',
+    });
+
+    swalStyles();
 }
 
 function sendTeamMountains() {
