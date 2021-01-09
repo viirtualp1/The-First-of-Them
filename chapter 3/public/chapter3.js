@@ -1047,7 +1047,6 @@ function sendTeamMountains() {
         Swal.fire({
             icon: 'error',
             title: 'Ошибка!',
-            text: 'Нельзя отправить одного и того же человека!',
         });
 
         swalStyles();
@@ -1393,7 +1392,6 @@ function splitUp() {
     const aSymbol = document.getElementById('a-symbol');
     const nSymbol = document.getElementById('n-symbol');
     const dSymbol = document.getElementById('d-symbol');
-    const oSymbol = document.getElementById('o-symbol');
 
     const nikita1Td = document.getElementById('nikitaTd1');
     const nikita2Td = document.getElementById('nikitaTd2');
@@ -1407,22 +1405,35 @@ function splitUp() {
     const danil2Td = document.getElementById('danilTd2');
     const danil3Td = document.getElementById('danilTd3');
 
+    const arrowLeft = document.getElementById('arrowLeft'); // arrow left for change value
+    const arrowUp = document.getElementById('arrowUp'); // arrow up for change value
+    const arrowRight = document.getElementById('arrowRight'); // arrow right for change value
+
+    arrowLeft.innerHTML = `<i class="fas fa-arrow-right"></i>`;
+    arrowUp.innerHTML = `<i class="fas fa-arrow-left"></i>`;
+    arrowRight.innerHTML = `<i class="fas fa-arrow-left" id="arrow-left-remove"></i>`;
+
+    const arrowLeftRemove = document.getElementById('arrow-left-remove');
+
     try {
         if (team[0].alive == 'false') {
             nSymbol.parentNode.removeChild(nSymbol);
-            nikita1Td.parentNode.removeChild(nikita1Td);
-            nikita2Td.parentNode.removeChild(nikita2Td);
             nikita3Td.parentNode.removeChild(nikita3Td);
+            anna3Td.parentNode.removeChild(anna3Td);
+            danil3Td.parentNode.removeChild(danil3Td);
+            arrowLeftRemove.parentNode.removeChild(arrowLeftRemove);
         } else if (team[1].alive == 'false') {
             aSymbol.parentNode.removeChild(aSymbol);
-            anna1Td.parentNode.removeChild(anna1Td);
-            anna2Td.parentNode.removeChild(anna2Td);
+            nikita3Td.parentNode.removeChild(nikita3Td);
             anna3Td.parentNode.removeChild(anna3Td);
+            danil3Td.parentNode.removeChild(danil3Td);
+            arrowLeftRemove.parentNode.removeChild(arrowLeftRemove);
         } else if (team[2].alive == 'false') {
             dSymbol.parentNode.removeChild(dSymbol);
-            danil1Td.parentNode.removeChild(danil1Td);
-            danil2Td.parentNode.removeChild(danil2Td);
+            nikita3Td.parentNode.removeChild(nikita3Td);
+            anna3Td.parentNode.removeChild(anna3Td);
             danil3Td.parentNode.removeChild(danil3Td);
+            arrowLeftRemove.parentNode.removeChild(arrowLeftRemove);
         } else {
             console.log('Не работает, либо все выжили');
         }
@@ -1443,14 +1454,6 @@ function splitUp() {
             <p class="lead" id="text-dialog">Я пойду в ту комнату</p>
         </div>
     `;
-
-    const arrowLeft = document.getElementById('arrowLeft'); // arrow left for change value
-    const arrowUp = document.getElementById('arrowUp'); // arrow up for change value
-    const arrowRight = document.getElementById('arrowRight'); // arrow right for change value
-
-    arrowLeft.innerHTML = `<i class="fas fa-arrow-right"></i>`;
-    arrowUp.innerHTML = `<i class="fas fa-arrow-left"></i>`;
-    arrowRight.innerHTML = `<i class="fas fa-arrow-left"></i>`;
 
     btnNext('room32SplitUp()');
 }
@@ -1536,6 +1539,32 @@ function sendTeamLaboratories() {
     let namesString = '';
     for (const names of chooseArrayDirection) {
         namesString = namesString + names;
+    }
+
+    if (team[0].alive == 'false') {
+        if (danil1.checked &&
+            anna2.checked &&
+            nikita3.checked) {
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    team[1].alive = 'false';
+                    localStorage.setItem('nikita', team[0].alive);
+                    localStorage.setItem('anna', team[1].alive);
+                    localStorage.setItem('danil', team[2].alive);
+
+                    $('#ration-modal').modal('hide');
+                    room32SplitUp();
+                }
+            });
+
+            swalStyles();
+        }
     }
 
     if (team[0].alive &&
