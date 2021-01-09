@@ -110,7 +110,7 @@ let chooseDialogHope = false;
 
 // Main functions - Settings
 window.onload = () => {
-    const saveFunc = localStorage.getItem('saveFunc');
+    const saveFunc = localStorage.getItem('saveFunc-chapter3');
 
     if (saveFunc == undefined) {} else {
         btnSaveLoad.disabled = false;
