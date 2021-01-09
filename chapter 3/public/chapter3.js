@@ -1780,8 +1780,8 @@ function splitUp() {
     const arrowRight = document.getElementById('arrowRight'); // arrow right for change value
 
     arrowLeft.innerHTML = `<i class="fas fa-arrow-right"></i>`;
-    arrowUp.innerHTML = `<i class="fas fa-arrow-left"></i>(1)`;
-    arrowRight.innerHTML = `<i class="fas fa-arrow-left"></i>(2)`;
+    arrowUp.innerHTML = `<i class="fas fa-arrow-left"></i>`;
+    arrowRight.innerHTML = `<i class="fas fa-arrow-left"></i>`;
 
     btnNext('room32SplitUp()');
 }
@@ -1908,6 +1908,42 @@ function sendTeamLaboratories() {
         } else if (danil1.checked &&
             anna2.checked &&
             oleg3.checked) {
+                // Никто не умирает
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#ration-modal').modal('hide');
+                    room32SplitUp();
+                }
+            });
+
+            swalStyles();
+        } else if (danil1.checked &&
+            oleg2.checked &&
+            anna3.checked) {
+                // Никто не умирает
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#ration-modal').modal('hide');
+                    room32SplitUp();
+                }
+            });
+
+            swalStyles();
+        } else if (oleg1.checked &&
+            anna1.checked &&
+            danil3.checked) {
                 // Никто не умирает
             Swal.fire({
                 title: 'Ваш выбор:',
