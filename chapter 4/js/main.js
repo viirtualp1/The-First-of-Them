@@ -1440,6 +1440,27 @@ function soundSelfDestructionStart() {
     // self destruction start code
     sound.src = 'sounds/1minutes.mp3';
 
+    const timerDiv = document.getElementById('timerDiv');
+    timerDiv.innerHTML += `
+        <div class="bg-danger" id="progressTimer" role="progressbar">${timerMinutes}:0${timerSeconds}</div>
+    `;
+
+    const timerSelfDestruction = setTimeout(() => {
+        if (valveIndicator1 == true &&
+            valveIndicator2 == true &&
+            valveIndicator3 == true &&
+            valveIndicator4 == true) {
+            clearInterval(intervalSelfDestruction);
+            clearInterval(intervalChangerTimer);
+            clearTimeout(timerSelfDestruction);
+            checkRelationShip();
+        }
+
+        setInterval(() => {
+            location.reload();
+        }, 1000);
+    }, 120000);
+
     const intervalSelfDestruction = setInterval(() => {
         if (timerSeconds == 30) {
             // sound.src = '';
@@ -1473,27 +1494,6 @@ function soundSelfDestructionStart() {
             sound.src = 'sounds/1.mp3';
         }
     }, 1000);
-
-    const timerDiv = document.getElementById('timerDiv');
-    timerDiv.innerHTML += `
-        <div class="bg-danger" id="progressTimer" role="progressbar">${timerMinutes}:0${timerSeconds}</div>
-    `;
-
-    const timerSelfDestruction = setTimeout(() => {
-        if (valveIndicator1 == true &&
-            valveIndicator2 == true &&
-            valveIndicator3 == true &&
-            valveIndicator4 == true) {
-            clearInterval(intervalSelfDestruction);
-            clearInterval(intervalChangerTimer);
-            clearTimeout(timerSelfDestruction);
-            checkRelationShip();
-        }
-
-        setInterval(() => {
-            location.reload();
-        }, 1000);
-    }, 120000);
 
     const progressTimer = document.getElementById('progressTimer');
 
