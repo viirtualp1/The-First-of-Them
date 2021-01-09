@@ -2208,6 +2208,8 @@ function sendTeamLaboratories() {
                     room32SplitUp();
                 }
             });
+
+            swalStyles();
         } else {
             Swal.fire({
                 icon: 'error',
