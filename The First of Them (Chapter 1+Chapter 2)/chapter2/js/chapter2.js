@@ -321,7 +321,7 @@ function code() {
 function code_check() {
     let input = document.getElementById("code-input").value;
 
-    if (input == 3946) {
+    if (input == 3949) {
         document.body.style.backgroundImage = "url('images/phone.jpg')";
 
         Swal.fire({
