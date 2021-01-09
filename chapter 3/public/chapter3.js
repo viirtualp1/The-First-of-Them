@@ -1536,11 +1536,11 @@ function sendTeamLaboratories() {
             if (teamElementsDirection[i][j] == null) { } else if (teamElementsDirection[i][j].checked) {
                 const last = teamElementsDirection[i][j].id.toString().slice(-1);
                 if (last == '1') {
-                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Комната 3.4 <br />`);
+                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Комната 1 <br />`);
                 } else if (last == '2') {
-                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Комната 3.5(1) <br />`);
+                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Комната 2 <br />`);
                 } else if (last == '3') {
-                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Комната 3.5(2)`);
+                    chooseArrayDirection.push(`${teamElementsDirection[i][j].value} - Комната 2`);
                 }
             }
         }
