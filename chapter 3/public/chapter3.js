@@ -2146,6 +2146,25 @@ function sendTeamLaboratories() {
             });
 
             swalStyles();
+        } else if (oleg1.checked &&
+            nikita2.checked &&
+            anna3.checked) {
+            // Никто не умирает
+
+            Swal.fire({
+                title: 'Ваш выбор:',
+                html: `<p>${namesString}</p>`,
+                showCancelButton: true,
+                cancelButtonText: 'Отмена',
+                confirmButtonText: `Отправить`,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#ration-modal').modal('hide');
+                    room32SplitUp();
+                }
+            });
+
+            swalStyles();
         } else if (nikita1.checked &&
             oleg2.checked &&
             anna3.checked) {
