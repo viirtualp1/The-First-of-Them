@@ -226,10 +226,6 @@ function valveProgressClick(progressElement) {
 
         const btnValve = document.getElementById(valveBtn);
         btnValve.parentNode.removeChild(btnValve);
-
-        if (vasiliyHp == 60) {
-            checkRelationShip();
-        }
     } else {
         switch (progressElement) {
             case 1:

@@ -1368,6 +1368,7 @@ function mainRoomLaboratory() {
 }
 
 function fightVasiliy() {
+    alert('Охлаждение труб нестабильно. Сделайте все по середине! Торопитесь!');
     nextTask('Одолеть Василия');
     document.getElementById('btn-next').disabled = true;
     music.src = 'musics/vasiliyFight.mp3';
@@ -1409,22 +1410,24 @@ function fightVasiliy() {
     `;
 
     const polinaHpInterval = setInterval(() => {
-        const polinaHpProgressBar = document.getElementById('progressbarPolinaHp');
-        polinaHp -= 10;
+        try {
+            const polinaHpProgressBar = document.getElementById('progressbarPolinaHp');
+            polinaHp -= 10;
 
-        polinaHpProgressBar.style.width = `${polinaHp}%`;
-        polinaHpProgressBar.innerHTML = `${polinaHp}%`;
+            polinaHpProgressBar.style.width = `${polinaHp}%`;
+            polinaHpProgressBar.innerHTML = `${polinaHp}%`;
 
-        if (polinaHp == 0) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Вы умерли!',
-            });
+            if (polinaHp == 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Вы умерли!',
+                });
 
-            setTimeout(() => {
-                location.reload();
-            }, 2000);
-        }
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
+            }
+        } catch {}
     }, 10000);
 
     // Обратный отсчет самоуничтожения
@@ -1444,22 +1447,6 @@ function soundSelfDestructionStart() {
     timerDiv.innerHTML += `
         <div class="bg-danger" id="progressTimer" role="progressbar">${timerMinutes}:0${timerSeconds}</div>
     `;
-
-    const timerSelfDestruction = setTimeout(() => {
-        if (valveIndicator1 == true &&
-            valveIndicator2 == true &&
-            valveIndicator3 == true &&
-            valveIndicator4 == true) {
-            clearInterval(intervalSelfDestruction);
-            clearInterval(intervalChangerTimer);
-            clearTimeout(timerSelfDestruction);
-            checkRelationShip();
-        }
-
-        setInterval(() => {
-            location.reload();
-        }, 1000);
-    }, 120000);
 
     const intervalSelfDestruction = setInterval(() => {
         if (timerSeconds == 30) {
@@ -1498,6 +1485,7 @@ function soundSelfDestructionStart() {
     const progressTimer = document.getElementById('progressTimer');
 
     const intervalChangerTimer = setInterval(() => {
+        console.log(timerMinutes, timerSeconds);
         if (timerMinutes == 0 && timerSeconds == 0) {
             Swal.fire({
                 icon: 'error',
@@ -1519,6 +1507,15 @@ function soundSelfDestructionStart() {
             progressTimer.innerHTML = `${timerMinutes}:0${timerSeconds}`;
         } else {
             progressTimer.innerHTML = `${timerMinutes}:${timerSeconds}`;
+        }
+    }, 1000);
+
+    const timerSelfDestruction = setInterval(() => {
+        if (vasiliyHp == 60) {
+            clearInterval(intervalSelfDestruction);
+            clearInterval(intervalChangerTimer);
+            clearInterval(timerSelfDestruction);
+            checkRelationShip();
         }
     }, 1000);
 }
@@ -1559,6 +1556,10 @@ function blogerDead() {
     console.log('Relationship with Bloger - ', blogerRelationship);
     console.log('Bloger is dead');
     dialogs.innerHTML = `
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Блогер</p>
+        </div>
+
         <div class="row dialog">
             <p class="lead" id="text-dialog">Беги, я все сделаю! Сейчас лаборатория взорвется!</p>
         </div>
@@ -1590,6 +1591,10 @@ function polinaDead() {
     console.log('Polina is dead');
 
     dialogs.innerHTML = `
+        <div class="row mt-3 name">
+            <p class="lead" id="name-dialog">Полина</p>
+        </div>
+
         <div class="row dialog">
             <p class="lead" id="text-dialog">Беги, я все сделаю! Сейчас здесь все взорвется!</p>
         </div>
