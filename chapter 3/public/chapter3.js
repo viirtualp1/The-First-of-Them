@@ -1166,6 +1166,23 @@ function sendTeamMountains() {
 
         swalStyles();
     } else if (oleg1.checked &&
+        nikita2.checked &&
+        danil3.checked) {
+        Swal.fire({
+            title: 'Ваш выбор:',
+            html: `<p>${namesString}</p>`,
+            showCancelButton: true,
+            cancelButtonText: 'Отмена',
+            confirmButtonText: `Отправить`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('#ration-modal').modal('hide');
+                qteFindLab();
+            }
+        });
+
+        swalStyles();
+    } else if (oleg1.checked &&
         danil2.checked &&
         nikita3.checked) {
             Swal.fire({
