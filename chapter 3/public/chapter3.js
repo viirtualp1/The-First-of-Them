@@ -22,7 +22,7 @@ const dialogsDiv = document.getElementById('dialogs');
 
 // Получить из LocalStorage и заменить его на существующее
 // team (objects)
-let team = [
+const team = [
     nikita = {
         name: 'Никита',
         hp: 100,
