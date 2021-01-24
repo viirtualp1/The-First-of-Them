@@ -425,29 +425,14 @@ function vasiliyProtect() {
 }
 
 function houseSearch() {
+    const talkBtnNav = document.getElementById('talkBtnNav');
+    talkBtnNav.style.visibility = 'visible';
+
+    const talkToOne = document.getElementById('talkToOne');
+    talkToOne.style.visibility = 'visible';
+
     changeBg('bg20-part4.png');
     document.getElementById('btn-next').disabled = true;
-
-    const talkDiv = document.getElementById('talkDiv');
-    talkDiv.innerHTML += `
-        <nav class="navbar navbar-dark" id="talkBtnNav">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#talkToOne" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-        <div class="collapse" id="talkToOne">
-            <div class="p-4" id="navbarMenuBg" id="talkToOneDiv">
-                <div class="row text-white">
-                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <p class="lead text-muted" id="talkAnyOne">С кем поговорить?</p>
-
-                        <button class="btn" id="btn-talk-vasiliy" onclick="talk('Василий')">Василий</button>
-                        <button class="btn" id="btn-talk-bloger" onclick="talk('Блогер')">Блогер</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
 
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
@@ -896,11 +881,14 @@ function checkChurchKey() {
 function churchFight() {
     changeBg('bg9-part4.png');
 
-    // const btnTalkMikhail = document.getElementById('btn-talk-mikhail');
-    // const btnTalkVasiliy = document.getElementById('btn-talk-vasiliy');
+    const talkBtnNav = document.getElementById('talkBtnNav');
+    talkBtnNav.parentNode.removeChild(talkBtnNav);
 
-    // btnTalkMikhail.disabled = true;
-    // btnTalkVasiliy.disabled = true;
+    const talkToOne = document.getElementById('talkToOne');
+    talkToOne.parentNode.removeChild(talkToOne);
+
+    const talkToOneInner = document.getElementById('talkToOneInner');
+    talkToOneInner.parentNode.removeChild(talkToOneInner);
 
     nextTask('Отбиться от зомби');
     nameDialog.innerHTML = `Полина`;

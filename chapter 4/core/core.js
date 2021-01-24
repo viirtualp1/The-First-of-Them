@@ -96,7 +96,7 @@ function talk(who) {
                     </div>
     
                     <div class="row dialog">
-                        <p class="lead" id="text-dialog">${dialogsMassive[0][0][`answer${btnClickTalkVasiliy}Good`]}</p>
+                        <p class="lead" id="text-dialog">${dialogsMassive[0][0][`answer${btnClickTalkVasiliy}Good`]} <button class="btn btn-dark" onclick="removeTalkDiv()" style="float: right; margin-left: 1vw;">OK</button></p>
                     </div>
                 `;
             } else if (vasiliyRelationship == 'Плохие') {
@@ -113,7 +113,7 @@ function talk(who) {
                     </div>
     
                     <div class="row dialog">
-                        <p class="lead" id="text-dialog">${dialogsMassive[0][0][`answer${btnClickTalkVasiliy}Bad`]}</p>
+                        <p class="lead" id="text-dialog">${dialogsMassive[0][0][`answer${btnClickTalkVasiliy}Bad`]} <button class="btn btn-dark" onclick="removeTalkDiv()" style="float: right; margin-left: 1vw;">OK</button></p>
                     </div>
                 `;
             }
@@ -145,7 +145,7 @@ function talk(who) {
                     </div>
     
                     <div class="row dialog">
-                        <p class="lead" id="text-dialog">${dialogsMassive[1][0][`answer${btnClickTalkBloger}Good`]}</p>
+                        <p class="lead" id="text-dialog">${dialogsMassive[1][0][`answer${btnClickTalkBloger}Good`]} <button class="btn btn-dark" onclick="removeTalkDiv()" style="float: right; margin-left: 1vw;">OK</button></p>
                     </div>
                 `;
             } else if (blogerRelationship == 'Плохие') {
@@ -162,7 +162,7 @@ function talk(who) {
                     </div>
     
                     <div class="row dialog">
-                        <p class="lead" id="text-dialog">${dialogsMassive[1][0][`answer${btnClickTalkBloger}Bad`]}</p>
+                        <p class="lead" id="text-dialog">${dialogsMassive[1][0][`answer${btnClickTalkBloger}Bad`]} <button class="btn btn-dark" onclick="removeTalkDiv()" style="float: right; margin-left: 1vw;">OK</button></p>
                     </div>
                 `;
             }
@@ -177,6 +177,11 @@ function talk(who) {
             talkToOneInner.parentNode.removeChild(talkToOneInner);
         }
     }
+}
+
+function removeTalkDiv() {
+    const talkToOneInner = document.getElementById('talkToOneInner');
+    talkToOneInner.innerHTML = ``;
 }
 
 // Progress variables

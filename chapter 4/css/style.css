@@ -113,9 +113,12 @@ body {
 }
 
 #talkBtnNav {
-    margin-top: 0.3vh;
-    padding-right: 0;
-    margin-right: 0;
+    visibility: hidden;
+    padding-left: 1vh;
+}
+
+#talkToOne {
+    visibility: hidden;
 }
 
 #btn-talk-bloger, #btn-talk-vasiliy {

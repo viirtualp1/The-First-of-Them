@@ -28,7 +28,6 @@
         </div>
     
         <footer class="fixed-bottom d-flex justify-content-center" id="footer-buttons">
-            <div id="talkDiv"></div>
             <nav class="navbar navbar-dark" id="menuBtnNav">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleMenu" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -43,6 +42,23 @@
                             <button class="btn" id="btn-new-game" onclick="clearLc(); location.reload()">Новая игра</button>
                             <!-- <button class="btn" id="btn-save-load" onclick="saveLoad()" disabled>Загрузить сохранение</button> -->
                             <button class="btn" id="btn-sign-out-game" onclick="clearLc(); location.href = '../The First of Them (Chapter 1+Chapter 2)/menu.html'">Выйти из игры</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-dark" id="talkBtnNav">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#talkToOne" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+            <div class="collapse" id="talkToOne">
+                <div class="p-4" id="navbarMenuBg" id="talkToOneDiv">
+                    <div class="row text-white">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <p class="lead text-muted" id="talkAnyOne">Поговорить</p>
+    
+                            <button class="btn" id="btn-talk-vasiliy" onclick="talk('Василий')">Василий</button>
+                            <button class="btn" id="btn-talk-bloger" onclick="talk('Блогер')">Блогер</button>
                         </div>
                     </div>
                 </div>
