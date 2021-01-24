@@ -6,10 +6,32 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 
-// btn talk
+// Progress variables
+let widthProgress1 = 0;
+let widthProgress2 = 0;
+let widthProgress3 = 0;
+
+// Hp Vasiliy
+let vasiliyHp = 100;
+
+// Delete valve btn
+let valveBtn = '';
+
+let progressClickDirection1 = 'top';
+let progressClickDirection2 = 'top';
+let progressClickDirection3 = 'top';
+
+// Valves indicators
+let valveIndicator1 = false;
+let valveIndicator2 = false;
+let valveIndicator3 = false;
+let valveIndicator4 = false;
+
+// Btn talk
 let btnClickTalkBloger = 0;
 let btnClickTalkVasiliy = 0;
 
+// Massive with dialogs
 const dialogsMassive = [
     vasiliy = [
         dialog = {
@@ -74,6 +96,7 @@ const dialogsMassive = [
     ],
 ];
 
+// Function for talk with Vasiliy or Bloger
 function talk(who) {
     const talkToOneInner = document.getElementById('talkToOneInner');
     talkToOneInner.innerHTML = ``;
@@ -179,33 +202,13 @@ function talk(who) {
     }
 }
 
+// Remove div with dialogs (talk with Vasiliy or Bloger)
 function removeTalkDiv() {
     const talkToOneInner = document.getElementById('talkToOneInner');
     talkToOneInner.innerHTML = ``;
 }
 
-// Progress variables
-let widthProgress1 = 0;
-let widthProgress2 = 0;
-let widthProgress3 = 0;
-
-// Hp Vasiliy
-let vasiliyHp = 100;
-
-// delete valve btn
-let valveBtn = '';
-
-let progressClickDirection1 = 'top';
-let progressClickDirection2 = 'top';
-let progressClickDirection3 = 'top';
-
-// valves indicators
-let valveIndicator1 = false;
-let valveIndicator2 = false;
-let valveIndicator3 = false;
-let valveIndicator4 = false;
-
-// Main variables
+// Get divs
 const music = document.getElementById('music');
 const sound = document.getElementById('sound');
 const dialogs = document.getElementById('dialogs');
@@ -217,12 +220,10 @@ const windowDiv = document.getElementById('window');
 const btnNextElem = document.getElementById('btn-next');
 const btnSaveLoad = document.getElementById('btn-save-load');
 const inventoryInner = document.getElementById('inventoryInner');
-
-// Div - name and dialog
 const nameDiv = document.getElementById('name');
 const dialogsDiv = document.getElementById('dialogs');
 
-// Стили для SweetAlert
+// Styles for SweetAlert
 function swalStyles() {
     const swal2Modal = document.getElementsByClassName('swal2-modal')[0];
     swal2Modal.style.background = 'rgb(58, 58, 58)';
@@ -248,7 +249,7 @@ function swalStyles() {
     } catch { }
 }
 
-// Кнопка "Далее" с вызовом функции при клике
+// Button "Next" with call the function
 function btnNext(func) {
     btnNextElement = document.getElementById('btn-next');
     btnNextElement = btnNextElement.parentNode.removeChild(btnNextElement);
@@ -257,7 +258,7 @@ function btnNext(func) {
     `;
 }
 
-// Следующее задание
+// Next task
 function nextTask(text) {
     const Toast = Swal.mixin({
         toast: true,
@@ -280,12 +281,12 @@ function nextTask(text) {
     document.getElementById('task').innerHTML = `Задание: ${text}`;
 }
 
-// Рандомное число
+// Random number
 function getRandNumb(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 
-// Смена фона
+// Change background
 function changeBg(bgName) {
     document.body.style.backgroundImage = `url("img/${bgName}")`;
     document.body.style.backgroundPosition = 'center';
@@ -294,7 +295,7 @@ function changeBg(bgName) {
     document.body.style.backgroundSize = 'cover';
 }
 
-// Выбор диалога
+// Choose dialog
 function chooseDialog({
     positiveText,
     neutralText,
@@ -322,6 +323,7 @@ function chooseDialog({
     `;
 }
 
+// Mechanic with Valves (last fight with Vasiliy)
 function valve(valveIndicator) {
     valveIndicator = true;
 
@@ -379,6 +381,7 @@ function valve(valveIndicator) {
     `;
 }
 
+// Valve progress
 function valveProgressClick(progressElement) {
     const progress1 = document.getElementById('valve-progress-w-1');
     const progress2 = document.getElementById('valve-progress-w-2');
@@ -451,43 +454,13 @@ function valveProgressClick(progressElement) {
     }
 }
 
+// Delete div with choose dialog (who is right - Vasiliy or Bloger?)
 function deleteChooseDialogDiv() {
     const chooseDialogDiv = document.getElementById('chooseDialogDiv');
     chooseDialogDiv.parentNode.removeChild(chooseDialogDiv);
 }
 
-// function talkMikhail() {
-//     switch (btnClickTalkMikhail) {
-//         case 1:
-
-//         ; break;
-//     }
-// }
-
-// function talkVasiliy() {
-//     switch (btnClickTalkVasiliy) {
-//         case 1:
-//             dialogs.innerHTML += `
-//                 <div id="chooseDialogDiv">
-//                     <p class="lead text-white" id="chooseDialogText">Выбери: </p>
-
-//                     <div class="row dialog" id="chooseDialogDiv">
-//                         <button id="btn-dialog-1" type="button" class="btn" onclick="();">
-//                             - Расскажи о себе побольше
-//                         </button>
-//                         <button id="btn-dialog-2" type="button" class="btn" onclick="();">
-//                             - Как дела?
-//                         </button>
-//                         <button id="btn-dialog-3" type="button" class="btn" onclick="();">
-//                             - Расскажи побольше о пропажах в деревни
-//                         </button>
-//                     </div>
-//                 </div>
-//             `;
-//         ; break;
-//     }
-// }
-
+// Delete save from localStorage
 function clearLc() {
     localStorage.removeItem('mainRoomLaboratory');
 }
