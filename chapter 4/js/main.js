@@ -8,12 +8,12 @@
 let blogerRelationship = 'Хорошие';
 let vasiliyRelationship = 'Хорошие';
 
-let churchKey = '';
-
-// keys
+// Keys
 let fakeChurchKeys = 0;
 let trueChurchKey = 0;
+let churchKey = '';
 
+// Keys from houses
 let takeKeyHouse1 = false;
 let takeKeyHouse2 = false;
 let takeKeyHouse3 = false;
@@ -29,19 +29,13 @@ let zombieChurchWidth = 100;
 let zombieChurchSec = 10;
 let clickZombieChurch = 0;
 
-// Valves (Boss fight)
-// let valve1Destroy = '';
-// let valve2Destroy = '';
-// let valve3Destroy = '';
-// let valve4Destroy = '';
-
 // Polina Hp
 let polinaHp = 100;
 
-// confirm bloger with his choose
+// Confirm bloger with his choose
 let confirmBloger;
 
-// load main room laboratory (after search items)
+// Load main room laboratory (after search items)
 window.onload = () => {
     const currentFunctionLc = localStorage.getItem('mainRoomLaboratory');
 
@@ -1011,15 +1005,6 @@ function churchFightEnd() {
 }
 
 function churchWhereVasiliy() {
-    // const btnTalkMikhail = document.getElementById('btn-talk-mikhail');
-    // btnTalkMikhail.disabled = false;
-
-    // const btnTalkVasiliy = document.getElementById('btn-talk-vasiliy');
-    // btnTalkVasiliy.parentNode.removeChild(btnTalkVasiliy);
-
-    // const talkAnyOne = document.getElementById('talkAnyOne');
-    // talkAnyOne.innerHTML = `Вы можете поговорить с Блогером`;
-
     nameDialog.innerHTML = `Михаил`;
     dialogs.innerHTML = `
         <div class="row dialog">
