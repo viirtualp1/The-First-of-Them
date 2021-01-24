@@ -113,10 +113,12 @@ body {
 }
 
 #talkBtnNav {
-    padding-left: 1vh;
+    margin-top: 0.3vh;
+    padding-right: 0;
+    margin-right: 0;
 }
 
-#btn-talk-mikhail, #btn-talk-vasiliy {
+#btn-talk-bloger, #btn-talk-vasiliy {
     color: rgba(255,255,255,.75);
 }
 

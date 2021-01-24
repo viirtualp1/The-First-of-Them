@@ -7,8 +7,177 @@
 /* eslint-disable max-len */
 
 // btn talk
-// let btnClickTalkMikhail = 0;
-// let btnClickTalkVasiliy = 0;
+let btnClickTalkBloger = 0;
+let btnClickTalkVasiliy = 0;
+
+const dialogsMassive = [
+    vasiliy = [
+        dialog = {
+            question1: 'Как дела?',
+            question2: 'Что тебе известно?',
+            question3: 'Расскажи о себе',
+            question4: 'У тебя есть семья?',
+            question5: 'Почему ты не доверяешь нам?',
+            question6: 'Чем ты можешь помочь нам?',
+
+            answer1Good: 'Хочется разобраться с этим и вернуться домой',
+            answer1Bad: 'Не очень',
+
+            answer2Good: 'Немного. Люди в деревне пропадали, ' +
+                'вот я и хотел узнать, что происходит. А по итогу оказался тут',
+            answer2Bad: 'Меньше, чем нужно.',
+
+            answer3Good: 'Я бывший военный... После войны начал обычную жизнь, ' +
+                'но иногда не хватает мне того времени. То время не просто забыть',
+            answer3Bad: 'Бывший военный, это все, что тебе нужно знать',
+
+            answer4Good: 'Жена. Хотел бы я вернуться к ней',
+            answer4Bad: 'Жена.',
+
+            answer5Good: 'Все это приходит со временем. ' +
+                'Я уже обучен опытом, людям с самого начала доверять не стоит',
+            answer5Bad: 'А откуда мне знать, что вы не они?',
+
+            answer6Good: 'Хорошо обучен драться, стрелять, ' +
+                'а также не глуп',
+            answer6Bad: 'Умею драться и стрелять. Поэтому обузой я вам не буду.',
+        },
+    ],
+
+    bloger = [
+        dialog = {
+            question1: 'Как дела?',
+            question2: 'Что думаешь о Василии?',
+            question3: 'Как тебе обстановка?',
+            question4: 'На лабораторию это не похоже, да?)',
+            question5: 'Кто с нами играет?',
+            question6: 'Что будешь делать после этого?',
+
+            answer1Good: 'Ну более менее',
+            answer1Bad: 'Ну так себе.',
+
+            answer2Good: 'Странный тип, но если ты ему доверяешь, то и я тоже',
+            answer2Bad: 'Странный тип, я ему не доверяю.',
+
+            answer3Good: 'Жутковато, выбраться бы отсюда поскорее',
+            answer3Bad: 'Не очень здесь.',
+
+            answer4Good: 'Это уж точно :)',
+            answer4Bad: 'Да...',
+
+            answer5Good: 'Видимо это тот, кто за всем стоит',
+            answer5Bad: 'Пока нет идей.',
+
+            answer6Good: 'Не знаю. Возможно вернусь к журналистике и буду расследовать что-то',
+            answer6Bad: 'Не знаю.',
+        },
+    ],
+];
+
+function talk(who) {
+    const talkToOneInner = document.getElementById('talkToOneInner');
+    talkToOneInner.innerHTML = ``;
+
+    if (who == 'Василий') {
+        btnClickTalkVasiliy += 1;
+
+        if (btnClickTalkVasiliy != 7) {
+            if (vasiliyRelationship == 'Хорошие' || vasiliyRelationship == 'Отличные') {
+                talkToOneInner.innerHTML = `
+                    <div class="row mt-3 name">
+                        <p class="lead" id="name-dialog">Полина</p>
+                    </div>
+                    <div class="row dialog">
+                        <p class="lead" id="text-dialog">${dialogsMassive[0][0][`question${btnClickTalkVasiliy}`]}</p>
+                    </div>
+    
+                    <div class="row mt-3 name">
+                        <p class="lead" id="name-dialog">Василий</p>
+                    </div>
+    
+                    <div class="row dialog">
+                        <p class="lead" id="text-dialog">${dialogsMassive[0][0][`answer${btnClickTalkVasiliy}Good`]}</p>
+                    </div>
+                `;
+            } else if (vasiliyRelationship == 'Плохие') {
+                talkToOneInner.innerHTML = `
+                    <div class="row mt-3 name">
+                        <p class="lead" id="name-dialog">Полина</p>
+                    </div>
+                    <div class="row dialog">
+                        <p class="lead" id="text-dialog">${dialogsMassive[0][0][`question${btnClickTalkVasiliy}`]}</p>
+                    </div>
+    
+                    <div class="row mt-3 name">
+                        <p class="lead" id="name-dialog">Василий</p>
+                    </div>
+    
+                    <div class="row dialog">
+                        <p class="lead" id="text-dialog">${dialogsMassive[0][0][`answer${btnClickTalkVasiliy}Bad`]}</p>
+                    </div>
+                `;
+            }
+        } else {
+            const talkBtnNav = document.getElementById('talkBtnNav');
+            talkBtnNav.parentNode.removeChild(talkBtnNav);
+
+            const talkToOne = document.getElementById('talkToOne');
+            talkToOne.parentNode.removeChild(talkToOne);
+
+            const talkToOneInner = document.getElementById('talkToOneInner');
+            talkToOneInner.parentNode.removeChild(talkToOneInner);
+        }
+    } else if (who == 'Блогер') {
+        btnClickTalkBloger += 1;
+
+        if (btnClickTalkBloger != 7) {
+            if (blogerRelationship == 'Хорошие' || blogerRelationship == 'Отличные') {
+                talkToOneInner.innerHTML = `
+                    <div class="row mt-3 name">
+                        <p class="lead" id="name-dialog">Полина</p>
+                    </div>
+                    <div class="row dialog">
+                        <p class="lead" id="text-dialog">${dialogsMassive[1][0][`question${btnClickTalkBloger}`]}</p>
+                    </div>
+    
+                    <div class="row mt-3 name">
+                        <p class="lead" id="name-dialog">Блогер</p>
+                    </div>
+    
+                    <div class="row dialog">
+                        <p class="lead" id="text-dialog">${dialogsMassive[1][0][`answer${btnClickTalkBloger}Good`]}</p>
+                    </div>
+                `;
+            } else if (blogerRelationship == 'Плохие') {
+                talkToOneInner.innerHTML = `
+                    <div class="row mt-3 name">
+                        <p class="lead" id="name-dialog">Полина</p>
+                    </div>
+                    <div class="row dialog">
+                        <p class="lead" id="text-dialog">${dialogsMassive[1][0][`question${btnClickTalkBloger}`]}</p>
+                    </div>
+    
+                    <div class="row mt-3 name">
+                        <p class="lead" id="name-dialog">Блогер</p>
+                    </div>
+    
+                    <div class="row dialog">
+                        <p class="lead" id="text-dialog">${dialogsMassive[1][0][`answer${btnClickTalkBloger}Bad`]}</p>
+                    </div>
+                `;
+            }
+        } else {
+            const talkBtnNav = document.getElementById('talkBtnNav');
+            talkBtnNav.parentNode.removeChild(talkBtnNav);
+
+            const talkToOne = document.getElementById('talkToOne');
+            talkToOne.parentNode.removeChild(talkToOne);
+
+            const talkToOneInner = document.getElementById('talkToOneInner');
+            talkToOneInner.parentNode.removeChild(talkToOneInner);
+        }
+    }
+}
 
 // Progress variables
 let widthProgress1 = 0;

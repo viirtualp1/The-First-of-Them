@@ -6,6 +6,8 @@
 /* eslint-disable linebreak-style */
 
 let blogerRelationship = 'Хорошие';
+let vasiliyRelationship = 'Хорошие';
+
 let churchKey = '';
 
 // keys
@@ -323,6 +325,8 @@ function polinaChoose() {
 function blogerProtect() {
     nextTask('Осмотреть особняк');
     blogerRelationship = 'Отличные';
+    vasiliyRelationship = 'Плохие';
+
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -353,6 +357,27 @@ function blogerProtect() {
 }
 
 function noOneProtect() {
+    blogerRelationship = 'Хорошие';
+    vasiliyRelationship = 'Плохие';
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+    });
+
+    Toast.fire({
+        icon: 'error',
+        title: 'Василий: отношения понижены',
+    });
+
     nextTask('Осмотреть особняк');
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
@@ -368,6 +393,8 @@ function noOneProtect() {
 function vasiliyProtect() {
     nextTask('Осмотреть особняк');
     blogerRelationship = 'Плохие';
+    vasiliyRelationship = 'Отличные';
+
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -401,25 +428,26 @@ function houseSearch() {
     changeBg('bg20-part4.png');
     document.getElementById('btn-next').disabled = true;
 
-    // footerButtons.innerHTML += `
-    //     <nav class="navbar navbar-dark" id="talkBtnNav">
-    //         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#talkToOne" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-    //             <span class="navbar-toggler-icon"></span>
-    //         </button>
-    //     </nav>
-    //     <div class="collapse" id="talkToOne">
-    //         <div class="p-4" id="navbarMenuBg">
-    //             <div class="row text-white">
-    //                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-    //                     <p class="lead text-muted" id="talkAnyOne">Вы можете поговорить с кем-то</p>
+    const talkDiv = document.getElementById('talkDiv');
+    talkDiv.innerHTML += `
+        <nav class="navbar navbar-dark" id="talkBtnNav">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#talkToOne" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+        <div class="collapse" id="talkToOne">
+            <div class="p-4" id="navbarMenuBg" id="talkToOneDiv">
+                <div class="row text-white">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <p class="lead text-muted" id="talkAnyOne">С кем поговорить?</p>
 
-    //                     <button class="btn" id="btn-talk-mikhail" onclick="talkMikhail(); btnClickTalkMikhail+=1">Блогер</button>
-    //                     <button class="btn" id="btn-talk-vasiliy" onclick="talkVasiliy(); btnClickTalkVasiliy+=1">Василий</button>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </div>
-    // `;
+                        <button class="btn" id="btn-talk-vasiliy" onclick="talk('Василий')">Василий</button>
+                        <button class="btn" id="btn-talk-bloger" onclick="talk('Блогер')">Блогер</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
 
     nameDialog.innerHTML = `Полина`;
     dialogs.innerHTML = `
