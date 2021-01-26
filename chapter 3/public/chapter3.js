@@ -340,7 +340,7 @@ function helloTeam() {
         </div>
     `;
 
-    btnNext('training()');
+    btnNext('goToMountains()');
 }
 
 function goToMountains() {
