@@ -1,14 +1,14 @@
-function show() { location.href = "chapter1/show.html"; }
-function show_eng() { location.href = "chapter1/show-eng.html"; }
+function show() { location.href = "chapter 1/show.html"; }
+function show_eng() { location.href = "chapter 1/show-eng.html"; }
 
-function game() { location.href = "chapter1/index.html"; }
-function game_eng() { location.href = "chapter1/index-eng.html"; }
+function game() { location.href = "chapter 1/index.html"; }
+function game_eng() { location.href = "chapter 1/index-eng.html"; }
 
 function menu() { location.href = "menu.html" }
 function menu_eng() { location.href = "menu-eng.html" }
 
-function end() { location.href = "chapter2/end.html" }
-function end_eng() { location.href = "chapter2/end-eng.html" }
+function end() { location.href = "chapter 2/end.html" }
+function end_eng() { location.href = "chapter 2/end-eng.html" }
 
 function confirm_quit() {
     Swal.fire({
@@ -94,7 +94,7 @@ function warning_chapter2() {
         confirmButtonColor: '#28a745',
         cancelButtonColor: '#d33'
     }).then((result) => {
-        if (result.value) { location.href = "chapter2/show-chapter2.html"; }
+        if (result.value) { location.href = "chapter 2/show-chapter2.html"; }
     })
 }
 
@@ -111,7 +111,7 @@ function warning_chapter2_eng() {
         confirmButtonColor: '#1C2629',
         cancelButtonColor: '#d33'
     }).then((result) => {
-        if (result.value) { location.href = "chapter2/show-eng-chapter2.html"; }
+        if (result.value) { location.href = "chapter 2/show-eng-chapter2.html"; }
     })
 }
 
@@ -122,12 +122,12 @@ function volume_mute() {
 
 function volume_up() {
     let music = document.getElementById("music");
-    music.src = "chapter2/sounds/night_jungle.mp3";
+    music.src = "chapter 2/sounds/night_jungle.mp3";
 }
 
 function volume_up_menu() {
     let music = document.getElementById("music");
-    music.src = "chapter2/sounds/menu.mp3";
+    music.src = "chapter 2/sounds/menu.mp3";
 }
 
 
@@ -166,5 +166,5 @@ function what_is_this_eng() {
 
 function music_src(src) {
     let music_elem = document.getElementById("music");
-    music_elem.src = `chapter2/sounds/${src}`;
+    music_elem.src = `chapter 2/sounds/${src}`;
 }

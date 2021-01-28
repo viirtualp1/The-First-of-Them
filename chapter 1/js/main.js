@@ -1,4 +1,4 @@
-function show() { location.href = "chapter1/show.html"; }
+function show() { location.href = "chapter 1/show.html"; }
 function show_eng() { location.href = "show-eng.html"; }
 
 function game() { location.href = "index.html"; }

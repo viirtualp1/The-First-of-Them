@@ -451,7 +451,7 @@ function blogerChangeHeroBloger(letter1, letter2, letter3,
 }
 
 function blogerHouse() {
-    music.src = '../../The First of Them (Chapter 1+Chapter 2)/chapter1/music/night_jungle.mp3';
+    music.src = '../../chapter 1/music/night_jungle.mp3';
     document.getElementById('name').style.visibility = 'visible';
     document.getElementById('footer-buttons').style.visibility = 'visible';
 
@@ -1186,6 +1186,8 @@ function entryLab() {
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundAttachment = 'fixed';
     document.body.style.backgroundSize = 'cover';
+
+    music.src = '';
 
     name.innerHTML = `Полина`;
     dialogs.innerHTML = `
@@ -2419,7 +2421,15 @@ function useAntidot() {
         if (antidot == true) {
             blogerAlive();
         } else if (antidot == false) {
-            blogerDead();
+            Swal.fire({
+                icon: 'error',
+                title: 'Игра закончена',
+                text: 'Вы не спасли Блогера!',
+            });
+
+            setTimeout(() => {
+                location.reload();
+            }, 2500);
         }
     }, 2000);
 }
@@ -2582,57 +2592,6 @@ function findRoom34() {
     localStorage.setItem('secretAchievement', 'open');
 
     btnNext('liftAnonimSpeak()');
-}
-
-// Блогер умер
-function blogerDead() {
-    nameDiv.style.visibility = 'visibility';
-    footerButtons.style.visibility = 'visibility';
-
-    name.innerHTML = 'Полина';
-    dialogs.innerHTML = `
-        <div class="row dialog">
-            <p class="lead" id="text-dialog">Еще одна смерть... Сколько еще людей будут умирать из-за меня?</p>
-        </div>
-    `;
-
-    localStorage.setItem('bloger', 'dead');
-
-    if (relationshipTeam == 'Хорошие' || relationshipTeam == 'Отличные') {
-        dialogs.innerHTML += `
-            <div class="row mt-3 name">
-                <p class="lead" id="name-dialog">Отряд</p>
-            </div>
-            <div class="row dialog">
-                <p class="lead" id="text-dialog">Вы не виноваты.</p>
-            </div>
-        `;
-    } else {
-        dialogs.innerHTML += `
-            <div class="row mt-3 name">
-                <p class="lead" id="name-dialog">Отряд</p>
-            </div>
-            <div class="row dialog">
-                <p class="lead" id="text-dialog">...</p>
-            </div>
-        `;
-    }
-
-    dialogs.innerHTML += `
-        <div class="row mt-3 name">
-            <p class="lead" id="name-dialog">Полина</p>
-        </div>
-        <div class="row dialog">
-            <p class="lead" id="text-dialog">Ладно, нужно идти дальше, но там вход закрыт. 
-                Нужен ключ. Опять. Осталось одна комната в которой я не была, сходим туда еще раз.
-            </p>
-        </div>
-    `;
-
-    nextTask('Найти ключ от лифта');
-    localStorage.setItem('task', 'Найти ключ от лифта');
-
-    btnNext('room34Polina()');
 }
 
 function room34Polina() {
@@ -3560,8 +3519,8 @@ function end() {
                         Выбрать главу
                     </button>
                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <a class="dropdown-item" href="location.href='../../The First of Them (Chapter 1+Chapter 2)/chapter1/show.html'">Глава 1</a>
-                        <a class="dropdown-item" href="location.href='../../The First of Them (Chapter 1+Chapter 2)/chapter2/show-chapter2.html'">Глава 2</a>
+                        <a class="dropdown-item" href="location.href='../../chapter 1/show.html'">Глава 1</a>
+                        <a class="dropdown-item" href="location.href='../../chapter 2/show-chapter2.html'">Глава 2</a>
                         <a class="dropdown-item" onclick="location.reload()">Глава 3</a>
                         <a class="dropdown-item" onclick="location.href='../../chapter 4/show.html'">Глава 4</a>
                     </div>
