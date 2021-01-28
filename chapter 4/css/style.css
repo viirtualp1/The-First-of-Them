@@ -39,6 +39,12 @@ body {
     margin-bottom: 1vh;
 }
 
+#navbarMenuBg {
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: .3rem;
+    font-style: 1rem;
+}
+
 #btn-next { 
     border-color: rgba(255,255,255,.1);
     color: rgba(255,255,255,.75);
@@ -119,6 +125,9 @@ body {
 
 #talkToOne {
     visibility: hidden;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    margin-right: 1vh;
 }
 
 #btn-talk-bloger, #btn-talk-vasiliy {
@@ -264,3 +273,4 @@ body {
     height: 6em;
     border: 2px solid #25292C;
 }
+
