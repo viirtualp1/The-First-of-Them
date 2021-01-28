@@ -382,7 +382,7 @@ function blogerChangeHeroBloger(letter1, letter2, letter3,
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 2500,
+        timer: 2000,
         timerProgressBar: true,
 
         onOpen: (toast) => {
@@ -451,7 +451,6 @@ function blogerChangeHeroBloger(letter1, letter2, letter3,
 }
 
 function blogerHouse() {
-    music.src = '../../chapter 1/music/night_jungle.mp3';
     document.getElementById('name').style.visibility = 'visible';
     document.getElementById('footer-buttons').style.visibility = 'visible';
 
@@ -721,7 +720,7 @@ function changeHeroPolinaMountains(letter1, letter2, letter3,
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 2500,
+        timer: 2000,
         timerProgressBar: true,
 
         onOpen: (toast) => {
@@ -1234,7 +1233,7 @@ function labFindSplitUp() {
 function whySplitUpAgain() {
     if (dead != '') {
         function checkIsDead() {
-            const randNumb1 = getRandNumbTeam(0, 3);
+            const randNumb1 = getRandNumbTeam(0, 2);
 
             if (team[randNumb1].alive != 'false') {
                 name.innerHTML = team[randNumb1].name;
@@ -2362,7 +2361,7 @@ function qteCookAntidot() {
 
     dialogs.innerHTML = `
         <div class="row dialog">
-            <p class="lead" id="text-dialog">Приготовлие антидота...</p> 
+            <p class="lead" id="text-dialog">Приготовление антидота...</p> 
         </div>
 
         <div class="progress mt-4" id="progress-div">
@@ -2415,7 +2414,10 @@ function goAntidot() {
 
 function useAntidot() {
     nameDiv.style.visibility = 'hidden';
+    dialogsDiv.style.visibility = 'hidden';
     footerButtons.style.visibility = 'hidden';
+
+    document.body.style.background = "#000";
 
     setTimeout(() => {
         if (antidot == true) {
@@ -2431,13 +2433,20 @@ function useAntidot() {
                 location.reload();
             }, 2500);
         }
-    }, 2000);
+    }, 3000);
 }
 
 // Блогер выжил
 function blogerAlive() {
-    nameDiv.style.visibility = 'visibility';
-    footerButtons.style.visibility = 'visibility';
+    document.body.style.background = `url('img/Капсулы.jpg')`;
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+    document.body.style.backgroundSize = 'cover';
+
+    nameDiv.style.visibility = 'visible';
+    dialogsDiv.style.visibility = 'visible';
+    footerButtons.style.visibility = 'visible';
 
     name.innerHTML = 'Блогер';
     dialogs.innerHTML = `
@@ -3203,14 +3212,7 @@ function mechanicPhobosFight() {
                 deaths += 1;
                 localStorage.setItem('deaths', deaths);
 
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Вы умерли!',
-                });
-
-                setInterval(() => {
-                    location.reload();
-                }, 1000);
+                location.reload();
             }
         }, 100);
     }, 3500);
@@ -3525,7 +3527,7 @@ function end() {
                         <a class="dropdown-item" onclick="location.href='../../chapter 4/show.html'">Глава 4</a>
                     </div>
                 </div>
-                <button id="quit" type="button" class="btn btn-dark mt-2 ml-2" onclick="deleteDeathsLc(); location.href = '../../The First of Them (Chapter 1+Chapter 2)/menu.html'">
+                <button id="quit" type="button" class="btn btn-dark mt-2 ml-2" onclick="deleteDeathsLc(); location.href = '../menu.html'">
                     Выход
                 </button>
             </div>
