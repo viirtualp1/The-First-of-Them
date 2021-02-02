@@ -419,11 +419,13 @@ function vasiliyProtect() {
 }
 
 function houseSearch() {
-    const talkBtnNav = document.getElementById('talkBtnNav');
-    talkBtnNav.style.visibility = 'visible';
+    try {
+        const talkBtnNav = document.getElementById('talkBtnNav');
+        talkBtnNav.style.visibility = 'visible';
 
-    const talkToOne = document.getElementById('talkToOne');
-    talkToOne.style.visibility = 'visible';
+        const talkToOne = document.getElementById('talkToOne');
+        talkToOne.style.visibility = 'visible';
+    } catch {}
 
     changeBg('bg20-part4.png');
     document.getElementById('btn-next').disabled = true;
@@ -875,14 +877,16 @@ function checkChurchKey() {
 function churchFight() {
     changeBg('bg9-part4.png');
 
-    const talkBtnNav = document.getElementById('talkBtnNav');
-    talkBtnNav.parentNode.removeChild(talkBtnNav);
+    try {
+        const talkBtnNav = document.getElementById('talkBtnNav');
+        talkBtnNav.parentNode.removeChild(talkBtnNav);
 
-    const talkToOne = document.getElementById('talkToOne');
-    talkToOne.parentNode.removeChild(talkToOne);
+        const talkToOne = document.getElementById('talkToOne');
+        talkToOne.parentNode.removeChild(talkToOne);
 
-    const talkToOneInner = document.getElementById('talkToOneInner');
-    talkToOneInner.parentNode.removeChild(talkToOneInner);
+        const talkToOneInner = document.getElementById('talkToOneInner');
+        talkToOneInner.parentNode.removeChild(talkToOneInner);
+    } catch {}
 
     nextTask('Отбиться от зомби');
     nameDialog.innerHTML = `Полина`;
@@ -1660,7 +1664,7 @@ function end() {
                         <a class="dropdown-item" onclick="location.reload()">Глава 4</a>
                     </div>
                 </div>
-                <button id="quit" type="button" class="btn btn-dark mt-2 ml-2" onclick="location.href = '../The First of Them (Chapter 1+Chapter 2)/logo.html'">
+                <button id="quit" type="button" class="btn btn-dark mt-2 ml-2" onclick="location.href = '../logo.html'">
                     Выход
                 </button>
             </div>
