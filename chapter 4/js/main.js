@@ -1595,6 +1595,20 @@ function blogerDead() {
     `;
 
     setTimeout(() => {
+        footerButtons.style.visibility = 'hidden';
+        dialogsDiv.style.visibility = 'hidden';
+        nameDiv.style.visibility = 'hidden';
+
+        document.getElementById('video').innerHTML = `
+            <div id="video-bg">
+                <video width="100%" height="auto" preload="auto" autoplay="autoplay" loop="loop">
+                    <source src="img/anim-BOOM-tfot-got.mp4" type="video/mp4"></source>
+                </video>
+            </div>
+        `;
+    }, 6000);
+
+    setTimeout(() => {
         end();
     }, 10000);
 }
@@ -1630,13 +1644,29 @@ function polinaDead() {
     `;
 
     setTimeout(() => {
+        footerButtons.style.visibility = 'hidden';
+        dialogsDiv.style.visibility = 'hidden';
+        nameDiv.style.visibility = 'hidden';
+
+        document.getElementById('video').innerHTML = `
+            <div id="video-bg">
+                <video width="100%" height="auto" preload="auto" autoplay="autoplay" loop="loop">
+                    <source src="img/anim-BOOM-tfot-got.mp4" type="video/mp4"></source>
+                </video>
+            </div>
+        `;
+    }, 6000);
+
+    setTimeout(() => {
         end();
     }, 10000);
 }
 
 function end() {
     music.src = 'musics/The Seige - I Am Defiant (prettymp3.ru).mp3';
-    footerButtons.style.visibility = 'hidden';
+
+    const videoBg = document.getElementById('video-bg');
+    videoBg.parentNode.removeChild(videoBg);
 
     windowDiv.innerHTML = `
         <div class="thanksEnd mt-2">
