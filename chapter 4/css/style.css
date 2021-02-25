@@ -156,7 +156,8 @@ body {
 #btn-no, #btn-room-1, #btn-room-2,
 #btn-find-key-1, #btn-valve-1,
 #btn-valve-2, #btn-valve-3,
-#btn-valve-4 {
+#btn-valve-4, #btn-dialog-1,
+#btn-dialog-2, #btn-dialog-3 {
     width: 10em;
     margin: auto;
 }

@@ -862,7 +862,7 @@ function checkChurchKey() {
     } else {
         Swal.fire({
             icon: 'error',
-            text: 'Не открывается',
+            title: 'Не открывается',
         });
 
         if (fakeChurchKeys > 0) {
