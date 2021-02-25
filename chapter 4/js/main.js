@@ -26,7 +26,7 @@ let secondChapterKeyHouse4 = '';
 
 // QTE kill zombies in church
 let zombieChurchWidth = 100;
-let zombieChurchSec = 10;
+let zombieChurchSec = 5;
 let clickZombieChurch = 0;
 
 // Polina Hp
@@ -437,14 +437,14 @@ function houseSearch() {
         </div>
 
         <div id="chooseRoom">
-            <div class="row dialog d-flex justify-content-center" id="chooseRoomDiv">
-                <button id="btn-dialog-3" type="button" class="btn btn-dark mt-2 mb-2 ml-2" onclick="mainDoorHouse()">
+            <div class="dialog d-flex justify-content-center btn-group" id="chooseRoomDiv">
+                <button id="btn-dialog-1" type="button" class="btn btn-dark" onclick="mainDoorHouse()">
                     Входная дверь
                 </button>
-                <button id="btn-dialog-1" type="button" class="btn btn-dark mt-2 mb-2 ml-2 mr-2" onclick="books()">
+                <button id="btn-dialog-2" type="button" class="btn btn-dark" onclick="books()">
                     Книжная полка
                 </button>
-                <button id="btn-dialog-2" type="button" class="btn btn-dark mt-2 mb-2" onclick="table()">
+                <button id="btn-dialog-3" type="button" class="btn btn-dark" onclick="table()">
                     Стол
                 </button>
             </div>
@@ -461,16 +461,16 @@ function mainDoorHouse() {
 
         <div class="row dialog d-flex justify-content-center" id="chooseRoomDiv">
             <div class="form-group">
-                <input type="email" class="form-control mt-3 bg-dark text-white" id="passwordHouse" placeholder="Код от замка">
+                <input type="number" class="form-control mt-3 mb-3 bg-dark text-white" id="passwordHouse" placeholder="Код от замка">
             </div>
         </div>
 
-        <div class="row dialog d-flex justify-content-center">
-            <button id="btn-dialog-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="checkCodeInput()">
+        <div class="dialog d-flex justify-content-center btn-group-vertical">
+            <button id="btn-open-door" type="button" class="btn btn-dark mt-2 mb-2" onclick="checkCodeInput()">
                 Открыть
             </button>
 
-            <button id="btn-dialog-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="houseSearch()">
+            <button id="btn-back-house" type="button" class="btn btn-dark mt-2 mb-2" onclick="houseSearch()">
                 Назад
             </button>
         </div>
@@ -485,12 +485,12 @@ function books() {
             <p class="lead" id="text-dialog">Здесь очень много книг и еще какая-то записка.</p>
         </div>
 
-        <div class="row dialog d-flex justify-content-center" id="chooseRoomDiv">
-            <button id="btn-dialog-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="$('#booksYear').modal('show')">
+        <div class="dialog d-flex justify-content-center btn-group-vertical" id="chooseRoomDiv">
+            <button id="btn-read-note" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="$('#booksYear').modal('show')">
                 Прочитать
             </button>
 
-            <button id="btn-dialog-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="houseSearch()">
+            <button id="btn-back-house" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="houseSearch()">
                 Назад
             </button>
         </div>
@@ -505,12 +505,12 @@ function table() {
             <p class="lead" id="text-dialog">Какой-то документ...</p>
         </div>
 
-        <div class="row dialog d-flex justify-content-center" id="chooseRoomDiv">
-            <button id="btn-dialog-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="$('#documents').modal('show')">
+        <div class="dialog d-flex justify-content-center btn-group-vertical" id="chooseRoomDiv">
+            <button id="btn-read-document" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="$('#documents').modal('show')">
                 Прочитать
             </button>
 
-            <button id="btn-dialog-3" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="houseSearch()">
+            <button id="btn-back-house" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="houseSearch()">
                 Назад
             </button>
         </div>
@@ -563,7 +563,7 @@ function villageOutside() {
             <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage()">
                 Карта деревни
             </button>
-            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-toggle="modal" data-target="#inventory">Инвентарь</button>
+            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-bs-toggle="modal" data-bs-target="#inventory">Инвентарь</button>
         </div>
     `;
 
@@ -932,7 +932,7 @@ function qteZombieChurch() {
         </div>
 
         <div class="progress mt-4" id="progress-div-zombie-church">
-            <div class="progress-bar progress-bar-striped bg-danger" id="progressbarZombieChurchsec" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">10 сек</div>
+            <div class="progress-bar progress-bar-striped bg-danger" id="progressbarZombieChurchsec" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">5 сек</div>
         </div>
     `;
 
@@ -1049,12 +1049,12 @@ function blogerSayWhatDoing() {
             <div id="chooseDialogDiv">
                 <p class="lead text-white" id="chooseDialogText">Выбери, что ответить: </p>
                 
-                <div class="row dialog d-flex justify-content-center" id="chooseDialogDiv">
-                    <button id="btn-dialog-1" type="button" class="btn btn-dark mt-1 mb-2 ml-2 mr-2" onclick="confirmBloger = true; firstTeamThenVasiliy()">
+                <div class="dialog d-flex justify-content-center btn-group" id="chooseDialogDiv">
+                    <button id="btn-yes" type="button" class="btn btn-dark mt-2 mb-2" onclick="confirmBloger = true; firstTeamThenVasiliy()">
                         Да, давай
                     </button>
-                    <button id="btn-dialog-2" type="button" class="btn btn-dark mt-1 mb-2 mr-2 ml-2" onclick="confirmBloger = false; firstTeamThenVasiliy()">
-                        Нет, давай сделаем по другому
+                    <button id="btn-no" type="button" class="btn btn-dark mt-2 mb-2" onclick="confirmBloger = false; firstTeamThenVasiliy()">
+                        Нет
                     </button>
                 </div>
             </div>
@@ -1071,11 +1071,11 @@ function blogerSayWhatDoing() {
                 <p class="lead text-white" id="chooseDialogText">Выбери, что ответить: </p>
                 
                 <div class="row dialog d-flex justify-content-center" id="chooseDialogDiv">
-                    <button id="btn-dialog-1" type="button" class="btn btn-dark mt-1 mb-2 ml-2 mr-2" onclick="confirmBloger = true; firstVasiliyThenTeam()">
+                    <button id="btn-yes" type="button" class="btn btn-dark mt-2 mb-2" onclick="confirmBloger = true; firstVasiliyThenTeam()">
                         Да, давай
                     </button>
-                    <button id="btn-dialog-2" type="button" class="btn btn-dark mt-1 mb-2 mr-2 ml-2" onclick="confirmBloger = false; firstVasiliyThenTeam()">
-                        Нет, давай сделаем по другому
+                    <button id="btn-no" type="button" class="btn btn-dark mt-2 mb-2" onclick="confirmBloger = false; firstVasiliyThenTeam()">
+                        Нет
                     </button>
                 </div>
             </div>
@@ -1393,7 +1393,7 @@ function fightVasiliy() {
             <div class="progress-bar progress-bar-striped bg-danger" id="progressbarVasiliyHp" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">${vasiliyHp}%</div>
         </div>
 
-        <div class="row dialog d-flex justify-content-center mt-3" id="church">
+        <div class="d-flex justify-content-center mt-3 btn-group" id="valves-div">
             <button id="btn-valve-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="valve('valveIndicator1'); valveBtn='btn-valve-1'">
                 Вентиль 1
             </button>
@@ -1498,7 +1498,6 @@ function soundSelfDestructionStart() {
     const progressTimer = document.getElementById('progressTimer');
 
     const intervalChangerTimer = setInterval(() => {
-        console.log(timerMinutes, timerSeconds);
         if (timerMinutes == 0 && timerSeconds == 0) {
             Swal.fire({
                 icon: 'error',
@@ -1566,8 +1565,28 @@ function checkRelationShip() {
 }
 
 function blogerDead() {
-    console.log('Relationship with Bloger - ', blogerRelationship);
-    console.log('Bloger is dead');
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+    });
+
+    Toast.fire({
+        icon: 'success',
+        title: 'Получено достижение: Первая и последняя',
+    });
+
+    localStorage.setItem('achievement1-chapter4', 'open');
+
+    nameDiv.parentNode.removeChild(nameDiv);
+
     dialogs.innerHTML = `
         <div class="row mt-3 name">
             <p class="lead" id="name-dialog">Блогер</p>
@@ -1614,8 +1633,7 @@ function blogerDead() {
 }
 
 function polinaDead() {
-    console.log('Relationship with Bloger - ', blogerRelationship);
-    console.log('Polina is dead');
+    nameDiv.parentNode.removeChild(nameDiv);
 
     dialogs.innerHTML = `
         <div class="row mt-3 name">
@@ -1665,8 +1683,10 @@ function polinaDead() {
 function end() {
     music.src = 'musics/The Seige - I Am Defiant (prettymp3.ru).mp3';
 
-    const videoBg = document.getElementById('video-bg');
-    videoBg.parentNode.removeChild(videoBg);
+    try {
+        const videoBg = document.getElementById('video-bg');
+        videoBg.parentNode.removeChild(videoBg);
+    } catch { }
 
     windowDiv.innerHTML = `
         <div class="thanksEnd mt-2">
@@ -1675,7 +1695,7 @@ function end() {
             
             <div class="d-flex justify-content-center" id="links">
                 <div class="btn-group" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle mt-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle mt-2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Ссылки
                     </button>
                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -1684,7 +1704,7 @@ function end() {
                     </div>
                 </div>
                 <div class="btn-group ml-2" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle mt-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle mt-2 ml-2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Выбрать главу
                     </button>
                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -1699,10 +1719,10 @@ function end() {
                 </button>
             </div>
             <div class="d-flex justify-content-center" id="links2">
-                <button class="btn btn-dark mt-2 ml-2" id="btn-thanks" data-toggle="modal" data-target="#thanks-div">Благодарность</button>
+                <button class="btn btn-dark mt-2 ml-2" id="btn-thanks" data-bs-toggle="modal" data-bs-target="#thanks-div">Благодарность</button>
             </div>
 
-            <div class="card-deck text-center mt-4">
+            <div class="card-group text-center mt-4">
                 <div class="card text-white bg-dark">
                     <div class="card-body">
                         <h5 class="card-title">Программисты</h5>
@@ -1733,9 +1753,7 @@ function end() {
                 <div class="modal-content bg-dark">
                     <div class="modal-header text-white">
                         <h5 class="modal-title" id="thanks-title">Благодарность</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button type="button" class="btn-close btn-close-white" id="close-settings" data-bs-dismiss="modal" style="padding-left: 2em; padding-top: 1.4em;"></button>
                     </div>
                     <div class="modal-body text-center text-white">
                         <p class="lead">Отдельная благодарность всем тем,
@@ -1743,7 +1761,7 @@ function end() {
                         <p class="lead bg-success" id="you">Особая благодарность тебе за прохождение!</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-dark" data-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Закрыть</button>
                     </div>
                 </div>
             </div>

@@ -198,6 +198,26 @@ function talk(who) {
 
             const talkToOneInner = document.getElementById('talkToOneInner');
             talkToOneInner.parentNode.removeChild(talkToOneInner);
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+
+                onOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer);
+                  toast.addEventListener('mouseleave', Swal.resumeTimer);
+                },
+            });
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Получено достижение: Поговорим?',
+            });
+
+            localStorage.setItem('achievement2-chapter4', 'open');
         }
     }
 }
@@ -350,30 +370,30 @@ function valve(valveIndicator) {
         <div class="d-flex justify-content-center" id="valveDiv"> 
             <div class="d-flex align-items-center" id="valve-1">
                 <div class="progress" id="valve-progress-1">
-                    <div id="valve-progress-w-1" class="progress-bar bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart1}%"></div>
+                    <div id="valve-progress-w-1" class="progress-bar bg-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart1}%"></div>
                 </div>
 
-                <button type="button" id="btn-valve-1" class="btn btn-secondary" onclick="valveProgressClick(1)">
+                <button type="button" id="btn-valve-click-1" class="btn btn-dark" onclick="valveProgressClick(1)">
                     <i class="fas fa-sync"></i>
                 </button>
             </div>
 
             <div class="d-flex align-items-center" id="valve-2">
                 <div class="progress" id="valve-progress-2">
-                    <div id="valve-progress-w-2" class="progress-bar bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart2}%"></div>
+                    <div id="valve-progress-w-2" class="progress-bar bg-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart2}%"></div>
                 </div>
 
-                <button type="button" id="btn-valve-2" class="btn btn-secondary" onclick="valveProgressClick(2)">
+                <button type="button" id="btn-valve-click-2" class="btn btn-dark" onclick="valveProgressClick(2)">
                     <i class="fas fa-sync"></i>
                 </button>
             </div>
 
             <div class="d-flex align-items-center" id="valve-3">
                 <div class="progress" id="valve-progress-3">
-                    <div id="valve-progress-w-3" class="progress-bar bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart3}%"></div>
+                    <div id="valve-progress-w-3" class="progress-bar bg-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart3}%"></div>
                 </div>
 
-                <button type="button" id="btn-valve-3" class="btn btn-secondary" onclick="valveProgressClick(3)">
+                <button type="button" id="btn-valve-click-3" class="btn btn-dark" onclick="valveProgressClick(3)">
                     <i class="fas fa-sync"></i>
                 </button>
             </div>

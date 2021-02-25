@@ -67,10 +67,6 @@ body {
 
 #btn-new-game { margin-top: 0; padding-top: 0; }
 
-#achievements-tab-li {
-    margin-left: 1vw;
-}
-
 .music { 
     width: 70vh;
     margin-left: 1vh; 
@@ -144,14 +140,6 @@ body {
     height: 100px;
 }
 
-/* #swal2-title, #swal2-content {
-    color: #fff;
-}
-
-.swal2-modal, .swal2-show {
-    background: rgb(42, 40, 40);
-} */
-
 #switch-music {
     background: rgb(39, 42, 44);
 }
@@ -168,7 +156,7 @@ body {
     }
 
     #buttons-menu {
-        margin-top: 15vh;
+        margin-top: 20vh;
     }
 }
   

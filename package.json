@@ -1,0 +1,41 @@
+{
+    "app_name": "The First of Them",
+    "description": "The First of Them",
+    "keywords": [
+        "tfot"
+    ],
+    "main": "logo.html",
+    "name": "thefirstofthem",
+    "version": "1.0.1",
+    "webexe_settings": {
+        "blacklist": "",
+        "custom_script": "",
+        "download_dir": "",
+        "export_dir": "C:/Users/Nikita/Documents/TFoT Build",
+        "force_download": false,
+        "linux-x64": false,
+        "mac-x64": false,
+        "nw_compression_level": 5,
+        "nw_version": "0.50.0",
+        "output_pattern": "",
+        "sdk_build": false,
+        "uncompressed_folder": false,
+        "whitelist": "",
+        "windows-x64": true
+    },
+    "webkit": {},
+    "window": {
+        "exe_icon": "web_hi_res_512.png",
+        "height": 720,
+        "icon": "web_hi_res_512.png",
+        "id": "TFoT",
+        "mac_icon": "web_hi_res_512.png",
+        "max_height": 720,
+        "max_width": 1280,
+        "min_height": 720,
+        "min_width": 1280,
+        "resizable": true,
+        "title": "The First of Them",
+        "width": 1280
+    }
+}

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The First of Them</title>
     <link rel="favicon icon" href="chapter 1/images/tfot-icon.png">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="chapter 2/css/menu.css">
 </head>
 <body>
@@ -23,9 +23,9 @@
                     <button class="btn btn-dark" id="btn-music-up" onclick="volume_up_menu()"><i class="fas fa-volume-up" id="music-icon"></i></button>
                 </div>
 
-                <button class="btn btn-dark" id="btn-new-game" data-toggle="modal" data-target="#difficult">Новая игра</button>
-                <button class="btn btn-dark" id="btn-chapters" data-toggle="modal" data-target="#chapters">Выбрать главу</button>
-                <button class="btn btn-dark" id="btn-settings" data-toggle="modal" data-target="#settings">Настройки</button>
+                <button class="btn btn-dark" id="btn-new-game" data-bs-toggle="modal" data-bs-target="#difficult">Новая игра</button>
+                <button class="btn btn-dark" id="btn-chapters" data-bs-toggle="modal" data-bs-target="#chapters">Выбрать главу</button>
+                <button class="btn btn-dark" id="btn-settings" data-bs-toggle="modal" data-bs-target="#settings">Настройки</button>
             </div>
         </div>
     </div>
@@ -40,21 +40,19 @@
         <div class="modal-dialog">
             <div class="modal-content m-auto">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <button type="button" class="close" id="close-settings" data-dismiss="modal" aria-label="Close">
-                        <i class="fas fa-times"></i>
-                    </button>
+                    <button type="button" class="btn-close btn-close-white" id="close-settings" data-bs-dismiss="modal" style="padding-left: 2em; padding-top: 1.4em;"></button>
                     <li class="nav-item" id="achievements-tab-li" role="presentation">
-                        <a class="nav-link active text-light" id="achievements-tab" data-toggle="tab" href="#achievements-div" role="tab" aria-controls="map" aria-selected="false">Достижения</a>
+                        <a class="nav-link active text-light" id="achievements-tab" data-bs-toggle="tab" href="#achievements-div" role="tab" aria-controls="map" aria-selected="false">Достижения</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link text-light" id="musics-tab" data-toggle="tab" href="#musics-div" role="tab" aria-controls="musics" aria-selected="false">Музыка</a>
+                        <a class="nav-link text-light" id="musics-tab" data-bs-toggle="tab" href="#musics-div" role="tab" aria-controls="musics" aria-selected="false">Музыка</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link text-light" id="posters-tab" data-toggle="tab" href="#posters-div" role="tab" aria-controls="tasks" aria-selected="false">Постер</a>
+                        <a class="nav-link text-light" id="posters-tab" data-bs-toggle="tab" href="#posters-div" role="tab" aria-controls="tasks" aria-selected="false">Постеры</a>
                     </li>
-                    <!-- <li class="nav-item" role="presentation"> -->
-                        <!-- <a class="nav-link text-light" id="languages-tab" data-toggle="tab" href="#languages-div" role="tab" aria-controls="contact" aria-selected="false">Язык</a> -->
-                    <!-- </li> -->
+                    <!-- <li class="nav-item" role="presentation">
+                        <a class="nav-link text-light" id="languages-tab" data-bs-toggle="tab" href="#languages-div" role="tab" aria-controls="contact" aria-selected="false">Язык</a>
+                    </li> -->
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="achievements-div" role="tabpanel" aria-labelledby="map-tab">
@@ -62,12 +60,12 @@
                             <div class="card bg-dark text-white">
                                 <div class="card-header" id="headingOne">
                                     <h5 class="mb-0">
-                                        <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <button class="btn btn-link text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                             Глава 1
                                         </button>
                                     </h5>
                                 </div>
-                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="card-body text-center d-flex justify-content-center">
                                         <div class="d-block">
                                             <div class="card music text-white bg-dark mb-3" id="achievement1" style="max-width: 18rem;">
@@ -107,12 +105,12 @@
                             <div class="card bg-dark text-white">
                                 <div class="card-header" id="headingTwo">
                                     <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed text-white" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <button class="btn btn-link collapsed text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                             Глава 2
                                         </button>
                                     </h5>
                                 </div>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                     <div class="card-body text-center d-flex justify-content-center">
                                         <div class="d-block">
                                             <div class="card music text-white bg-dark mb-3" id="achievement2-1" style="max-width: 18rem;">
@@ -146,12 +144,12 @@
                             <div class="card bg-dark text-white">
                                 <div class="card-header" id="headingThree">
                                     <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed text-white" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <button class="btn btn-link collapsed text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                             Глава 3
                                         </button>
                                     </h5>
                                 </div>
-                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                     <div class="card-body text-center d-flex justify-content-center">                                        
                                         <div class="d-block">
                                             <div class="card music text-white bg-dark mb-3" id="achievement3-1" style="max-width: 18rem;">
@@ -164,6 +162,34 @@
                                                 <div class="card-header">Великий дипломат</div>
                                                 <div class="card-body">
                                                     <p class="card-title" id="title-achievement3-2">Не открыто</p>
+                                                </div>
+                                            </div>
+                                            <div id="secret-s"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card bg-dark text-white">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                                            Глава 4
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-data-bs-parent="#accordionExample">
+                                    <div class="card-body text-center d-flex justify-content-center">                                        
+                                        <div class="d-block">
+                                            <div class="card music text-white bg-dark mb-3" id="achievement4-1" style="max-width: 18rem;">
+                                                <div class="card-header">Первая и последняя</div>
+                                                <div class="card-body">
+                                                    <p class="card-title" id="title-achievement4-1">Не открыто</p>
+                                                </div>
+                                            </div>
+                                            <div class="card music text-white bg-dark mb-3" id="achievement4-2" style="max-width: 18rem;">
+                                                <div class="card-header">Поговорим?</div>
+                                                <div class="card-body">
+                                                    <p class="card-title" id="title-achievement4-2">Не открыто</p>
                                                 </div>
                                             </div>
                                             <div id="secret-s"></div>
@@ -196,18 +222,24 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="posters-div" role="tabpanel" aria-labelledby="tasks-tab">
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            </ol>
+                        <div id="carouselPosters" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <img src="chapter 1/images/poster.jpg" class="d-block w-100">
                                 </div>
+                                <div class="carousel-item">
+                                    <img src="chapter 1/images/poster2.jpg" class="d-block w-100">
+                                </div>
                             </div>
+                            <a class="carousel-control-prev" href="#carouselPosters" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselPosters" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </a>
                         </div>
                     </div>
-                    <!-- <div class="tab-pane fade" id="languages-div" role="tabpanel" aria-labelledby="documents-tab">
+                    <!-- <div class="tab-pane fade" id="languages-div" role="tabpanel">
                         <div class="d-flex justify-content-center">
                             <div class="btn-group mt-3 mb-3">
                                 <button class="btn btn-dark" id="btn-english" onclick="english()">Английский язык</button>
@@ -224,9 +256,9 @@
             <div class="modal-content">
                 <div class="modal-body d-flex justify-content-center">
                     <div class="btn-group-vertical">
-                        <button class="btn btn-dark" id="btn-close" data-dismiss="modal"><i class="fas fa-times"></i></button>
+                        <button class="btn btn-dark" id="btn-close" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
                         <button class="btn btn-dark" id="btn-what-is-it" onclick="what_is_this()">???</button>
-                        <button class="btn btn-dark" id="btn-1-chapter" data-toggle="modal" data-target="#difficult">1 глава - Био Вирус: Фобос</button>
+                        <button class="btn btn-dark" id="btn-1-chapter" data-bs-toggle="modal" data-bs-target="#difficult">1 глава - Био Вирус: Фобос</button>
                         <button class="btn btn-dark" id="btn-2-chapter" onclick="warning_chapter2()">2 глава - Новые знакомства</button>
                         <button class="btn btn-dark" id="btn-3-chapter" onclick="location.href='chapter 3/show.html'">3 глава - Лаборатория</button>
                         <button class="btn btn-dark" id="btn-4-chapter" onclick="location.href='chapter 4/show.html'">4 глава - Деревня</button>
@@ -361,7 +393,7 @@
 
             // Inner Chapter 3 Achievements
             if (achievement_3_1 == null) { } else {
-                achievement_3_1_text.innerHTML = "Не умереть";
+                achievement_3_1_text.innerHTML = "Не умереть ни разу за главу";
                 achievement_3_1_div.className = "card text-white bg-success mb-3";
                 achievement_3_1_text.style.color = "#fff";
             }
@@ -382,6 +414,29 @@
                     </div>
                 `;
             }
+
+            // Chapter 4 Achievements
+            let achievement_4_1 = localStorage.getItem("achievement1-chapter4"),
+                achievement_4_2 = localStorage.getItem("achievement2-chapter4");
+
+            let achievement_4_1_text = document.getElementById("title-achievement4-1"),
+                achievement_4_2_text = document.getElementById("title-achievement4-2");
+
+            let achievement_4_1_div = document.getElementById("achievement4-1"),
+                achievement_4_2_div = document.getElementById("achievement4-2");
+
+            // Inner Chapter 4 Achievements
+            if (achievement_4_1 == null) { } else {
+                achievement_4_1_text.innerHTML = "Полина выжила";
+                achievement_4_1_div.className = "card text-white bg-success mb-3";
+                achievement_4_1_text.style.color = "#fff";
+            }
+
+            if (achievement_4_2 == null) { } else {
+                achievement_4_2_text.innerHTML = "Поговорить со всеми на все темы";
+                achievement_4_2_div.className = "card text-white bg-success mb-3";
+                achievement_4_2_text.style.color = "#fff";
+            }
         }
     </script>
 
@@ -391,7 +446,7 @@
     <script src="https://kit.fontawesome.com/373834e38f.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="chapter 2/js/main.js"></script>
 </body>
 </html>

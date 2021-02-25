@@ -37,12 +37,17 @@ body {
 #navbarToggleMenu, #btn-next {
     margin-top: 1vh;
     margin-bottom: 1vh;
+    margin-left: 1vh;
 }
 
 #navbarMenuBg {
     border: 1px solid rgba(255,255,255,.1);
     border-radius: .3rem;
-    font-style: 1rem;
+    width: 10em;
+}
+
+#navbarToggleMenu {
+    padding-left: 1vh;
 }
 
 #btn-next { 
@@ -88,7 +93,7 @@ body {
 }
 
 #valveDiv {
-    margin-top: 8em;
+    margin-top: 10em;
 }
 
 #valve-1, #valve-2, #valve-3 {
@@ -109,29 +114,51 @@ body {
     margin-right: 2em;
 }
 
-#btn-valve-1, #btn-valve-2, #btn-valve-3 {
+#btn-valve-click-1, #btn-valve-click-2, #btn-valve-click-3 {
     margin-top: 0;
+    width: 40px;
+    height: 40px;
     float: right;
-}
-
-#menuBtnNav {
-    padding-right: 1vh;
 }
 
 #talkBtnNav {
     visibility: hidden;
     padding-left: 1vh;
+    padding-right: 1vh;
 }
 
 #talkToOne {
     visibility: hidden;
     padding-top: 1vh;
     padding-bottom: 1vh;
-    margin-right: 1vh;
+    padding-right: 1vh;
+}
+
+#talkAnyOne {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1%;
+    font-size: 1em;
 }
 
 #btn-talk-bloger, #btn-talk-vasiliy {
     color: rgba(255,255,255,.75);
+}
+
+#btn-open-door, #btn-back-house,
+#btn-read-note, #btn-read-document,
+#btn-house-1, #btn-house-2,
+#btn-house-3, #btn-house-4,
+#btn-house-5, #btn-house-6,
+#btn-map, #btn-inventory,
+#btn-church, #btn-key-church,
+#btn-shot-zombie-church, #btn-yes,
+#btn-no, #btn-room-1, #btn-room-2,
+#btn-find-key-1, #btn-valve-1,
+#btn-valve-2, #btn-valve-3,
+#btn-valve-4 {
+    width: 10em;
+    margin: auto;
 }
 
 /* Скрытое имя */
@@ -235,6 +262,8 @@ body {
 }
 
 #passwordHouse {
+    width: 15em;
+    margin: auto;
     border: none;
 }
 
@@ -303,4 +332,5 @@ body {
         height: 100%;
         object-fit: cover;
     }
- }
+}
+
