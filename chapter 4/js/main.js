@@ -593,7 +593,7 @@ function house1() {
             <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage1()">
                 Карта деревни
             </button>
-            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-toggle="modal" data-target="#inventory">Инвентарь</button>
+            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-bs-toggle="modal" data-bs-target="#inventory">Инвентарь</button>
         </div>
     `;
 
@@ -637,7 +637,7 @@ function house2() {
             <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage2()">
                 Карта деревни
             </button>
-            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-toggle="modal" data-target="#inventory">Инвентарь</button>
+            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-bs-toggle="modal" data-bs-target="#inventory">Инвентарь</button>
         </div>
     `;
 
@@ -685,7 +685,7 @@ function house3() {
             <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage3()">
                 Карта деревни
             </button>
-            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-toggle="modal" data-target="#inventory">Инвентарь</button>
+            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-bs-toggle="modal" data-bs-target="#inventory">Инвентарь</button>
         </div>
     `;
 
@@ -724,7 +724,7 @@ function house4() {
             <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage4()">
                 Карта деревни
             </button>
-            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-toggle="modal" data-target="#inventory">Инвентарь</button>
+            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-bs-toggle="modal" data-bs-target="#inventory">Инвентарь</button>
         </div>
     `;
 
@@ -772,7 +772,7 @@ function house5() {
             <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillage5()">
                 Карта деревни
             </button>
-            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-toggle="modal" data-target="#inventory">Инвентарь</button>
+            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-bs-toggle="modal" data-bs-target="#inventory">Инвентарь</button>
         </div>
     `;
 
@@ -826,7 +826,7 @@ function church() {
             <button id="btn-map" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mapVillageChurch()">
                 Карта деревни
             </button>
-            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-toggle="modal" data-target="#inventory">Инвентарь</button>
+            <button class="btn btn-dark mt-2 mb-2 mr-2 ml-2" id="btn-inventory" data-bs-toggle="modal" data-bs-target="#inventory">Инвентарь</button>
         </div>
     `;
 }
@@ -1585,7 +1585,9 @@ function blogerDead() {
 
     localStorage.setItem('achievement1-chapter4', 'open');
 
-    nameDiv.parentNode.removeChild(nameDiv);
+    try {
+        nameDiv.parentNode.removeChild(nameDiv);
+    } catch {}
 
     dialogs.innerHTML = `
         <div class="row mt-3 name">
