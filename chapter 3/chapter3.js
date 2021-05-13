@@ -2417,7 +2417,7 @@ function useAntidot() {
     dialogsDiv.style.visibility = 'hidden';
     footerButtons.style.visibility = 'hidden';
 
-    document.body.style.background = "#000";
+    document.body.style.background = '#000';
 
     setTimeout(() => {
         if (antidot == true) {

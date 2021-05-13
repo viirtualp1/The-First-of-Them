@@ -24,5 +24,8 @@
         "resizable": true,
         "title": "The First of Them",
         "width": 1280
+    },
+    "devDependencies": {
+        "electron": "^12.0.7"
     }
 }

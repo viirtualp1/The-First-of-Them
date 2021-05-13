@@ -144,6 +144,16 @@ body {
     background: rgb(39, 42, 44);
 }
 
+@media screen and (max-height: 900px) {
+    #btn-thanks, #btn-easy,
+    #btn-normal, #btn-hardcore {
+        background: #25292C;
+        width: 12rem;
+        height: 4rem;
+        border: 0;
+    }
+}
+
 @media screen and (max-height: 600px) {
     #buttons-menu { 
         margin-top: 20vh;

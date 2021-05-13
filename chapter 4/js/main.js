@@ -1336,10 +1336,7 @@ function laboratory() {
 // transition in search items mechanics
 function mainRoomLaboratoryTransition() {
     localStorage.setItem('mainRoomLaboratory', 'mainRoomLaboratory');
-}
-
-function transitionRoom1() {
-    location.href = 'searchRoom1/';
+    mainRoomLaboratory();
 }
 
 function roomLaboratory1() {
@@ -1352,7 +1349,7 @@ function roomLaboratory1() {
         </div>
 
         <div class="row dialog d-flex justify-content-center" id="laboratory">
-            <button id="btn-find-key-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mainRoomLaboratoryTransition(); transitionRoom1()">
+            <button id="btn-find-key-1" type="button" class="btn btn-dark mt-2 mb-2 mr-2 ml-2" onclick="mainRoomLaboratoryTransition()">
                 Искать ключ
             </button>
         </div>
