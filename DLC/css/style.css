@@ -1,3 +1,14 @@
 * {
-    background-color: rgb(80, 80, 80);
+  margin: 1rem;
+}
+
+body {
+  background: rgb(80, 80, 80);
+}
+
+#dialogs {
+  background: rgb(56, 56, 56);
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: #fff;
 }
