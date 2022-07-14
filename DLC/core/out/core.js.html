@@ -1,4 +1,32 @@
-const gameMechanicsSettings = {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: core.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: core.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const gameMechanicsSettings = {
   // true - move to bottom
   // false - move to top
   currentIndexDialog: 0,
@@ -67,24 +95,24 @@ function nextDialog() {
 // danil
 function talk(config) {
   talkToOneInner.innerHTML = `
-      <div class="row mt-3 name">
-          <p class="lead" id="name-dialog">${config.speaking}</p>
-      </div>
-      <div class="row dialog">
-          <p class="lead" id="text-dialog">${
+      &lt;div class="row mt-3 name">
+          &lt;p class="lead" id="name-dialog">${config.speaking}&lt;/p>
+      &lt;/div>
+      &lt;div class="row dialog">
+          &lt;p class="lead" id="text-dialog">${
             dialogsMassive[0][0][`question${btnClickTalkVasiliy}`]
-          }</p>
-      </div>
+          }&lt;/p>
+      &lt;/div>
 
-      <div class="row mt-3 name">
-          <p class="lead" id="name-dialog">Василий</p>
-      </div>
+      &lt;div class="row mt-3 name">
+          &lt;p class="lead" id="name-dialog">Василий&lt;/p>
+      &lt;/div>
 
-      <div class="row dialog">
-          <p class="lead" id="text-dialog">${
+      &lt;div class="row dialog">
+          &lt;p class="lead" id="text-dialog">${
             dialogsMassive[0][0][`answer${btnClickTalkVasiliy}Good`]
-          } <button class="btn btn-dark" onclick="removeTalkDiv()" style="float: right; margin-left: 1vw;">OK</button></p>
-      </div>
+          } &lt;button class="btn btn-dark" onclick="removeTalkDiv()" style="float: right; margin-left: 1vw;">OK&lt;/button>&lt;/p>
+      &lt;/div>
   `;
 }
 
@@ -99,45 +127,45 @@ function talk(config) {
 //     if (btnClickTalkVasiliy != 7) {
 //       if (vasiliyRelationship == 'Хорошие' || vasiliyRelationship == 'Отличные') {
 //         talkToOneInner.innerHTML = `
-//                     <div class="row mt-3 name">
-//                         <p class="lead" id="name-dialog">Полина</p>
-//                     </div>
-//                     <div class="row dialog">
-//                         <p class="lead" id="text-dialog">${
+//                     &lt;div class="row mt-3 name">
+//                         &lt;p class="lead" id="name-dialog">Полина&lt;/p>
+//                     &lt;/div>
+//                     &lt;div class="row dialog">
+//                         &lt;p class="lead" id="text-dialog">${
 //                           dialogsMassive[0][0][`question${btnClickTalkVasiliy}`]
-//                         }</p>
-//                     </div>
+//                         }&lt;/p>
+//                     &lt;/div>
 
-//                     <div class="row mt-3 name">
-//                         <p class="lead" id="name-dialog">Василий</p>
-//                     </div>
+//                     &lt;div class="row mt-3 name">
+//                         &lt;p class="lead" id="name-dialog">Василий&lt;/p>
+//                     &lt;/div>
 
-//                     <div class="row dialog">
-//                         <p class="lead" id="text-dialog">${
+//                     &lt;div class="row dialog">
+//                         &lt;p class="lead" id="text-dialog">${
 //                           dialogsMassive[0][0][`answer${btnClickTalkVasiliy}Good`]
-//                         } <button class="btn btn-dark" onclick="removeTalkDiv()" style="float: right; margin-left: 1vw;">OK</button></p>
-//                     </div>
+//                         } &lt;button class="btn btn-dark" onclick="removeTalkDiv()" style="float: right; margin-left: 1vw;">OK&lt;/button>&lt;/p>
+//                     &lt;/div>
 //                 `;
 //       } else if (vasiliyRelationship == 'Плохие') {
 //         talkToOneInner.innerHTML = `
-//                     <div class="row mt-3 name">
-//                         <p class="lead" id="name-dialog">Полина</p>
-//                     </div>
-//                     <div class="row dialog">
-//                         <p class="lead" id="text-dialog">${
+//                     &lt;div class="row mt-3 name">
+//                         &lt;p class="lead" id="name-dialog">Полина&lt;/p>
+//                     &lt;/div>
+//                     &lt;div class="row dialog">
+//                         &lt;p class="lead" id="text-dialog">${
 //                           dialogsMassive[0][0][`question${btnClickTalkVasiliy}`]
-//                         }</p>
-//                     </div>
+//                         }&lt;/p>
+//                     &lt;/div>
 
-//                     <div class="row mt-3 name">
-//                         <p class="lead" id="name-dialog">Василий</p>
-//                     </div>
+//                     &lt;div class="row mt-3 name">
+//                         &lt;p class="lead" id="name-dialog">Василий&lt;/p>
+//                     &lt;/div>
 
-//                     <div class="row dialog">
-//                         <p class="lead" id="text-dialog">${
+//                     &lt;div class="row dialog">
+//                         &lt;p class="lead" id="text-dialog">${
 //                           dialogsMassive[0][0][`answer${btnClickTalkVasiliy}Bad`]
-//                         } <button class="btn btn-dark" onclick="removeTalkDiv()" style="float: right; margin-left: 1vw;">OK</button></p>
-//                     </div>
+//                         } &lt;button class="btn btn-dark" onclick="removeTalkDiv()" style="float: right; margin-left: 1vw;">OK&lt;/button>&lt;/p>
+//                     &lt;/div>
 //                 `;
 //       }
 //     } else {
@@ -156,45 +184,45 @@ function talk(config) {
 //     if (btnClickTalkBloger != 7) {
 //       if (blogerRelationship == 'Хорошие' || blogerRelationship == 'Отличные') {
 //         talkToOneInner.innerHTML = `
-//                     <div class="row mt-3 name">
-//                         <p class="lead" id="name-dialog">Полина</p>
-//                     </div>
-//                     <div class="row dialog">
-//                         <p class="lead" id="text-dialog">${
+//                     &lt;div class="row mt-3 name">
+//                         &lt;p class="lead" id="name-dialog">Полина&lt;/p>
+//                     &lt;/div>
+//                     &lt;div class="row dialog">
+//                         &lt;p class="lead" id="text-dialog">${
 //                           dialogsMassive[1][0][`question${btnClickTalkBloger}`]
-//                         }</p>
-//                     </div>
+//                         }&lt;/p>
+//                     &lt;/div>
 
-//                     <div class="row mt-3 name">
-//                         <p class="lead" id="name-dialog">Блогер</p>
-//                     </div>
+//                     &lt;div class="row mt-3 name">
+//                         &lt;p class="lead" id="name-dialog">Блогер&lt;/p>
+//                     &lt;/div>
 
-//                     <div class="row dialog">
-//                         <p class="lead" id="text-dialog">${
+//                     &lt;div class="row dialog">
+//                         &lt;p class="lead" id="text-dialog">${
 //                           dialogsMassive[1][0][`answer${btnClickTalkBloger}Good`]
-//                         } <button class="btn btn-dark" onclick="removeTalkDiv()" style="float: right; margin-left: 1vw;">OK</button></p>
-//                     </div>
+//                         } &lt;button class="btn btn-dark" onclick="removeTalkDiv()" style="float: right; margin-left: 1vw;">OK&lt;/button>&lt;/p>
+//                     &lt;/div>
 //                 `;
 //       } else if (blogerRelationship == 'Плохие') {
 //         talkToOneInner.innerHTML = `
-//                     <div class="row mt-3 name">
-//                         <p class="lead" id="name-dialog">Полина</p>
-//                     </div>
-//                     <div class="row dialog">
-//                         <p class="lead" id="text-dialog">${
+//                     &lt;div class="row mt-3 name">
+//                         &lt;p class="lead" id="name-dialog">Полина&lt;/p>
+//                     &lt;/div>
+//                     &lt;div class="row dialog">
+//                         &lt;p class="lead" id="text-dialog">${
 //                           dialogsMassive[1][0][`question${btnClickTalkBloger}`]
-//                         }</p>
-//                     </div>
+//                         }&lt;/p>
+//                     &lt;/div>
 
-//                     <div class="row mt-3 name">
-//                         <p class="lead" id="name-dialog">Блогер</p>
-//                     </div>
+//                     &lt;div class="row mt-3 name">
+//                         &lt;p class="lead" id="name-dialog">Блогер&lt;/p>
+//                     &lt;/div>
 
-//                     <div class="row dialog">
-//                         <p class="lead" id="text-dialog">${
+//                     &lt;div class="row dialog">
+//                         &lt;p class="lead" id="text-dialog">${
 //                           dialogsMassive[1][0][`answer${btnClickTalkBloger}Bad`]
-//                         } <button class="btn btn-dark" onclick="removeTalkDiv()" style="float: right; margin-left: 1vw;">OK</button></p>
-//                     </div>
+//                         } &lt;button class="btn btn-dark" onclick="removeTalkDiv()" style="float: right; margin-left: 1vw;">OK&lt;/button>&lt;/p>
+//                     &lt;/div>
 //                 `;
 //       }
 //     } else {
@@ -313,37 +341,37 @@ function valve(valveIndicator) {
 
   const valvesDiv = document.getElementById('valvesDiv');
   valvesDiv.innerHTML = `
-        <div class="d-flex justify-content-center" id="valveDiv"> 
-            <div class="d-flex align-items-center" id="valve-1">
-                <div class="progress" id="valve-progress-1">
-                    <div id="valve-progress-w-1" class="progress-bar bg-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart1}%"></div>
-                </div>
+        &lt;div class="d-flex justify-content-center" id="valveDiv"> 
+            &lt;div class="d-flex align-items-center" id="valve-1">
+                &lt;div class="progress" id="valve-progress-1">
+                    &lt;div id="valve-progress-w-1" class="progress-bar bg-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart1}%">&lt;/div>
+                &lt;/div>
 
-                <button type="button" id="btn-valve-click-1" class="btn btn-dark" onclick="valveProgressClick(1)">
-                    <i class="fas fa-sync"></i>
-                </button>
-            </div>
+                &lt;button type="button" id="btn-valve-click-1" class="btn btn-dark" onclick="valveProgressClick(1)">
+                    &lt;i class="fas fa-sync">&lt;/i>
+                &lt;/button>
+            &lt;/div>
 
-            <div class="d-flex align-items-center" id="valve-2">
-                <div class="progress" id="valve-progress-2">
-                    <div id="valve-progress-w-2" class="progress-bar bg-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart2}%"></div>
-                </div>
+            &lt;div class="d-flex align-items-center" id="valve-2">
+                &lt;div class="progress" id="valve-progress-2">
+                    &lt;div id="valve-progress-w-2" class="progress-bar bg-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart2}%">&lt;/div>
+                &lt;/div>
 
-                <button type="button" id="btn-valve-click-2" class="btn btn-dark" onclick="valveProgressClick(2)">
-                    <i class="fas fa-sync"></i>
-                </button>
-            </div>
+                &lt;button type="button" id="btn-valve-click-2" class="btn btn-dark" onclick="valveProgressClick(2)">
+                    &lt;i class="fas fa-sync">&lt;/i>
+                &lt;/button>
+            &lt;/div>
 
-            <div class="d-flex align-items-center" id="valve-3">
-                <div class="progress" id="valve-progress-3">
-                    <div id="valve-progress-w-3" class="progress-bar bg-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart3}%"></div>
-                </div>
+            &lt;div class="d-flex align-items-center" id="valve-3">
+                &lt;div class="progress" id="valve-progress-3">
+                    &lt;div id="valve-progress-w-3" class="progress-bar bg-dark" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${valveProgressWidthStart3}%">&lt;/div>
+                &lt;/div>
 
-                <button type="button" id="btn-valve-click-3" class="btn btn-dark" onclick="valveProgressClick(3)">
-                    <i class="fas fa-sync"></i>
-                </button>
-            </div>
-        </div>
+                &lt;button type="button" id="btn-valve-click-3" class="btn btn-dark" onclick="valveProgressClick(3)">
+                    &lt;i class="fas fa-sync">&lt;/i>
+                &lt;/button>
+            &lt;/div>
+        &lt;/div>
     `;
 }
 
@@ -354,8 +382,8 @@ function valveProgressClick(progressElement) {
   const progress3 = document.getElementById('valve-progress-w-3');
 
   if (
-    (widthProgress1 == 50 || widthProgress1 == 60) &&
-    (widthProgress2 == 50 || widthProgress2 == 60) &&
+    (widthProgress1 == 50 || widthProgress1 == 60) &amp;&amp;
+    (widthProgress2 == 50 || widthProgress2 == 60) &amp;&amp;
     (widthProgress3 == 50 || widthProgress3 == 60)
   ) {
     sound.src = 'sounds/valveSuccess.mp3';
@@ -374,7 +402,7 @@ function valveProgressClick(progressElement) {
   } else {
     switch (progressElement) {
       case 1:
-        if (widthProgress1 <= 0) {
+        if (widthProgress1 &lt;= 0) {
           progressClickDirection1 = 'top';
         } else if (widthProgress1 >= 100) {
           progressClickDirection1 = 'bottom';
@@ -389,7 +417,7 @@ function valveProgressClick(progressElement) {
         }
         break;
       case 2:
-        if (widthProgress2 <= 0) {
+        if (widthProgress2 &lt;= 0) {
           progressClickDirection2 = 'top';
         } else if (widthProgress2 >= 100) {
           progressClickDirection2 = 'bottom';
@@ -404,7 +432,7 @@ function valveProgressClick(progressElement) {
         }
         break;
       case 3:
-        if (widthProgress3 <= 0) {
+        if (widthProgress3 &lt;= 0) {
           progressClickDirection3 = 'top';
         } else if (widthProgress3 >= 100) {
           progressClickDirection3 = 'bottom';
@@ -441,12 +469,35 @@ function settingsArray(massive) {
 }
 
 function dialogsInner() {
-  if (counterDialog < arrayDialog.length) {
+  if (counterDialog &lt; arrayDialog.length) {
     dialogs.innerHTML = `
             ${arrayDialog[counterDialog]}
-            <button onclick="dialogsInner();">Next</button>
+            &lt;button onclick="dialogsInner();">Next&lt;/button>
         `;
 
     counterDialog++;
   }
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#init">init</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Thu Jul 14 2022 19:31:37 GMT+0900 (Якутск, стандартное время)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

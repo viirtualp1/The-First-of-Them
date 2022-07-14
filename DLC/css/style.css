@@ -1,12 +1,12 @@
-* {
-  margin: 1rem;
-}
-
-body {
+body,
+html {
   background: rgb(80, 80, 80);
+  width: 100%;
+  height: 100%;
 }
 
 #dialogs {
+  width: 100%;
   background: rgb(56, 56, 56);
   padding: 1rem;
   font-size: 1.5rem;

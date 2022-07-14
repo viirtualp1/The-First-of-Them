@@ -49,35 +49,29 @@ init({
   heroes: context.heroes,
   elements: {
     dialogs: dialogs,
-    chooseDialogs: chooseDialogs,
+    chooseActions: chooseDialogs,
   },
 });
 
-let obj = {
-  func: () => {
-    console.log('hello123');
-  },
-};
-
-chooseDialog({
-  positive: {
+chooseAction([
+  {
     text: '1',
     func: function () {
       console.log('Hello1');
     },
   },
-  neutral: {
+  {
     text: '2',
     func: function () {
       console.log('hello');
     },
   },
-  unpositive: {
+  {
     text: '3',
     func: function () {
-      alert('Hello3');
+      console.log('Hello3');
     },
   },
-});
+]);
 
 createBtnNext(game);
