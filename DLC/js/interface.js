@@ -1,5 +1,9 @@
+import { init, initialGameSettings } from '../core/core.js';
+import { chooseAction } from '../modules/conclusion.js';
+
 const dialogs = document.querySelector('#dialogs');
 const chooseDialogs = document.querySelector('#chooseDialog');
+const fromWho = document.querySelector('#fromWho');
 
 let context = {
   heroes: {
@@ -23,9 +27,11 @@ const dialogsMassive = {
   vasiliy: {
     questions: [
       {
+        questionFrom: 'Полина',
         question: 'Как дела?',
         answerGood: 'Хочется разобраться с этим и вернуться домой',
         answerBad: 'Не очень',
+        type: 'action',
       },
       {
         question: 'Что тебе известно?',
@@ -42,6 +48,16 @@ const dialogsMassive = {
       },
     ],
   },
+
+  polina: {
+    questions: [
+      {
+        question: 'Что делаешь?',
+        answerGood: '',
+        answerBad: '',
+      },
+    ],
+  },
 };
 
 init({
@@ -50,28 +66,29 @@ init({
   elements: {
     dialogs: dialogs,
     chooseActions: chooseDialogs,
+    fromWho: fromWho,
   },
 });
 
-chooseAction([
+chooseAction(initialGameSettings, [
   {
-    text: '1',
+    text: 'Привет!',
     func: function () {
-      console.log('Hello1');
+      alert('Hello!');
     },
   },
   {
-    text: '2',
+    text: 'Как дела?',
     func: function () {
-      console.log('hello');
+      alert('Hello!');
     },
   },
   {
-    text: '3',
+    text: 'Что делаешь?',
     func: function () {
-      console.log('Hello3');
+      alert('Hello!');
     },
   },
 ]);
 
-createBtnNext(game);
+// createBtnNext(game);

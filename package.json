@@ -6,6 +6,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "start-assembly": "parcel DLC/index.html",
     "dist": "electron-builder",
     "pack": "electron-builder --dir"
   },
@@ -24,5 +25,8 @@
       "target": "portable",
       "icon": "icon.ico"
     }
+  },
+  "dependencies": {
+    "parcel-bundler": "^1.12.5"
   }
 }

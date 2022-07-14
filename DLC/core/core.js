@@ -2,6 +2,7 @@ const gameMechanicsSettings = {
   // true - move to bottom
   // false - move to top
   currentIndexDialog: 0,
+  isActionActive: false,
 
   progressesDirections: {
     progress1: true,
@@ -23,7 +24,7 @@ const gameMechanicsSettings = {
   },
 };
 
-let initialGameSettings = {};
+export let initialGameSettings = {};
 
 /**
  * @param {object} settings Parameters for the game.
@@ -36,27 +37,34 @@ let initialGameSettings = {};
  * @param {element} settings.elements.dialogs DOM element for insert dialogue
  * @param {element} settings.elements.chooseActions Dom element for insert any actions
  */
-function init(settings) {
+export function init(settings) {
   initialGameSettings = settings; // не хуйня ли?
   updateArray();
 }
 
-function createBtnNext(div) {
-  const button = document.createElement('button');
+// function createBtnNext(div) {
+//   const button = document.createElement('button');
 
-  button.addEventListener('click', nextDialog);
-  button.innerText = 'Далее';
-  button.className = 'btn btn-dark btn-next';
+//   button.addEventListener('click', nextDialog);
+//   button.innerText = 'Далее';
+//   button.className = 'btn btn-dark btn-next';
 
-  div.appendChild(button);
-}
+//   div.appendChild(button);
+// }
 
 function updateArray() {
+  initialGameSettings.elements.fromWho.innerText =
+    initialGameSettings.array[initialGameSettings.heroes.hero1.nameInArray].questions[
+      gameMechanicsSettings.currentIndexDialog
+    ].questionFrom;
+
   initialGameSettings.elements.dialogs.innerText =
     initialGameSettings.array[initialGameSettings.heroes.hero1.nameInArray].questions[
       gameMechanicsSettings.currentIndexDialog
     ].question;
 }
+
+function checkType() {}
 
 function nextDialog() {
   gameMechanicsSettings.currentIndexDialog += 1;
@@ -66,6 +74,7 @@ function nextDialog() {
 // func 'talk' idea for update
 // danil
 function talk(config) {
+  console.log('hello');
   talkToOneInner.innerHTML = `
       <div class="row mt-3 name">
           <p class="lead" id="name-dialog">${config.speaking}</p>
@@ -269,31 +278,45 @@ function changeBg(path) {
   document.body.style.backgroundImage = `url(${path})`;
 }
 
-function chooseAction(variants = [positive, neutral, unpositive]) {
-  const chooseText = document.createElement('p');
-  chooseText.innerText = 'Выбери: ';
+// function chooseAction(variants = [positive, neutral, unpositive]) {
+//   const chooseText = document.createElement('p');
+//   chooseText.className = 'choose-action-text';
+//   chooseText.innerText = 'Выбери: ';
 
-  const chooseActionBtns = document.createElement('div');
-  variants.forEach((variant) => {
-    const button = document.createElement('button');
+//   const chooseActionBtns = document.createElement('div');
+//   chooseActionBtns.className = 'd-flex justify-content-center';
 
-    button.addEventListener('click', variant.func);
-    button.innerText = variant.text;
-    chooseActionBtns.appendChild(button);
-  });
+//   variants.forEach((variant) => {
+//     const button = document.createElement('button');
+//     button.addEventListener('click', () => {
+//       variant.func();
+//       initialGameSettings.isActionActive = !initialGameSettings.isActionActive;
+//     });
+//     button.className = 'btn btn-dark btn-choose-action';
+//     button.innerText = variant.text;
 
-  const chooseActionDiv = document.createElement('div');
-  chooseActionDiv.appendChild(chooseText);
-  chooseActionDiv.appendChild(chooseActionBtns);
+//     const colDiv = document.createElement('div');
+//     colDiv.appendChild(button);
 
-  initialGameSettings.elements.chooseActions.appendChild(chooseActionDiv);
-}
+//     chooseActionBtns.appendChild(colDiv);
+//   });
+
+//   const chooseActionDiv = document.createElement('div');
+//   chooseActionDiv.className = 'choose-action-div';
+//   chooseActionDiv.appendChild(chooseText);
+//   chooseActionDiv.appendChild(chooseActionBtns);
+
+//   initialGameSettings.elements.chooseActions.appendChild(chooseActionDiv);
+// }
+
+// chooseAction(initialGameSettings, (variants = [positive, neutral, unpositive]));
 
 // Mechanic with Valves (last fight with Vasiliy)
 function valve(valveIndicator) {
   valveIndicator = true;
 
-  const massiveNubmers = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+  const massiveNubmers = new Array().fill(10);
+  console.log(massiveNubmers);
 
   let valveProgressWidthStart1 = getRandNumb(0, 8);
   let valveProgressWidthStart2 = getRandNumb(0, 8);
@@ -432,9 +455,6 @@ function deleteChooseDialogDiv() {
 function clearLc() {
   localStorage.removeItem('mainRoomLaboratory');
 }
-
-let counterDialog = 0;
-arrayDialog = [];
 
 function settingsArray(massive) {
   arrayDialog = massive;
