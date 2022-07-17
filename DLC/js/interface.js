@@ -1,5 +1,5 @@
 import { init, initialGameSettings } from '../core/core.js';
-import { chooseAction } from '../modules/conclusion.js';
+import { chooseAction } from '../modules/chooseAction.js';
 
 const dialogs = document.querySelector('#dialogs');
 const chooseDialogs = document.querySelector('#chooseDialog');
